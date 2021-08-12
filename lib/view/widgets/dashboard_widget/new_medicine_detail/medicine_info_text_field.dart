@@ -31,19 +31,20 @@ class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
         maxLines: 5,
         maxLengthEnforced: false,
         keyboardType: TextInputType.text,
-        cursorColor: Colors.green,
+        autofocus: false,
+        cursorColor: Colors.black,
         cursorHeight: 20,
         controller: editingController,
         style: TextStyle(
           fontFamily: "AvenirNextCyr",
-          color: Colors.green,
+          color: Colors.black,
           fontSize: 18,
         ),
         decoration: InputDecoration(
           hintText: widget.type,
           hintStyle: TextStyle(
             fontFamily: "AvenirNextCyr",
-            color: Colors.green,
+            color: Colors.black,
             fontSize: 18,
           ),
           counterText: '',

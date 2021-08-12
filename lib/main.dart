@@ -1,4 +1,4 @@
-import 'package:MedicineReminder/view/pages/dashboard.dart';
+import 'package:MedicineReminder/view/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,9 +13,11 @@ class MyApp extends StatelessWidget {
       title: 'Medicine Reminder',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        canvasColor:Colors.white,
+
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: DashBoard(),
+      home: Dashboard(),
     );
   }
 }

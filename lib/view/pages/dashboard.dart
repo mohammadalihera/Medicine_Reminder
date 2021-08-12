@@ -3,10 +3,13 @@ import 'package:MedicineReminder/view/widgets/dashboard_widget/dashboard_appbar.
 import 'package:MedicineReminder/view/widgets/dashboard_widget/medicine_detail/medicine_detail.dart';
 import 'package:MedicineReminder/view/widgets/dashboard_widget/medicine_info_tile.dart';
 import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/user_image_name.dart';
+
 import 'package:flutter/material.dart';
 
 class DashBoard extends StatefulWidget {
+  int currentIndex;
+  DashBoard(this.currentIndex);
+
   @override
   _DashBoardState createState() => _DashBoardState();
 }
@@ -15,12 +18,10 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: PreferredSize(
-      //   preferredSize: const Size.fromHeight(60), //set from design
-      //   child: DashBoardAppbar(),
-      // ),
-      backgroundColor: Color(0xffE5E5E5),
+     backgroundColor:  Colors.blue,
       body: Container(
+      // color:   Color(0xffEDF7FF),
+        padding: EdgeInsets.only(bottom:50),
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -30,31 +31,34 @@ class _DashBoardState extends State<DashBoard> {
                 color: Colors.blue,
                 child: Column(
                   children: <Widget>[
-                    // Container(
-                    //   margin: EdgeInsets.only(left: 10, top: 40),
-                    //   child: Icon(
-                    //     Icons.menu,
-                    //     color: Colors.white,
-                    //   ),
-                    // ),
-                    UserNameImage(),
                     CustomCalendar('week'),
                   ],
                 ),
               ),
+             // SizedBox(height:10),
               InkWell(
-                onTap:medicineDetail ,
-                child: MedicineInfoTile(),
-              )
+                onTap: medicineDetail,
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30)),
+                      color:  Color(0xffEDF7FF),
+                  ),
+                  child: MedicineInfoTile(),
+                ),
+              ),
+              
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      /* floatingActionButton: FloatingActionButton(
         onPressed: addMedicine,
         tooltip: 'Increment',
         child: Icon(Icons.add),
-      ),
+      ), */
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 

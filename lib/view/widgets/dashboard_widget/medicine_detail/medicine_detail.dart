@@ -1,4 +1,6 @@
+import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
 import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
+import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
 import 'package:flutter/material.dart';
 
 class MedicineDetail extends StatefulWidget {
@@ -7,6 +9,7 @@ class MedicineDetail extends StatefulWidget {
 }
 
 class _MedicineDetailState extends State<MedicineDetail> {
+  int dose=3;
   TextEditingController editingController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -34,20 +37,8 @@ class _MedicineDetailState extends State<MedicineDetail> {
                         fontWeight: FontWeight.w700,
                       )),
                 ),
-                Container(
-                  padding: EdgeInsets.all(4),
-                  margin: EdgeInsets.only(top: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    color: Colors.green,
-                  ),
-                  child: Text('After Meal',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                      )),
-                ),
+                SizedBox(height:5),
+                AfterMeal('after', 'other')
               ],
             ),
           ),
@@ -68,47 +59,170 @@ class _MedicineDetailState extends State<MedicineDetail> {
                             fontWeight: FontWeight.w700),
                       ),
                       SizedBox(height: 5),
-                      Container(
-                        child: Row(
-                          children: [
-                            Container(
-                              child: Text(
-                                '3 times ' + '|' + " ",
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.w600),
+                       Container(
+            margin: EdgeInsets.only(top: 10),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      dose >= 1
+                          ? InkWell(
+                              onTap: () {
+                                //_showDialog('dose1');
+                              },
+                              child: Container(
+                                width: 95,
+                                height: 22,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    const Radius.circular(5.0),
+                                  ),
+                                  color: Colors.blue,
+                                ),
+                                margin: EdgeInsets.only(right: 5),
+                                child: Center(
+                                  child: Text(
+                                    'dose time',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ),
                               ),
-                            ),
-                            Container(
-                              child: Text(
-                                '9AM,',
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14),
+                            )
+                          : SizedBox(),
+                      dose >= 2
+                          ? InkWell(
+                              onTap: () {
+                               // _showDialog( 'dose2');
+                              },
+                              child: Container(
+                                width: 95,
+                                height: 22,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    const Radius.circular(5.0),
+                                  ),
+                                  color: Colors.blue,
+                                ),
+                                margin: EdgeInsets.only(right: 5),
+                                child: Center(
+                                  child: Text(
+                                    'dose time',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ),
                               ),
-                            ),
-                            Container(
-                              child: Text(
-                                '2PM,',
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14),
+                            )
+                          : SizedBox(),
+                      dose >= 3
+                          ? InkWell(
+                              onTap: () {
+                                //_showDialog('dose3');
+                              },
+                              child: Container(
+                                width: 95,
+                                height: 22,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    const Radius.circular(5.0),
+                                  ),
+                                  color: Colors.blue,
+                                ),
+                                margin: EdgeInsets.only(right: 5),
+                                child: Center(
+                                  child: Text(
+                                    'dose time',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ),
                               ),
-                            ),
-                            Container(
-                              child: Text(
-                                '10PM',
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14),
+                            )
+                          : SizedBox(),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 10),
+                  child: Row(
+                    children: <Widget>[
+                      dose >= 4
+                          ? InkWell(
+                              onTap: () {
+                               // _showDialog('dose4');
+                              },
+                              child: Container(
+                                width: 95,
+                                height: 22,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    const Radius.circular(5.0),
+                                  ),
+                                  color: Colors.blue,
+                                ),
+                                margin: EdgeInsets.only(right: 5),
+                                child: Center(
+                                  child: Text(
+                                    'dose time',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
+                            )
+                          : SizedBox(),
+                      dose >= 5
+                          ? InkWell(
+                              onTap: () {
+                                //_showDialog('dose5');
+                              },
+                              child: Container(
+                                width: 95,
+                                height: 22,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    const Radius.circular(5.0),
+                                  ),
+                                  color: Colors.blue,
+                                ),
+                                margin: EdgeInsets.only(right: 5),
+                                child: Center(
+                                  child: Text(
+                                    'dose time',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ),
+                              ),
+                            )
+                          : SizedBox(),
+                      dose == 6
+                          ? InkWell(
+                              onTap: () {
+                                //_showDialog('dose6');
+                              },
+                              child: Container(
+                                width: 95,
+                                height: 22,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    const Radius.circular(5.0),
+                                  ),
+                                  color: Colors.blue,
+                                ),
+                                margin: EdgeInsets.only(right: 5),
+                                child: Center(
+                                  child: Text(
+                                    'dose time',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ),
+                              ),
+                            )
+                          : SizedBox(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
                     ],
                   ),
                 ),
@@ -190,10 +304,25 @@ class _MedicineDetailState extends State<MedicineDetail> {
                     ],
                   ),
                 ),
-                SizedBox(height:50),
-                Center(
+                SizedBox(height:30),
+                 Center(
                   child: InkWell(
                     onTap: null,
+                    child: Container(
+                      width: 115,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        color: Colors.red,
+                      ),
+                      child: Center(child: Text('Delete',style: TextStyle(fontSize:14,color: Colors.white),),),
+                    ),
+                  ),
+                ),
+                SizedBox(height:27),
+                Center(
+                  child: InkWell(
+                    onTap: addMedicine,
                     child: Container(
                       width: size.width * .7,
                       height: 55,
@@ -201,7 +330,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
                         color: Colors.blue,
                       ),
-                      child: Center(child: Text('Change Schedule',style: TextStyle(fontSize: 20,color: Colors.white),),),
+                      child: Center(child: Text('Edit Schedule',style: TextStyle(fontSize: 20,color: Colors.white),),),
                     ),
                   ),
                 )
@@ -211,5 +340,26 @@ class _MedicineDetailState extends State<MedicineDetail> {
         ],
       ),
     );
+  }
+
+  void addMedicine() {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        isDismissible: true,
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) {
+          return Container(
+            height: MediaQuery.of(context).size.height * 0.78,
+            decoration: new BoxDecoration(
+              color: Color(0xffEDF7FF),
+              borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(35.0),
+                topRight: const Radius.circular(35.0),
+              ),
+            ),
+            child: NewMedicineDetail(),
+          );
+        });
   }
 }
