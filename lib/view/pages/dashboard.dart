@@ -26,9 +26,11 @@ class _DashBoardState extends State<DashBoard> {
           child: Column(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(top: 50),
+                padding: EdgeInsets.only(top: 50,bottom: 10),
                 width: MediaQuery.of(context).size.width,
-                color: Colors.blue,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5))
+                ),
                 child: Column(
                   children: <Widget>[
                     CustomCalendar('week'),
@@ -70,7 +72,7 @@ class _DashBoardState extends State<DashBoard> {
         context: context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.78,
+            height: MediaQuery.of(context).size.height * 0.82,
             decoration: new BoxDecoration(
               color: Colors.white,
               borderRadius: new BorderRadius.only(

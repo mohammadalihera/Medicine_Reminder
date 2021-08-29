@@ -1,6 +1,8 @@
 import 'package:date_time_picker/date_time_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:MedicineReminder/utils.dart';
 
 class CustomCalendar extends StatefulWidget {
   final String format;
@@ -12,11 +14,13 @@ class CustomCalendar extends StatefulWidget {
 }
 
 class _CustomCalendarState extends State<CustomCalendar> {
-  CalendarController _calendarController;
+  CalendarFormat _calendarFormat = CalendarFormat.month;
+  DateTime _focusedDay = DateTime.now();
+  DateTime _selectedDay;
 
   @override
   void initState() {
-    _calendarController = CalendarController();
+    /*  _calendarController = CalendarController(); */
     super.initState();
   }
 
@@ -27,267 +31,130 @@ class _CustomCalendarState extends State<CustomCalendar> {
     double leftMargin = dayBox * 0.11;
     double afterLeftmargin = dayBox - leftMargin;
     return TableCalendar(
-      // events: taskC.mp,
-      calendarController: _calendarController,
-      rowHeight: 55,
-      initialCalendarFormat: CalendarFormat.week,
-      daysOfWeekStyle: DaysOfWeekStyle(
-          dowTextBuilder: (date, locale) {
-            return DateFormat.E(locale).format(date).toUpperCase();
-          },
-          weekdayStyle: TextStyle(
-            fontFamily: "AvenirNextCyr",
-            //color: Color(0xFF4E6786),
-          )),
-      headerStyle: HeaderStyle(
-        headerMargin: EdgeInsets.only(top: 8),
-        leftChevronIcon: Icon(
-          Icons.chevron_left,
-          color: Colors.white,
-        ),
-        rightChevronIcon: Icon(
-          Icons.chevron_right,
-          color: Colors.white,
-        ),
-        titleTextStyle: TextStyle(
-          fontFamily: "AvenirNextCyr",
-          color: Colors.white,
-          fontSize: 18,
-        ),
-        centerHeaderTitle: true,
-        formatButtonDecoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-      ),
-      //calendarController: _calendarController,
-      startingDayOfWeek: StartingDayOfWeek.sunday,
-      // onDaySelected: (date, events, holidays) {
-      //   Get.find<CustomTabController>()
-      //       .updateTabColor(Get.find<CustomTabController>().index);
-      //   //create event here
-      //   dateSelectedController.selectedDateTasks = new List<Task>().obs;
-      //   if (events != null) {
-      //     for (int i = 0; i < events.length; ++i) {
-      //       dateSelectedController.selectedDateTasks.add(events[i]);
-      //     }
-      //   }
-      //   Get.find<CustomTabController>()
-      //       .updateTabColor(Get.find<CustomTabController>().index);
-      // },
-      builders: CalendarBuilders(
-        dayBuilder: (context, date, events) {
-          return Card(
-            elevation: 35,
-            color: Color(0xffEDF7FF).withOpacity(0.2),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: 70,
-                minWidth: 50,
-                //minHeight: 65,
-                //minWidth: 55,
-              ),
-              child: Container(
-                //margin: EdgeInsets.only(top: 7, bottom: 7, left: 4, right: 4),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    width: 1,
-                    color: Colors.white,
-                  ),
-                ),
-                child: Text(
-                  date.day.toString(),
-                  style: TextStyle(
-                    fontFamily: "AvenirNextCyr",
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ),
-          );
-        },
-        selectedDayBuilder: (context, date, events) {
-          Size size = MediaQuery.of(context).size;
-          print(size);
-          if (events != null) {
-            return ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: 50,
-                minWidth: 50,
-                //minHeight: 65,
-                //minWidth: 55,
-              ),
-              child: Container(
-                margin: EdgeInsets.only(top: 5, bottom: 5, left: 4, right: 4),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Color(0x324E6786),
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    color: Color(0xFF4E6786),
-                  ),
-                ),
-                child: Text(
-                  date.day.toString(),
-                  style: TextStyle(
-                    fontFamily: "AvenirNextCyr",
-                    //color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            );
-          } else {
-            return Card(
-              shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.white70, width: 1),
-                borderRadius: BorderRadius.circular(5),
-              ),
-              elevation: 35,
-              color: Color(0xff295E99),
-              semanticContainer: true,
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: 70,
-                  minWidth: 50,
-                  //minHeight: 65,
-                  //minWidth: 55,
-                ),
-                child: Container(
-                  margin: EdgeInsets.only(top: 7, bottom: 7, left: 4, right: 4),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Text(
-                    date.day.toString(),
-                    style: TextStyle(
-                        fontFamily: "AvenirNextCyr",
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
-              ),
-            );
-          }
-        },
-        todayDayBuilder: (context, date, events) {
-          if (events != null) {
-            return ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: 50,
-                minWidth: 50,
-              ),
-              child: Container(
-                // margin: EdgeInsets.only(top: 5, bottom: 5, left: 4, right: 4),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Color(0x1EFD942A),
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    color: Color(0x79FD942A),
-                  ),
-                ),
-                child: Text(
-                  date.day.toString(),
-                  style: TextStyle(
-                    fontFamily: "AvenirNextCyr",
-                    //color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            );
-          } else {
-            return ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: 50,
-                minWidth: 50,
-              ),
-              child: Card(
-                elevation: 10,
-                color: Color(0xffEDF7FF),
-                child: Container(
-                  // margin: EdgeInsets.only(top: 4, bottom: 4, left: 3, right: 3),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    // color: Color(0xffEDF7FF),
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: Colors.white,
-                    ),
-                  ),
-                  child: Text(
-                    date.day.toString(),
-                    style: TextStyle(
-                      fontFamily: "AvenirNextCyr",
-                      color: Colors.blue,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-            );
-          }
-        },
-        markersBuilder: (context, date, events, holidays) {
-          final children = <Widget>[];
-
-          if (events.isNotEmpty) {
-            children.add(
-              Positioned(
-                left: size.width * 0.0152,
-                //right: 4,
-                bottom: size.height * 0.00943,
-                //top:15,
-                child: _buildEventsMarker(date, events, size),
-              ),
-            );
-          }
-
-          if (holidays.isNotEmpty) {
-            children.add(
-              Positioned(
-                right: -2,
-                top: -2,
-                child: _buildHolidaysMarker(),
-              ),
-            );
-          }
-
-          return children;
-        },
-      ),
-      weekendDays: [DateTime.friday, DateTime.saturday],
       calendarStyle: CalendarStyle(
-        eventDayStyle: TextStyle(
-          fontFamily: "AvenirNextCyr",
-          color: Colors.white,
-          fontSize: 16,
+        cellMargin: EdgeInsets.all(5),
+        selectedDecoration: BoxDecoration(
+          border: Border.all(color: Colors.white),
+          color: Color(0xffEDF7FF),
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
         ),
-        outsideStyle: TextStyle(
-          fontFamily: "AvenirNextCyr",
-          color: Color(0xFF47515E),
+        selectedTextStyle: TextStyle(
+            color: Colors.blue, fontSize: 18, fontWeight: FontWeight.w600),
+        defaultDecoration: BoxDecoration(
+          border: Border.all(color: Colors.white),
+          color: Color(0xffEDF7FF).withOpacity(0.17),
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 3,
+              offset: Offset(4, 4), // Shadow position
+            ),
+          ],
         ),
-        weekdayStyle: TextStyle(
-            fontFamily: "AvenirNextCyr", color: Colors.white, fontSize: 16),
-        todayStyle: TextStyle(
-          fontFamily: "AvenirNextCyr",
-          fontSize: 16,
-          color: Colors.white,
+        defaultTextStyle: TextStyle(
+            color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
+        todayDecoration: BoxDecoration(
+          border: Border.all(color: Colors.white),
+          color: Colors.blue.withOpacity(0.17),
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 3,
+              offset: Offset(4, 4), // Shadow position
+            ),
+          ],
         ),
-        weekendStyle: TextStyle(
-          fontFamily: "AvenirNextCyr",
-          color: Colors.red,
-          fontSize: 16,
+        todayTextStyle: TextStyle(
+            color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
+        outsideDecoration: BoxDecoration(
+          border: Border.all(color: Colors.white),
+          color: Color(0xffEDF7FF).withOpacity(0.18),
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 2,
+              offset: Offset(4, 4), // Shadow position
+            ),
+          ],
         ),
+        outsideTextStyle: TextStyle(
+            color: Colors.blue[700], fontSize: 18, fontWeight: FontWeight.w600),
+        weekendDecoration: BoxDecoration(
+          border: Border.all(color: Colors.white),
+          color: Color(0xffEDF7FF).withOpacity(0.17),
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 3,
+              offset: Offset(4, 4), // Shadow position
+            ),
+          ],
+        ),
+        weekendTextStyle: TextStyle(
+            color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
       ),
+      daysOfWeekStyle: DaysOfWeekStyle(
+        weekdayStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),
+        weekendStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),
+      ),
+      headerStyle: HeaderStyle(
+        leftChevronVisible: true,
+        leftChevronIcon: Icon(Icons.keyboard_arrow_left,color: Colors.white,),
+        rightChevronIcon: Icon(Icons.keyboard_arrow_right,color: Colors.white,),
+        titleCentered: true,
+        titleTextStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize:18),
+        formatButtonVisible: false,
+         formatButtonShowsNext: true,
+      ),
+      rowHeight: 60,
+      
+      firstDay: kFirstDay,
+      lastDay: kLastDay,
+      focusedDay: _focusedDay,
+      calendarFormat: _calendarFormat,
+      selectedDayPredicate: (day) {
+        // Use `selectedDayPredicate` to determine which day is currently selected.
+        // If this returns true, then `day` will be marked as selected.
+
+        // Using `isSameDay` is recommended to disregard
+        // the time-part of compared DateTime objects.
+        return isSameDay(_selectedDay, day);
+      },
+      onDaySelected: (selectedDay, focusedDay) {
+        if (!isSameDay(_selectedDay, selectedDay)) {
+          // Call `setState()` when updating the selected day
+          setState(() {
+            _selectedDay = selectedDay;
+            _focusedDay = focusedDay;
+          });
+        }
+      },
+      onFormatChanged: (format) {
+        if (_calendarFormat != format) {
+          // Call `setState()` when updating calendar format
+          setState(() {
+            _calendarFormat = format;
+          });
+        }
+      },
+      onPageChanged: (focusedDay) {
+        // No need to call `setState()` here
+        _focusedDay = focusedDay;
+      },
     );
   }
 }

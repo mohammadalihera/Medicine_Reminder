@@ -13,107 +13,131 @@ class NewMedicineDetail extends StatefulWidget {
 
 class _NewMedicineDetailState extends State<NewMedicineDetail> {
   TextEditingController editingController = new TextEditingController();
-  String meal='';
+  String meal = '';
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(left: 40, top: 40),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Add New Medicine',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(right: 40),
-                      child: Icon(
-                        Icons.close,
-                        color: Colors.green.withOpacity(0.8),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Container(
+              
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.only(left: 40, top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                     Container(
+                       child: Text(
+                          'Add New Medicine',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20,
+                          ),
+                        ),
+                     ),
+                     Container(
+                       margin:EdgeInsets.only(right:20),
+                       child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            child: Icon(
+                              Icons.arrow_downward,
+                              color: Colors.green.withOpacity(0.8),
+                            ),
+                          ),
+                        ),
+                     ),
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(left: 40, top: 30),
+                      child: Text(
+                        'Name',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(left: 40, top: 30),
-                    child: Text(
-                      'Name',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w600),
+                    MedicineInfoTextField(type: 'Medicine Name'),
+                    Container(
+                      margin: EdgeInsets.only(left: 40, top: 10),
+                      child: Text(
+                        'Dosage',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
-                  ),
-                  MedicineInfoTextField(type: 'Medicine Name'),
-                  Container(
-                    margin: EdgeInsets.only(left: 40, top: 10),
-                    child: Text(
-                      'Dosage',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w600),
+                    MedicineDosageField(),
+                    MedicinePrograme(),
+                    MedicineQuantity(),
+                    Container(
+                      margin: EdgeInsets.only(left: 40, top: 23, right: 40),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                meal = 'after';
+                              });
+                            },
+                            child: AfterMeal(meal, 'add'),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                meal = 'before';
+                              });
+                            },
+                            child: BeforeMeal(meal),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  MedicineDosageField(),
-                  MedicinePrograme(),
-                  MedicineQuantity(),
-                  Container(
-                    margin: EdgeInsets.only(left: 40, top: 23),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          onTap: (){
-                            setState(() {
-                              meal='after';
-                            });
-                          },
-                          child: AfterMeal(meal,'add'),
+                    InkWell(
+                      onTap: null,
+                      child: Center(
+                        child: Container(
+                          margin: EdgeInsets.only(left: 40, top: 20, right: 40),
+                          decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          height: 55,
+                          width: MediaQuery.of(context).size.width * .8,
+                          child: Center(
+                            child: Text(
+                              'Add Schedule',
+                              style:
+                                  TextStyle(fontSize: 22, color: Colors.white),
+                            ),
+                          ),
                         ),
-                        InkWell(
-                          onTap: (){
-                            setState(() {
-                              meal='before';
-                            });
-                          },
-                          child: BeforeMeal(meal),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap:null,
-                    child:Container(
-                      margin: EdgeInsets.only(left:40,top: 20),
-                      decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.all(Radius.circular(10))),
-                      height: 55,
-                      width: 290,
-                      child:Center(child: Text('Add Schedule',style: TextStyle(fontSize: 22,color: Colors.white),),) ,)
-                  )
-                ],
+                    SizedBox(
+                      height: 30,
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -5,7 +5,6 @@ import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_deta
 import 'package:double_back_to_close/double_back_to_close.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:MedicineReminder/view/widgets/home/bottom_nav.dart';
 
 class Dashboard extends StatelessWidget {
@@ -44,7 +43,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+     // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Stack(
         children: [
           Positioned(
@@ -71,8 +70,8 @@ class _HomePageState extends State<HomePage> {
           Positioned(
             bottom: 0,
             child: Container(
-              color:Color(0xffEDF7FF),
-                          child: Container(
+              color: Color(0xffEDF7FF),
+              child: Container(
                 decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.only(
@@ -92,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
-                                    duration: Duration(milliseconds: 50),
+                                    duration: Duration(milliseconds: 10),
                                     curve: Curves.bounceIn);
                               },
                               child: Container(
@@ -107,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                             onTap: () {
                               pageController.animateToPage(0,
-                                  duration: Duration(milliseconds: 50),
+                                  duration: Duration(milliseconds: 10),
                                   curve: Curves.bounceIn);
                             },
                             child: Container(
@@ -124,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                             onTap: () {
                               pageController.animateToPage(1,
-                                  duration: Duration(milliseconds: 50),
+                                  duration: Duration(milliseconds: 10),
                                   curve: Curves.bounceIn);
                             },
                             child: Container(
@@ -138,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                             onTap: () {
                               pageController.animateToPage(1,
-                                  duration: Duration(milliseconds: 50),
+                                  duration: Duration(milliseconds: 10),
                                   curve: Curves.bounceIn);
                             },
                             child: Container(
@@ -155,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                             onTap: () {
                               pageController.animateToPage(2,
-                                  duration: Duration(milliseconds: 50),
+                                  duration: Duration(milliseconds: 10),
                                   curve: Curves.bounceIn);
                             },
                             child: Container(
@@ -169,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(2,
-                                    duration: Duration(milliseconds: 50),
+                                    duration: Duration(milliseconds: 10),
                                     curve: Curves.bounceIn);
                               },
                               child: Container(
@@ -187,35 +186,40 @@ class _HomePageState extends State<HomePage> {
           ),
           currentIndex == 1
               ? Positioned(
-                  left: MediaQuery.of(context).size.width*0.43,
-                  bottom: 15,
+                  //left: MediaQuery.of(context).size.width * 0.42,
+                  bottom: 14,
                   child: Container(
-                    height: 60,
-                    width: 60,
-                    padding: EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(75),
-                      ),
-                      color: Color(0xffEDF7FF),
-                    ),
-                    child: Container(
-                      height: 60,
-                      width: 60,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(70),
+                    width: MediaQuery.of(context).size.width,
+                    child: Center(
+                      child: Container(
+                        height: 75,
+                        width: 75,
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(75),
+                          ),
+                          color: Color(0xffEDF7FF),
                         ),
-                        color: Colors.blue,
-                      ),
-                      child: Center(
-                        child: InkWell(
-                          onTap:addMedicine ,
-                            child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 30,
-                        )),
+                        child: Container(
+                          height: MediaQuery.of(context).size.width * 0.16,
+                          width: MediaQuery.of(context).size.width * 0.16,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(70),
+                            ),
+                            color: Colors.blue,
+                          ),
+                          child: Center(
+                            child: InkWell(
+                                onTap: addMedicine,
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 30,
+                                )),
+                          ),
+                        ),
                       ),
                     ),
                   ),

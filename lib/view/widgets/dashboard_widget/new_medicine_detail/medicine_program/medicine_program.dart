@@ -36,8 +36,12 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                     Container(
                         margin: EdgeInsets.only(left: 40),
                         child: Text(
-                         selectedDays==0? 'Ex 30':selectedDays.toString(),
-                          style: TextStyle(color:selectedDays==0? Colors.grey:Colors.black,fontSize: 16),
+                          selectedDays == 0 ? 'Ex 30' : selectedDays.toString(),
+                          style: TextStyle(
+                              color: selectedDays == 0
+                                  ? Colors.grey
+                                  : Colors.black,
+                              fontSize: 16),
                         )),
                     Container(
                       margin: EdgeInsets.only(left: 40, right: 30),
@@ -71,73 +75,73 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
             ),
             height: 280,
             width: 300,
-            child: Stack(children: <Widget>[
-              Positioned(
-                left: 90,
-                bottom: 70,
-                child: Container(
-                    color: Colors.blue,
-                    height: 180,
-                    width: 100,
-                    child: CupertinoPicker(
-                      useMagnifier: false,
-                      looping: true,
-                      
-                        itemExtent: 100,
-                        diameterRatio: 2,
-                        onSelectedItemChanged: (int index) {
-                          print(index);
-                          setState(() {
-                            selectedDays=index;
-                          });
-                        },
-                        children: [
-                          for (int i = 0; i <= 100; i++)
-                            Container(
-                              color: Colors.blue,
-                              child: Center(
-                                child: Text(i.toString(),
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 50,
-                                        fontWeight: FontWeight.w600)),
-                              ),
-                            )
-                        ])),
-              ),
-              Positioned(
-                top: 80,
-                left: 30,
-                child: Container(
-                  child: Text(
-                    'Total',
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600),
-                  ),
+            child: Stack(
+              children: <Widget>[
+                Positioned(
+                  left: 90,
+                  bottom: 70,
+                  child: Container(
+                      color: Colors.blue,
+                      height: 180,
+                      width: 100,
+                      child: CupertinoPicker(
+                          useMagnifier: false,
+                          looping: false,
+                          itemExtent: 100,
+                          diameterRatio: 2,
+                          onSelectedItemChanged: (int index) {
+                            print(index);
+                            setState(() {
+                              selectedDays = index;
+                            });
+                          },
+                          children: [
+                            for (int i = 0; i <= 100; i++)
+                              Container(
+                                color: Colors.blue,
+                                child: Center(
+                                  child: Text(i.toString(),
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 50,
+                                          fontWeight: FontWeight.w600)),
+                                ),
+                              )
+                          ])),
                 ),
-              ),
-              Positioned(
+                Positioned(
                   top: 80,
-                  left: 190,
+                  left: 30,
                   child: Container(
                     child: Text(
-                      'Days',
+                      'Total',
                       style: TextStyle(
                           fontSize: 25,
                           color: Colors.white,
                           fontWeight: FontWeight.w600),
                     ),
-                  )),
-              Positioned(
-              bottom:20,
+                  ),
+                ),
+                Positioned(
+                    top: 80,
+                    left: 190,
+                    child: Container(
+                      child: Text(
+                        'Days',
+                        style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    )),
+                Positioned(
+                  bottom: 20,
                   left: 70,
                   child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                     },
-                                      child: Container(
+                    child: Container(
                       width: 150,
                       height: 30,
                       decoration: BoxDecoration(
@@ -147,7 +151,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                           color: Colors.white),
                       child: Center(
                         child: Text(
-                           'Set Programs',
+                          'Set Programs',
                           style: TextStyle(
                               fontSize: 16,
                               color: Colors.blue,
@@ -155,12 +159,28 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                         ),
                       ),
                     ),
-                  ))
-            ]),
+                  ),
+                ),
+                Positioned(
+                  top:5,
+                  right:10,
+                  child: InkWell(
+                    onTap: (){
+                      setState(() {
+                        selectedDays=0;
+                      });
+                       Navigator.pop(context);
+                    },
+                                      child: Container(
+                      child: Icon(Icons.close, color: Colors.red[200]),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         );
       },
     );
   }
-
 }

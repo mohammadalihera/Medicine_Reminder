@@ -2,14 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MedicineQuantity extends StatefulWidget {
-  
-
   @override
   _MedicineQuantityState createState() => _MedicineQuantityState();
 }
 
 class _MedicineQuantityState extends State<MedicineQuantity> {
-  int selectedDays = 0;
+  int selectedQuantity = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,8 +34,12 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                     Container(
                         margin: EdgeInsets.only(left: 40),
                         child: Text(
-                         selectedDays==0? 'Ex 30':selectedDays.toString(),
-                          style: TextStyle(color:selectedDays==0? Colors.grey:Colors.black, fontSize: 16),
+                          selectedQuantity == 0 ? 'Ex 30' : selectedQuantity.toString(),
+                          style: TextStyle(
+                              color: selectedQuantity == 0
+                                  ? Colors.grey
+                                  : Colors.black,
+                              fontSize: 16),
                         )),
                     Container(
                       margin: EdgeInsets.only(left: 40, right: 30),
@@ -81,13 +83,13 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                     width: 100,
                     child: CupertinoPicker(
                         itemExtent: 100,
-                         looping: true,
-                         diameterRatio: 2,
-                         useMagnifier: true,
+                        looping: true,
+                        diameterRatio: 2,
+                        useMagnifier: true,
                         onSelectedItemChanged: (int index) {
                           print(index);
                           setState(() {
-                            selectedDays=index;
+                            selectedQuantity = index;
                           });
                         },
                         children: [
@@ -117,7 +119,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                 ),
               ),
               Positioned(
-                  top:80,
+                  top: 80,
                   left: 190,
                   child: Container(
                     child: Text(
@@ -130,30 +132,46 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                   )),
               Positioned(
                 bottom: 20,
-                  left: 70,
-                  child: InkWell(
-                    onTap: (){
-                      Navigator.pop(context);
-                    },
-                                      child: Container(
-                      width: 150,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                          color: Colors.white),
-                      child: Center(
-                        child: Text(
-                           'Set Quantity',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.blue,
-                              fontWeight: FontWeight.w600),
+                left: 70,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: 150,
+                    height: 30,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
                         ),
+                        color: Colors.white),
+                    child: Center(
+                      child: Text(
+                        'Set Quantity',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
-                  ))
+                  ),
+                ),
+              ),
+              Positioned(
+                  top:5,
+                  right:10,
+                  child: InkWell(
+                    onTap: (){
+                      setState(() {
+                        selectedQuantity=0;
+                      });
+                       Navigator.pop(context);
+                    },
+                                      child: Container(
+                      child: Icon(Icons.close, color: Colors.red[200]),
+                    ),
+                  ),
+                )
             ]),
           ),
         );

@@ -173,7 +173,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                 child: Center(
                                   child: Text(
                                     time_1,
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -197,7 +197,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                 child: Center(
                                   child: Text(
                                     time_2,
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -221,7 +221,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                 child: Center(
                                   child: Text(
                                     time_3,
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -252,7 +252,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                 child: Center(
                                   child: Text(
                                     time_4,
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -276,7 +276,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                 child: Center(
                                   child: Text(
                                     time_5,
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -300,7 +300,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                 child: Center(
                                   child: Text(
                                     time_6,
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -369,8 +369,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                     width: 230,
                     color: Colors.blue.withOpacity(0.4),
                   )),
-              //hourMinute12HCustomStyle()
-              //hourMinuteSecond()
+             
               Positioned(
                 left:62,
                 bottom: 25,
@@ -394,6 +393,21 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   ),
                 ),
               ),
+              Positioned(
+                  top:-5,
+                  right:0,
+                  child: InkWell(
+                    onTap: (){
+                      setState(() {
+                        
+                      });
+                       Navigator.pop(context);
+                    },
+                                      child: Container(
+                      child: Icon(Icons.close, color: Colors.red[200]),
+                    ),
+                  ),
+                )
             ]),
           ),
         );

@@ -10,7 +10,10 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 10, right: 10,),
+      margin: EdgeInsets.only(
+        left: 10,
+        right: 10,
+      ),
       child: GridView.builder(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
@@ -22,8 +25,13 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
           itemCount: 20,
           itemBuilder: (_, i) {
             return Card(
+              shadowColor: Colors.blue,
               elevation: 4,
               shape: RoundedRectangleBorder(
+                side: BorderSide(
+                color: Color(0xffEDF7FF).withOpacity(0.2),
+                width: 4,
+              ),
                 borderRadius: BorderRadius.circular(25),
               ),
               color: Color(0xffEDF7FF),
@@ -73,7 +81,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                                 fontWeight: FontWeight.w400,
                                 color: Colors.grey),
                           ),
-                          SizedBox(height:6),
+                          SizedBox(height: 6),
                           Text(
                             '09:00PM',
                             style: TextStyle(

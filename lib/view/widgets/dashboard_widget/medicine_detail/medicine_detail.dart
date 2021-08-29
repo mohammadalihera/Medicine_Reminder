@@ -84,7 +84,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                 child: Center(
                                   child: Text(
                                     'dose time',
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -108,7 +108,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                 child: Center(
                                   child: Text(
                                     'dose time',
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -132,7 +132,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                 child: Center(
                                   child: Text(
                                     'dose time',
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -163,7 +163,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                 child: Center(
                                   child: Text(
                                     'dose time',
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -187,7 +187,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                 child: Center(
                                   child: Text(
                                     'dose time',
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -211,7 +211,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                 child: Center(
                                   child: Text(
                                     'dose time',
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14,color: Colors.white),
                                   ),
                                 ),
                               ),

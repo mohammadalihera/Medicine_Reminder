@@ -13,7 +13,7 @@ class _AfterMealState extends State<AfterMeal> {
   Widget build(BuildContext context) {
     return Container(
       height: widget.from=='dash'?20:30,
-      width:widget.from=='dash'?100: 140,
+      width:widget.from=='dash'?100:MediaQuery.of(context).size.width*.35,
       decoration: BoxDecoration(
         color:widget.meal=='after'? Color(0xffb60CC6B):Colors.grey,
         borderRadius: BorderRadius.only(
