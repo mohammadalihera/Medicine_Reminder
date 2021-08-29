@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
           Positioned(
             bottom: 0,
             child: Container(
-              color: Color(0xffEDF7FF),
+              color: Colors.amber,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.blue,
@@ -92,8 +92,8 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
-                                    duration: Duration(milliseconds: 1000),
-                                    curve: Curves.linear);
+                                    duration: Duration(milliseconds: 0),
+                                    curve: Curves.bounceOut);
                               },
                               child: Container(
                                 child: Icon(
@@ -107,13 +107,13 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
-                                    duration: Duration(milliseconds: 1000),
-                                    curve: Curves.linear);
+                                    duration: Duration(milliseconds: 800),
+                                    curve: Curves.slowMiddle);
                               },
                               child: Container(
                                 child: Icon(
                                   Icons.account_box,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
@@ -125,8 +125,8 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(1,
-                                    duration: Duration(milliseconds: 1000),
-                                    curve: Curves.linear);
+                                    duration: Duration(milliseconds: 800),
+                                    curve: Curves.slowMiddle);
                               },
                               child: Container(
                                 child: Icon(
@@ -140,25 +140,25 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(1,
-                                    duration: Duration(milliseconds: 1000),
-                                    curve: Curves.linear);
+                                    duration: Duration(milliseconds: 800),
+                                    curve: Curves.slowMiddle);
                               },
                               child: Container(
                                 child: Icon(
                                   Icons.home,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
                           ),
 
-                    //Chat Icon--------------------------------------------
+                    //Settings Page--------------------------------------------
                     currentIndex == 2
                         ? Container(
                             child: InkWell(
                             onTap: () {
                               pageController.animateToPage(2,
-                                  duration: Duration(milliseconds: 1000),
+                                  duration: Duration(milliseconds: 0),
                                   curve: Curves.linear);
                             },
                             child: Container(
@@ -172,13 +172,13 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(2,
-                                    duration: Duration(milliseconds: 1000),
-                                    curve: Curves.linear);
+                                    duration: Duration(milliseconds: 800),
+                                    curve: Curves.slowMiddle);
                               },
                               child: Container(
                                 child: Icon(
                                   Icons.settings,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
