@@ -1,3 +1,4 @@
+import 'package:MedicineReminder/main.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldWidget extends StatefulWidget {
@@ -8,7 +9,7 @@ class TextFieldWidget extends StatefulWidget {
 class _TextFieldWidgetState extends State<TextFieldWidget> {
   TextEditingController nameTextEditingController = TextEditingController();
   String _labelText;
-  bool _isObsecure=true;
+  bool _isObsecure = true;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +32,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         border: Border.all(
-                          color: Colors.blue.shade200.withOpacity(0.5),
+                          color: kPrimaryColor,
                         ),
                       ),
                       child: TextFormField(
@@ -40,8 +41,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                             fillColor: Colors.white,
                             focusedBorder: InputBorder.none,
                             contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 12, top: 15, right: 15),
-                            hintText: 'Write your full name',hintStyle: TextStyle(color: Color(0xffC9C9C9).withOpacity(0.55))),
+                                left: 15, bottom: 12, top: 12, right: 15),
+                            hintText: 'Type Your Name',
+                            hintStyle: TextStyle(color: Color(0xffC9C9C9))),
                       ),
                     ),
                   ),
@@ -55,7 +57,10 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       child: Center(
                         child: Text(
                           'Full Name',
-                          style: TextStyle(color: Colors.blue, fontSize: 12),
+                          style: TextStyle(
+                              color: kPrimaryColor,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -79,7 +84,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         border: Border.all(
-                          color: Colors.blue.shade200.withOpacity(0.5),
+                          color: kPrimaryColor,
                         ),
                       ),
                       child: TextFormField(
@@ -88,8 +93,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                             fillColor: Colors.white,
                             focusedBorder: InputBorder.none,
                             contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 12, top: 15, right: 15),
-                            hintText: 'Write you email ID',hintStyle: TextStyle(color: Color(0xffC9C9C9).withOpacity(0.55))),
+                                left: 15, bottom: 12, top: 12, right: 15),
+                            hintText: 'Enter Your Mail',
+                            hintStyle: TextStyle(color: Color(0xffC9C9C9))),
                       ),
                     ),
                   ),
@@ -103,7 +109,10 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       child: Center(
                         child: Text(
                           'Email ID',
-                          style: TextStyle(color: Colors.blue, fontSize: 12),
+                          style: TextStyle(
+                              color: kPrimaryColor,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -127,23 +136,28 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         border: Border.all(
-                          color: Colors.blue.shade200.withOpacity(0.5),
+                          color: kPrimaryColor,
                         ),
                       ),
                       child: TextFormField(
                         obscureText: _isObsecure,
                         decoration: InputDecoration(
-                            suffixIcon: IconButton(icon: Icon(_isObsecure?Icons.visibility:Icons.visibility_off), onPressed:(){
-                              setState(() {
-                                _isObsecure=!_isObsecure;
-                              });
-                            }),
+                            suffixIcon: IconButton(
+                                icon: Icon(_isObsecure
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                                onPressed: () {
+                                  setState(() {
+                                    _isObsecure = !_isObsecure;
+                                  });
+                                }),
                             border: InputBorder.none,
                             fillColor: Colors.white,
                             focusedBorder: InputBorder.none,
                             contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 12, top: 15, right: 15),
-                            hintText: 'Password',hintStyle: TextStyle(color: Color(0xffC9C9C9).withOpacity(0.55))),
+                                left: 15, bottom: 12, top: 14, right: 15),
+                            hintText: 'Type In A Password',
+                            hintStyle: TextStyle(color: Color(0xffC9C9C9))),
                       ),
                     ),
                   ),
@@ -157,7 +171,10 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       child: Center(
                         child: Text(
                           'Password',
-                          style: TextStyle(color: Colors.blue, fontSize: 12),
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),

@@ -10,6 +10,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(bottom:50),
       margin: EdgeInsets.only(
         left: 10,
         right: 10,

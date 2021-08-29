@@ -1,9 +1,10 @@
 import 'package:MedicineReminder/controller/sign_in_controller.dart';
-import 'package:MedicineReminder/view/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:MedicineReminder/view/widgets/sign_up_widget/sign_up_text_fields.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../main.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -27,7 +28,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 children: <Widget>[
                   Text(
                     'Skip',
-                    style: TextStyle(color: Colors.blue, fontSize: 14),
+                    style: TextStyle(
+                        color: kPrimaryColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600),
                   ),
                   Icon(
                     Icons.arrow_right_alt_sharp,
@@ -45,27 +49,37 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Center(
+              Align(
+                alignment: Alignment.centerLeft,
                 child: Container(
-                  margin: EdgeInsets.only(top: 30),
+                  width: MediaQuery.of(context).size.width * .8,
+                  margin: EdgeInsets.only(
+                    top: 30,
+                    left: MediaQuery.of(context).size.width * 0.097,
+                  ),
                   child: Text(
                     'Create Account',
                     style: TextStyle(
-                        color: Colors.blue,
+                        color: kPrimaryColor,
                         fontSize: 24,
                         fontWeight: FontWeight.w700),
                   ),
                 ),
               ),
-              Center(
+              Align(
+                alignment: Alignment.centerLeft,
                 child: Container(
-                  //margin: EdgeInsets.only(top:40),
+                  width: MediaQuery.of(context).size.width * .8,
+                  margin: EdgeInsets.only(
+                    top: 2.5,
+                    left: MediaQuery.of(context).size.width * 0.097,
+                  ),
                   child: Text(
-                    'Sign up to get Started',
+                    'Sign Up To Get Started!',
                     style: TextStyle(
                         color: Color(0xff606365).withOpacity(0.6),
                         fontSize: 20,
-                        fontWeight: FontWeight.w400),
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
               ),
@@ -96,7 +110,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   border: Border.all(
-                    color: Colors.blue.shade200.withOpacity(0.5),
+                    width: 2,
+                    color: kPrimaryColor,
                   ),
                 ),
                 height: 50,
@@ -107,16 +122,18 @@ class _SignUpPageState extends State<SignUpPage> {
                   children: [
                     Container(
                       child: SvgPicture.asset(
-                        "assets/google 1.svg",
+                        "assets/google.svg",
+                        height: 20,
+                        width: 20,
                       ),
                     ),
-                    SizedBox(width:10),
+                    SizedBox(width: 10),
                     Center(
                       child: Text(
                         'Sign up with Google',
                         style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 20,
+                            color: kPrimaryColor,
+                            fontSize: 18,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
