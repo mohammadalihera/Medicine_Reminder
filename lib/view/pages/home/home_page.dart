@@ -29,6 +29,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int count = 10;
   int currentIndex = 1;
+  double displayHeight;
 
   PageController pageController = PageController(
     initialPage: 1,
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    displayHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Stack(
@@ -118,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
-                                    duration: Duration(milliseconds: 700),
+                                    duration: Duration(milliseconds: 500),
                                     curve: Curves.slowMiddle);
                               },
                               child: Container(
@@ -137,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(1,
-                                    duration: Duration(milliseconds: 700),
+                                    duration: Duration(milliseconds: 500),
                                     curve: Curves.slowMiddle);
                               },
                               child: Container(
@@ -153,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(1,
-                                    duration: Duration(milliseconds: 700),
+                                    duration: Duration(milliseconds: 500),
                                     curve: Curves.slowMiddle);
                               },
                               child: Container(
@@ -177,26 +179,25 @@ class _HomePageState extends State<HomePage> {
                             },
                             child: Container(
                               child: SvgPicture.asset(
-                                  "assets/settings.svg",
-                                  height: 20,
-                                  width: 20,
-                                ),
+                                "assets/settings.svg",
+                                height: 20,
+                                width: 20,
+                              ),
                             ),
                           ))
                         : Container(
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(2,
-                                    duration: Duration(milliseconds: 700),
+                                    duration: Duration(milliseconds: 500),
                                     curve: Curves.slowMiddle);
                               },
                               child: Container(
-                                child: SvgPicture.asset(
-                                  "assets/settings.svg",
-                                  height: 20,
-                                  width: 20,
-                                )
-                              ),
+                                  child: SvgPicture.asset(
+                                "assets/settings.svg",
+                                height: 20,
+                                width: 20,
+                              )),
                             ),
                           ),
                   ],
@@ -223,40 +224,39 @@ class _HomePageState extends State<HomePage> {
                               ),
                               color: Color(0xffEDF7FF),
                             ),
-                            color: kPrimaryColor,
                           ),
                           Positioned(
-                            top:5,
-                            left:5,
+                            top: 5,
+                            left: 5,
                             child: Container(
-                                height: 65,
-                                width: 65,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(70),
+                              height: 65,
+                              width: 65,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(70),
+                                ),
+                                color: Colors.blue,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.25),
+                                    blurRadius: 5,
+                                    spreadRadius: 2,
+                                    offset: Offset(6, 6),
+                                    // Shadow position
                                   ),
-                                  color: Colors.blue,
-                                  boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
-                                blurRadius: 5,
-                                offset: Offset(6, 6), 
-                                // Shadow position
+                                ],
                               ),
-                            ],
-                                ),
-                                child: Center(
-                                  child: InkWell(
-                                      onTap: addMedicine,
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                        size: 30,
-                                      )),
-                                ),
+                              child: Center(
+                                child: InkWell(
+                                    onTap: addMedicine,
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                      size: 30,
+                                    )),
                               ),
+                            ),
                           ),
-                          
                         ],
                       ),
                     ),
@@ -269,6 +269,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   void addMedicine() {
+    double modalHeight;
+    if (displayHeight < 700) {
+      modalHeight = MediaQuery.of(context).size.height * 0.82;
+    }
+    if (displayHeight >= 700) {
+      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.72;
+    }
     showModalBottomSheet(
         isScrollControlled: true,
         isDismissible: true,
@@ -276,7 +283,7 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.83,
+            height: modalHeight,
             decoration: new BoxDecoration(
               color: Color(0xffEDF7FF),
               borderRadius: new BorderRadius.only(

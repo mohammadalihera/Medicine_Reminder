@@ -21,7 +21,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
       child: Container(
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(

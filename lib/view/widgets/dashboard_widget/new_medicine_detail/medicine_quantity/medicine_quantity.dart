@@ -149,7 +149,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                     height: 30,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(10),
+                          Radius.circular(50),
                         ),
                         color: Colors.white),
                     child: Center(
