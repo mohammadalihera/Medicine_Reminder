@@ -45,6 +45,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                 ),
                 margin: EdgeInsets.all(4),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
                       margin: EdgeInsets.only(top: 15, bottom: 6),

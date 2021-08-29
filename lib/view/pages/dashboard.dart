@@ -21,8 +21,6 @@ class _DashBoardState extends State<DashBoard> {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       body: Container(
-        // color:   Color(0xffEDF7FF),
-        // padding: EdgeInsets.only(bottom:50),
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[

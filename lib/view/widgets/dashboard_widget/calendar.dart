@@ -14,7 +14,7 @@ class CustomCalendar extends StatefulWidget {
 }
 
 class _CustomCalendarState extends State<CustomCalendar> {
-  CalendarFormat _calendarFormat = CalendarFormat.month;
+  CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay;
 
@@ -31,7 +31,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
     double leftMargin = dayBox * 0.11;
     double afterLeftmargin = dayBox - leftMargin;
     return TableCalendar(
+      
       calendarStyle: CalendarStyle(
+      
         cellMargin: EdgeInsets.all(5),
         selectedDecoration: BoxDecoration(
           border: Border.all(color: Colors.white),
