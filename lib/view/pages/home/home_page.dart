@@ -43,10 +43,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Stack(
         children: [
           Positioned(
+            // navigation setup
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -91,8 +92,8 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
-                                    duration: Duration(milliseconds: 10),
-                                    curve: Curves.bounceIn);
+                                    duration: Duration(milliseconds: 1000),
+                                    curve: Curves.linear);
                               },
                               child: Container(
                                 child: Icon(
@@ -104,49 +105,52 @@ class _HomePageState extends State<HomePage> {
                           )
                         : Container(
                             child: InkWell(
-                            onTap: () {
-                              pageController.animateToPage(0,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
-                            },
-                            child: Container(
-                              child: Icon(
-                                Icons.account_box,
-                                color: Colors.black,
+                              onTap: () {
+                                pageController.animateToPage(0,
+                                    duration: Duration(milliseconds: 1000),
+                                    curve: Curves.linear);
+                              },
+                              child: Container(
+                                child: Icon(
+                                  Icons.account_box,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
-                          )),
+                          ),
 
-                    // Task Icon
+                    // Dashboard Page
                     currentIndex == 1
                         ? Container(
                             child: InkWell(
-                            onTap: () {
-                              pageController.animateToPage(1,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
-                            },
-                            child: Container(
-                              child: Icon(
-                                Icons.home,
-                                color: Colors.white,
+                              onTap: () {
+                                pageController.animateToPage(1,
+                                    duration: Duration(milliseconds: 1000),
+                                    curve: Curves.linear);
+                              },
+                              child: Container(
+                                child: Icon(
+                                  Icons.home,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
-                          ))
+                          )
                         : Container(
                             child: InkWell(
-                            onTap: () {
-                              pageController.animateToPage(1,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
-                            },
-                            child: Container(
-                              child: Icon(
-                                Icons.home,
-                                color: Colors.black,
+                              onTap: () {
+                                pageController.animateToPage(1,
+                                    duration: Duration(milliseconds: 1000),
+                                    curve: Curves.linear);
+                              },
+                              child: Container(
+                                child: Icon(
+                                  Icons.home,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
-                          )),
+                          ),
 
                     //Chat Icon--------------------------------------------
                     currentIndex == 2
@@ -154,8 +158,8 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                             onTap: () {
                               pageController.animateToPage(2,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
+                                  duration: Duration(milliseconds: 1000),
+                                  curve: Curves.linear);
                             },
                             child: Container(
                               child: Icon(
@@ -168,8 +172,8 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(2,
-                                    duration: Duration(milliseconds: 10),
-                                    curve: Curves.bounceIn);
+                                    duration: Duration(milliseconds: 1000),
+                                    curve: Curves.linear);
                               },
                               child: Container(
                                 child: Icon(

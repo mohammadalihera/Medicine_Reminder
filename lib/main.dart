@@ -23,7 +23,9 @@ class MyApp extends StatelessWidget {
                 canvasColor: Colors.white,
                 visualDensity: VisualDensity.adaptivePlatformDensity,
               ),
-              home: signInController.signIn?Dashboard(): SignUpPage() //Dashboard(),
+              home: signInController.signIn
+                  ? Dashboard()
+                  : Dashboard() //Dashboard(),
               );
         });
   }
