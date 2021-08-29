@@ -70,7 +70,15 @@ class _HomePageState extends State<HomePage> {
           Positioned(
             bottom: 0,
             child: Container(
-              color: Color(0xffEDF7FF),
+               height: 50,
+               width: MediaQuery.of(context).size.width,
+             decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
+                ),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.blue,

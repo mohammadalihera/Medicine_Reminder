@@ -21,7 +21,7 @@ class _DashBoardState extends State<DashBoard> {
      backgroundColor:  Colors.blue,
       body: Container(
       // color:   Color(0xffEDF7FF),
-        padding: EdgeInsets.only(bottom:50),
+       // padding: EdgeInsets.only(bottom:50),
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -41,6 +41,7 @@ class _DashBoardState extends State<DashBoard> {
               InkWell(
                 onTap: medicineDetail,
                 child: Container(
+                  
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
