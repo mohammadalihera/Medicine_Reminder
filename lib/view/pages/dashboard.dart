@@ -41,7 +41,6 @@ class _DashBoardState extends State<DashBoard> {
               InkWell(
                 onTap: medicineDetail,
                 child: Container(
-                  
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),

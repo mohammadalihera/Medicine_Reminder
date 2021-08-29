@@ -71,15 +71,15 @@ class _HomePageState extends State<HomePage> {
           Positioned(
             bottom: 0,
             child: Container(
-               height: 50,
-               width: MediaQuery.of(context).size.width,
-             decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
-                  ),
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
                 ),
+              ),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.blue,
@@ -203,35 +203,52 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     child: Center(
-                      child: Container(
-                        height: 75,
-                        width: 75,
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(75),
-                          ),
-                          color: Color(0xffEDF7FF),
-                        ),
-                        child: Container(
-                          height: MediaQuery.of(context).size.width * 0.16,
-                          width: MediaQuery.of(context).size.width * 0.16,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(70),
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: 75,
+                            width: 75,
+                            padding: EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(75),
+                              ),
+                              color: Color(0xffEDF7FF),
                             ),
-                            color: Colors.blue,
                           ),
-                          child: Center(
-                            child: InkWell(
-                                onTap: addMedicine,
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                  size: 30,
-                                )),
+                          Positioned(
+                            top:5,
+                            left:5,
+                            child: Container(
+                                height: 65,
+                                width: 65,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(70),
+                                  ),
+                                  color: Colors.blue,
+                                  boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                blurRadius: 5,
+                                offset: Offset(6, 6), 
+                                // Shadow position
+                              ),
+                            ],
+                                ),
+                                child: Center(
+                                  child: InkWell(
+                                      onTap: addMedicine,
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                        size: 30,
+                                      )),
+                                ),
+                              ),
                           ),
-                        ),
+                          
+                        ],
                       ),
                     ),
                   ),
