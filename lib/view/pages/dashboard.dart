@@ -1,3 +1,4 @@
+import 'package:MedicineReminder/main.dart';
 import 'package:MedicineReminder/view/widgets/dashboard_widget/calendar.dart';
 import 'package:MedicineReminder/view/widgets/dashboard_widget/dashboard_appbar.dart';
 import 'package:MedicineReminder/view/widgets/dashboard_widget/medicine_detail/medicine_detail.dart';
@@ -18,39 +19,37 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     backgroundColor:  Colors.blue,
+      backgroundColor: kPrimaryColor,
       body: Container(
-      // color:   Color(0xffEDF7FF),
-        padding: EdgeInsets.only(bottom:50),
+        // color:   Color(0xffEDF7FF),
+        // padding: EdgeInsets.only(bottom:50),
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(top: 50,bottom: 10),
+                padding: EdgeInsets.only(top: 50, bottom: 10),
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(5))
-                ),
+                    borderRadius: BorderRadius.all(Radius.circular(5))),
                 child: Column(
                   children: <Widget>[
                     CustomCalendar('week'),
                   ],
                 ),
               ),
-             // SizedBox(height:10),
+              // SizedBox(height:10),
               InkWell(
                 onTap: medicineDetail,
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30)),
-                      color:  Color(0xffEDF7FF),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30)),
+                    color: Color(0xffEDF7FF),
                   ),
                   child: MedicineInfoTile(),
                 ),
               ),
-              
             ],
           ),
         ),

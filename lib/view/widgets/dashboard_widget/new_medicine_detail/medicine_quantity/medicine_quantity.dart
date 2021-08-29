@@ -1,3 +1,4 @@
+import 'package:MedicineReminder/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                 'Quantity',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.blue,
+                    color: kPrimaryColor,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -34,7 +35,9 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                     Container(
                         margin: EdgeInsets.only(left: 40),
                         child: Text(
-                          selectedQuantity == 0 ? 'Ex 30' : selectedQuantity.toString(),
+                          selectedQuantity == 0
+                              ? 'Ex. 30'
+                              : selectedQuantity.toString(),
                           style: TextStyle(
                               color: selectedQuantity == 0
                                   ? Colors.grey
@@ -42,7 +45,11 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                               fontSize: 16),
                         )),
                     Container(
-                      margin: EdgeInsets.only(left: 40, right: 30),
+                      margin: EdgeInsets.only(
+                        left: 40,
+                        right: 30,
+                        top: 10,
+                      ),
                       height: 1.3,
                       width: MediaQuery.of(context).size.width,
                       color: Colors.grey,
@@ -69,7 +76,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
               borderRadius: new BorderRadius.all(
                 const Radius.circular(50.0),
               ),
-              color: Colors.blue,
+              color: kPrimaryColor,
             ),
             height: 280,
             width: 300,
@@ -78,14 +85,14 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                 left: 90,
                 bottom: 70,
                 child: Container(
-                    color: Colors.blue,
+                    color: kPrimaryColor,
                     height: 180,
                     width: 100,
                     child: CupertinoPicker(
                         itemExtent: 100,
-                        looping: true,
-                        diameterRatio: 2,
-                        useMagnifier: true,
+                        looping: false,
+                        useMagnifier: false,
+                        selectionOverlay: null,
                         onSelectedItemChanged: (int index) {
                           print(index);
                           setState(() {
@@ -150,7 +157,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                         'Set Quantity',
                         style: TextStyle(
                             fontSize: 16,
-                            color: Colors.blue,
+                            color: kPrimaryColor,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -158,20 +165,20 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                 ),
               ),
               Positioned(
-                  top:5,
-                  right:10,
-                  child: InkWell(
-                    onTap: (){
-                      setState(() {
-                        selectedQuantity=0;
-                      });
-                       Navigator.pop(context);
-                    },
-                                      child: Container(
-                      child: Icon(Icons.close, color: Colors.red[200]),
-                    ),
+                top: 5,
+                right: 10,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedQuantity = 0;
+                    });
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    child: Icon(Icons.close, color: Colors.white),
                   ),
-                )
+                ),
+              )
             ]),
           ),
         );

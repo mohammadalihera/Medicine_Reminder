@@ -14,7 +14,8 @@ class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        left: 40,right: 30
+        left: 40,
+        right: 30,
       ),
       child: TextField(
         onEditingComplete: () {
@@ -44,7 +45,7 @@ class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
           hintText: widget.type,
           hintStyle: TextStyle(
             fontFamily: "AvenirNextCyr",
-            color: Colors.black,
+            color: Colors.grey,
             fontSize: 18,
           ),
           counterText: '',

@@ -1,3 +1,4 @@
+import 'package:MedicineReminder/main.dart';
 import 'package:MedicineReminder/view/pages/dashboard.dart';
 import 'package:MedicineReminder/view/pages/user_page.dart';
 import 'package:MedicineReminder/view/pages/setting_page.dart';
@@ -6,6 +7,7 @@ import 'package:double_back_to_close/double_back_to_close.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:MedicineReminder/view/widgets/home/bottom_nav.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -43,10 +45,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Stack(
         children: [
           Positioned(
+            // navigation setup
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -70,10 +73,18 @@ class _HomePageState extends State<HomePage> {
           Positioned(
             bottom: 0,
             child: Container(
-              color: Color(0xffEDF7FF),
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: kPrimaryColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
+                ),
+              ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: kPrimaryColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
@@ -91,91 +102,100 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
-                                    duration: Duration(milliseconds: 10),
-                                    curve: Curves.bounceIn);
+                                    duration: Duration(milliseconds: 0),
+                                    curve: Curves.bounceOut);
                               },
                               child: Container(
-                                child: Icon(
-                                  Icons.account_box,
-                                  color: Colors.white,
+                                child: SvgPicture.asset(
+                                  "assets/profile.svg",
+                                  height: 20,
+                                  width: 20,
                                 ),
                               ),
                             ),
                           )
                         : Container(
                             child: InkWell(
-                            onTap: () {
-                              pageController.animateToPage(0,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
-                            },
-                            child: Container(
-                              child: Icon(
-                                Icons.account_box,
-                                color: Colors.black,
+                              onTap: () {
+                                pageController.animateToPage(0,
+                                    duration: Duration(milliseconds: 700),
+                                    curve: Curves.slowMiddle);
+                              },
+                              child: Container(
+                                child: SvgPicture.asset(
+                                  "assets/profile.svg",
+                                  height: 20,
+                                  width: 20,
+                                ),
                               ),
                             ),
-                          )),
+                          ),
 
-                    // Task Icon
+                    // Dashboard Page
                     currentIndex == 1
                         ? Container(
                             child: InkWell(
-                            onTap: () {
-                              pageController.animateToPage(1,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
-                            },
-                            child: Container(
-                              child: Icon(
-                                Icons.home,
-                                color: Colors.white,
+                              onTap: () {
+                                pageController.animateToPage(1,
+                                    duration: Duration(milliseconds: 700),
+                                    curve: Curves.slowMiddle);
+                              },
+                              child: Container(
+                                child: SvgPicture.asset(
+                                  "assets/home.svg",
+                                  height: 20,
+                                  width: 20,
+                                ),
                               ),
                             ),
-                          ))
+                          )
                         : Container(
                             child: InkWell(
-                            onTap: () {
-                              pageController.animateToPage(1,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
-                            },
-                            child: Container(
-                              child: Icon(
-                                Icons.home,
-                                color: Colors.black,
+                              onTap: () {
+                                pageController.animateToPage(1,
+                                    duration: Duration(milliseconds: 700),
+                                    curve: Curves.slowMiddle);
+                              },
+                              child: Container(
+                                child: SvgPicture.asset(
+                                  "assets/home.svg",
+                                  height: 20,
+                                  width: 20,
+                                ),
                               ),
                             ),
-                          )),
+                          ),
 
-                    //Chat Icon--------------------------------------------
+                    //Settings Page--------------------------------------------
                     currentIndex == 2
                         ? Container(
                             child: InkWell(
                             onTap: () {
                               pageController.animateToPage(2,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
+                                  duration: Duration(milliseconds: 0),
+                                  curve: Curves.linear);
                             },
                             child: Container(
-                              child: Icon(
-                                Icons.settings,
-                                color: Colors.white,
-                              ),
+                              child: SvgPicture.asset(
+                                  "assets/settings.svg",
+                                  height: 20,
+                                  width: 20,
+                                ),
                             ),
                           ))
                         : Container(
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(2,
-                                    duration: Duration(milliseconds: 10),
-                                    curve: Curves.bounceIn);
+                                    duration: Duration(milliseconds: 700),
+                                    curve: Curves.slowMiddle);
                               },
                               child: Container(
-                                child: Icon(
-                                  Icons.settings,
-                                  color: Colors.black,
-                                ),
+                                child: SvgPicture.asset(
+                                  "assets/settings.svg",
+                                  height: 20,
+                                  width: 20,
+                                )
                               ),
                             ),
                           ),
@@ -208,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.all(
                               Radius.circular(70),
                             ),
-                            color: Colors.blue,
+                            color: kPrimaryColor,
                           ),
                           child: Center(
                             child: InkWell(
@@ -238,7 +258,7 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.78,
+            height: MediaQuery.of(context).size.height * 0.83,
             decoration: new BoxDecoration(
               color: Color(0xffEDF7FF),
               borderRadius: new BorderRadius.only(

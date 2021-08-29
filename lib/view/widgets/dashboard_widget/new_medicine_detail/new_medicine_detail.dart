@@ -1,3 +1,4 @@
+import 'package:MedicineReminder/main.dart';
 import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
 import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
 import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/medicine_dosage.dart';
@@ -24,35 +25,34 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-              
                 width: MediaQuery.of(context).size.width,
                 margin: EdgeInsets.only(left: 40, top: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                     Container(
-                       child: Text(
-                          'Add New Medicine',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20,
+                    Container(
+                      child: Text(
+                        'Add New Medicine',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 20),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          child: Icon(
+                            Icons.arrow_downward,
+                            color: Colors.green.withOpacity(0.8),
                           ),
                         ),
-                     ),
-                     Container(
-                       margin:EdgeInsets.only(right:20),
-                       child: InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            child: Icon(
-                              Icons.arrow_downward,
-                              color: Colors.green.withOpacity(0.8),
-                            ),
-                          ),
-                        ),
-                     ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -67,7 +67,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                         'Name',
                         style: TextStyle(
                             fontSize: 20,
-                            color: Colors.blue,
+                            color: kPrimaryColor,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -78,7 +78,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                         'Dosage',
                         style: TextStyle(
                             fontSize: 20,
-                            color: Colors.blue,
+                            color: kPrimaryColor,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -115,23 +115,23 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                         child: Container(
                           margin: EdgeInsets.only(left: 40, top: 20, right: 40),
                           decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: kPrimaryColor,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
+                                  BorderRadius.all(Radius.circular(15))),
                           height: 55,
                           width: MediaQuery.of(context).size.width * .8,
                           child: Center(
                             child: Text(
                               'Add Schedule',
                               style:
-                                  TextStyle(fontSize: 22, color: Colors.white),
+                                  TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 10,
                     )
                   ],
                 ),
