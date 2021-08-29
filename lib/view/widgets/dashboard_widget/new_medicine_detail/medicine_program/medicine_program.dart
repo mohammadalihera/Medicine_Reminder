@@ -1,3 +1,4 @@
+import 'package:MedicineReminder/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -17,12 +18,12 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(left: 40, top: 12),
+              margin: EdgeInsets.only(left: 40, top: 0),
               child: Text(
                 'Program',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.blue,
+                    color: kPrimaryColor,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -34,17 +35,19 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                        margin: EdgeInsets.only(left: 40),
-                        child: Text(
-                          selectedDays == 0 ? 'Ex 30' : selectedDays.toString(),
-                          style: TextStyle(
-                              color: selectedDays == 0
-                                  ? Colors.grey
-                                  : Colors.black,
-                              fontSize: 16),
-                        )),
+                      margin: EdgeInsets.only(left: 40),
+                      child: Text(
+                        selectedDays == 0
+                            ? 'How Many Days?'
+                            : selectedDays.toString(),
+                        style: TextStyle(
+                            color:
+                                selectedDays == 0 ? Colors.grey : Colors.black,
+                            fontSize: 16),
+                      ),
+                    ),
                     Container(
-                      margin: EdgeInsets.only(left: 40, right: 30),
+                      margin: EdgeInsets.only(left: 40, right: 30, top: 10),
                       height: 1.3,
                       width: MediaQuery.of(context).size.width,
                       color: Colors.grey,
@@ -71,7 +74,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
               borderRadius: new BorderRadius.all(
                 const Radius.circular(50.0),
               ),
-              color: Colors.blue,
+              color: kPrimaryColor,
             ),
             height: 280,
             width: 300,
@@ -81,14 +84,14 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                   left: 90,
                   bottom: 70,
                   child: Container(
-                      color: Colors.blue,
+                      color: kPrimaryColor,
                       height: 180,
                       width: 100,
                       child: CupertinoPicker(
                           useMagnifier: false,
+                          selectionOverlay: null,
                           looping: false,
                           itemExtent: 100,
-                          diameterRatio: 2,
                           onSelectedItemChanged: (int index) {
                             print(index);
                             setState(() {
@@ -98,7 +101,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                           children: [
                             for (int i = 0; i <= 100; i++)
                               Container(
-                                color: Colors.blue,
+                                color: kPrimaryColor,
                                 child: Center(
                                   child: Text(i.toString(),
                                       style: TextStyle(
@@ -146,15 +149,15 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                       height: 30,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(10),
+                            Radius.circular(50),
                           ),
                           color: Colors.white),
                       child: Center(
                         child: Text(
-                          'Set Programs',
+                          'Set Program',
                           style: TextStyle(
                               fontSize: 16,
-                              color: Colors.blue,
+                              color: kPrimaryColor,
                               fontWeight: FontWeight.w600),
                         ),
                       ),
@@ -162,17 +165,17 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                   ),
                 ),
                 Positioned(
-                  top:5,
-                  right:10,
+                  top: 5,
+                  right: 10,
                   child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       setState(() {
-                        selectedDays=0;
+                        selectedDays = 0;
                       });
-                       Navigator.pop(context);
+                      Navigator.pop(context);
                     },
-                                      child: Container(
-                      child: Icon(Icons.close, color: Colors.red[200]),
+                    child: Container(
+                      child: Icon(Icons.close, color: Colors.white),
                     ),
                   ),
                 )

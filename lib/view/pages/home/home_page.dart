@@ -1,3 +1,4 @@
+import 'package:MedicineReminder/main.dart';
 import 'package:MedicineReminder/view/pages/dashboard.dart';
 import 'package:MedicineReminder/view/pages/user_page.dart';
 import 'package:MedicineReminder/view/pages/setting_page.dart';
@@ -6,6 +7,7 @@ import 'package:double_back_to_close/double_back_to_close.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:MedicineReminder/view/widgets/home/bottom_nav.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -74,7 +76,7 @@ class _HomePageState extends State<HomePage> {
               height: 50,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: kPrimaryColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40),
                   topRight: Radius.circular(40),
@@ -82,7 +84,7 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: kPrimaryColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
@@ -100,13 +102,14 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
-                                    duration: Duration(milliseconds: 1000),
-                                    curve: Curves.linear);
+                                    duration: Duration(milliseconds: 0),
+                                    curve: Curves.bounceOut);
                               },
                               child: Container(
-                                child: Icon(
-                                  Icons.account_box,
-                                  color: Colors.white,
+                                child: SvgPicture.asset(
+                                  "assets/profile.svg",
+                                  height: 20,
+                                  width: 20,
                                 ),
                               ),
                             ),
@@ -115,13 +118,14 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
-                                    duration: Duration(milliseconds: 1000),
-                                    curve: Curves.linear);
+                                    duration: Duration(milliseconds: 700),
+                                    curve: Curves.slowMiddle);
                               },
                               child: Container(
-                                child: Icon(
-                                  Icons.account_box,
-                                  color: Colors.black,
+                                child: SvgPicture.asset(
+                                  "assets/profile.svg",
+                                  height: 20,
+                                  width: 20,
                                 ),
                               ),
                             ),
@@ -133,13 +137,14 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(1,
-                                    duration: Duration(milliseconds: 1000),
-                                    curve: Curves.linear);
+                                    duration: Duration(milliseconds: 700),
+                                    curve: Curves.slowMiddle);
                               },
                               child: Container(
-                                child: Icon(
-                                  Icons.home,
-                                  color: Colors.white,
+                                child: SvgPicture.asset(
+                                  "assets/home.svg",
+                                  height: 20,
+                                  width: 20,
                                 ),
                               ),
                             ),
@@ -148,46 +153,49 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(1,
-                                    duration: Duration(milliseconds: 1000),
-                                    curve: Curves.linear);
+                                    duration: Duration(milliseconds: 700),
+                                    curve: Curves.slowMiddle);
                               },
                               child: Container(
-                                child: Icon(
-                                  Icons.home,
-                                  color: Colors.black,
+                                child: SvgPicture.asset(
+                                  "assets/home.svg",
+                                  height: 20,
+                                  width: 20,
                                 ),
                               ),
                             ),
                           ),
 
-                    //Chat Icon--------------------------------------------
+                    //Settings Page--------------------------------------------
                     currentIndex == 2
                         ? Container(
                             child: InkWell(
                             onTap: () {
                               pageController.animateToPage(2,
-                                  duration: Duration(milliseconds: 1000),
+                                  duration: Duration(milliseconds: 0),
                                   curve: Curves.linear);
                             },
                             child: Container(
-                              child: Icon(
-                                Icons.settings,
-                                color: Colors.white,
-                              ),
+                              child: SvgPicture.asset(
+                                  "assets/settings.svg",
+                                  height: 20,
+                                  width: 20,
+                                ),
                             ),
                           ))
                         : Container(
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(2,
-                                    duration: Duration(milliseconds: 1000),
-                                    curve: Curves.linear);
+                                    duration: Duration(milliseconds: 700),
+                                    curve: Curves.slowMiddle);
                               },
                               child: Container(
-                                child: Icon(
-                                  Icons.settings,
-                                  color: Colors.black,
-                                ),
+                                child: SvgPicture.asset(
+                                  "assets/settings.svg",
+                                  height: 20,
+                                  width: 20,
+                                )
                               ),
                             ),
                           ),
@@ -215,6 +223,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               color: Color(0xffEDF7FF),
                             ),
+                            color: kPrimaryColor,
                           ),
                           Positioned(
                             top:5,
@@ -267,7 +276,7 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.78,
+            height: MediaQuery.of(context).size.height * 0.83,
             decoration: new BoxDecoration(
               color: Color(0xffEDF7FF),
               borderRadius: new BorderRadius.only(

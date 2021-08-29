@@ -1,3 +1,4 @@
+import 'package:MedicineReminder/main.dart';
 import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/dosage_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
@@ -8,6 +9,8 @@ class MedicineDosageField extends StatefulWidget {
   _MedicineDosageFieldState createState() => _MedicineDosageFieldState();
 }
 
+Color offColor = Color(0xFFC4C4C4);
+
 class _MedicineDosageFieldState extends State<MedicineDosageField> {
   int dosageNumber = 0;
   DateTime dose_1 = DateTime.now();
@@ -16,12 +19,12 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
   DateTime dose_4 = DateTime.now();
   DateTime dose_5 = DateTime.now();
   DateTime dose_6 = DateTime.now();
-  String time_1 = 'dose time';
-  String time_2 = 'dose time';
-  String time_3 = 'dose time';
-  String time_4 = 'dose time';
-  String time_5 = 'dose time';
-  String time_6 = 'dose time';
+  String time_1 = '1st Dose';
+  String time_2 = '2nd Dose';
+  String time_3 = '3rd Dose';
+  String time_4 = '4th Dose';
+  String time_5 = '5th Dose';
+  String time_6 = '6th Dose';
   DateTime _dateTime = DateTime.now();
   @override
   Widget build(BuildContext context) {
@@ -40,8 +43,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor:
-                        dosageNumber == 1 ? Colors.blue : Colors.grey.shade500,
+                    backgroundColor: dosageNumber == 1 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '1',
@@ -59,8 +61,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor:
-                        dosageNumber == 2 ? Colors.blue : Colors.grey.shade500,
+                    backgroundColor: dosageNumber == 2 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '2',
@@ -78,8 +79,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor:
-                        dosageNumber == 3 ? Colors.blue : Colors.grey.shade500,
+                    backgroundColor: dosageNumber == 3 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '3',
@@ -97,8 +97,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor:
-                        dosageNumber == 4 ? Colors.blue : Colors.grey.shade500,
+                    backgroundColor: dosageNumber == 4 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '4',
@@ -116,8 +115,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor:
-                        dosageNumber == 5 ? Colors.blue : Colors.grey.shade500,
+                    backgroundColor: dosageNumber == 5 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '5',
@@ -135,8 +133,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor:
-                        dosageNumber == 6 ? Colors.blue : Colors.grey.shade500,
+                    backgroundColor: dosageNumber == 6 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '6',
@@ -167,13 +164,14 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   borderRadius: new BorderRadius.all(
                                     const Radius.circular(5.0),
                                   ),
-                                  color: Colors.blue,
+                                  color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: 5),
+                                margin: EdgeInsets.only(right: 10),
                                 child: Center(
                                   child: Text(
                                     time_1,
-                                    style: TextStyle(fontSize: 14,color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -191,13 +189,14 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   borderRadius: new BorderRadius.all(
                                     const Radius.circular(5.0),
                                   ),
-                                  color: Colors.blue,
+                                  color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: 5),
+                                margin: EdgeInsets.only(right: 10, left: 10),
                                 child: Center(
                                   child: Text(
                                     time_2,
-                                    style: TextStyle(fontSize: 14,color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -215,13 +214,14 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   borderRadius: new BorderRadius.all(
                                     const Radius.circular(5.0),
                                   ),
-                                  color: Colors.blue,
+                                  color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: 5),
+                                margin: EdgeInsets.only(right: 10, left: 10),
                                 child: Center(
                                   child: Text(
                                     time_3,
-                                    style: TextStyle(fontSize: 14,color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -246,13 +246,14 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   borderRadius: new BorderRadius.all(
                                     const Radius.circular(5.0),
                                   ),
-                                  color: Colors.blue,
+                                  color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: 5),
+                                margin: EdgeInsets.only(right: 10, bottom: 7),
                                 child: Center(
                                   child: Text(
                                     time_4,
-                                    style: TextStyle(fontSize: 14,color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -270,13 +271,15 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   borderRadius: new BorderRadius.all(
                                     const Radius.circular(5.0),
                                   ),
-                                  color: Colors.blue,
+                                  color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: 5),
+                                margin: EdgeInsets.only(
+                                    right: 10, left: 10, bottom: 7),
                                 child: Center(
                                   child: Text(
                                     time_5,
-                                    style: TextStyle(fontSize: 14,color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -294,13 +297,15 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   borderRadius: new BorderRadius.all(
                                     const Radius.circular(5.0),
                                   ),
-                                  color: Colors.blue,
+                                  color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: 5),
+                                margin: EdgeInsets.only(
+                                    right: 10, left: 10, bottom: 7),
                                 child: Center(
                                   child: Text(
                                     time_6,
-                                    style: TextStyle(fontSize: 14,color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -331,7 +336,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
               borderRadius: new BorderRadius.all(
                 const Radius.circular(50.0),
               ),
-              color: Colors.blue,
+              color: kPrimaryColor,
             ),
             height: 250,
             width: 25,
@@ -343,7 +348,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   child: Container(
                     height: 50,
                     width: 230,
-                    color: Colors.blue.withOpacity(0.8),
+                    color: kPrimaryColor.withOpacity(0.8),
                   )),
               Positioned(
                   bottom: 52,
@@ -351,7 +356,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   child: Container(
                     height: 50,
                     width: 230,
-                    color: Colors.blue.withOpacity(0.4),
+                    color: kPrimaryColor.withOpacity(0.4),
                   )),
               Positioned(
                   bottom: 175,
@@ -359,7 +364,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   child: Container(
                     height: 50,
                     width: 230,
-                    color: Colors.blue.withOpacity(0.8),
+                    color: kPrimaryColor.withOpacity(0.8),
                   )),
               Positioned(
                   bottom: 170,
@@ -367,47 +372,49 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   child: Container(
                     height: 50,
                     width: 230,
-                    color: Colors.blue.withOpacity(0.4),
+                    color: kPrimaryColor.withOpacity(0.4),
                   )),
-             
               Positioned(
-                left:62,
+                left: 62,
                 bottom: 25,
                 child: InkWell(
-                  onTap: null,
-                                  child: Container(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
                     width: 150,
                     height: 30,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(
                         Radius.circular(15),
                       ),
-                      color:Color(0xffEDF7FF),
+                      color: Color(0xffEDF7FF),
                     ),
                     child: Center(
                       child: Text(
                         'Set Dose',
-                        style: TextStyle(color: Colors.blue, fontSize: 14),
+                        style: TextStyle(
+                            color: kPrimaryColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500),
                       ),
                     ),
                   ),
                 ),
               ),
               Positioned(
-                  top:-5,
-                  right:0,
-                  child: InkWell(
-                    onTap: (){
-                      setState(() {
-                        
-                      });
-                       Navigator.pop(context);
-                    },
-                                      child: Container(
-                      child: Icon(Icons.close, color: Colors.red[200]),
-                    ),
+                top: -5,
+                right: 0,
+                child: InkWell(
+                  onTap: () {
+                    // setState(() {});
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    child: Icon(Icons.close, color: Colors.white),
                   ),
-                )
+                ),
+              )
             ]),
           ),
         );
