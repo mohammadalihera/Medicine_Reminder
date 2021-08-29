@@ -1,4 +1,4 @@
-import 'package:MedicineReminder/view/controller/sign_in_controller.dart';
+import 'package:MedicineReminder/controller/sign_in_controller.dart';
 import 'package:MedicineReminder/view/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:MedicineReminder/view/widgets/sign_up_widget/sign_up_text_fields.dart';

@@ -2,7 +2,7 @@ import 'package:MedicineReminder/view/pages/home/home_page.dart';
 import 'package:MedicineReminder/view/pages/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:MedicineReminder/view/controller/sign_in_controller.dart';
+import 'package:MedicineReminder/controller/sign_in_controller.dart';
 
 void main() {
   runApp(MyApp());
