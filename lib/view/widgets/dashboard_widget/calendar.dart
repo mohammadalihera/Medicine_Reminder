@@ -46,7 +46,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
             color: Colors.blue, fontSize: 18, fontWeight: FontWeight.w600),
         defaultDecoration: BoxDecoration(
           border: Border.all(color: Colors.white),
-          color: Color(0xffEDF7FF).withOpacity(0.17),
+          color: Color(0xEDF7FF).withOpacity(0.15),
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           ),
@@ -62,7 +62,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
             color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
         todayDecoration: BoxDecoration(
           border: Border.all(color: Colors.white),
-          color: Colors.blue.withOpacity(0.17),
+          color: Colors.black.withOpacity(0.18),
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           ),
@@ -78,7 +78,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
             color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
         outsideDecoration: BoxDecoration(
           border: Border.all(color: Colors.white),
-          color: Color(0xffEDF7FF).withOpacity(0.18),
+          color: Color(0xEDF7FF).withOpacity(0.15),
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           ),
@@ -91,10 +91,11 @@ class _CustomCalendarState extends State<CustomCalendar> {
           ],
         ),
         outsideTextStyle: TextStyle(
-            color: Colors.blue[700], fontSize: 18, fontWeight: FontWeight.w600),
+            color: Color(0x000000
+).withOpacity(.25), fontSize: 18, fontWeight: FontWeight.w600),
         weekendDecoration: BoxDecoration(
           border: Border.all(color: Colors.white),
-          color: Color(0xffEDF7FF).withOpacity(0.17),
+          color: Color(0xEDF7FF).withOpacity(0.15),
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           ),

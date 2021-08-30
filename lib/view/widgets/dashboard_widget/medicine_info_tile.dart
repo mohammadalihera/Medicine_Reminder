@@ -52,7 +52,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                       child: Text(
                         'Medicine Name',
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: Colors.blue),
                       ),
