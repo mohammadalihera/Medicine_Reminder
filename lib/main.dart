@@ -38,10 +38,11 @@ class MyApp extends StatelessWidget {
                 primarySwatch: kPrimaryColor,
                 canvasColor: Colors.white,
                 visualDensity: VisualDensity.adaptivePlatformDensity,
+                fontFamily: 'Poppins',
               ),
               home: signInController.signIn
                   ? Dashboard()
-                  : Dashboard() //Dashboard(),
+                  : SignUpPage() //Dashboard(),
               );
         });
   }

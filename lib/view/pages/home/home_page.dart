@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                               },
                               child: Container(
                                 child: SvgPicture.asset(
-                                  "assets/profile.svg",
+                                  "assets/images/profile.svg",
                                   height: 20,
                                   width: 20,
                                 ),
@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                               },
                               child: Container(
                                 child: SvgPicture.asset(
-                                  "assets/profile.svg",
+                                  "assets/images/profile.svg",
                                   height: 20,
                                   width: 20,
                                 ),
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                               },
                               child: Container(
                                 child: SvgPicture.asset(
-                                  "assets/home.svg",
+                                  "assets/images/home.svg",
                                   height: 20,
                                   width: 20,
                                 ),
@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                               },
                               child: Container(
                                 child: SvgPicture.asset(
-                                  "assets/home.svg",
+                                  "assets/images/home.svg",
                                   height: 20,
                                   width: 20,
                                 ),
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                             },
                             child: Container(
                               child: SvgPicture.asset(
-                                "assets/settings.svg",
+                                "assets/images/settings.svg",
                                 height: 20,
                                 width: 20,
                               ),
@@ -194,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                               },
                               child: Container(
                                   child: SvgPicture.asset(
-                                "assets/settings.svg",
+                                "assets/images/settings.svg",
                                 height: 20,
                                 width: 20,
                               )),

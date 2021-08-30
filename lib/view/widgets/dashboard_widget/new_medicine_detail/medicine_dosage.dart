@@ -175,7 +175,8 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   ),
                                   color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: widget.dosageGap),
+                                margin:
+                                    EdgeInsets.only(right: widget.dosageGap),
                                 child: Center(
                                   child: Text(
                                     time_1,
@@ -200,7 +201,9 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   ),
                                   color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: widget.dosageGap, left: widget.dosageGap),
+                                margin: EdgeInsets.only(
+                                    right: widget.dosageGap,
+                                    left: widget.dosageGap),
                                 child: Center(
                                   child: Text(
                                     time_2,
@@ -225,7 +228,9 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   ),
                                   color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: widget.dosageGap, left: widget.dosageGap),
+                                margin: EdgeInsets.only(
+                                    right: widget.dosageGap,
+                                    left: widget.dosageGap),
                                 child: Center(
                                   child: Text(
                                     time_3,
@@ -257,7 +262,8 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   ),
                                   color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: widget.dosageGap, bottom: 7),
+                                margin: EdgeInsets.only(
+                                    right: widget.dosageGap, bottom: 7),
                                 child: Center(
                                   child: Text(
                                     time_4,
@@ -283,7 +289,9 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   color: kPrimaryColor,
                                 ),
                                 margin: EdgeInsets.only(
-                                    right: widget.dosageGap, left: widget.dosageGap, bottom: 7),
+                                    right: widget.dosageGap,
+                                    left: widget.dosageGap,
+                                    bottom: 7),
                                 child: Center(
                                   child: Text(
                                     time_5,
@@ -309,7 +317,9 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   color: kPrimaryColor,
                                 ),
                                 margin: EdgeInsets.only(
-                                    right: widget.dosageGap, left: widget.dosageGap, bottom: 7),
+                                    right: widget.dosageGap,
+                                    left: widget.dosageGap,
+                                    bottom: 7),
                                 child: Center(
                                   child: Text(
                                     time_6,
@@ -349,82 +359,85 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
             ),
             height: 250,
             width: 25,
-            child: Stack(children: <Widget>[
-              hourMinute12H(doseName),
-              Positioned(
-                  bottom: 36,
-                  left: 20,
-                  child: Container(
-                    height: 50,
-                    width: 230,
-                    color: kPrimaryColor.withOpacity(0.8),
-                  )),
-              Positioned(
-                  bottom: 52,
-                  left: 20,
-                  child: Container(
-                    height: 50,
-                    width: 230,
-                    color: kPrimaryColor.withOpacity(0.4),
-                  )),
-              Positioned(
-                  bottom: 175,
-                  left: 20,
-                  child: Container(
-                    height: 50,
-                    width: 230,
-                    color: kPrimaryColor.withOpacity(0.8),
-                  )),
-              Positioned(
-                  bottom: 170,
-                  left: 20,
-                  child: Container(
-                    height: 50,
-                    width: 230,
-                    color: kPrimaryColor.withOpacity(0.4),
-                  )),
-              Positioned(
-                left: 62,
-                bottom: 25,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    width: 150,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: <Widget>[
+                hourMinute12H(doseName),
+                Positioned(
+                    bottom: 36,
+                    left: 20,
+                    child: Container(
+                      height: 50,
+                      width: 230,
+                      color: kPrimaryColor.withOpacity(0.8),
+                    )),
+                Positioned(
+                    bottom: 52,
+                    left: 20,
+                    child: Container(
+                      height: 50,
+                      width: 230,
+                      color: kPrimaryColor.withOpacity(0.4),
+                    )),
+                Positioned(
+                    bottom: 175,
+                    left: 20,
+                    child: Container(
+                      height: 50,
+                      width: 230,
+                      color: kPrimaryColor.withOpacity(0.8),
+                    )),
+                Positioned(
+                    bottom: 170,
+                    left: 20,
+                    child: Container(
+                      height: 50,
+                      width: 230,
+                      color: kPrimaryColor.withOpacity(0.4),
+                    )),
+                Positioned(
+                  left: 62,
+                  bottom: 25,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: 150,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
+                        color: Color(0xffEDF7FF),
                       ),
-                      color: Color(0xffEDF7FF),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Set Dose',
-                        style: TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
+                      child: Center(
+                        child: Text(
+                          'Set Dose',
+                          style: TextStyle(
+                              color: kPrimaryColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Positioned(
-                top: -5,
-                right: 0,
-                child: InkWell(
-                  onTap: () {
-                    // setState(() {});
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    child: Icon(Icons.close, color: Colors.white),
+                Positioned(
+                  top: -20,
+                  right: 5,
+                  child: InkWell(
+                    onTap: () {
+                      // setState(() {});
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      child: Icon(Icons.close, color: Colors.white),
+                    ),
                   ),
                 ),
-              )
-            ]),
+              ],
+            ),
           ),
         );
       },

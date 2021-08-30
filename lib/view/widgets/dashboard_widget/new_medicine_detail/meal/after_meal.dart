@@ -23,7 +23,7 @@ class _AfterMealState extends State<AfterMeal> {
       child: Center(
         child: Text(
           'After Meal',
-          style: TextStyle(fontSize: 18, color: Colors.white),
+          style: TextStyle(fontSize: 14, color: Colors.white),
         ),
       ),
     );

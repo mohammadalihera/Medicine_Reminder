@@ -122,7 +122,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   children: [
                     Container(
                       child: SvgPicture.asset(
-                        "assets/google.svg",
+                        "assets/images/google.svg",
                         height: 20,
                         width: 20,
                       ),
