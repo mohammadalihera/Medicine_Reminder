@@ -273,12 +273,12 @@ class _HomePageState extends State<HomePage> {
     if (displayHeight < 700) {
       modalHeight = MediaQuery.of(context).size.height * 0.88;
     }
-    if (displayHeight > 700||displayHeight < 750) {
+    if (displayHeight > 700 && displayHeight < 750) {
       modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.85;
       //modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.7;
     }
     if (displayHeight > 750) {
-      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.75;
+      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.72;
       //modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.7;
     }
     showModalBottomSheet(

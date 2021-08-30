@@ -10,7 +10,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom:50),
+      padding: EdgeInsets.only(bottom: 50),
       margin: EdgeInsets.only(
         left: 10,
         right: 10,
@@ -30,9 +30,9 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
               elevation: 4,
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                color: Color(0xffEDF7FF).withOpacity(0.2),
-                width: 4,
-              ),
+                  color: Color(0xffEDF7FF).withOpacity(0.2),
+                  width: 4,
+                ),
                 borderRadius: BorderRadius.circular(25),
               ),
               color: Color(0xffEDF7FF),
@@ -48,7 +48,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(bottom: 6),
+                      margin: EdgeInsets.only(bottom: 4),
                       child: Text(
                         'Medicine Name',
                         style: TextStyle(
@@ -59,7 +59,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                     ),
                     AfterMeal('after', 'dash'),
                     Container(
-                      margin: EdgeInsets.only(top: 10),
+                      margin: EdgeInsets.only(top: 5),
                       child: Text(
                         '3 times today',
                         style: TextStyle(
@@ -70,7 +70,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                        top: 10,
+                        top: 2,
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -79,11 +79,12 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                           Text(
                             'Upcoming Dose',
                             style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.grey),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.grey,
+                            ),
                           ),
-                          SizedBox(height: 6),
+                          SizedBox(height: 2),
                           Text(
                             '09:00PM',
                             style: TextStyle(
