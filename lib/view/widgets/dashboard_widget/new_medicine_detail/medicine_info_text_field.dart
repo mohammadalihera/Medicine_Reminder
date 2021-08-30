@@ -37,14 +37,14 @@ class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
         cursorHeight: 20,
         controller: editingController,
         style: TextStyle(
-          fontFamily: "AvenirNextCyr",
+          fontFamily: 'Poppins',
           color: Colors.black,
           fontSize: 18,
         ),
         decoration: InputDecoration(
           hintText: widget.type,
           hintStyle: TextStyle(
-            fontFamily: "AvenirNextCyr",
+            fontFamily: 'Poppins',
             color: Colors.grey,
             fontSize: 18,
           ),
