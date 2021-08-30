@@ -92,7 +92,7 @@ class _DashBoardState extends State<DashBoard> {
       modalHeight = MediaQuery.of(context).size.height * 0.78;
     }
     if (displayHeight >= 700) {
-      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.65;
+      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.77;
     }
     showModalBottomSheet(
         isScrollControlled: true,
@@ -103,7 +103,7 @@ class _DashBoardState extends State<DashBoard> {
           return Container(
             height: modalHeight,
             decoration: new BoxDecoration(
-              color: Colors.white,
+              color: Color(0xffEDF7FF),
               borderRadius: new BorderRadius.only(
                 topLeft: const Radius.circular(35.0),
                 topRight: const Radius.circular(35.0),

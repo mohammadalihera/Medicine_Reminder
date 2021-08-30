@@ -32,7 +32,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
 
     return Center(
       child: Container(
-        child: SingleChildScrollView(
+       
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -154,7 +154,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
             ],
           ),
         ),
-      ),
+      
     );
   }
 }

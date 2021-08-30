@@ -78,12 +78,12 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
               ),
               color: kPrimaryColor,
             ),
-            height: 280,
+            height: 250,
             width: 300,
             child: Stack(children: <Widget>[
               Positioned(
-                left: 90,
-                bottom: 70,
+                left: 85,
+                bottom: 43,
                 child: Container(
                     color: kPrimaryColor,
                     height: 180,
@@ -101,13 +101,15 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                         },
                         children: [
                           for (int i = 0; i <= 100; i++)
-                            Container(
-                              child: Center(
-                                child: Text(i.toString(),
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 50,
-                                        fontWeight: FontWeight.w600)),
+                            Center(
+                              child: Container(
+                                child: Center(
+                                  child: Text(i.toString(),
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 45,
+                                          fontWeight: FontWeight.w600)),
+                                ),
                               ),
                             )
                         ])),
@@ -127,7 +129,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
               ),
               Positioned(
                   top: 80,
-                  left: 190,
+                  right: 5,
                   child: Container(
                     child: Text(
                       'Pieces',
@@ -164,7 +166,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                   ),
                 ),
               ),
-              Positioned(
+              /* Positioned(
                 top: 5,
                 right: 10,
                 child: InkWell(
@@ -178,7 +180,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                     child: Icon(Icons.close, color: Colors.white),
                   ),
                 ),
-              )
+              ) */
             ]),
           ),
         );
