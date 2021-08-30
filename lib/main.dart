@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
               ),
               home: signInController.signIn
                   ? Dashboard()
-                  : SignUpPage() //Dashboard(),
+                  : Dashboard() //Dashboard(),
               );
         });
   }

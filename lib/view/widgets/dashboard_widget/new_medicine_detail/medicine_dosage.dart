@@ -5,6 +5,9 @@ import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:intl/intl.dart';
 
 class MedicineDosageField extends StatefulWidget {
+  double dosageGap;
+
+  MedicineDosageField({this.dosageGap});
   @override
   _MedicineDosageFieldState createState() => _MedicineDosageFieldState();
 }
@@ -43,7 +46,8 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor: dosageNumber == 1 ? kPrimaryColor : offColor,
+                    backgroundColor:
+                        dosageNumber == 1 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '1',
@@ -61,7 +65,8 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor: dosageNumber == 2 ? kPrimaryColor : offColor,
+                    backgroundColor:
+                        dosageNumber == 2 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '2',
@@ -79,7 +84,8 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor: dosageNumber == 3 ? kPrimaryColor : offColor,
+                    backgroundColor:
+                        dosageNumber == 3 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '3',
@@ -97,7 +103,8 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor: dosageNumber == 4 ? kPrimaryColor : offColor,
+                    backgroundColor:
+                        dosageNumber == 4 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '4',
@@ -115,7 +122,8 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor: dosageNumber == 5 ? kPrimaryColor : offColor,
+                    backgroundColor:
+                        dosageNumber == 5 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '5',
@@ -133,7 +141,8 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                   },
                   child: CircleAvatar(
                     radius: 12,
-                    backgroundColor: dosageNumber == 6 ? kPrimaryColor : offColor,
+                    backgroundColor:
+                        dosageNumber == 6 ? kPrimaryColor : offColor,
                     child: Center(
                       child: Text(
                         '6',
@@ -166,7 +175,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   ),
                                   color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: 10),
+                                margin: EdgeInsets.only(right: widget.dosageGap),
                                 child: Center(
                                   child: Text(
                                     time_1,
@@ -191,7 +200,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   ),
                                   color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: 10, left: 10),
+                                margin: EdgeInsets.only(right: widget.dosageGap, left: widget.dosageGap),
                                 child: Center(
                                   child: Text(
                                     time_2,
@@ -216,7 +225,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   ),
                                   color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: 10, left: 10),
+                                margin: EdgeInsets.only(right: widget.dosageGap, left: widget.dosageGap),
                                 child: Center(
                                   child: Text(
                                     time_3,
@@ -248,7 +257,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   ),
                                   color: kPrimaryColor,
                                 ),
-                                margin: EdgeInsets.only(right: 10, bottom: 7),
+                                margin: EdgeInsets.only(right: widget.dosageGap, bottom: 7),
                                 child: Center(
                                   child: Text(
                                     time_4,
@@ -274,7 +283,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   color: kPrimaryColor,
                                 ),
                                 margin: EdgeInsets.only(
-                                    right: 10, left: 10, bottom: 7),
+                                    right: widget.dosageGap, left: widget.dosageGap, bottom: 7),
                                 child: Center(
                                   child: Text(
                                     time_5,
@@ -300,7 +309,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                                   color: kPrimaryColor,
                                 ),
                                 margin: EdgeInsets.only(
-                                    right: 10, left: 10, bottom: 7),
+                                    right: widget.dosageGap, left: widget.dosageGap, bottom: 7),
                                 child: Center(
                                   child: Text(
                                     time_6,

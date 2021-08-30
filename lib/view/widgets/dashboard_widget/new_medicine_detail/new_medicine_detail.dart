@@ -15,8 +15,21 @@ class NewMedicineDetail extends StatefulWidget {
 class _NewMedicineDetailState extends State<NewMedicineDetail> {
   TextEditingController editingController = new TextEditingController();
   String meal = '';
+
+  double screenWidth;
+  double dosageGap;
+
   @override
   Widget build(BuildContext context) {
+    screenWidth = MediaQuery.of(context).size.width;
+
+    if (screenWidth <= 380) {
+      dosageGap = 3;
+    }
+    if (screenWidth > 380) {
+      dosageGap = 12;
+    }
+
     return Center(
       child: Container(
         child: SingleChildScrollView(
@@ -75,14 +88,14 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                     Container(
                       margin: EdgeInsets.only(left: 40, top: 10),
                       child: Text(
-                        'Dosage',
+                        'Daily Dosage',
                         style: TextStyle(
                             fontSize: 20,
                             color: kPrimaryColor,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
-                    MedicineDosageField(),
+                    MedicineDosageField(dosageGap: dosageGap),
                     MedicinePrograme(),
                     MedicineQuantity(),
                     Container(
@@ -123,8 +136,10 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                           child: Center(
                             child: Text(
                               'Add Schedule',
-                              style:
-                                  TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w600),
+                              style: TextStyle(
+                                  fontSize: 22,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),

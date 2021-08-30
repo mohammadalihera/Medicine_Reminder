@@ -16,8 +16,12 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
+  double displayHeight;
+
   @override
   Widget build(BuildContext context) {
+    displayHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: kPrimaryColor,
       body: Container(
@@ -83,6 +87,13 @@ class _DashBoardState extends State<DashBoard> {
   }
 
   void medicineDetail() {
+    double modalHeight;
+    if (displayHeight < 700) {
+      modalHeight = MediaQuery.of(context).size.height * 0.78;
+    }
+    if (displayHeight >= 700) {
+      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.65;
+    }
     showModalBottomSheet(
         isScrollControlled: true,
         isDismissible: true,
@@ -90,7 +101,7 @@ class _DashBoardState extends State<DashBoard> {
         context: context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.78,
+            height: modalHeight,
             decoration: new BoxDecoration(
               color: Colors.white,
               borderRadius: new BorderRadius.only(
