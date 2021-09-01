@@ -62,7 +62,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
     );
   }
 
-  void _showDialog() {
+    void _showDialog() {
     // flutter defined function
     showDialog(
       context: context,
@@ -71,7 +71,6 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
         return Dialog(
           backgroundColor: Colors.transparent,
           child: Container(
-            padding: EdgeInsets.only(top: 20, right: 15),
             decoration: BoxDecoration(
               borderRadius: new BorderRadius.all(
                 const Radius.circular(50.0),
@@ -79,109 +78,123 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
               color: kPrimaryColor,
             ),
             height: 250,
-            width: 300,
-            child: Stack(children: <Widget>[
-              Positioned(
-                left: 85,
-                bottom: 43,
-                child: Container(
-                    color: kPrimaryColor,
-                    height: 180,
-                    width: 100,
-                    child: CupertinoPicker(
-                        itemExtent: 100,
-                        looping: false,
-                        useMagnifier: false,
-                        selectionOverlay: null,
-                        onSelectedItemChanged: (int index) {
-                          print(index);
-                          setState(() {
-                            selectedQuantity = index;
-                          });
-                        },
-                        children: [
-                          for (int i = 0; i <= 100; i++)
-                            Center(
-                              child: Container(
-                                child: Center(
-                                  child: Text(i.toString(),
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 45,
-                                          fontWeight: FontWeight.w600)),
+            width: 280,
+            child: Center(
+              child: Stack(
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.only(bottom:10),
+                        color: kPrimaryColor,
+                        height: 150,
+                        width: 290,
+                        child: CupertinoPicker(
+                          useMagnifier: false,
+                          selectionOverlay: null,
+                          looping: true,
+                          itemExtent: 100,
+                          scrollController: FixedExtentScrollController(),
+                          onSelectedItemChanged: (int index) {
+                            setState(() {
+                              selectedQuantity = index;
+                            });
+                          },
+                          children: [
+                            for (int i = 0; i <= 100; i++)
+                              Center(
+                                child: Container(
+                                  height: 50,
+                                  color: kPrimaryColor,
+                                  child: Text(
+                                    i.toString(),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 50,
+                                        fontWeight: FontWeight.w600),
+                                  ),
                                 ),
-                              ),
-                            )
-                        ])),
-              ),
-              Positioned(
-                top: 80,
-                left: 30,
-                child: Container(
-                  child: Text(
-                    'Total',
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
-              ),
-              Positioned(
-                  top: 80,
-                  right: 5,
-                  child: Container(
-                    child: Text(
-                      'Pieces',
-                      style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  )),
-              Positioned(
-                bottom: 20,
-                left: 70,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    width: 150,
-                    height: 30,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(50),
+                              )
+                          ],
                         ),
-                        color: Colors.white),
-                    child: Center(
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    top: 105,
+                    left: 40,
+                    child: Container(
                       child: Text(
-                        'Set Quantity',
+                        'Total',
                         style: TextStyle(
-                            fontSize: 16,
-                            color: kPrimaryColor,
+                            fontSize: 25,
+                            color: Colors.white,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),
-                ),
-              ),
-              /* Positioned(
-                top: 5,
-                right: 10,
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      selectedQuantity = 0;
-                    });
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    child: Icon(Icons.close, color: Colors.white),
+                  Positioned(
+                    top: 105,
+                    right: 40,
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          'Pieces',
+                          style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ) */
-            ]),
+                  Positioned(
+                    bottom: 20,
+                    right: 65,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        width: 150,
+                        height: 30,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(50),
+                            ),
+                            color: Colors.white),
+                        child: Center(
+                          child: Text(
+                            'Set Quantity',
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    right: 20,
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          selectedQuantity = 0;
+                        });
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        child: Icon(Icons.close, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         );
       },

@@ -69,7 +69,6 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
         return Dialog(
           backgroundColor: Colors.transparent,
           child: Container(
-            padding: EdgeInsets.only(top: 20, right: 15),
             decoration: BoxDecoration(
               borderRadius: new BorderRadius.all(
                 const Radius.circular(50.0),
@@ -77,49 +76,53 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
               color: kPrimaryColor,
             ),
             height: 250,
-            width: 300,
+            width: 280,
             child: Center(
               child: Stack(
                 children: <Widget>[
-                  Positioned(
-                    left: 87,
-                    bottom: 45,
-                    child: Container(
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.only(bottom:10),
                         color: kPrimaryColor,
-                        height: 180,
-                        width: 100,
+                        height: 150,
+                        width: 290,
                         child: CupertinoPicker(
-                            useMagnifier: false,
-                            selectionOverlay: null,
-                            looping: false,
-                            itemExtent: 100,
-                            scrollController: FixedExtentScrollController(),
-                            onSelectedItemChanged: (int index) {
-                              print(index);
-                              setState(() {
-                                selectedDays = index;
-                              });
-                            },
-                            children: [
-                              for (int i = 0; i <= 100; i++)
-                                Center(
-                                  child: Container(
-                                    height: 50,
-                                    color: kPrimaryColor,
-                                    child: Text(
-                                      i.toString(),
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 50,
-                                          fontWeight: FontWeight.w600),
-                                    ),
+                          useMagnifier: false,
+                          selectionOverlay: null,
+                          looping: true,
+                          itemExtent: 100,
+                          scrollController: FixedExtentScrollController(),
+                          onSelectedItemChanged: (int index) {
+                            setState(() {
+                              selectedDays = index;
+                            });
+                          },
+                          children: [
+                            for (int i = 0; i <= 100; i++)
+                              Center(
+                                child: Container(
+                                  height: 50,
+                                  color: kPrimaryColor,
+                                  child: Text(
+                                    i.toString(),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 50,
+                                        fontWeight: FontWeight.w600),
                                   ),
-                                )
-                            ])),
+                                ),
+                              )
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                   Positioned(
-                    top: 80,
-                    left: 28,
+                    top: 105,
+                    left: 40,
                     child: Container(
                       child: Text(
                         'Total',
@@ -131,22 +134,23 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                     ),
                   ),
                   Positioned(
-                      top: 80,
-                      right: 15,
-                      child: Container(
-                        child: Center(
-                          child: Text(
-                            'Days',
-                            style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600),
-                          ),
+                    top: 105,
+                    right: 40,
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          'Days',
+                          style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600),
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
                   Positioned(
                     bottom: 20,
-                    left: 65,
+                    right: 65,
                     child: InkWell(
                       onTap: () {
                         Navigator.pop(context);
@@ -171,9 +175,9 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                       ),
                     ),
                   ),
-                  /* Positioned(
-                    top: 5,
-                    right: 12,
+                  Positioned(
+                    top: 20,
+                    right: 20,
                     child: InkWell(
                       onTap: () {
                         setState(() {
@@ -185,7 +189,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                         child: Icon(Icons.close, color: Colors.white),
                       ),
                     ),
-                  ) */
+                  ),
                 ],
               ),
             ),

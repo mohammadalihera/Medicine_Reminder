@@ -423,20 +423,19 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                     ),
                   ),
                 ),
-                /* Positioned(
+                Positioned(
                   top: -20,
                   right: 5,
                   child: Container(
-                    color: Colors.red,
+                    color: kPrimaryColor,
                     child: InkWell(
                       onTap: () {
-                    
                         Navigator.pop(context);
-                    },
+                      },
                       child: Icon(Icons.close, color: Colors.white),
                     ),
                   ),
-                ), */
+                ),
               ],
             ),
           ),
