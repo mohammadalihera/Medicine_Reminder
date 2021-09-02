@@ -89,10 +89,10 @@ class _DashBoardState extends State<DashBoard> {
   void medicineDetail() {
     double modalHeight;
     if (displayHeight < 750) {
-      modalHeight = MediaQuery.of(context).size.height * 0.78;
+      modalHeight = MediaQuery.of(context).size.height * 0.8;
     }
     if (displayHeight >= 750) {
-      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.7;
+      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.72;
     }
     showModalBottomSheet(
         isScrollControlled: true,

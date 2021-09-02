@@ -85,7 +85,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.only(bottom:10),
+                        padding: EdgeInsets.only(bottom: 10),
                         color: kPrimaryColor,
                         height: 150,
                         width: 290,
@@ -122,7 +122,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                   ),
                   Positioned(
                     top: 105,
-                    left:35,
+                    left: 35,
                     child: Container(
                       child: Text(
                         'Total',
@@ -135,7 +135,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                   ),
                   Positioned(
                     top: 105,
-                    right: 40,
+                    right: 35,
                     child: Container(
                       child: Center(
                         child: Text(
