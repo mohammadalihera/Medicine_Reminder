@@ -122,7 +122,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                   ),
                   Positioned(
                     top: 105,
-                    left: 40,
+                    left:35,
                     child: Container(
                       child: Text(
                         'Total',
