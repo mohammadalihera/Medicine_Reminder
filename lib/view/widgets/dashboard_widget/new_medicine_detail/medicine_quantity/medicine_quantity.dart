@@ -124,7 +124,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                   ),
                   Positioned(
                     top: 105,
-                    left: 40,
+                    left: 35,
                     child: Container(
                       child: Text(
                         'Total',
@@ -137,7 +137,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                   ),
                   Positioned(
                     top: 105,
-                    right: 23,
+                    right: 18,
                     child: Container(
                       child: Center(
                         child: Text(
