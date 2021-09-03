@@ -280,6 +280,7 @@ class _HomePageState extends State<HomePage> {
     if (displayHeight > 750) {
       modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.75;
       //modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.7;
+      // responsive modal implementation
     }
     showModalBottomSheet(
         isScrollControlled: true,
