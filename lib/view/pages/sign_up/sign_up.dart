@@ -88,7 +88,7 @@ class _SignUpPageState extends State<SignUpPage> {
               TextFieldWidget(),
               SizedBox(height: 30),
               InkWell(
-                onTap: () => Get.find<SignInController>().signedIn(true),
+                onTap: () => Get.find<SignInController>().signedIn(),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),

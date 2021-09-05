@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
                 visualDensity: VisualDensity.adaptivePlatformDensity,
                 fontFamily: 'Poppins',
               ),
-              home: signInController.signIn
+              home: signInController.signedIn()
                   ? Dashboard()
                   : SignUpPage() //Dashboard(),
               );

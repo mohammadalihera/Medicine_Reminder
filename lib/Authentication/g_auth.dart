@@ -25,6 +25,9 @@ Future googleLogin() async {
   await FirebaseAuth.instance.signInWithCredential(credential);
 
   print('signInWithGoogle succeeded: $_user');
+}
 
-  Get.find<SignInController>().signedIn(true);
+Future logout() async {
+  await googleSignIn.disconnect();
+  FirebaseAuth.instance.signOut();
 }

@@ -2,10 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class SignInController extends GetxController {
-  bool signIn = false;
+  bool signedIn() {
+    if (FirebaseAuth.instance.currentUser != null) {
+      return true;
+    }
 
-  void signedIn(bool sign) {
-    signIn = sign;
     update();
+    return false;
   }
 }
