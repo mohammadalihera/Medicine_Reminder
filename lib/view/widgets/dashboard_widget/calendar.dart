@@ -16,7 +16,7 @@ class CustomCalendar extends StatefulWidget {
 class _CustomCalendarState extends State<CustomCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
   DateTime _focusedDay = DateTime.now();
-  late DateTime _selectedDay;
+  DateTime? _selectedDay;
 
   @override
   void initState() {

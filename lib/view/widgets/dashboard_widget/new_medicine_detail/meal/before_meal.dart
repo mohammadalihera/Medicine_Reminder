@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class BeforeMeal extends StatefulWidget {
   String meal;
-  late String from;
+  String? from;
   BeforeMeal(this.meal);
 
   @override

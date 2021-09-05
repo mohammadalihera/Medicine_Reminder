@@ -1,3 +1,4 @@
+import 'package:Vitals/Authentication/g_auth.dart';
 import 'package:Vitals/controller/sign_in_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:Vitals/view/widgets/sign_up_widget/sign_up_text_fields.dart';
@@ -13,6 +14,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   SignInController signInController = Get.put(SignInController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,7 +110,7 @@ class _SignUpPageState extends State<SignUpPage> {
               SizedBox(height: 20),
               InkWell(
                 onTap: () {
-                  print('hi');
+                  googleLogin();
                 },
                 child: Container(
                   decoration: BoxDecoration(
