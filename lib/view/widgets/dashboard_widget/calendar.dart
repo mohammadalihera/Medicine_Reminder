@@ -2,7 +2,7 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:MedicineReminder/utils.dart';
+import 'package:Vitals/utils.dart';
 
 class CustomCalendar extends StatefulWidget {
   final String format;
@@ -16,7 +16,7 @@ class CustomCalendar extends StatefulWidget {
 class _CustomCalendarState extends State<CustomCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
   DateTime _focusedDay = DateTime.now();
-  DateTime _selectedDay;
+  late DateTime _selectedDay;
 
   @override
   void initState() {

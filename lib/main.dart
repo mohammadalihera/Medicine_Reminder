@@ -1,12 +1,14 @@
-import 'package:MedicineReminder/view/pages/home/home_page.dart';
-import 'package:MedicineReminder/view/pages/sign_up/sign_up.dart';
+import 'package:Vitals/view/pages/home/home_page.dart';
+import 'package:Vitals/view/pages/sign_up/sign_up.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:MedicineReminder/controller/sign_in_controller.dart';
+import 'package:Vitals/controller/sign_in_controller.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

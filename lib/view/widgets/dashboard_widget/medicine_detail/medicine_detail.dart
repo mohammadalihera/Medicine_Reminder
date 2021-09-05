@@ -1,6 +1,6 @@
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
 import 'package:flutter/material.dart';
 
 class MedicineDetail extends StatefulWidget {

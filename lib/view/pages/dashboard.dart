@@ -1,9 +1,9 @@
-import 'package:MedicineReminder/main.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/calendar.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/dashboard_appbar.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/medicine_detail/medicine_detail.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/medicine_info_tile.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
+import 'package:Vitals/main.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/calendar.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/dashboard_appbar.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/medicine_detail/medicine_detail.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/medicine_info_tile.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
 
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
-  double displayHeight;
+  double displayHeight=0;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class _DashBoardState extends State<DashBoard> {
   }
 
   void medicineDetail() {
-    double modalHeight;
+    double modalHeight=0;
     if (displayHeight < 750) {
       modalHeight = MediaQuery.of(context).size.height * 0.8;
     }

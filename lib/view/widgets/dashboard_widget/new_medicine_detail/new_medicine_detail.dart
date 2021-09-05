@@ -1,10 +1,10 @@
-import 'package:MedicineReminder/main.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/medicine_dosage.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/medicine_program/medicine_program.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/medicine_quantity/medicine_quantity.dart';
+import 'package:Vitals/main.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_dosage.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_program/medicine_program.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_quantity/medicine_quantity.dart';
 import 'package:flutter/material.dart';
 
 class NewMedicineDetail extends StatefulWidget {
@@ -16,8 +16,8 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
   TextEditingController editingController = new TextEditingController();
   String meal = '';
 
-  double screenWidth;
-  double dosageGap;
+  double screenWidth = 0;
+  double dosageGap = 0;
 
   @override
   Widget build(BuildContext context) {

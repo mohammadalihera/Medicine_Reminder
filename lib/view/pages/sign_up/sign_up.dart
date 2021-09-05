@@ -1,6 +1,6 @@
-import 'package:MedicineReminder/controller/sign_in_controller.dart';
+import 'package:Vitals/controller/sign_in_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:MedicineReminder/view/widgets/sign_up_widget/sign_up_text_fields.dart';
+import 'package:Vitals/view/widgets/sign_up_widget/sign_up_text_fields.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -106,38 +106,43 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               SizedBox(height: 20),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  border: Border.all(
-                    width: 2,
-                    color: kPrimaryColor,
+              InkWell(
+                onTap: () {
+                  print('hi');
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    border: Border.all(
+                      width: 2,
+                      color: kPrimaryColor,
+                    ),
                   ),
-                ),
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(left: 30, right: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      child: SvgPicture.asset(
-                        "assets/images/google.svg",
-                        height: 20,
-                        width: 20,
+                  height: 50,
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.only(left: 30, right: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        child: SvgPicture.asset(
+                          "assets/images/google.svg",
+                          height: 20,
+                          width: 20,
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 10),
-                    Center(
-                      child: Text(
-                        'Sign up with Google',
-                        style: TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
+                      SizedBox(width: 10),
+                      Center(
+                        child: Text(
+                          'Sign up with Google',
+                          style: TextStyle(
+                              color: kPrimaryColor,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               )
             ]),

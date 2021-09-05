@@ -1,12 +1,12 @@
-import 'package:MedicineReminder/main.dart';
-import 'package:MedicineReminder/view/pages/dashboard.dart';
-import 'package:MedicineReminder/view/pages/user_page.dart';
-import 'package:MedicineReminder/view/pages/setting_page.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
+import 'package:Vitals/main.dart';
+import 'package:Vitals/view/pages/dashboard.dart';
+import 'package:Vitals/view/pages/user_page.dart';
+import 'package:Vitals/view/pages/setting_page.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
 import 'package:double_back_to_close/double_back_to_close.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:MedicineReminder/view/widgets/home/bottom_nav.dart';
+import 'package:Vitals/view/widgets/home/bottom_nav.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Dashboard extends StatelessWidget {
@@ -29,7 +29,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int count = 10;
   int currentIndex = 1;
-  double displayHeight;
+  late double displayHeight;
 
   PageController pageController = PageController(
     initialPage: 1,
@@ -269,7 +269,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void addMedicine() {
-    double modalHeight;
+    late double modalHeight;
     if (displayHeight < 700) {
       modalHeight = MediaQuery.of(context).size.height * 0.9;
     }
