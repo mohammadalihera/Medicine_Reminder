@@ -1,5 +1,5 @@
-import 'package:MedicineReminder/main.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/dosage_box.dart';
+import 'package:Vitals/main.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/dosage_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:intl/intl.dart';
@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 class MedicineDosageField extends StatefulWidget {
   double dosageGap;
 
-  MedicineDosageField({this.dosageGap});
+  MedicineDosageField({required this.dosageGap});
   @override
   _MedicineDosageFieldState createState() => _MedicineDosageFieldState();
 }

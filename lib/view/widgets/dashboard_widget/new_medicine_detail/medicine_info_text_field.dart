@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MedicineInfoTextField extends StatefulWidget {
   String type;
-  MedicineInfoTextField({this.type});
+  MedicineInfoTextField({required this.type});
 
   @override
   _MedicineInfoTextFieldState createState() => _MedicineInfoTextFieldState();

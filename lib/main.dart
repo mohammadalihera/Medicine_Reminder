@@ -1,10 +1,14 @@
-import 'package:MedicineReminder/view/pages/home/home_page.dart';
-import 'package:MedicineReminder/view/pages/sign_up/sign_up.dart';
+import 'package:Vitals/view/pages/home/home_page.dart';
+import 'package:Vitals/view/pages/sign_up/sign_up.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:MedicineReminder/controller/sign_in_controller.dart';
+import 'package:Vitals/controller/sign_in_controller.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -28,6 +32,11 @@ class MyApp extends StatelessWidget {
   SignInController signInController = Get.put(SignInController());
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     return GetBuilder<SignInController>(
         init: SignInController(),
         builder: (signInController) {
@@ -40,7 +49,7 @@ class MyApp extends StatelessWidget {
                 visualDensity: VisualDensity.adaptivePlatformDensity,
                 fontFamily: 'Poppins',
               ),
-              home: signInController.signIn
+              home: signInController.signedIn()
                   ? Dashboard()
                   : SignUpPage() //Dashboard(),
               );

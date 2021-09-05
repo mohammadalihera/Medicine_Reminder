@@ -1,4 +1,4 @@
-import 'package:MedicineReminder/main.dart';
+import 'package:Vitals/main.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldWidget extends StatefulWidget {
@@ -8,7 +8,7 @@ class TextFieldWidget extends StatefulWidget {
 
 class _TextFieldWidgetState extends State<TextFieldWidget> {
   TextEditingController nameTextEditingController = TextEditingController();
-  String _labelText;
+  late String _labelText;
   bool _isObsecure = true;
   @override
   Widget build(BuildContext context) {

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "505108204016",
+    "project_id": "vitals-767ce",
+    "storage_bucket": "vitals-767ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505108204016:android:ee92a8ff812fca3fd67535",
+        "android_client_info": {
+          "package_name": "com.nerdevolution.Vitals"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505108204016-020ed0vmjc9bad5tg7issbocr9aq3cne.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nerdevolution.Vitals",
+            "certificate_hash": "2671b3d8a3510f46156646b0d51c8a009ec800e4"
+          }
+        },
+        {
+          "client_id": "505108204016-ef9b1vlbnpo0n1b9tli392130m9o3bv6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGQGt0NK9DZXIOTYQsnuCGtOUWLR486gU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505108204016-ef9b1vlbnpo0n1b9tli392130m9o3bv6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

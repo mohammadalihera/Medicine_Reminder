@@ -1,4 +1,4 @@
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
 import 'package:flutter/material.dart';
 
 class MedicineInfoTile extends StatefulWidget {
