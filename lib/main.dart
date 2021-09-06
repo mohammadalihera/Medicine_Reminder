@@ -37,25 +37,27 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
 
+    // Get.find<SignInController>().signedIn();
+
     return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Medicine Reminder',
-              theme: ThemeData(
-                primarySwatch: kPrimaryColor,
-                canvasColor: Colors.white,
-                visualDensity: VisualDensity.adaptivePlatformDensity, 
-                fontFamily: 'Poppins',
-              ),
-              home: GetBuilder<SignInController>(
+      debugShowCheckedModeBanner: false,
+      title: 'Vitals',
+      theme: ThemeData(
+        primarySwatch: kPrimaryColor,
+        canvasColor: Colors.white,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: 'Poppins',
+      ),
+      home: GetBuilder<SignInController>(
         init: SignInController(),
-        builder: (signInController){
-          if( signInController.signIn){
+        builder: (signInController) {
+          if (signInController.signIn) {
             return Dashboard();
-          }else{
-            return   SignUpPage();
-           } //Dashboard(),
-             
-        }
-        ));
+          } else {
+            return SignUpPage();
+          } //Dashboard(),
+        },
+      ),
+    );
   }
 }
