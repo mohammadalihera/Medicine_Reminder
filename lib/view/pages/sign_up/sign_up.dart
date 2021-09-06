@@ -1,9 +1,11 @@
 import 'package:Vitals/Authentication/g_auth.dart';
 import 'package:Vitals/controller/sign_in_controller.dart';
+import 'package:Vitals/view/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:Vitals/view/widgets/sign_up_widget/sign_up_text_fields.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:Vitals/main.dart';
 
 import '../../../main.dart';
 
@@ -88,7 +90,11 @@ class _SignUpPageState extends State<SignUpPage> {
               TextFieldWidget(),
               SizedBox(height: 30),
               InkWell(
-                onTap: () => Get.find<SignInController>().signedIn(),
+                onTap: () {
+                  print('hhii');
+                  Get.find<SignInController>().signedIn();
+                  Get.back();
+                },
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -110,7 +116,9 @@ class _SignUpPageState extends State<SignUpPage> {
               SizedBox(height: 20),
               InkWell(
                 onTap: () {
-                  googleLogin();
+                 
+                 googleLogin();
+                 
                 },
                 child: Container(
                   decoration: BoxDecoration(
