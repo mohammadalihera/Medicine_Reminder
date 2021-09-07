@@ -1,7 +1,9 @@
+import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
 import 'package:Vitals/main.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/dosage_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class MedicineDosageField extends StatefulWidget {
@@ -29,6 +31,8 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
   String time_5 = '5th Dose';
   String time_6 = '6th Dose';
   DateTime _dateTime = DateTime.now();
+   AddMedicineController addmedicineController =
+      Get.put(AddMedicineController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -461,31 +465,37 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
             dose_1 = time;
             time_1 = DateFormat('hh:mm a').format(time);
           });
+         Get.find<AddMedicineController>().changeDone(time_1);
         } else if (doseName == 'dose2') {
           setState(() {
             dose_2 = time;
             time_2 = DateFormat('hh:mm a').format(time);
           });
+          Get.find<AddMedicineController>().changeDtwo(time_2);
         } else if (doseName == 'dose3') {
           setState(() {
             dose_3 = time;
             time_3 = DateFormat('hh:mm a').format(time);
           });
+          Get.find<AddMedicineController>().changeDthree(time_3);
         } else if (doseName == 'dose4') {
           setState(() {
             dose_4 = time;
             time_4 = DateFormat('hh:mm a').format(time);
           });
+          Get.find<AddMedicineController>().changeDfour(time_4);
         } else if (doseName == 'dose5') {
           setState(() {
             dose_5 = time;
             time_5 = DateFormat('hh:mm a').format(time);
           });
+          Get.find<AddMedicineController>().changeDfive(time_5);
         } else if (doseName == 'dose6') {
           setState(() {
             dose_6 = time;
             time_6 = DateFormat('hh:mm a').format(time);
           });
+          Get.find<AddMedicineController>().changeDsix(time_6);
         }
       },
     );

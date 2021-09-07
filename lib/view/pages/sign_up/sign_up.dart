@@ -121,6 +121,7 @@ class _SignUpPageState extends State<SignUpPage> {
                  
                 },
                 child: Container(
+                  
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     border: Border.all(

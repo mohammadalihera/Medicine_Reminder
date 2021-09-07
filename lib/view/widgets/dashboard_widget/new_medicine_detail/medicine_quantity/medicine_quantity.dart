@@ -1,6 +1,8 @@
+import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
 import 'package:Vitals/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MedicineQuantity extends StatefulWidget {
   @override
@@ -9,6 +11,9 @@ class MedicineQuantity extends StatefulWidget {
 
 class _MedicineQuantityState extends State<MedicineQuantity> {
   int selectedQuantity = 0;
+    AddMedicineController addmedicineController =
+      Get.put(AddMedicineController());
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -101,6 +106,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                             setState(() {
                               selectedQuantity = index;
                             });
+                             Get.find<AddMedicineController>().changeQuantity(selectedQuantity);
                           },
                           children: [
                             for (int i = 0; i <= 100; i++)

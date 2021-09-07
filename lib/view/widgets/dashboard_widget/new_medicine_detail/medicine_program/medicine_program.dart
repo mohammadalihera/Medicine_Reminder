@@ -1,6 +1,8 @@
+import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
 import 'package:Vitals/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class MedicinePrograme extends StatefulWidget {
@@ -11,6 +13,8 @@ class MedicinePrograme extends StatefulWidget {
 class _MedicineProgrameState extends State<MedicinePrograme> {
   int selectedDays = 0;
   int _currentIntValue = 0;
+  AddMedicineController addmedicineController =
+      Get.put(AddMedicineController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -99,6 +103,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                             setState(() {
                               selectedDays = index;
                             });
+                            Get.find<AddMedicineController>().changeProgram(selectedDays);
                           },
                           children: [
                             for (int i = 0; i <= 100; i++)

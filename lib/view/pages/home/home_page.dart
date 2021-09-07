@@ -14,6 +14,9 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DoubleBack(
+        // onFirstBackPress: (){
+        //   widget
+        // },
         message: 'Press back again to close',
         child: HomePage(),
       ),
