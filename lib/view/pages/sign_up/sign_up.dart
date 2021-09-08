@@ -125,6 +125,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   googleLogin();
                 },
                 child: Container(
+                  
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     border: Border.all(
