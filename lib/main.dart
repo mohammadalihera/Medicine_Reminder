@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:Vitals/view/pages/home/home_page.dart';
 import 'package:Vitals/view/pages/sign_up/sign_up.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -5,10 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:Vitals/controller/sign_in_controller.dart';
+import 'package:hive/hive.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  var path = Directory.current.path;
   await Firebase.initializeApp();
+  Hive.init(path);
+  await Hive.openBox<String>('userBox');
   runApp(MyApp());
 }
 

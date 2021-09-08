@@ -4,12 +4,14 @@ import 'package:Vitals/view/pages/sign_up/sign_up.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:hive/hive.dart';
 
 final googleSignIn = GoogleSignIn();
 
 GoogleSignInAccount? _user;
 
 GoogleSignInAccount get user => _user!;
+Box<String> userBox = Hive.box('userBox');
 
 Future googleLogin() async {
   final googleUser = await googleSignIn.signIn();
@@ -25,6 +27,7 @@ Future googleLogin() async {
   );
 
   await FirebaseAuth.instance.signInWithCredential(credential);
+  userBox.add(_user.toString());
   Get.find<SignInController>().signedIn(_user);
   print('signInWithGoogle succeeded: $_user');
   // Get.to(main());
@@ -34,6 +37,7 @@ Future logout() async {
   await googleSignIn.disconnect();
   FirebaseAuth.instance.signOut();
   print('loggin out');
+  userBox.add(null.toString());
   Get.find<SignInController>().signedIn(null);
   // Get.to(SignUpPage());
 }
