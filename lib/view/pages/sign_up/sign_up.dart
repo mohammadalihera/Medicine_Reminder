@@ -58,7 +58,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: Container(
                   width: MediaQuery.of(context).size.width * .8,
                   margin: EdgeInsets.only(
-                    top: 30,
+                    top: 50,
                     left: MediaQuery.of(context).size.width * 0.097,
                   ),
                   child: Text(
@@ -79,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     left: MediaQuery.of(context).size.width * 0.097,
                   ),
                   child: Text(
-                    'Sign Up To Get Started!',
+                    'Sign In To Get Started!',
                     style: TextStyle(
                         color: Color(0xff606365).withOpacity(0.6),
                         fontSize: 20,
@@ -88,11 +88,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               TextFieldWidget(),
-              SizedBox(height: 30),
+              SizedBox(height: 50),
               InkWell(
                 onTap: () {
                   print('hhii');
-                  Get.find<SignInController>().signedIn();
+                  // Get.find<SignInController>().signedIn();
                   Get.back();
                 },
                 child: Container(
@@ -105,7 +105,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   width: MediaQuery.of(context).size.width,
                   child: Center(
                       child: Text(
-                    'Sign up',
+                    'Get OTP',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -116,9 +116,7 @@ class _SignUpPageState extends State<SignUpPage> {
               SizedBox(height: 20),
               InkWell(
                 onTap: () {
-                 
-                 googleLogin();
-                 
+                  googleLogin();
                 },
                 child: Container(
                   
