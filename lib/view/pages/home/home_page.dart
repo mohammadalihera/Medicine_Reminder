@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Vitals/view/widgets/home/bottom_nav.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -33,6 +34,7 @@ class _HomePageState extends State<HomePage> {
   int count = 10;
   int currentIndex = 1;
   late double displayHeight;
+  Box<String> userBox = Hive.box('userBox');
 
   PageController pageController = PageController(
     initialPage: 1,
@@ -49,6 +51,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     displayHeight = MediaQuery.of(context).size.height;
+    print(userBox.getAt(0));
     return Scaffold(
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Stack(

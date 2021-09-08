@@ -6,6 +6,8 @@ import 'package:Vitals/view/widgets/sign_up_widget/sign_up_text_fields.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:Vitals/main.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:hive/hive.dart';
 
 import '../../../main.dart';
 
@@ -16,9 +18,13 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   SignInController signInController = Get.put(SignInController());
+  Box<String> userBox = Hive.box('userBox');
+
+  GoogleSignInAccount? _user;
 
   @override
   Widget build(BuildContext context) {
+    // print(userBox.getAt(0));
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
