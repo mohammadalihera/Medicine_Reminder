@@ -24,7 +24,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(userBox.getAt(0));
+    // print(userBox.getAt(0));
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

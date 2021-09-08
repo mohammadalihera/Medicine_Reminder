@@ -8,13 +8,18 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:Vitals/controller/sign_in_controller.dart';
 import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  var path = Directory.current.path;
   await Firebase.initializeApp();
-  Hive.init(path);
+
+  Directory appDocDir = await getApplicationDocumentsDirectory();
+  String appDocPath = appDocDir.path;
+
+  Hive.init(appDocPath);
   await Hive.openBox<String>('userBox');
+
   runApp(MyApp());
 }
 
@@ -36,6 +41,8 @@ const MaterialColor kPrimaryColor = const MaterialColor(
 
 class MyApp extends StatelessWidget {
   SignInController signInController = Get.put(SignInController());
+  Box<String> userBox = Hive.box('userBox');
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -60,6 +67,9 @@ class MyApp extends StatelessWidget {
           if (signInController.signIn) {
             return Dashboard();
           } else {
+            if (userBox.getAt(0) == null.toString()) {
+              return Dashboard();
+            }
             return SignUpPage();
           } //Dashboard(),
         },
