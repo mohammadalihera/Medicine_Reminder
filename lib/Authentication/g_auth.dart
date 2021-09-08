@@ -34,6 +34,7 @@ Future logout() async {
   await googleSignIn.disconnect();
   FirebaseAuth.instance.signOut();
   print('loggin out');
+  userBox.add(null.toString());
   Get.find<SignInController>().signedIn(null);
   // Get.to(SignUpPage());
 }

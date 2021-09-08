@@ -1,4 +1,6 @@
+import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MedicineInfoTextField extends StatefulWidget {
   String type;
@@ -10,6 +12,8 @@ class MedicineInfoTextField extends StatefulWidget {
 
 class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
   TextEditingController editingController = new TextEditingController();
+   AddMedicineController addmedicineController =
+      Get.put(AddMedicineController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,9 +27,12 @@ class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
         },
         onChanged: (text) {
           print(text.length);
+           Get.find<AddMedicineController>().changeName(text);
         },
         onSubmitted: (text) {
           print(text.length);
+           Get.find<AddMedicineController>().changeName(text);
+          
         },
         enabled: true,
         minLines: 1,
