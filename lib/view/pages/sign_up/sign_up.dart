@@ -91,9 +91,10 @@ class _SignUpPageState extends State<SignUpPage> {
               SizedBox(height: 50),
               InkWell(
                 onTap: () {
-                  print('hhii');
-                  // Get.find<SignInController>().signedIn();
-                  Get.back();
+                  // final phone = _phoneController.text.trim();
+                  // print(phone.toString());
+                  // loginUser(phone, context);
+                  // print(phone.toString());
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -118,8 +119,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 onTap: () {
                   googleLogin().then(
                     (result) {
+                      print('result is');
+                      print(result);
                       // ignore: unnecessary_null_comparison
-                      if (result != null) {
+                      if (result != '') {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             fullscreenDialog: true,

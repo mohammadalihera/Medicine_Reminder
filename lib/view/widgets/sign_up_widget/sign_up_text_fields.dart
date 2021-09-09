@@ -7,9 +7,9 @@ class TextFieldWidget extends StatefulWidget {
 }
 
 class _TextFieldWidgetState extends State<TextFieldWidget> {
-  TextEditingController nameTextEditingController = TextEditingController();
-  late String _labelText;
-  bool _isObsecure = true;
+  final _phoneController = TextEditingController();
+  final _codeController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -89,13 +89,14 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                     ),
                     child: TextFormField(
                       keyboardType: TextInputType.number,
+                      controller: _phoneController,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         fillColor: Colors.white,
                         focusedBorder: InputBorder.none,
                         contentPadding: EdgeInsets.only(
                             left: 15, bottom: 12, top: 12, right: 15),
-                        hintText: 'Enter Your Phone Number',
+                        hintText: 'Enter Your Phone Number (With Country Code)',
                         hintStyle: TextStyle(
                           color: Color(0xffC9C9C9),
                         ),
@@ -120,7 +121,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
