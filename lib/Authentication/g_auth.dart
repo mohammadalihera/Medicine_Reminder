@@ -2,21 +2,20 @@ import 'package:Vitals/controller/sign_in_controller.dart';
 import 'package:Vitals/main.dart';
 import 'package:Vitals/view/pages/sign_up/sign_up.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:hive/hive.dart';
 
 final googleSignIn = GoogleSignIn();
 
 GoogleSignInAccount? _user;
 
 GoogleSignInAccount get user => _user!;
-Box<String> userBox = Hive.box('userBox');
 
-Future googleLogin() async {
+Future<String> googleLogin() async {
   final googleUser = await googleSignIn.signIn();
 
-  if (googleUser == null) return;
+  if (googleUser == null) return '';
   _user = googleUser;
 
   final googleAuth = await googleUser.authentication;
@@ -27,17 +26,23 @@ Future googleLogin() async {
   );
 
   await FirebaseAuth.instance.signInWithCredential(credential);
-  userBox.add(_user.toString());
-  Get.find<SignInController>().signedIn(_user);
   print('signInWithGoogle succeeded: $_user');
-  // Get.to(main());
+  // Get.to(main());\
+
+  return _user.toString();
 }
 
-Future logout() async {
-  await googleSignIn.disconnect();
-  FirebaseAuth.instance.signOut();
+Future logout(BuildContext context) async {
+  // await googleSignIn.disconnect();
+  await FirebaseAuth.instance.signOut();
   print('loggin out');
-  userBox.add(null.toString());
-  Get.find<SignInController>().signedIn(null);
+  Navigator.of(context).pushReplacement(
+    MaterialPageRoute(
+      fullscreenDialog: true,
+      builder: (context) {
+        return SignUpPage();
+      },
+    ),
+  );
   // Get.to(SignUpPage());
 }

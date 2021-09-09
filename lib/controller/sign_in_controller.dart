@@ -14,7 +14,6 @@ class SignInController extends GetxController {
       print('did not find user: $user');
       signIn = false;
     }
-
-    update();
+    update(); 
   }
 }

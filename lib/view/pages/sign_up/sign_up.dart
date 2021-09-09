@@ -6,8 +6,6 @@ import 'package:Vitals/view/widgets/sign_up_widget/sign_up_text_fields.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:Vitals/main.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:hive/hive.dart';
 
 import '../../../main.dart';
 
@@ -18,13 +16,9 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   SignInController signInController = Get.put(SignInController());
-  Box<String> userBox = Hive.box('userBox');
-
-  GoogleSignInAccount? _user;
 
   @override
   Widget build(BuildContext context) {
-    // print(userBox.getAt(0));
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -94,38 +88,27 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               TextFieldWidget(),
-              SizedBox(height: 50),
-              InkWell(
-                onTap: () {
-                  print('hhii');
-                  // Get.find<SignInController>().signedIn();
-                  Get.back();
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Colors.blue,
-                  ),
-                  margin: EdgeInsets.only(left: 33, right: 33),
-                  height: 50,
-                  width: MediaQuery.of(context).size.width,
-                  child: Center(
-                      child: Text(
-                    'Get OTP',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600),
-                  )),
-                ),
-              ),
+              
               SizedBox(height: 20),
               InkWell(
                 onTap: () {
-                  googleLogin();
+                  googleLogin().then(
+                    (result) {
+                      // ignore: unnecessary_null_comparison
+                      if (result != '') {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            fullscreenDialog: true,
+                            builder: (context) {
+                              return Dashboard();
+                            },
+                          ),
+                        );
+                      }
+                    },
+                  );
                 },
                 child: Container(
-                  
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     border: Border.all(

@@ -1,25 +1,16 @@
-import 'dart:io';
-
 import 'package:Vitals/view/pages/home/home_page.dart';
 import 'package:Vitals/view/pages/sign_up/sign_up.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:Vitals/controller/sign_in_controller.dart';
-import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-  Directory appDocDir = await getApplicationDocumentsDirectory();
-  String appDocPath = appDocDir.path;
-
-  Hive.init(appDocPath);
-  await Hive.openBox<String>('userBox');
-
   runApp(MyApp());
 }
 
@@ -41,7 +32,8 @@ const MaterialColor kPrimaryColor = const MaterialColor(
 
 class MyApp extends StatelessWidget {
   SignInController signInController = Get.put(SignInController());
-  Box<String> userBox = Hive.box('userBox');
+  User? firebaseUser = FirebaseAuth.instance.currentUser;
+  Widget firstWidget = SignUpPage();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +42,14 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
 
-    // Get.find<SignInController>().signedIn();
+    if (firebaseUser != null) {
+      print('logged in');
+      //print(firebaseUser.uid);
+      firstWidget = Dashboard();
+    } else {
+      print('NOT logged in');
+      firstWidget = SignUpPage();
+    }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -61,19 +60,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Poppins',
       ),
-      home: GetBuilder<SignInController>(
-        init: SignInController(),
-        builder: (signInController) {
-          if (signInController.signIn) {
-            return Dashboard();
-          } else {
-            if (userBox.getAt(0) == null.toString()) {
-              return Dashboard();
-            }
-            return SignUpPage();
-          } //Dashboard(),
-        },
-      ),
+      home: firstWidget,
     );
   }
 }
