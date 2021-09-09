@@ -33,8 +33,8 @@ Future<String> googleLogin() async {
 }
 
 Future logout(BuildContext context) async {
-  await googleSignIn.disconnect();
-  FirebaseAuth.instance.signOut();
+  // await googleSignIn.disconnect();
+  await FirebaseAuth.instance.signOut();
   print('loggin out');
   Navigator.of(context).pushReplacement(
     MaterialPageRoute(

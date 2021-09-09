@@ -88,39 +88,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               TextFieldWidget(),
-              SizedBox(height: 50),
-              InkWell(
-                onTap: () {
-                  // final phone = _phoneController.text.trim();
-                  // print(phone.toString());
-                  // loginUser(phone, context);
-                  // print(phone.toString());
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Colors.blue,
-                  ),
-                  margin: EdgeInsets.only(left: 33, right: 33),
-                  height: 50,
-                  width: MediaQuery.of(context).size.width,
-                  child: Center(
-                      child: Text(
-                    'Get OTP',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600),
-                  )),
-                ),
-              ),
+              
               SizedBox(height: 20),
               InkWell(
                 onTap: () {
                   googleLogin().then(
                     (result) {
-                      print('result is');
-                      print(result);
                       // ignore: unnecessary_null_comparison
                       if (result != '') {
                         Navigator.of(context).pushReplacement(

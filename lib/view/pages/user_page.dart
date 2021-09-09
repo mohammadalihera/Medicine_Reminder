@@ -11,10 +11,24 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  final user = FirebaseAuth.instance.currentUser!;
+  User? firebaseUser = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
+    String photoURL = '';
+    String name = '';
+    String email = '';
+
+    if (firebaseUser!.phoneNumber == '') {
+      print(firebaseUser);
+      // photoURL = firebaseUser!.photoURL!;
+      // name = firebaseUser!.displayName!;
+      // email = firebaseUser!.email!;
+    } else {
+      photoURL = 'K';
+      name = 'K';
+      email = 'k';
+    }
     return Scaffold(
       backgroundColor: Color(0xffEDF7FF),
       appBar: AppBar(
@@ -27,12 +41,12 @@ class _UserPageState extends State<UserPage> {
           Center(
             child: CircleAvatar(
               radius: 30,
-              backgroundImage: NetworkImage(user.photoURL!),
+              backgroundImage: NetworkImage(photoURL),
             ),
           ),
           Center(
             child: Text(
-              user.displayName!,
+              name,
               style: TextStyle(
                 color: kPrimaryColor,
                 fontSize: 16,
@@ -41,7 +55,7 @@ class _UserPageState extends State<UserPage> {
           ),
           Center(
             child: Text(
-              user.email!,
+              email,
               style: TextStyle(
                 color: kPrimaryColor,
                 fontSize: 16,
