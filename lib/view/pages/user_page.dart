@@ -51,7 +51,7 @@ class _UserPageState extends State<UserPage> {
           Center(
             child: TextButton(
               onPressed: () {
-                logout();
+                logout(context);
               },
               child: Container(
                 child: Text('LogOut'),
