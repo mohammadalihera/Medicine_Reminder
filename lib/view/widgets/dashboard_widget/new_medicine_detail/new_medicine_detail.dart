@@ -116,7 +116,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                               InkWell(
                                 onTap: () {
                                   Get.find<AddMedicineController>()
-                                      .changeAfterMeal(true);
+                                      .changeAfterMeal(1);
                                   setState(() {
                                     meal = 'after';
                                   });
@@ -126,7 +126,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                               InkWell(
                                 onTap: () {
                                   Get.find<AddMedicineController>()
-                                      .changeAfterMeal(true);
+                                      .changeAfterMeal(1);
                                   setState(() {
                                     meal = 'before';
                                   });

@@ -23,7 +23,7 @@ class Repository {
   }
 
   //get all data from database
-  Future<List<Map<String, dynamic>>> getAllData(table) async {
+static  Future<List<Map<String, dynamic>>> getAllData(table) async {
     Database db = await database;
     try {
       return db.query(table);
@@ -33,7 +33,7 @@ class Repository {
   }
 
   //delete data
-  Future<int> deleteData(String table, int id) async {
+static  Future<int> deleteData(String table, int id) async {
     Database db = await database;
     try {
       return await db.delete(table, where: "id = ?", whereArgs: [id]);

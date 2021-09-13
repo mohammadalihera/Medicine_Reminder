@@ -13,7 +13,7 @@ class Vital {
   int program;
   int quantity;
   String endDate;
-  bool afterMeal;
+  int afterMeal;
   Vital(
     {
     required this.id,
@@ -51,7 +51,7 @@ class Vital {
   }
 
 //=========================create pill object from map================================
- Vital vitalMapToObject(Map<String, dynamic> vitalMap) {
+static Vital vitalMapToObject(Map<String, dynamic> vitalMap) {
     return Vital(
         id:  vitalMap['id'],
         name: vitalMap['name'] ,
