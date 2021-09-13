@@ -71,6 +71,7 @@ class AddMedicineController extends GetxController {
 
   void changeProgram(int vitalprog) {
     program = vitalprog;
+    endDate=vitalprog.toString();
 
     update();
   }

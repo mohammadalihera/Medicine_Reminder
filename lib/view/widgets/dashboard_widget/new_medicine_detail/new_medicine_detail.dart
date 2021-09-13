@@ -23,7 +23,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
   String meal = '';
   AddMedicineController addmedicineController =
       Get.put(AddMedicineController());
-  final Repository _repository = Repository();
+  
 
   double screenWidth = 0;
   double dosageGap = 0;
@@ -152,10 +152,11 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 startDate: DateTime.now().toString(),
                                 program: addController.program,
                                 quantity: addController.quantity,
-                                endDate: DateTime.now().toString(),
-                                afterMeal: addController.afterMeal);
+                                afterMeal: addController.afterMeal,
+                                endDate: addController.endDate,
+                                );
 
-                            dynamic result = await _repository.insertData(
+                            dynamic result = await Repository.insertData(
                                 "Vitals", vital.vitalToMap());
 
                             print(result);
