@@ -1,4 +1,5 @@
 import 'package:Vitals/database/vital_table.dart';
+import 'package:Vitals/model/medicine_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class Repository {
@@ -41,5 +42,15 @@ static  Future<int> deleteData(String table, int id) async {
       return await db.delete(table, where: "id = ?", whereArgs: [id]);
       
     }
+  }
+
+
+  static Future<List<Vital>>getAllVitals()async{
+    List<Vital> data = [];
+          (await Repository.getAllData("Vitals")).forEach((vitalMap) {
+            data.add(Vital.vitalMapToObject(vitalMap));
+          });
+
+    return data;
   }
 }

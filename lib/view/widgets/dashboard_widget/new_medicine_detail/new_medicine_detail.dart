@@ -138,7 +138,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                         ),
                         InkWell(
                           onTap: () async {
-                            print(addController.name);
+                            /* print(addController.name);
                             print(addController.doseOne);
                             Vital vital = Vital(
                                 id: Random().nextInt(10000000),
@@ -159,7 +159,8 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                             dynamic result = await Repository.insertData(
                                 "Vitals", vital.vitalToMap());
 
-                            print(result);
+                            print(result); */
+                            addVital(addController.name,addController.doseOne,addController.doseTwo,addController.doseThree,addController.doseFour,addController.doseFive,addController.doseSix,addController.program,addController.quantity,addController.afterMeal);
                           },
                           child: Center(
                             child: Container(
@@ -195,4 +196,28 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
           );
         });
   }
+}
+
+void addVital(String vName,String doseOne,String doseTwo,String doseThree,String doseFour,String doseFive,String doseSix,int program,int quantity,int afterMeal,)async{
+  
+                            Vital vital = Vital(
+                                id: Random().nextInt(10000000),
+                                name: vName,
+                                doseOne: doseOne,
+                                doseTwo: doseTwo,
+                                doseThree: doseThree,
+                                doseFour: doseFour,
+                                doseFive: doseFive,
+                                doseSix: doseSix,
+                                startDate: DateTime.now().toString(),
+                                program: program,
+                                quantity: quantity,
+                                afterMeal: afterMeal,
+                                endDate: 'endDate',
+                                );
+
+                            dynamic result = await Repository.insertData(
+                                "Vitals", vital.vitalToMap());
+
+                            print(result);
 }

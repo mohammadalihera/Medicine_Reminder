@@ -21,10 +21,8 @@ class _SettingsPageState extends State<SettingsPage> {
       body: InkWell(
         onTap: () async {
          
-          List<Vital> data = [];
-          (await Repository.getAllData("Vitals")).forEach((vitalMap) {
-            data.add(Vital.vitalMapToObject(vitalMap));
-          });
+          List<Vital> data = await Repository.getAllVitals();
+          
           print(data);
         },
         child: Center(
