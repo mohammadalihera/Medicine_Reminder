@@ -12,6 +12,7 @@ import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicin
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_quantity/medicine_quantity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class NewMedicineDetail extends StatefulWidget {
   @override
@@ -199,6 +200,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
 }
 
 void addVital(String vName,String doseOne,String doseTwo,String doseThree,String doseFour,String doseFive,String doseSix,int program,int quantity,int afterMeal,)async{
+    DateTime newMedicineDate= DateTime(DateTime.now().year,DateTime.now().month,DateTime.now().day);
   
                             Vital vital = Vital(
                                 id: Random().nextInt(10000000),
@@ -209,15 +211,21 @@ void addVital(String vName,String doseOne,String doseTwo,String doseThree,String
                                 doseFour: doseFour,
                                 doseFive: doseFive,
                                 doseSix: doseSix,
-                                startDate: DateTime.now().toString(),
+                                date: newMedicineDate.millisecondsSinceEpoch,
                                 program: program,
                                 quantity: quantity,
                                 afterMeal: afterMeal,
-                                endDate: 'endDate',
+                                
                                 );
-
-                            dynamic result = await Repository.insertData(
+                          for(int i=0;i<vital.program;++i)  {
+                              dynamic result = await Repository.insertData(
                                 "Vitals", vital.vitalToMap());
+                            vital.id=Random().nextInt(10000000);
+                            newMedicineDate=newMedicineDate.add(Duration(milliseconds: 86400000));
+                            vital.date=newMedicineDate.millisecondsSinceEpoch;
 
                             print(result);
+                          }    
+
+                            
 }

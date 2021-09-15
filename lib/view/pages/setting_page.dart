@@ -22,7 +22,11 @@ class _SettingsPageState extends State<SettingsPage> {
         onTap: () async {
          
           List<Vital> data = await Repository.getAllVitals();
-          
+          for(int i=0;i<data.length;++i){
+            print(data[i].name);
+            print(data[i].id);
+            print(DateTime.fromMillisecondsSinceEpoch(data[i].date));
+          }
           print(data);
         },
         child: Center(
