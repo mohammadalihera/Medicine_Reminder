@@ -15,7 +15,12 @@ class GetMedicineController extends GetxController {
     getAllVitalFromDb();
     List<Vital> selectedVital = [];
     for (int i = 0; i < allVital.length; ++i) {
-      if (DateTime.fromMillisecondsSinceEpoch(allVital[i].date).day == date.day && DateTime.fromMillisecondsSinceEpoch(allVital[i].date).month == date.month && DateTime.fromMillisecondsSinceEpoch(allVital[i].date).year == date.year) {
+      if (DateTime.fromMillisecondsSinceEpoch(allVital[i].date).day ==
+              date.day &&
+          DateTime.fromMillisecondsSinceEpoch(allVital[i].date).month ==
+              date.month &&
+          DateTime.fromMillisecondsSinceEpoch(allVital[i].date).year ==
+              date.year) {
         print('added');
         selectedVital.add(allVital[i]);
       } else {
@@ -25,6 +30,8 @@ class GetMedicineController extends GetxController {
       }
     }
     print(selectedVital);
+     update();
     return selectedVital;
+   
   }
 }

@@ -21,9 +21,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
-   GetMedicineController addmedicineController =
+  GetMedicineController addmedicineController =
       Get.put(GetMedicineController());
-  
+
   @override
   void initState() {
     /*  _calendarController = CalendarController(); */
@@ -159,6 +159,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
           setState(() {
             _selectedDay = selectedDay;
             _focusedDay = focusedDay;
+            addmedicineController.getSelectedVital(_selectedDay!);
             print(_selectedDay);
           });
         }
