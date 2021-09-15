@@ -1,6 +1,10 @@
+import 'package:Vitals/controller/get_medicine/get_medicine.dart';
+import 'package:Vitals/database/vital_reprository.dart';
+import 'package:Vitals/model/medicine_model.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:Vitals/utils.dart';
 
@@ -17,7 +21,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
-
+   GetMedicineController addmedicineController =
+      Get.put(GetMedicineController());
+  
   @override
   void initState() {
     /*  _calendarController = CalendarController(); */
@@ -31,9 +37,10 @@ class _CustomCalendarState extends State<CustomCalendar> {
     double leftMargin = dayBox * 0.11;
     double afterLeftmargin = dayBox - leftMargin;
     return TableCalendar(
-      
+      eventLoader: (day) {
+        return addmedicineController.getSelectedVital(day);
+      },
       calendarStyle: CalendarStyle(
-      
         cellMargin: EdgeInsets.all(5),
         selectedDecoration: BoxDecoration(
           border: Border.all(color: Colors.white),
@@ -91,8 +98,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
           ],
         ),
         outsideTextStyle: TextStyle(
-            color: Color(0x000000
-).withOpacity(.25), fontSize: 18, fontWeight: FontWeight.w600),
+            color: Color(0x000000).withOpacity(.25),
+            fontSize: 18,
+            fontWeight: FontWeight.w600),
         weekendDecoration: BoxDecoration(
           border: Border.all(color: Colors.white),
           color: Color(0xEDF7FF).withOpacity(0.15),
@@ -111,20 +119,28 @@ class _CustomCalendarState extends State<CustomCalendar> {
             color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
       ),
       daysOfWeekStyle: DaysOfWeekStyle(
-        weekdayStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),
-        weekendStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),
+        weekdayStyle:
+            TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+        weekendStyle:
+            TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
       ),
       headerStyle: HeaderStyle(
         leftChevronVisible: true,
-        leftChevronIcon: Icon(Icons.keyboard_arrow_left,color: Colors.white,),
-        rightChevronIcon: Icon(Icons.keyboard_arrow_right,color: Colors.white,),
+        leftChevronIcon: Icon(
+          Icons.keyboard_arrow_left,
+          color: Colors.white,
+        ),
+        rightChevronIcon: Icon(
+          Icons.keyboard_arrow_right,
+          color: Colors.white,
+        ),
         titleCentered: true,
-        titleTextStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize:18),
+        titleTextStyle: TextStyle(
+            color: Colors.white, fontWeight: FontWeight.w600, fontSize: 18),
         formatButtonVisible: false,
-         formatButtonShowsNext: true,
+        formatButtonShowsNext: true,
       ),
       rowHeight: 60,
-      
       firstDay: kFirstDay,
       lastDay: kLastDay,
       focusedDay: _focusedDay,
@@ -143,6 +159,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
           setState(() {
             _selectedDay = selectedDay;
             _focusedDay = focusedDay;
+            print(_selectedDay);
           });
         }
       },
@@ -197,3 +214,8 @@ Widget _buildHolidaysMarker() {
     color: Colors.blueGrey[800],
   );
 }
+
+/* Future<List> _getVitalsForDay(day) {
+  //List<Vital> data =  Repository.getAllVitals();
+  return [];
+} */
