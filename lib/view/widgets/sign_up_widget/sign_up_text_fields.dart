@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:convert' as convert;
 
+import 'package:sms_autofill/sms_autofill.dart';
+
 class TextFieldWidget extends StatefulWidget {
   @override
   _TextFieldWidgetState createState() => _TextFieldWidgetState();
@@ -252,12 +254,13 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           ),
           SizedBox(height: 50),
           InkWell(
-            onTap: () {
+            onTap: () async {
               if (_formKey.currentState!.validate()) {
                 final rawPhone = _phoneController.text.trim();
                 final code = _codeController.text;
                 final phoneNumber = code + rawPhone;
-                phoneAuthInstance.phoneAuth(phoneNumber, context);
+                final signCode = await SmsAutoFill().getAppSignature;
+                phoneAuthInstance.phoneAuth(phoneNumber, context, signCode);
                 print(phoneNumber.toString());
               } else {
                 print('invalid number');
