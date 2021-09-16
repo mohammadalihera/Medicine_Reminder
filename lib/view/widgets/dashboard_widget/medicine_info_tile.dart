@@ -1,5 +1,7 @@
+import 'package:Vitals/controller/get_medicine/get_medicine.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MedicineInfoTile extends StatefulWidget {
   @override
@@ -7,6 +9,8 @@ class MedicineInfoTile extends StatefulWidget {
 }
 
 class _MedicineInfoTileState extends State<MedicineInfoTile> {
+  GetMedicineController getmedicineController =
+      Get.put(GetMedicineController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,7 +27,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
               childAspectRatio: 2 / 2,
               crossAxisSpacing: 5,
               mainAxisSpacing: 5),
-          itemCount: 20,
+          itemCount: getmedicineController.selectedVital.length,
           itemBuilder: (_, i) {
             return Card(
               shadowColor: Colors.blue,

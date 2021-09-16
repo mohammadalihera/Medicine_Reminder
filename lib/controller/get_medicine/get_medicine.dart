@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 class GetMedicineController extends GetxController {
   List<Vital> selectedVital = [];
   List<Vital> allVital = [];
+  DateTime selectedDate= DateTime(DateTime.now().year,DateTime.now().month,DateTime.now().day);
   void getAllVitalFromDb() async {
     allVital = await Repository.getAllVitals();
   }
@@ -34,4 +35,5 @@ class GetMedicineController extends GetxController {
     return selectedVital;
    
   }
+
 }
