@@ -88,7 +88,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               TextFieldWidget(),
-              
               SizedBox(height: 20),
               InkWell(
                 onTap: () {
