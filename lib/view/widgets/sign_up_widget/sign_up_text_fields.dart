@@ -1,8 +1,6 @@
 import 'package:Vitals/Authentication/phone_auth.dart';
-import 'package:Vitals/controller/countryCode/country_controller.dart';
 import 'package:Vitals/main.dart';
-import 'package:Vitals/model/countries.dart';
-import 'package:Vitals/view/widgets/countryList/country_list.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:convert' as convert;
@@ -17,11 +15,6 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
 
   PhoneAuth phoneAuthInstance = new PhoneAuth();
 
-  final CountryController countryController = Get.put(
-    CountryController(),
-    permanent: true,
-  );
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +22,10 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         children: <Widget>[
           Container(
             width: MediaQuery.of(context).size.width,
-            height: 70,
+            // decoration: BoxDecoration(
+            //   border: Border.all(color: kPrimaryColor),
+            // ),
+            height: 85,
             margin: EdgeInsets.only(
               top: 30,
             ),
@@ -39,11 +35,15 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                   child: Column(
                     children: <Widget>[
                       Container(
+                        alignment: Alignment.topLeft,
+                        margin: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width * 0.085,
+                        ),
                         child: Text(
-                          'Country',
+                          'Select Country',
                           style: TextStyle(
                             fontSize: 12,
-                            fontFamily: 'Poppin',
+                            fontFamily: 'Poppins',
                             fontWeight: FontWeight.normal,
                             color: kPrimaryColor,
                           ),
@@ -51,86 +51,42 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                         ),
                       ),
                       Container(
-                        child: new FutureBuilder(
-                          future: DefaultAssetBundle.of(context)
-                              .loadString('data/country_code.json'),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              List<Country> counties =
-                                  getCountryCode(snapshot.data.toString());
-                              return new CountryList(
-                                countries: counties,
-                              );
-                            } else {
-                              return const SizedBox();
-                            }
+                        // decoration: BoxDecoration(
+                        //   border: Border.all(color: kPrimaryColor),
+                        // ),
+                        margin: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width * 0.025,
+                        ),
+                        child: CountryCodePicker(
+                          initialSelection: 'BD',
+                          showCountryOnly: true,
+                          showDropDownButton: true,
+                          showOnlyCountryWhenClosed: true,
+                          backgroundColor: kPrimaryColor.withOpacity(0.2),
+                          barrierColor: kPrimaryColor.withOpacity(0.2),
+                          dialogBackgroundColor: kPrimaryColor.withOpacity(0.9),
+                          textOverflow: TextOverflow.ellipsis,
+                          textStyle: TextStyle(
+                            fontFamily: 'Poppins',
+                          ),
+                          dialogSize: Size(
+                            MediaQuery.of(context).size.width * .8,
+                            MediaQuery.of(context).size.height * 0.9,
+                          ),
+                          dialogTextStyle: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                          ),
+                          hideSearch: true,
+                          alignLeft: true,
+                          onChanged: (countryCode) {
+                            print(countryCode);
                           },
                         ),
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                            height: 30,
-                            child: TextField(
-                              controller: _phoneController,
-                              onChanged: (text) {
-                                text = text
-                                    .replaceAll(" ", "")
-                                    .replaceAll(".", "")
-                                    .replaceAll(",", "")
-                                    .replaceAll("-", "")
-                                    .replaceAll("_", "");
-                                if (_phoneController.text != text) {
-                                  _phoneController.text = text;
-                                  _phoneController.selection =
-                                      TextSelection.fromPosition(
-                                    TextPosition(
-                                      offset: _phoneController.text.length,
-                                    ),
-                                  );
-                                }
-                                // setState(() {
-                                //   _authController.sendButtonPress = false;
-                                //   _authController.updateError('');
-                                //   if (_phoneNumberController.text.length >= 7)
-                                //     _validPhoneNumber = true;
-                                //   else
-                                //     _validPhoneNumber = false;
-                                // });
-                              },
-                              keyboardType: TextInputType.number,
-                              autofocus: true,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'AvenirNextCyr',
-                                fontWeight: FontWeight.normal,
-                                color: Colors.white,
-                              ),
-                              decoration: InputDecoration(
-                                prefixText: '${countryController.phoneCode}',
-                                prefixStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: 'AvenirNextCyr',
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white,
-                                ),
-                                border: InputBorder.none,
-                                hintText: 'Phone number',
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: 'AvenirNextCyr',
-                                  fontWeight: FontWeight.normal,
-                                  color: Color.fromRGBO(155, 172, 207, 1),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -138,7 +94,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             width: MediaQuery.of(context).size.width,
             height: 60,
             margin: EdgeInsets.only(
-              top: 15,
+              top: 50,
+              // 15
             ),
             child: Stack(
               children: <Widget>[
@@ -149,7 +106,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                     width: MediaQuery.of(context).size.width * .8,
                     height: 50,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                       border: Border.all(
                         color: kPrimaryColor,
                       ),
@@ -163,7 +122,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                         focusedBorder: InputBorder.none,
                         contentPadding: EdgeInsets.only(
                             left: 15, bottom: 12, top: 12, right: 15),
-                        hintText: 'Enter Your Phone Number (With Country Code)',
+                        hintText: 'Enter Your Phone Number',
                         hintStyle: TextStyle(
                           color: Color(0xffC9C9C9),
                         ),
@@ -221,10 +180,5 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         ],
       ),
     );
-  }
-
-  List<Country> getCountryCode(String json) {
-    List<dynamic> raw = convert.jsonDecode(json);
-    return raw.map((e) => new Country.fromJson(e)).toList();
   }
 }
