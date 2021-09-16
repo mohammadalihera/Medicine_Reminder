@@ -1,5 +1,6 @@
 import 'package:Vitals/view/pages/home/home_page.dart';
 import 'package:Vitals/view/pages/sign_up/sign_up.dart';
+import 'package:country_code_picker/country_localizations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,12 @@ class MyApp extends StatelessWidget {
     }
 
     return MaterialApp(
+      supportedLocales: [
+        Locale('en', 'US'),
+      ],
+      localizationsDelegates: [
+        CountryLocalizations.delegate
+      ],
       debugShowCheckedModeBanner: false,
       title: 'Vitals',
       theme: ThemeData(
