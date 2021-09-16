@@ -12,8 +12,15 @@ class TextFieldWidget extends StatefulWidget {
 
 class _TextFieldWidgetState extends State<TextFieldWidget> {
   final _phoneController = TextEditingController();
+  TextEditingController _codeController = TextEditingController();
 
   PhoneAuth phoneAuthInstance = new PhoneAuth();
+
+  @override
+  void initState() {
+    _codeController.text = '+880';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +65,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                           left: MediaQuery.of(context).size.width * 0.025,
                         ),
                         child: CountryCodePicker(
+                          padding: EdgeInsets.only(bottom: 0, top: 0),
                           initialSelection: 'BD',
                           showCountryOnly: true,
                           showDropDownButton: true,
@@ -80,7 +88,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                           hideSearch: true,
                           alignLeft: true,
                           onChanged: (countryCode) {
-                            print(countryCode);
+                            updateCountryCode(countryCode);
                           },
                         ),
                       ),
@@ -90,66 +98,132 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               ],
             ),
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 60,
-            margin: EdgeInsets.only(
-              top: 50,
-              // 15
-            ),
-            child: Stack(
-              children: <Widget>[
-                Positioned(
-                  top: 7,
-                  left: MediaQuery.of(context).size.width * 0.097,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * .8,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                      border: Border.all(
-                        color: kPrimaryColor,
-                      ),
-                    ),
-                    child: TextFormField(
-                      keyboardType: TextInputType.phone,
-                      controller: _phoneController,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        fillColor: Colors.white,
-                        focusedBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.only(
-                            left: 15, bottom: 12, top: 12, right: 15),
-                        hintText: 'Enter Your Phone Number',
-                        hintStyle: TextStyle(
-                          color: Color(0xffC9C9C9),
+          Row(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.32,
+                height: 60,
+                margin: EdgeInsets.only(
+                  top: 5,
+                  // 15
+                ),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      top: 7,
+                      left: MediaQuery.of(context).size.width * 0.097,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * .22,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                          border: Border.all(
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                        child: TextFormField(
+                          keyboardType: TextInputType.phone,
+                          controller: _codeController,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            fillColor: Colors.white,
+                            focusedBorder: InputBorder.none,
+                            contentPadding: EdgeInsets.only(
+                                left: 15, bottom: 12, top: 12, right: 15),
+                            hintText: _codeController.toString(),
+                            hintStyle: TextStyle(
+                              color: Color(0xffC9C9C9),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-                Positioned(
-                  top: -4,
-                  left: MediaQuery.of(context).size.width * 0.12,
-                  child: Container(
-                    width: 65,
-                    height: 21,
-                    color: Color(0xffEDF7FF),
-                    child: Center(
-                      child: Text(
-                        'Number',
-                        style: TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
+                    Positioned(
+                      top: -4,
+                      left: MediaQuery.of(context).size.width * 0.12,
+                      child: Container(
+                        width: 50,
+                        height: 21,
+                        color: Color(0xffEDF7FF),
+                        child: Center(
+                          child: Text(
+                            'Code',
+                            style: TextStyle(
+                                color: kPrimaryColor,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.65,
+                height: 60,
+                margin: EdgeInsets.only(
+                  top: 5,
+                  // left: MediaQuery.of(context).size.width * 0.35,
+                  // 15
+                ),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      top: 7,
+                      // left: MediaQuery.of(context).size.width * 0.02,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * .6,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                          border: Border.all(
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                        child: TextFormField(
+                          keyboardType: TextInputType.phone,
+                          controller: _phoneController,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            fillColor: Colors.white,
+                            focusedBorder: InputBorder.none,
+                            contentPadding: EdgeInsets.only(
+                                left: 15, bottom: 12, top: 12, right: 15),
+                            hintText: 'Your Phone Number',
+                            hintStyle: TextStyle(
+                              color: Color(0xffC9C9C9),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: -4,
+                      left: MediaQuery.of(context).size.width * 0.015,
+                      child: Container(
+                        width: 65,
+                        height: 21,
+                        color: Color(0xffEDF7FF),
+                        child: Center(
+                          child: Text(
+                            'Number',
+                            style: TextStyle(
+                                color: kPrimaryColor,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
           SizedBox(height: 50),
           InkWell(
@@ -180,5 +254,11 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         ],
       ),
     );
+  }
+
+  void updateCountryCode(CountryCode countryCode) {
+    setState(() {
+      _codeController.text = countryCode.toString();
+    });
   }
 }
