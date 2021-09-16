@@ -13,8 +13,11 @@ class TextFieldWidget extends StatefulWidget {
 class _TextFieldWidgetState extends State<TextFieldWidget> {
   final _phoneController = TextEditingController();
   TextEditingController _codeController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   PhoneAuth phoneAuthInstance = new PhoneAuth();
+
+  Color validatorBorderColor = kPrimaryColor;
 
   @override
   void initState() {
@@ -124,6 +127,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                           ),
                         ),
                         child: TextFormField(
+                          enabled: false,
                           keyboardType: TextInputType.phone,
                           controller: _codeController,
                           decoration: InputDecoration(
@@ -182,21 +186,42 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                             Radius.circular(10),
                           ),
                           border: Border.all(
-                            color: kPrimaryColor,
+                            color: validatorBorderColor,
                           ),
                         ),
-                        child: TextFormField(
-                          keyboardType: TextInputType.phone,
-                          controller: _phoneController,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            fillColor: Colors.white,
-                            focusedBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 12, top: 12, right: 15),
-                            hintText: 'Your Phone Number',
-                            hintStyle: TextStyle(
-                              color: Color(0xffC9C9C9),
+                        child: Form(
+                          key: _formKey,
+                          child: TextFormField(
+                            keyboardType: TextInputType.phone,
+                            controller: _phoneController,
+                            validator: (text) {
+                              if (text == null || text.isEmpty) {
+                                setState(() {
+                                  validatorBorderColor = Colors.red;
+                                });
+                              }
+                              if (text!.length < 5) {
+                                setState(() {
+                                  validatorBorderColor = Colors.red;
+                                });
+                              }
+
+                              if (text.length >= 5) {
+                                setState(() {
+                                  validatorBorderColor = kPrimaryColor;
+                                });
+                              }
+                            },
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              fillColor: Colors.white,
+                              focusedBorder: InputBorder.none,
+                              contentPadding: EdgeInsets.only(
+                                  left: 15, bottom: 12, top: 12, right: 15),
+                              hintText: 'Your Phone Number',
+                              hintStyle: TextStyle(
+                                color: Color(0xffC9C9C9),
+                              ),
                             ),
                           ),
                         ),
@@ -213,7 +238,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                           child: Text(
                             'Number',
                             style: TextStyle(
-                                color: kPrimaryColor,
+                                color: validatorBorderColor,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -228,10 +253,15 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           SizedBox(height: 50),
           InkWell(
             onTap: () {
-              final phone = _phoneController.text.trim();
-              print(phone.toString());
-              phoneAuthInstance.phoneAuth(phone, context);
-              print(phone.toString());
+              if (_formKey.currentState!.validate()) {
+                final rawPhone = _phoneController.text.trim();
+                final code = _codeController.text;
+                final phoneNumber = code + rawPhone;
+                phoneAuthInstance.phoneAuth(phoneNumber, context);
+                print(phoneNumber.toString());
+              } else {
+                print('invalid number');
+              }
             },
             child: Container(
               decoration: BoxDecoration(
