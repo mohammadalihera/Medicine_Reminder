@@ -6,34 +6,37 @@ import 'package:get/get.dart';
 class GetMedicineController extends GetxController {
   List<Vital> selectedVital = [];
   List<Vital> allVital = [];
-  DateTime selectedDate= DateTime(DateTime.now().year,DateTime.now().month,DateTime.now().day);
+  Map<DateTime, List<Vital>> vital = {};
+  DateTime selectedDate =
+      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
   void getAllVitalFromDb() async {
     allVital = await Repository.getAllVitals();
-  }
-
-  List<Vital> getSelectedVital(DateTime date) {
-    print(date);
-    getAllVitalFromDb();
-    List<Vital> selectedVital = [];
+    allVital.sort((a, b) => a.date.compareTo(b.date));
+    int k = 0;
     for (int i = 0; i < allVital.length; ++i) {
-      if (DateTime.fromMillisecondsSinceEpoch(allVital[i].date).day ==
-              date.day &&
-          DateTime.fromMillisecondsSinceEpoch(allVital[i].date).month ==
-              date.month &&
-          DateTime.fromMillisecondsSinceEpoch(allVital[i].date).year ==
-              date.year) {
-        print('added');
-        selectedVital.add(allVital[i]);
-      } else {
-        print('failed');
-        print(DateTime.fromMillisecondsSinceEpoch(allVital[i].date));
-        print(date);
+      print('----------------------------++++++++++++++++++++++++++++++');
+
+      DateTime mapDate = DateTime(
+          DateTime.fromMillisecondsSinceEpoch(allVital[i].date).year,
+          DateTime.fromMillisecondsSinceEpoch(allVital[i].date).month,
+          DateTime.fromMillisecondsSinceEpoch(allVital[i].date).day);
+      print(mapDate);
+      if (!vital.containsKey(mapDate)) {
+        vital[mapDate] = [allVital[i]];
+        k++;
+      } else if (allVital[i].date == allVital[i - 1].date) {
+        vital[mapDate]!.add(allVital[i]);
       }
+
+      print(vital[mapDate]);
     }
-    print(selectedVital);
-     update();
-    return selectedVital;
-   
   }
 
+  getSelectedVital(DateTime date) {
+    DateTime eventDate = DateTime(date.year, date.month, date.day);
+    getAllVitalFromDb();
+    selectedVital = vital[eventDate]??[];
+    update();
+    return vital[eventDate] ?? [];
+  }
 }

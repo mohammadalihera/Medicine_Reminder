@@ -39,9 +39,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
     double afterLeftmargin = dayBox - leftMargin;
     
         return  TableCalendar(
-            eventLoader: (day) {
-              return _getVitalsForDay(day);
-            },
+            eventLoader: (day) =>
+               addmedicineController.getSelectedVital(day),
+            
             calendarStyle: CalendarStyle(
               cellMargin: EdgeInsets.all(5),
               selectedDecoration: BoxDecoration(
@@ -233,9 +233,8 @@ Widget _buildHolidaysMarker() {
   );
 }
 
-List<Vital> _getVitalsForDay(day) {
+List<Vital>? _getVitalsForDay(day) {
   GetMedicineController addmedicineController =
       Get.put(GetMedicineController());
-  List<Vital> data = addmedicineController.getSelectedVital(day);
-  return data;
+  return addmedicineController.getSelectedVital(day);
 }
