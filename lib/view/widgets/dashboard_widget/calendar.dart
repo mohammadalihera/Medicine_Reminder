@@ -20,14 +20,14 @@ class CustomCalendar extends StatefulWidget {
 class _CustomCalendarState extends State<CustomCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
   DateTime _focusedDay = DateTime.now();
-  DateTime? _selectedDay;
+  DateTime _selectedDay = DateTime.now();
   DateTime? selectedDate;
   GetMedicineController addmedicineController =
       Get.put(GetMedicineController());
 
   @override
   void initState() {
-    /*  _calendarController = CalendarController(); */
+    Get.find<GetMedicineController>().selectVitals(DateTime(DateTime.now().year,DateTime.now().month,DateTime.now().day+1,));
     super.initState();
   }
 
@@ -37,11 +37,12 @@ class _CustomCalendarState extends State<CustomCalendar> {
     double dayBox = size.width * 0.143;
     double leftMargin = dayBox * 0.11;
     double afterLeftmargin = dayBox - leftMargin;
-    
-        return  TableCalendar(
-            eventLoader: (day) =>
-               addmedicineController.getSelectedVital(day),
-            
+
+    return GetBuilder<GetMedicineController>(
+        init: GetMedicineController(),
+        builder: (getvitalController) {
+          return TableCalendar(
+            eventLoader: (day) => getvitalController.getSelectedVital(day),
             calendarStyle: CalendarStyle(
               cellMargin: EdgeInsets.all(5),
               selectedDecoration: BoxDecoration(
@@ -167,17 +168,18 @@ class _CustomCalendarState extends State<CustomCalendar> {
             },
             onDaySelected: (selectedDay, focusedDay) {
               if (!isSameDay(_selectedDay, selectedDay)) {
-              //List<Vital> selectedV=  Get.find<GetMedicineController>().getSelectedVital(selectedDay);
+                //List<Vital> selectedV=  Get.find<GetMedicineController>().getSelectedVital(selectedDay);
                 print('----------------------------------------');
-               // print(selectedV);
+                // print(selectedV);
                 // Call `setState()` when updating the selected day
                 setState(() {
                   _selectedDay = selectedDay;
                   _focusedDay = focusedDay;
                   selectedDate = selectedDay;
                   // addmedicineController.getSelectedVital(selectedDate!);
-                  print(_selectedDay);
                 });
+                Get.find<GetMedicineController>().selectVitals(selectedDay);
+                //addmedicineController.selectVitals(selectedDay);
               }
             },
             onFormatChanged: (format) {
@@ -193,7 +195,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
               _focusedDay = focusedDay;
             },
           );
-       
+        });
   }
 }
 

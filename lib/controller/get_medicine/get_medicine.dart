@@ -20,7 +20,7 @@ class GetMedicineController extends GetxController {
           DateTime.fromMillisecondsSinceEpoch(allVital[i].date).year,
           DateTime.fromMillisecondsSinceEpoch(allVital[i].date).month,
           DateTime.fromMillisecondsSinceEpoch(allVital[i].date).day);
-      print(mapDate);
+      //print(mapDate);
       if (!vital.containsKey(mapDate)) {
         vital[mapDate] = [allVital[i]];
         k++;
@@ -28,15 +28,28 @@ class GetMedicineController extends GetxController {
         vital[mapDate]!.add(allVital[i]);
       }
 
-      print(vital[mapDate]);
+     // print(vital[mapDate]);
     }
   }
 
   getSelectedVital(DateTime date) {
     DateTime eventDate = DateTime(date.year, date.month, date.day);
+   // selectedDate = eventDate;
     getAllVitalFromDb();
-    selectedVital = vital[eventDate]??[];
-    update();
+    /* selectedVital = vital[eventDate] ?? []; */
+    print('ppppppppppppppppppppppppppdad');
+    /* print(selectedVital); */
+  //  update();
     return vital[eventDate] ?? [];
+  }
+  
+  selectVitals(DateTime date){
+    DateTime eventDate = DateTime(date.year, date.month, date.day);
+    selectedDate = eventDate;
+    selectedVital = vital[eventDate] ?? [];
+    print('ppppppppppppppppppppppppppdadsssssssssssssssssssssssssssss');
+    print(selectedVital);
+
+    update();
   }
 }
