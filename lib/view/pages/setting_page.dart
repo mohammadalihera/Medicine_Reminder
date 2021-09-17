@@ -1,5 +1,7 @@
+import 'dart:convert';
 
-
+import 'package:Vitals/database/vital_reprository.dart';
+import 'package:Vitals/model/medicine_model.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -8,11 +10,29 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  List<Vital> dataFromJson(String str) =>
+      List<Vital>.from(json.decode(str).map((x) => Vital.vitalMapToObject(x)));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Settings'),),
-      body: Center(child: Text('Settings Page'),),
+      appBar: AppBar(
+        title: Text('Settings'),
+      ),
+      body: InkWell(
+        onTap: () async {
+         
+          List<Vital> data = await Repository.getAllVitals();
+          for(int i=0;i<data.length;++i){
+            print(data[i].name);
+            print(data[i].id);
+            print(DateTime.fromMillisecondsSinceEpoch(data[i].date));
+          }
+          print(data);
+        },
+        child: Center(
+          child: Text('Settings Page'),
+        ),
+      ),
     );
   }
 }

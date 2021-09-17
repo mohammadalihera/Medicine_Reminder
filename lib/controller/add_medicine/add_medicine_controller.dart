@@ -14,7 +14,7 @@ class AddMedicineController extends GetxController {
   late int program;
   late int quantity;
   late String endDate;
-  late bool afterMeal;
+   int afterMeal=0;
   void changeId(int vitalId) {
     id = vitalId;
 
@@ -71,6 +71,7 @@ class AddMedicineController extends GetxController {
 
   void changeProgram(int vitalprog) {
     program = vitalprog;
+    endDate=vitalprog.toString();
 
     update();
   }
@@ -87,7 +88,7 @@ class AddMedicineController extends GetxController {
     update();
   }
 
-  void changeAfterMeal(bool vitalMeal) {
+  void changeAfterMeal(int vitalMeal) {
     afterMeal = vitalMeal;
     update();
   }

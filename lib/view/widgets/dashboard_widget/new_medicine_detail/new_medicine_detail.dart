@@ -4,6 +4,7 @@ import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
 import 'package:Vitals/database/vital_reprository.dart';
 import 'package:Vitals/main.dart';
 import 'package:Vitals/model/medicine_model.dart';
+import 'package:Vitals/view/pages/home/home_page.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_dosage.dart';
@@ -12,6 +13,7 @@ import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicin
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_quantity/medicine_quantity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class NewMedicineDetail extends StatefulWidget {
   @override
@@ -23,7 +25,6 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
   String meal = '';
   AddMedicineController addmedicineController =
       Get.put(AddMedicineController());
-  final Repository _repository = Repository();
 
   double screenWidth = 0;
   double dosageGap = 0;
@@ -116,7 +117,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                               InkWell(
                                 onTap: () {
                                   Get.find<AddMedicineController>()
-                                      .changeAfterMeal(true);
+                                      .changeAfterMeal(1);
                                   setState(() {
                                     meal = 'after';
                                   });
@@ -126,19 +127,19 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                               InkWell(
                                 onTap: () {
                                   Get.find<AddMedicineController>()
-                                      .changeAfterMeal(true);
+                                      .changeAfterMeal(0);
                                   setState(() {
                                     meal = 'before';
                                   });
                                 },
-                                child: BeforeMeal(meal),
+                                child: BeforeMeal(meal,'other'),
                               ),
                             ],
                           ),
                         ),
                         InkWell(
                           onTap: () async {
-                            print(addController.name);
+                            /* print(addController.name);
                             print(addController.doseOne);
                             Vital vital = Vital(
                                 id: Random().nextInt(10000000),
@@ -152,13 +153,25 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 startDate: DateTime.now().toString(),
                                 program: addController.program,
                                 quantity: addController.quantity,
-                                endDate: DateTime.now().toString(),
-                                afterMeal: addController.afterMeal);
+                                afterMeal: addController.afterMeal,
+                                endDate: addController.endDate,
+                                );
 
-                            dynamic result = await _repository.insertData(
+                            dynamic result = await Repository.insertData(
                                 "Vitals", vital.vitalToMap());
 
-                            print(result);
+                            print(result); */
+                            addVital(
+                                addController.name,
+                                addController.doseOne,
+                                addController.doseTwo,
+                                addController.doseThree,
+                                addController.doseFour,
+                                addController.doseFive,
+                                addController.doseSix,
+                                addController.program,
+                                addController.quantity,
+                                addController.afterMeal);
                           },
                           child: Center(
                             child: Container(
@@ -193,5 +206,45 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
             ),
           );
         });
+  }
+}
+
+void addVital(
+  String vName,
+  String doseOne,
+  String doseTwo,
+  String doseThree,
+  String doseFour,
+  String doseFive,
+  String doseSix,
+  int program,
+  int quantity,
+  int afterMeal,
+) async {
+  DateTime newMedicineDate =
+      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+
+  Vital vital = Vital(
+    id: Random().nextInt(10000000),
+    name: vName,
+    doseOne: doseOne,
+    doseTwo: doseTwo,
+    doseThree: doseThree,
+    doseFour: doseFour,
+    doseFive: doseFive,
+    doseSix: doseSix,
+    date: newMedicineDate.millisecondsSinceEpoch,
+    program: program,
+    quantity: quantity,
+    afterMeal: afterMeal,
+  );
+  for (int i = 0; i < vital.program; ++i) {
+    dynamic result = await Repository.insertData("Vitals", vital.vitalToMap());
+    vital.id = Random().nextInt(10000000);
+    newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
+    vital.date = newMedicineDate.millisecondsSinceEpoch;
+
+    print(result);
+    
   }
 }

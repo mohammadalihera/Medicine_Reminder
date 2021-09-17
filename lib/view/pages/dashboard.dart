@@ -1,3 +1,4 @@
+import 'package:Vitals/controller/get_medicine/get_medicine.dart';
 import 'package:Vitals/main.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/calendar.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/dashboard_appbar.dart';
@@ -6,6 +7,7 @@ import 'package:Vitals/view/widgets/dashboard_widget/medicine_info_tile.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class DashBoard extends StatefulWidget {
   int currentIndex;
@@ -16,7 +18,7 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
-  double displayHeight=0;
+  double displayHeight = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -33,25 +35,22 @@ class _DashBoardState extends State<DashBoard> {
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(5))),
-                child: Column(
-                  children: <Widget>[
-                    CustomCalendar('week'),
-                  ],
-                ),
+                child: CustomCalendar('week'),
               ),
-              // SizedBox(height:10),
-              InkWell(
-                onTap: medicineDetail,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30)),
-                    color: Color(0xffEDF7FF),
-                  ),
-                  child: MedicineInfoTile(),
-                ),
-              ),
+              GetBuilder<GetMedicineController>(
+                  init: GetMedicineController(),
+                  builder: (vitalController) {
+                    return Container(
+                      padding: EdgeInsets.only(bottom:vitalController.selectedVital.length<3? 200:100),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30)),
+                        color: Color(0xffEDF7FF),
+                      ),
+                      child: MedicineInfoTile(),
+                    );
+                  })
             ],
           ),
         ),
@@ -87,7 +86,7 @@ class _DashBoardState extends State<DashBoard> {
   }
 
   void medicineDetail() {
-    double modalHeight=0;
+    double modalHeight = 0;
     if (displayHeight < 750) {
       modalHeight = MediaQuery.of(context).size.height * 0.8;
     }
