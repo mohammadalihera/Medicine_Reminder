@@ -24,10 +24,10 @@ class _CustomCalendarState extends State<CustomCalendar> {
   DateTime? selectedDate;
   GetMedicineController addmedicineController =
       Get.put(GetMedicineController());
-
+  List<Vital> calendarvital = [];
   @override
   void initState() {
-    Get.find<GetMedicineController>().selectVitals(DateTime(DateTime.now().year,DateTime.now().month,DateTime.now().day+1,));
+    
     super.initState();
   }
 

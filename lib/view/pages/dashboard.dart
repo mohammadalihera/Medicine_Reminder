@@ -85,7 +85,7 @@ class _DashBoardState extends State<DashBoard> {
         });
   }
 
-  void medicineDetail() {
+/*   void medicineDetail() {
     double modalHeight = 0;
     if (displayHeight < 750) {
       modalHeight = MediaQuery.of(context).size.height * 0.8;
@@ -108,8 +108,8 @@ class _DashBoardState extends State<DashBoard> {
                 topRight: const Radius.circular(35.0),
               ),
             ),
-            child: MedicineDetail(),
+            child: MedicineDetail(vital),
           );
         });
-  }
+  } */
 }

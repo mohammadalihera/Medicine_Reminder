@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
+import 'package:Vitals/controller/get_medicine/get_medicine.dart';
 import 'package:Vitals/database/vital_reprository.dart';
 import 'package:Vitals/main.dart';
 import 'package:Vitals/model/medicine_model.dart';
@@ -25,7 +26,8 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
   String meal = '';
   AddMedicineController addmedicineController =
       Get.put(AddMedicineController());
-
+  GetMedicineController getmedicineController =
+      Get.put(GetMedicineController());
   double screenWidth = 0;
   double dosageGap = 0;
 
@@ -132,7 +134,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                     meal = 'before';
                                   });
                                 },
-                                child: BeforeMeal(meal,'other'),
+                                child: BeforeMeal(meal, 'other'),
                               ),
                             ],
                           ),
@@ -172,6 +174,9 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 addController.program,
                                 addController.quantity,
                                 addController.afterMeal);
+                            Navigator.pop(context);
+                            getmedicineController.getAllVitalFromDb();
+                           
                           },
                           child: Center(
                             child: Container(
@@ -245,6 +250,5 @@ void addVital(
     vital.date = newMedicineDate.millisecondsSinceEpoch;
 
     print(result);
-    
   }
 }

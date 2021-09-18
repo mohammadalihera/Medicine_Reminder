@@ -12,7 +12,7 @@ class GetMedicineController extends GetxController {
   void getAllVitalFromDb() async {
     allVital = await Repository.getAllVitals();
     allVital.sort((a, b) => a.date.compareTo(b.date));
-    int k = 0;
+    
     for (int i = 0; i < allVital.length; ++i) {
       print('----------------------------++++++++++++++++++++++++++++++');
 
@@ -23,8 +23,8 @@ class GetMedicineController extends GetxController {
       //print(mapDate);
       if (!vital.containsKey(mapDate)) {
         vital[mapDate] = [allVital[i]];
-        k++;
-      } else if (allVital[i].date == allVital[i - 1].date) {
+       
+      } else if ( allVital[i].date == allVital[i - 1].date) {
         vital[mapDate]!.add(allVital[i]);
       }
 
