@@ -4,17 +4,17 @@ import 'package:get/get.dart';
 class AddMedicineController extends GetxController {
   late int id;
   late String name;
-   String doseOne = '';
+  String doseOne = '';
   String doseTwo = '';
-   String doseThree = '';
-   String doseFour = '';
-   String doseFive = '';
-   String doseSix = '';
+  String doseThree = '';
+  String doseFour = '';
+  String doseFive = '';
+  String doseSix = '';
   late String startDate;
   late int program;
   late int quantity;
   late String endDate;
-   int afterMeal=0;
+  int afterMeal = 0;
   void changeId(int vitalId) {
     id = vitalId;
 
@@ -71,7 +71,7 @@ class AddMedicineController extends GetxController {
 
   void changeProgram(int vitalprog) {
     program = vitalprog;
-    endDate=vitalprog.toString();
+    endDate = vitalprog.toString();
 
     update();
   }

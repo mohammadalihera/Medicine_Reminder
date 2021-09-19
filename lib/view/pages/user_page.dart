@@ -20,6 +20,8 @@ class _UserPageState extends State<UserPage> {
     String email = '';
 
     if (firebaseUser!.phoneNumber == '') {
+      // TODO: Print user general info when guser is avbailable
+      // print name phone number and other stuff if mobile user is created. with conditional either male or faemal image
       print(firebaseUser);
       // photoURL = firebaseUser!.photoURL!;
       // name = firebaseUser!.displayName!;
