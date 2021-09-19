@@ -174,8 +174,9 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 addController.program,
                                 addController.quantity,
                                 addController.afterMeal);
-                            Navigator.pop(context);
+                           
                             getmedicineController.getAllVitalFromDb();
+                             Navigator.pop(context);
                            
                           },
                           child: Center(
