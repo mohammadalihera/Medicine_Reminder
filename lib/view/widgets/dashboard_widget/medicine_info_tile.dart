@@ -37,7 +37,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                   itemCount: getmedicineController.selectedVital.length,
                   itemBuilder: (_, i) {
                     return InkWell(
-                      onTap: medicineDetail,
+                      onTap:()=> medicineDetail( getmedicineController.selectedVital[i]),
                       child: Card(
                         shadowColor: Colors.blue,
                         elevation: 4,
@@ -120,7 +120,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                   });
             }));
   }
-   void medicineDetail() {
+ Future< dynamic > medicineDetail(Vital vital) {
     double modalHeight = 0;
     if (displayHeight < 750) {
       modalHeight = MediaQuery.of(context).size.height * 0.8;
@@ -128,7 +128,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
     if (displayHeight >= 750) {
       modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.72;
     }
-    showModalBottomSheet(
+  return  showModalBottomSheet(
         isScrollControlled: true,
         isDismissible: true,
         backgroundColor: Colors.transparent,
@@ -143,7 +143,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                 topRight: const Radius.circular(35.0),
               ),
             ),
-            child: MedicineDetail(),
+            child: MedicineDetail(vital),
           );
         });
   }
