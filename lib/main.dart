@@ -18,19 +18,20 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
+
 const MaterialColor kPrimaryColor = const MaterialColor(
-  0xFF3A88DB,
+  0xFF4168EE,
   const <int, Color>{
-    50: const Color(0xFF3A88DB),
-    100: const Color(0xFF3A88DB),
-    200: const Color(0xFF3A88DB),
-    300: const Color(0xFF3A88DB),
-    400: const Color(0xFF3A88DB),
-    500: const Color(0xFF3A88DB),
-    600: const Color(0xFF3A88DB),
-    700: const Color(0xFF3A88DB),
-    800: const Color(0xFF3A88DB),
-    900: const Color(0xFF3A88DB),
+    50: const Color(0xFF4168EE),
+    100: const Color(0xFF4168EE),
+    200: const Color(0xFF4168EE),
+    300: const Color(0xFF4168EE),
+    400: const Color(0xFF4168EE),
+    500: const Color(0xFF4168EE),
+    600: const Color(0xFF4168EE),
+    700: const Color(0xFF4168EE),
+    800: const Color(0xFF4168EE),
+    900: const Color(0xFF4168EE),
   },
 );
 
