@@ -28,39 +28,44 @@ class _DashBoardState extends State<DashBoard> {
       backgroundColor: kPrimaryColor,
       body: Container(
         child: SingleChildScrollView(
-            child: GetBuilder<GetMedicineController>(
-                init: GetMedicineController(),
-                builder: (refreshTabController) {
-                  return Column(
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.only(top: 50, bottom: 10),
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5))),
-                        child: CustomCalendar('week'),
+          child: GetBuilder<GetMedicineController>(
+            init: GetMedicineController(),
+            builder: (refreshTabController) {
+              return Column(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(top: 50, bottom: 10),
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
                       ),
-                      GetBuilder<GetMedicineController>(
-                          init: GetMedicineController(),
-                          builder: (vitalController) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  bottom:
-                                      vitalController.selectedVital.length < 3
-                                          ? 200
-                                          : 100),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(30),
-                                    topRight: Radius.circular(30)),
-                                color: Color(0xffEDF7FF),
-                              ),
-                              child: MedicineInfoTile(),
-                            );
-                          })
-                    ],
-                  );
-                })),
+                    ),
+                    child: CustomCalendar('week'),
+                  ),
+                  GetBuilder<GetMedicineController>(
+                      init: GetMedicineController(),
+                      builder: (vitalController) {
+                        return Container(
+                          padding: EdgeInsets.only(
+                              bottom: vitalController.selectedVital.length < 3
+                                  ? 200
+                                  : 100),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30),
+                              topRight: Radius.circular(30),
+                            ),
+                            color: Color(0xffEDF7FF),
+                          ),
+                          child: MedicineInfoTile(),
+                        );
+                      })
+                ],
+              );
+            },
+          ),
+        ),
       ),
       /* floatingActionButton: FloatingActionButton(
         onPressed: addMedicine,
