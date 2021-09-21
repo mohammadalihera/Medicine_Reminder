@@ -13,8 +13,8 @@ class GetMedicineController extends GetxController {
     allVital = await Repository.getAllVitals();
     allVital.sort((a, b) => a.date.compareTo(b.date));
     for (int i = 0; i < allVital.length; ++i) {
-      print('----------------------------++++++++++++++++++++++++++++++');
-      print(allVital[i].name);
+      // print('----------------------------++++++++++++++++++++++++++++++');
+      // print(allVital[i].name);
       DateTime mapDate = DateTime(
           DateTime.fromMillisecondsSinceEpoch(allVital[i].date).year,
           DateTime.fromMillisecondsSinceEpoch(allVital[i].date).month,
@@ -22,7 +22,7 @@ class GetMedicineController extends GetxController {
       //print(mapDate);
       if (!vital.containsKey(mapDate)) {
         vital[mapDate] = [allVital[i]];
-      } else if (allVital[i].date == allVital[i - 1].date) {
+      } else if (allVital[i].date == allVital[i].date) {
         vital[mapDate]!.add(allVital[i]);
       }
       
@@ -34,7 +34,7 @@ class GetMedicineController extends GetxController {
   getSelectedVital(DateTime date) {
     DateTime eventDate = DateTime(date.year, date.month, date.day);
     
-    print(eventDate);
+    // print(eventDate);
     // selectedDate = eventDate;
     getAllVitalFromDb();
 

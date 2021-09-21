@@ -8,7 +8,8 @@ import 'package:sms_autofill/sms_autofill.dart';
 class PhoneAuth extends StatelessWidget {
   const PhoneAuth({Key? key}) : super(key: key);
 
-  Future<bool> phoneAuth(String phone, BuildContext context, String signCode) async {
+  Future<bool> phoneAuth(
+      String phone, BuildContext context, String signCode) async {
     await Firebase.initializeApp();
     print(phone.toString() + "f1");
     final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -24,6 +25,7 @@ class PhoneAuth extends StatelessWidget {
         User? user = result.user;
         if (user != null) {
           print(phone.toString() + "f3");
+          print(user);
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
