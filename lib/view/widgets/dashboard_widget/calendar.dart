@@ -21,13 +21,13 @@ class _CustomCalendarState extends State<CustomCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay = DateTime.now();
-  DateTime? selectedDate;
+  DateTime selectedDate=DateTime.now();
   GetMedicineController addmedicineController =
       Get.put(GetMedicineController());
   List<Vital> calendarvital = [];
   @override
   void initState() {
-    
+   
     super.initState();
   }
 
@@ -37,10 +37,10 @@ class _CustomCalendarState extends State<CustomCalendar> {
     double dayBox = size.width * 0.143;
     double leftMargin = dayBox * 0.11;
     double afterLeftmargin = dayBox - leftMargin;
-
     return GetBuilder<GetMedicineController>(
         init: GetMedicineController(),
         builder: (getvitalController) {
+         
           return TableCalendar(
             eventLoader: (day) => getvitalController.getSelectedVital(day),
             calendarStyle: CalendarStyle(
@@ -159,6 +159,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
             focusedDay: _focusedDay,
             calendarFormat: _calendarFormat,
             selectedDayPredicate: (day) {
+              
               // Use `selectedDayPredicate` to determine which day is currently selected.
               // If this returns true, then `day` will be marked as selected.
 
