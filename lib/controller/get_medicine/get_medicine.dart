@@ -25,16 +25,17 @@ class GetMedicineController extends GetxController {
       } else if (allVital[i].date == allVital[i].date) {
         vital[mapDate]!.add(allVital[i]);
       }
-      
+
       // print(vital[mapDate]);
     }
+    selectVitals(selectedDate);
     update();
   }
 
   getSelectedVital(DateTime date) {
     DateTime eventDate = DateTime(date.year, date.month, date.day);
-    
-    // print(eventDate);
+
+    print(eventDate);
     // selectedDate = eventDate;
     getAllVitalFromDb();
 
@@ -45,7 +46,6 @@ class GetMedicineController extends GetxController {
     DateTime eventDate = DateTime(date.year, date.month, date.day);
     selectedDate = eventDate;
     selectedVital = vital[eventDate] ?? [];
-    
 
     update();
   }
