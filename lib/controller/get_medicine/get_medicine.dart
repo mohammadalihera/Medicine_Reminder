@@ -35,9 +35,9 @@ class GetMedicineController extends GetxController {
   getSelectedVital(DateTime date) {
     DateTime eventDate = DateTime(date.year, date.month, date.day);
 
-    print(eventDate);
+    // print(eventDate);
     // selectedDate = eventDate;
-    getAllVitalFromDb();
+    // getAllVitalFromDb();
 
     return vital[eventDate] ?? [];
   }

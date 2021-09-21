@@ -39,7 +39,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   Icon(
                     Icons.arrow_right_alt_sharp,
-                    color: Colors.blue,
+                    color: kPrimaryColor,
                     size: 30,
                   )
                 ],
