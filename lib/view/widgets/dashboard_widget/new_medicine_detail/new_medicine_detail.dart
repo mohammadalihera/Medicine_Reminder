@@ -173,10 +173,9 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 addController.doseSix,
                                 addController.program,
                                 addController.quantity,
-                                addController.afterMeal);
+                                addController.afterMeal,context);
                            
-                            getmedicineController.getAllVitalFromDb();
-                             Navigator.pop(context);
+                             
                            
                           },
                           child: Center(
@@ -226,6 +225,7 @@ void addVital(
   int program,
   int quantity,
   int afterMeal,
+  context
 ) async {
   DateTime newMedicineDate =
       DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
@@ -239,17 +239,18 @@ void addVital(
     doseFour: doseFour,
     doseFive: doseFive,
     doseSix: doseSix,
-    date: newMedicineDate.millisecondsSinceEpoch,
+    date: newMedicineDate.millisecondsSinceEpoch.toString(),
     program: program,
     quantity: quantity,
     afterMeal: afterMeal,
   );
   for (int i = 0; i < vital.program; ++i) {
-    dynamic result = await Repository.insertData("Vitals", vital.vitalToMap());
-    vital.id = Random().nextInt(10000000);
+   
     newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
-    vital.date = newMedicineDate.millisecondsSinceEpoch;
+    vital.date = vital.date+','+newMedicineDate.millisecondsSinceEpoch.toString();
 
-    print(result);
+    
   }
+   dynamic result = await Repository.insertData("Vitals", vital.vitalToMap());
+   Navigator.pop(context);
 }
