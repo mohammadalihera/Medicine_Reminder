@@ -75,18 +75,22 @@ class PhoneAuth extends StatelessWidget {
                         verificationId: verificationId,
                         smsCode: code,
                       );
-                      Navigator.of(context).pop();
+                      // Navigator.of(context).pop();
                       UserCredential result =
                           await _auth.signInWithCredential(credential);
                       User? user = result.user;
                       if (user != null) {
                         print(user);
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Dashboard(),
-                          ),
-                        );
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => Dashboard()),
+                            (Route<dynamic> route) => false);
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => Dashboard(),
+                        //   ),
+                        // );
                       } else {
                         print('Error');
                       }
