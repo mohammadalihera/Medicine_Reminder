@@ -269,7 +269,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Colors.blue,
+                color: kPrimaryColor,
               ),
               margin: EdgeInsets.only(left: 33, right: 33),
               height: 50,

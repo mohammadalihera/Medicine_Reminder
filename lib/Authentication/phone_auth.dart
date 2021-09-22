@@ -72,11 +72,15 @@ class PhoneAuth extends StatelessWidget {
                     onPressed: () async {
                       final code = _codeController.text.trim();
                       AuthCredential credential = PhoneAuthProvider.credential(
-                          verificationId: verificationId, smsCode: code);
+                        verificationId: verificationId,
+                        smsCode: code,
+                      );
+                      Navigator.of(context).pop();
                       UserCredential result =
                           await _auth.signInWithCredential(credential);
                       User? user = result.user;
                       if (user != null) {
+                        print(user);
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -94,7 +98,10 @@ class PhoneAuth extends StatelessWidget {
           );
         }
       },
-      codeAutoRetrievalTimeout: (String verificationId) {},
+      codeAutoRetrievalTimeout: (String verificationId) {
+        verificationId = verificationId;
+        print(verificationId);
+      },
     );
 
     return true;
