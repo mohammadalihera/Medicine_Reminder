@@ -40,7 +40,6 @@ class _CustomCalendarState extends State<CustomCalendar> {
     return GetBuilder<GetMedicineController>(
         init: GetMedicineController(),
         builder: (getvitalController) {
-         
           return TableCalendar(
             eventLoader: (day) => getvitalController.getSelectedVital(day),
             calendarStyle: CalendarStyle(
@@ -179,8 +178,8 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   selectedDate = selectedDay;
                   // addmedicineController.getSelectedVital(selectedDate!);
                 });
-                Get.find<GetMedicineController>().selectVitals(selectedDay);
-                //addmedicineController.selectVitals(selectedDay);
+                //Get.find<GetMedicineController>().selectVitals(selectedDay);
+                addmedicineController.selectVitals(selectedDay);
               }
             },
             onFormatChanged: (format) {
