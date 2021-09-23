@@ -72,17 +72,25 @@ class PhoneAuth extends StatelessWidget {
                     onPressed: () async {
                       final code = _codeController.text.trim();
                       AuthCredential credential = PhoneAuthProvider.credential(
-                          verificationId: verificationId, smsCode: code);
+                        verificationId: verificationId,
+                        smsCode: code,
+                      );
+                      // Navigator.of(context).pop();
                       UserCredential result =
                           await _auth.signInWithCredential(credential);
                       User? user = result.user;
                       if (user != null) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Dashboard(),
-                          ),
-                        );
+                        print(user);
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => Dashboard()),
+                            (Route<dynamic> route) => false);
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => Dashboard(),
+                        //   ),
+                        // );
                       } else {
                         print('Error');
                       }
@@ -94,7 +102,10 @@ class PhoneAuth extends StatelessWidget {
           );
         }
       },
-      codeAutoRetrievalTimeout: (String verificationId) {},
+      codeAutoRetrievalTimeout: (String verificationId) {
+        verificationId = verificationId;
+        print(verificationId);
+      },
     );
 
     return true;

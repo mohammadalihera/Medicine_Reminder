@@ -36,13 +36,16 @@ Future logout(BuildContext context) async {
   // await googleSignIn.disconnect();
   await FirebaseAuth.instance.signOut();
   print('loggin out');
-  Navigator.of(context).pushReplacement(
-    MaterialPageRoute(
-      fullscreenDialog: true,
-      builder: (context) {
-        return SignUpPage();
-      },
-    ),
-  );
+  Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => SignUpPage()),
+      (Route<dynamic> route) => false);
+  // Navigator.of(context).pushReplacement(
+  //   MaterialPageRoute(
+  //     fullscreenDialog: true,
+  //     builder: (context) {
+  //       return SignUpPage();
+  //     },
+  //   ),
+  // );
   // Get.to(SignUpPage());
 }
