@@ -9,7 +9,7 @@ class Vital {
   String doseFour;
   String doseFive;
   String doseSix;
-  int date;
+  String date;
   int program;
   int quantity;
 

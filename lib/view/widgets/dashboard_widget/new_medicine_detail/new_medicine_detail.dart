@@ -141,28 +141,6 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                         ),
                         InkWell(
                           onTap: () async {
-                            /* print(addController.name);
-                            print(addController.doseOne);
-                            Vital vital = Vital(
-                                id: Random().nextInt(10000000),
-                                name: addController.name,
-                                doseOne: addController.doseOne,
-                                doseTwo: addController.doseTwo,
-                                doseThree: addController.doseThree,
-                                doseFour: addController.doseFour,
-                                doseFive: addController.doseFive,
-                                doseSix: addController.doseSix,
-                                startDate: DateTime.now().toString(),
-                                program: addController.program,
-                                quantity: addController.quantity,
-                                afterMeal: addController.afterMeal,
-                                endDate: addController.endDate,
-                                );
-
-                            dynamic result = await Repository.insertData(
-                                "Vitals", vital.vitalToMap());
-
-                            print(result); */
                             addVital(
                                 addController.name,
                                 addController.doseOne,
@@ -173,11 +151,8 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 addController.doseSix,
                                 addController.program,
                                 addController.quantity,
-                                addController.afterMeal);
-                           
-                            getmedicineController.getAllVitalFromDb();
-                             Navigator.pop(context);
-                           
+                                addController.afterMeal,
+                                context);
                           },
                           child: Center(
                             child: Container(
@@ -216,19 +191,21 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
 }
 
 void addVital(
-  String vName,
-  String doseOne,
-  String doseTwo,
-  String doseThree,
-  String doseFour,
-  String doseFive,
-  String doseSix,
-  int program,
-  int quantity,
-  int afterMeal,
-) async {
+    String vName,
+    String doseOne,
+    String doseTwo,
+    String doseThree,
+    String doseFour,
+    String doseFive,
+    String doseSix,
+    int program,
+    int quantity,
+    int afterMeal,
+    context) async {
   DateTime newMedicineDate =
       DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  GetMedicineController getmedicineController =
+      Get.put(GetMedicineController());
 
   Vital vital = Vital(
     id: Random().nextInt(10000000),
@@ -239,17 +216,17 @@ void addVital(
     doseFour: doseFour,
     doseFive: doseFive,
     doseSix: doseSix,
-    date: newMedicineDate.millisecondsSinceEpoch,
+    date: newMedicineDate.millisecondsSinceEpoch.toString(),
     program: program,
     quantity: quantity,
     afterMeal: afterMeal,
   );
   for (int i = 0; i < vital.program; ++i) {
-    dynamic result = await Repository.insertData("Vitals", vital.vitalToMap());
-    vital.id = Random().nextInt(10000000);
     newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
-    vital.date = newMedicineDate.millisecondsSinceEpoch;
-
-    print(result);
+    vital.date =
+        vital.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();
   }
+  dynamic result = await Repository.insertData("Vitals", vital.vitalToMap());
+  getmedicineController.getAllVitalFromDb();
+  Navigator.pop(context);
 }
