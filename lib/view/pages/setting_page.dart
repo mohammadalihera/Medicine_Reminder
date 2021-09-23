@@ -20,12 +20,22 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       body: InkWell(
         onTap: () async {
-         
+         DateTime newMedicineDate =
+      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+      print(newMedicineDate.toString());
           List<Vital> data = await Repository.getAllVitals();
           for(int i=0;i<data.length;++i){
             print(data[i].name);
             print(data[i].id);
-            print(DateTime.fromMillisecondsSinceEpoch(data[i].date));
+            print(data[i].date.toString());
+            List<String> dbDates= data[i].date.split(',');
+            print(int.parse(dbDates[0]));
+            int d=int.parse(dbDates[1]);
+            DateTime mapDate = DateTime(
+          DateTime.fromMillisecondsSinceEpoch(d).year,
+          DateTime.fromMillisecondsSinceEpoch(d).month,
+          DateTime.fromMillisecondsSinceEpoch(d).day);
+          print(mapDate);
           }
           print(data);
         },

@@ -11,22 +11,29 @@ class GetMedicineController extends GetxController {
       DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
   void getAllVitalFromDb() async {
     allVital = await Repository.getAllVitals();
-    allVital.sort((a, b) => a.date.compareTo(b.date));
+    // allVital.sort((a, b) => a.date.compareTo(b.date));
     for (int i = 0; i < allVital.length; ++i) {
-      // print('----------------------------++++++++++++++++++++++++++++++');
-      // print(allVital[i].name);
-      DateTime mapDate = DateTime(
-          DateTime.fromMillisecondsSinceEpoch(allVital[i].date).year,
-          DateTime.fromMillisecondsSinceEpoch(allVital[i].date).month,
-          DateTime.fromMillisecondsSinceEpoch(allVital[i].date).day);
-      //print(mapDate);
-      if (!vital.containsKey(mapDate)) {
-        vital[mapDate] = [allVital[i]];
-      } else if (allVital[i].date == allVital[i].date) {
-        vital[mapDate]!.add(allVital[i]);
+      List<String> dbDates = allVital[i].date.split(',');
+      for (int j = 0; j < dbDates.length; ++j) {
+        int dateInt = int.parse(dbDates[j]);
+        DateTime mapDate = DateTime(
+            DateTime.fromMillisecondsSinceEpoch(dateInt).year,
+            DateTime.fromMillisecondsSinceEpoch(dateInt).month,
+            DateTime.fromMillisecondsSinceEpoch(dateInt).day);
+
+        if (!vital.containsKey(mapDate)) {
+          vital[mapDate] = [allVital[i]];
+        } else  {
+          vital[mapDate]!.add(allVital[i]);
+          print(vital[mapDate]);
+        }
+
       }
 
+      //print(mapDate);
+
       // print(vital[mapDate]);
+
     }
     selectVitals(selectedDate);
     update();
@@ -35,7 +42,7 @@ class GetMedicineController extends GetxController {
   getSelectedVital(DateTime date) {
     DateTime eventDate = DateTime(date.year, date.month, date.day);
 
-    print(eventDate);
+   // print(eventDate);
     // selectedDate = eventDate;
     getAllVitalFromDb();
 
