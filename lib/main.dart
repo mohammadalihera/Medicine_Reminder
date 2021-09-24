@@ -18,7 +18,6 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-
 const MaterialColor kPrimaryColor = const MaterialColor(
   0xFF4168EE,
   const <int, Color>{
@@ -54,14 +53,12 @@ class MyApp extends StatelessWidget {
       print('NOT logged in');
       firstWidget = SignUpPage();
     }
-    
+
     return MaterialApp(
       supportedLocales: [
         Locale('en', 'US'),
       ],
-      localizationsDelegates: [
-        CountryLocalizations.delegate
-      ],
+      localizationsDelegates: [CountryLocalizations.delegate],
       debugShowCheckedModeBanner: false,
       title: 'Vitals',
       theme: ThemeData(
@@ -70,7 +67,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Poppins',
       ),
-      home:Dashboard(),
+      home: firstWidget,
     );
   }
 }

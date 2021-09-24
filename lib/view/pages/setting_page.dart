@@ -32,6 +32,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 DateTime.fromMillisecondsSinceEpoch(d).month,
                 DateTime.fromMillisecondsSinceEpoch(d).day);
           }
+          print('-----------------------');
+          print(data.length);
         },
         child: Center(
           child: Text('Settings Page'),
