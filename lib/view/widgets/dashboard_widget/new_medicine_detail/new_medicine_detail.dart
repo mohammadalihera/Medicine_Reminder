@@ -152,6 +152,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 addController.program,
                                 addController.quantity,
                                 addController.afterMeal,
+                                getmedicineController.selectedDate,
                                 context);
                           },
                           child: Center(
@@ -201,9 +202,9 @@ void addVital(
     int program,
     int quantity,
     int afterMeal,
+    DateTime selectedDate,
     context) async {
-  DateTime newMedicineDate =
-      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  DateTime newMedicineDate = selectedDate;
   GetMedicineController getmedicineController =
       Get.put(GetMedicineController());
 
@@ -221,7 +222,7 @@ void addVital(
     quantity: quantity,
     afterMeal: afterMeal,
   );
-  for (int i = 0; i < vital.program; ++i) {
+  for (int i = 0; i < vital.program-1; ++i) {
     newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
     vital.date =
         vital.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();

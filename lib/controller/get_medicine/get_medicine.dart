@@ -21,7 +21,6 @@ class GetMedicineController extends GetxController {
             DateTime.fromMillisecondsSinceEpoch(dateInt).year,
             DateTime.fromMillisecondsSinceEpoch(dateInt).month,
             DateTime.fromMillisecondsSinceEpoch(dateInt).day);
-
         if (!vital.containsKey(mapDate)) {
           vital[mapDate] = [allVital[i]];
         } else {
