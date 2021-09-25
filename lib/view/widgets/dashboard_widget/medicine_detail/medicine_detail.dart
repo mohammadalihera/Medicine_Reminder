@@ -1,9 +1,12 @@
+import 'package:Vitals/controller/get_medicine/get_medicine.dart';
+import 'package:Vitals/database/vital_reprository.dart';
 import 'package:Vitals/model/medicine_model.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MedicineDetail extends StatefulWidget {
   final Vital vital;
@@ -15,6 +18,8 @@ class MedicineDetail extends StatefulWidget {
 class _MedicineDetailState extends State<MedicineDetail> {
   int dose = 3;
   TextEditingController editingController = new TextEditingController();
+  GetMedicineController getmedicineController =
+      Get.put(GetMedicineController());
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -42,7 +47,9 @@ class _MedicineDetailState extends State<MedicineDetail> {
                       )),
                 ),
                 SizedBox(height: 5),
-              widget.vital.afterMeal==1?  AfterMeal('after', 'other'):BeforeMeal('before', 'other')
+                widget.vital.afterMeal == 1
+                    ? AfterMeal('after', 'other')
+                    : BeforeMeal('before', 'other')
               ],
             ),
           ),
@@ -185,7 +192,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                           ),
                                         )
                                       : SizedBox(),
-                                 widget.vital.doseFive.isNotEmpty
+                                  widget.vital.doseFive.isNotEmpty
                                       ? InkWell(
                                           onTap: () {
                                             //_showDialog('dose5');
@@ -230,7 +237,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                             margin: EdgeInsets.only(right: 5),
                                             child: Center(
                                               child: Text(
-                                                 widget.vital.doseSix,
+                                                widget.vital.doseSix,
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     color: Colors.white),
@@ -266,7 +273,11 @@ class _MedicineDetailState extends State<MedicineDetail> {
                           children: [
                             Container(
                               child: Text(
-                                'Total '+widget.vital.program.toString() +' Days ' + '|' + " ",
+                                'Total ' +
+                                    widget.vital.program.toString() +
+                                    ' Days ' +
+                                    '|' +
+                                    " ",
                                 style: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w600),
@@ -305,7 +316,11 @@ class _MedicineDetailState extends State<MedicineDetail> {
                           children: [
                             Container(
                               child: Text(
-                                'Total '+widget.vital.quantity.toString()+' Pills ' + '|' + " ",
+                                'Total ' +
+                                    widget.vital.quantity.toString() +
+                                    ' Pills ' +
+                                    '|' +
+                                    " ",
                                 style: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w600),
@@ -329,7 +344,11 @@ class _MedicineDetailState extends State<MedicineDetail> {
                 SizedBox(height: 30),
                 Center(
                   child: InkWell(
-                    onTap: null,
+                    onTap: () async {
+                      await Repository.deleteData('Vitals', widget.vital.id);
+                      getmedicineController.getAllVitalFromDb();
+                      Navigator.pop(context);
+                    },
                     child: Container(
                       width: 115,
                       height: 30,
