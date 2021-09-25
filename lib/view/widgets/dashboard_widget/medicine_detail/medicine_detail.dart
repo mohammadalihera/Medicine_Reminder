@@ -115,7 +115,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                             margin: EdgeInsets.only(right: 5),
                                             child: Center(
                                               child: Text(
-                                                'dose time',
+                                                widget.vital.doseTwo,
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     color: Colors.white),
@@ -142,7 +142,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                             margin: EdgeInsets.only(right: 5),
                                             child: Center(
                                               child: Text(
-                                                'dose time',
+                                                widget.vital.doseThree,
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     color: Colors.white),
@@ -176,7 +176,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                             margin: EdgeInsets.only(right: 5),
                                             child: Center(
                                               child: Text(
-                                                'dose time',
+                                                widget.vital.doseFour,
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     color: Colors.white),
@@ -203,7 +203,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                             margin: EdgeInsets.only(right: 5),
                                             child: Center(
                                               child: Text(
-                                                'dose time',
+                                                widget.vital.doseFive,
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     color: Colors.white),
@@ -230,7 +230,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                             margin: EdgeInsets.only(right: 5),
                                             child: Center(
                                               child: Text(
-                                                'dose time',
+                                                 widget.vital.doseSix,
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     color: Colors.white),
