@@ -15,22 +15,22 @@ class _UserPageState extends State<UserPage> {
 
   @override
   Widget build(BuildContext context) {
-    String photoURL = '';
-    String name = '';
-    String email = '';
+    String photoURL = 'k';
+    String name = 'k';
+    String email = 'k';
 
     if (firebaseUser!.email != null) {
       // ignore: todo
       // TODO: Print user general info when guser is avbailable
       // print name phone number and other stuff if mobile user is created. with conditional either male or faemal image
       print(firebaseUser);
-      photoURL = firebaseUser!.photoURL!;
-      name = firebaseUser!.displayName!;
-      email = firebaseUser!.email!;
+      photoURL = firebaseUser?.photoURL ?? 'https://image.pngaaa.com/677/884677-middle.png';
+      name = firebaseUser?.displayName ?? 'UserName';
+      email = firebaseUser?.email ?? 'UserEmail';
     } else {
       photoURL = 'https://image.pngaaa.com/677/884677-middle.png';
-      name = 'K';
-      email = 'k';
+      name = 'UserName';
+      email = firebaseUser?.phoneNumber ?? 'UserPhone';
     }
     return Scaffold(
       backgroundColor: Color(0xffEDF7FF),
