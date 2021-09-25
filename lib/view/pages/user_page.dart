@@ -19,16 +19,18 @@ class _UserPageState extends State<UserPage> {
     String name = 'k';
     String email = 'k';
 
-    if (firebaseUser!.email != null) {
+    if (firebaseUser!.email.toString() != '') {
       // ignore: todo
       // TODO: Print user general info when guser is avbailable
       // print name phone number and other stuff if mobile user is created. with conditional either male or faemal image
       print(firebaseUser);
-      photoURL = firebaseUser?.photoURL ?? 'https://image.pngaaa.com/677/884677-middle.png';
+      photoURL = firebaseUser?.photoURL ??
+          'https://image.pngaaa.com/677/884677-middle.png';
       name = firebaseUser?.displayName ?? 'UserName';
       email = firebaseUser?.email ?? 'UserEmail';
     } else {
-      photoURL = 'https://image.pngaaa.com/677/884677-middle.png';
+      photoURL =
+          'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
       name = 'UserName';
       email = firebaseUser?.phoneNumber ?? 'UserPhone';
     }
