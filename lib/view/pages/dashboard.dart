@@ -46,20 +46,41 @@ class _DashBoardState extends State<DashBoard> {
                   GetBuilder<GetMedicineController>(
                       init: GetMedicineController(),
                       builder: (vitalController) {
-                        return Container(
-                          padding: EdgeInsets.only(
-                              bottom: vitalController.selectedVital.length < 3
-                                  ? 200
-                                  : 100),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30),
-                            ),
-                            color: Color(0xffEDF7FF),
-                          ),
-                          child: MedicineInfoTile(),
-                        );
+                        return vitalController.selectedVital.length > 0
+                            ? Container(
+                                padding: EdgeInsets.only(
+                                    bottom:
+                                        vitalController.selectedVital.length < 3
+                                            ? 200
+                                            : 100),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(30),
+                                    topRight: Radius.circular(30),
+                                  ),
+                                  color: Color(0xffEDF7FF),
+                                ),
+                                child: MedicineInfoTile(),
+                              )
+                            : Container(
+                                height: MediaQuery.of(context).size.height-200,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(30),
+                                    topRight: Radius.circular(30),
+                                  ),
+                                  color: Color(0xffEDF7FF),
+                                ),
+                                child:
+                                    Column(
+                                      children: [
+                                        SizedBox(height: 50,),
+                                        Image.asset('assets/images/no_vital.png'),
+                                        SizedBox(height: 30,),
+                                        Text('NO Vital For this date',style: TextStyle(color:Colors.green,fontSize: 18),)
+                                      ],
+                                    ));
                       })
                 ],
               );
