@@ -31,7 +31,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
   String time_5 = '5th Dose';
   String time_6 = '6th Dose';
   DateTime _dateTime = DateTime.now();
-   AddMedicineController addmedicineController =
+  AddMedicineController addmedicineController =
       Get.put(AddMedicineController());
   @override
   Widget build(BuildContext context) {
@@ -168,6 +168,12 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
                       dosageNumber >= 1
                           ? InkWell(
                               onTap: () {
+                                FocusScopeNode currentFocus =
+                                    FocusScope.of(context);
+
+                                if (!currentFocus.hasPrimaryFocus) {
+                                  currentFocus.unfocus();
+                                }
                                 _showDialog('dose1');
                               },
                               child: Container(
@@ -465,7 +471,7 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
             dose_1 = time;
             time_1 = DateFormat('hh:mm a').format(time);
           });
-         Get.find<AddMedicineController>().changeDone(time_1);
+          Get.find<AddMedicineController>().changeDone(time_1);
         } else if (doseName == 'dose2') {
           setState(() {
             dose_2 = time;

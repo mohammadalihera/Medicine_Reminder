@@ -73,6 +73,7 @@ flutter:
     - assets/images/home.svg
     - assets/images/profile.svg
     - assets/images/settings.svg
+    - assets/images/no_vital.png
     - data/
 
   # An image asset can refer to one or more resolution-specific "variants", see

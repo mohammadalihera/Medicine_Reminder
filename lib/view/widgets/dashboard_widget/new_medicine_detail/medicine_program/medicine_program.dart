@@ -33,7 +33,14 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
             ),
             SizedBox(height: 10),
             InkWell(
-              onTap: _showDialog,
+              onTap: () {
+                FocusScopeNode currentFocus = FocusScope.of(context);
+
+                if (!currentFocus.hasPrimaryFocus) {
+                  currentFocus.unfocus();
+                }
+                _showDialog();
+              },
               child: Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,7 +110,8 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                             setState(() {
                               selectedDays = index;
                             });
-                            Get.find<AddMedicineController>().changeProgram(selectedDays);
+                            Get.find<AddMedicineController>()
+                                .changeProgram(selectedDays);
                           },
                           children: [
                             for (int i = 0; i <= 100; i++)
