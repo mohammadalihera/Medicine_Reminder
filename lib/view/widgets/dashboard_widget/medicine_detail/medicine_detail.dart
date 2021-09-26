@@ -423,19 +423,17 @@ class _MedicineDetailState extends State<MedicineDetail> {
         return AlertDialog(
           title: Row(
             children: [
-              Text('Delete',style:TextStyle(color:Colors.red)),
-              SizedBox(width: 10,),
+              Text('Delete', style: TextStyle(color: Colors.red)),
+              SizedBox(
+                width: 10,
+              ),
               Text(vital.name),
             ],
           ),
-          content: Row(
-            children: [
-              Text("Do you want to delte" + ' ' + vital.name),
-            ],
-          ),
+          content: Text("Do you want to delte" + ' ' + vital.name),
           actions: [
             Card(
-              color:Colors.green,
+              color: Colors.green,
               child: Container(
                 width: 50,
                 height: 30,
@@ -444,7 +442,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Text('NO',style: TextStyle(color: Colors.white)),
+                    child: Text('NO', style: TextStyle(color: Colors.white)),
                   ),
                 ),
               ),
@@ -453,7 +451,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
               width: 10,
             ),
             Card(
-              color:Colors.red,
+              color: Colors.red,
               child: Container(
                 width: 50,
                 height: 30,
@@ -464,12 +462,17 @@ class _MedicineDetailState extends State<MedicineDetail> {
                       getmedicineController.getAllVitalFromDb();
                       Navigator.pop(context);
                     },
-                    child: Text('Yes',style: TextStyle(color: Colors.white),),
+                    child: Text(
+                      'Yes',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ),
             ),
-            SizedBox(width: 10,)
+            SizedBox(
+              width: 10,
+            )
           ],
         );
       },
