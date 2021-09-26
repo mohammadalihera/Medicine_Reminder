@@ -26,6 +26,15 @@ class _DashBoardState extends State<DashBoard> {
 
     return Scaffold(
       backgroundColor: kPrimaryColor,
+      appBar: AppBar(
+        title: Center(
+          child: Text('Welcome, ' + dashname),
+        ),
+        automaticallyImplyLeading: false,
+        backgroundColor: kPrimaryColor,
+        elevation: 0,
+        toolbarHeight: 50,
+      ),
       body: Container(
         child: SingleChildScrollView(
           child: GetBuilder<GetMedicineController>(
@@ -34,7 +43,7 @@ class _DashBoardState extends State<DashBoard> {
               return Column(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.only(top: 50, bottom: 10),
+                    padding: EdgeInsets.only(top: 0, bottom: 10),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(
@@ -44,44 +53,53 @@ class _DashBoardState extends State<DashBoard> {
                     child: CustomCalendar('week'),
                   ),
                   GetBuilder<GetMedicineController>(
-                      init: GetMedicineController(),
-                      builder: (vitalController) {
-                        return vitalController.selectedVital.length > 0
-                            ? Container(
-                                padding: EdgeInsets.only(
-                                    bottom:
-                                        vitalController.selectedVital.length < 3
-                                            ? 300
-                                            : 100),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(30),
-                                    topRight: Radius.circular(30),
-                                  ),
-                                  color: Color(0xffEDF7FF),
+                    init: GetMedicineController(),
+                    builder: (vitalController) {
+                      return vitalController.selectedVital.length > 0
+                          ? Container(
+                              padding: EdgeInsets.only(
+                                  bottom:
+                                      vitalController.selectedVital.length < 3
+                                          ? 300
+                                          : 100),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  topRight: Radius.circular(30),
                                 ),
-                                child: MedicineInfoTile(),
-                              )
-                            : Container(
-                                height: MediaQuery.of(context).size.height-100,
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(30),
-                                    topRight: Radius.circular(30),
-                                  ),
-                                  color: Color(0xffEDF7FF),
+                                color: Color(0xffEDF7FF),
+                              ),
+                              child: MedicineInfoTile(),
+                            )
+                          : Container(
+                              height: MediaQuery.of(context).size.height - 280,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  topRight: Radius.circular(30),
                                 ),
-                                child:
-                                    Column(
-                                      children: [
-                                        SizedBox(height: 20,),
-                                        Image.asset('assets/images/no_vital.png'),
-                                        SizedBox(height: 30,),
-                                        Text('NO Medicines Today',style: TextStyle(color:kPrimaryColor,fontSize: 18),)
-                                      ],
-                                    ));
-                      })
+                                color: Color(0xffEDF7FF),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset('assets/images/no_vital.png'),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Text(
+                                    'No Medicine Added Today',
+                                    style: TextStyle(
+                                      color: kPrimaryColor,
+                                      fontSize: 18,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                    },
+                  )
                 ],
               );
             },

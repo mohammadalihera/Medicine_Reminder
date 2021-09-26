@@ -12,6 +12,8 @@ import 'package:Vitals/controller/sign_in_controller.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sqflite/sqflite.dart';
 
+String dashname = 'User';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -54,6 +56,13 @@ class MyApp extends StatelessWidget {
       firstWidget = SignUpPage();
     }
 
+    if (firebaseUser!.email.toString() != '' &&
+        firebaseUser!.phoneNumber == null) {
+      dashname = firebaseUser!.displayName.toString();
+    } else {
+      dashname = firebaseUser!.phoneNumber.toString();
+    }
+
     return MaterialApp(
       supportedLocales: [
         Locale('en', 'US'),
@@ -67,7 +76,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Poppins',
       ),
-      home: Dashboard(),
+      home: firstWidget,
     );
   }
 }

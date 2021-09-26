@@ -15,27 +15,34 @@ class _UserPageState extends State<UserPage> {
 
   @override
   Widget build(BuildContext context) {
-    String photoURL = '';
-    String name = '';
-    String email = '';
+    String photoURL = 'k';
+    String name = 'k';
+    String email = 'k';
 
-    if (firebaseUser!.email != null) {
+    if (firebaseUser!.email.toString() != '' &&
+        firebaseUser!.phoneNumber == null) {
       // ignore: todo
       // TODO: Print user general info when guser is avbailable
-      // print name phone number and other stuff if mobile user is created. with conditional either male or faemal image
+      // print name phone number and other stuff if mobile user is created. with conditional either male or female image
       print(firebaseUser);
-      photoURL = firebaseUser!.photoURL!;
-      name = firebaseUser!.displayName!;
-      email = firebaseUser!.email!;
+      photoURL = firebaseUser?.photoURL ??
+          'https://image.pngaaa.com/677/884677-middle.png';
+      name = firebaseUser?.displayName ?? 'UserName';
+      email = firebaseUser?.email ?? 'UserEmail';
+      print(dashname);
     } else {
-      photoURL = 'https://image.pngaaa.com/677/884677-middle.png';
-      name = 'K';
-      email = 'k';
+      photoURL =
+          'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
+      name = 'UserName';
+      email = firebaseUser?.phoneNumber ?? 'UserPhone';
+      print(dashname);
     }
     return Scaffold(
       backgroundColor: Color(0xffEDF7FF),
       appBar: AppBar(
-        title: Text('User Profile'),
+        title: Center(
+          child: Text('My Profile'),
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -71,7 +78,7 @@ class _UserPageState extends State<UserPage> {
                 logout(context);
               },
               child: Container(
-                child: Text('LogOut'),
+                child: Text('Log Out'),
               ),
             ),
           ),

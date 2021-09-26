@@ -73,6 +73,7 @@ flutter:
     - assets/images/home.svg
     - assets/images/profile.svg
     - assets/images/settings.svg
+    - assets/images/no_medicine.svg
     - assets/images/no_vital.png
     - data/
 

@@ -21,13 +21,13 @@ class _CustomCalendarState extends State<CustomCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay = DateTime.now();
-  DateTime selectedDate=DateTime.now();
+  DateTime selectedDate = DateTime.now();
   GetMedicineController addmedicineController =
       Get.put(GetMedicineController());
   List<Vital> calendarvital = [];
   @override
   void initState() {
-   addmedicineController.getAllVitalFromDb();
+    addmedicineController.getAllVitalFromDb();
     super.initState();
   }
 
@@ -135,6 +135,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
             headerStyle: HeaderStyle(
+              headerPadding: EdgeInsets.all(0.0),
               leftChevronVisible: true,
               leftChevronIcon: Icon(
                 Icons.keyboard_arrow_left,
@@ -146,9 +147,10 @@ class _CustomCalendarState extends State<CustomCalendar> {
               ),
               titleCentered: true,
               titleTextStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18),
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
+              ),
               formatButtonVisible: false,
               formatButtonShowsNext: true,
             ),
@@ -158,7 +160,6 @@ class _CustomCalendarState extends State<CustomCalendar> {
             focusedDay: _focusedDay,
             calendarFormat: _calendarFormat,
             selectedDayPredicate: (day) {
-              
               // Use `selectedDayPredicate` to determine which day is currently selected.
               // If this returns true, then `day` will be marked as selected.
 
@@ -198,4 +199,3 @@ class _CustomCalendarState extends State<CustomCalendar> {
         });
   }
 }
-
