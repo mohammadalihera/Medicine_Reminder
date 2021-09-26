@@ -193,11 +193,12 @@ class _HomePageState extends State<HomePage> {
                                     curve: Curves.slowMiddle);
                               },
                               child: Container(
-                                  child: SvgPicture.asset(
-                                "assets/images/settings.svg",
-                                height: 20,
-                                width: 20,
-                              )),
+                                child: SvgPicture.asset(
+                                  "assets/images/settings.svg",
+                                  height: 20,
+                                  width: 20,
+                                ),
+                              ),
                             ),
                           ),
                   ],

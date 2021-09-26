@@ -26,6 +26,15 @@ class _DashBoardState extends State<DashBoard> {
 
     return Scaffold(
       backgroundColor: kPrimaryColor,
+      appBar: AppBar(
+        title: Center(
+          child: Text('Welcome, ' + dashname),
+        ),
+        automaticallyImplyLeading: false,
+        backgroundColor: kPrimaryColor,
+        elevation: 0,
+        toolbarHeight: 50,
+      ),
       body: Container(
         child: SingleChildScrollView(
           child: GetBuilder<GetMedicineController>(
@@ -34,7 +43,7 @@ class _DashBoardState extends State<DashBoard> {
               return Column(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.only(top: 50, bottom: 10),
+                    padding: EdgeInsets.only(top: 0, bottom: 10),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(
@@ -63,7 +72,7 @@ class _DashBoardState extends State<DashBoard> {
                               child: MedicineInfoTile(),
                             )
                           : Container(
-                              height: MediaQuery.of(context).size.height - 260,
+                              height: MediaQuery.of(context).size.height - 280,
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
@@ -82,7 +91,9 @@ class _DashBoardState extends State<DashBoard> {
                                   Text(
                                     'No Medicine Added Today',
                                     style: TextStyle(
-                                        color: kPrimaryColor, fontSize: 18),
+                                      color: kPrimaryColor,
+                                      fontSize: 18,
+                                    ),
                                   )
                                 ],
                               ),
