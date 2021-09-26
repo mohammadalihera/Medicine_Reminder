@@ -32,7 +32,14 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
             ),
             SizedBox(height: 10),
             InkWell(
-              onTap: _showDialog,
+              onTap:(){
+                FocusScopeNode currentFocus = FocusScope.of(context);
+
+                if (!currentFocus.hasPrimaryFocus) {
+                  currentFocus.unfocus();
+                }
+                _showDialog();
+              } ,
               child: Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

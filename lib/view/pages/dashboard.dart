@@ -51,7 +51,7 @@ class _DashBoardState extends State<DashBoard> {
                                 padding: EdgeInsets.only(
                                     bottom:
                                         vitalController.selectedVital.length < 3
-                                            ? 200
+                                            ? 300
                                             : 100),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.only(
@@ -63,7 +63,7 @@ class _DashBoardState extends State<DashBoard> {
                                 child: MedicineInfoTile(),
                               )
                             : Container(
-                                height: MediaQuery.of(context).size.height-200,
+                                height: MediaQuery.of(context).size.height-100,
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.only(
@@ -75,10 +75,10 @@ class _DashBoardState extends State<DashBoard> {
                                 child:
                                     Column(
                                       children: [
-                                        SizedBox(height: 50,),
+                                        SizedBox(height: 20,),
                                         Image.asset('assets/images/no_vital.png'),
                                         SizedBox(height: 30,),
-                                        Text('NO Vital For this date',style: TextStyle(color:Colors.green,fontSize: 18),)
+                                        Text('NO Medicines Today',style: TextStyle(color:kPrimaryColor,fontSize: 18),)
                                       ],
                                     ));
                       })

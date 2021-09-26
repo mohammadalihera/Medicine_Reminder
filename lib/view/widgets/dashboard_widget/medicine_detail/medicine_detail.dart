@@ -344,10 +344,12 @@ class _MedicineDetailState extends State<MedicineDetail> {
                 SizedBox(height: 30),
                 Center(
                   child: InkWell(
-                    onTap: () async {
-                      await Repository.deleteData('Vitals', widget.vital.id);
+                    onTap: () {
+                      /* await Repository.deleteData('Vitals', widget.vital.id);
                       getmedicineController.getAllVitalFromDb();
+                      Navigator.pop(context); */
                       Navigator.pop(context);
+                      deletAlert(widget.vital, context);
                     },
                     child: Container(
                       width: 115,
@@ -412,5 +414,65 @@ class _MedicineDetailState extends State<MedicineDetail> {
             child: NewMedicineDetail(),
           );
         });
+  }
+
+  void deletAlert(Vital vital, context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Text('Delete',style:TextStyle(color:Colors.red)),
+              SizedBox(width: 10,),
+              Text(vital.name),
+            ],
+          ),
+          content: Row(
+            children: [
+              Text("Do you want to delte" + ' ' + vital.name),
+            ],
+          ),
+          actions: [
+            Card(
+              color:Colors.green,
+              child: Container(
+                width: 50,
+                height: 30,
+                child: Center(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('NO',style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Card(
+              color:Colors.red,
+              child: Container(
+                width: 50,
+                height: 30,
+                child: Center(
+                  child: InkWell(
+                    onTap: () async {
+                      await Repository.deleteData('Vitals', vital.id);
+                      getmedicineController.getAllVitalFromDb();
+                      Navigator.pop(context);
+                    },
+                    child: Text('Yes',style: TextStyle(color: Colors.white),),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(width: 10,)
+          ],
+        );
+      },
+    );
   }
 }
