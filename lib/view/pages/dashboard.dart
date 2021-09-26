@@ -44,23 +44,51 @@ class _DashBoardState extends State<DashBoard> {
                     child: CustomCalendar('week'),
                   ),
                   GetBuilder<GetMedicineController>(
-                      init: GetMedicineController(),
-                      builder: (vitalController) {
-                        return Container(
-                          padding: EdgeInsets.only(
-                              bottom: vitalController.selectedVital.length < 3
-                                  ? 200
-                                  : 100),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30),
-                            ),
-                            color: Color(0xffEDF7FF),
-                          ),
-                          child: MedicineInfoTile(),
-                        );
-                      })
+                    init: GetMedicineController(),
+                    builder: (vitalController) {
+                      return vitalController.selectedVital.length > 0
+                          ? Container(
+                              padding: EdgeInsets.only(
+                                  bottom:
+                                      vitalController.selectedVital.length < 3
+                                          ? 300
+                                          : 100),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  topRight: Radius.circular(30),
+                                ),
+                                color: Color(0xffEDF7FF),
+                              ),
+                              child: MedicineInfoTile(),
+                            )
+                          : Container(
+                              height: MediaQuery.of(context).size.height - 260,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  topRight: Radius.circular(30),
+                                ),
+                                color: Color(0xffEDF7FF),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset('assets/images/no_vital.png'),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Text(
+                                    'No Medicine Added Today',
+                                    style: TextStyle(
+                                        color: kPrimaryColor, fontSize: 18),
+                                  )
+                                ],
+                              ),
+                            );
+                    },
+                  )
                 ],
               );
             },
