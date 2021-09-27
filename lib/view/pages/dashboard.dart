@@ -1,3 +1,4 @@
+import 'package:Vitals/controller/auth_user_controller.dart';
 import 'package:Vitals/controller/get_medicine/get_medicine.dart';
 import 'package:Vitals/main.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/calendar.dart';
@@ -7,6 +8,7 @@ import 'package:Vitals/view/widgets/dashboard_widget/medicine_info_tile.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class DashBoard extends StatefulWidget {
@@ -18,6 +20,7 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
+  AuthUserController authUserController = Get.put(AuthUserController());
   double displayHeight = 0;
 
   @override
@@ -27,8 +30,13 @@ class _DashBoardState extends State<DashBoard> {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        title: Center(
-          child: Text('Welcome, ' + dashname),
+        title: GetBuilder<AuthUserController>(
+          init: AuthUserController(),
+          builder: (authController) {
+            return Center(
+              child: Text('Welcome, ' + authController.userName),
+            );
+          },
         ),
         automaticallyImplyLeading: false,
         backgroundColor: kPrimaryColor,
