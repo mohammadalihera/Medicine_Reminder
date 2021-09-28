@@ -26,6 +26,7 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     displayHeight = MediaQuery.of(context).size.height;
+    String headerTitle;
 
     return Scaffold(
       backgroundColor: kPrimaryColor,
@@ -33,8 +34,13 @@ class _DashBoardState extends State<DashBoard> {
         title: GetBuilder<AuthUserController>(
           init: AuthUserController(),
           builder: (authController) {
+            if (authController.userName != '' && authController.userPhone == '') {
+              headerTitle = authController.userName;
+            } else {
+              headerTitle = authController.userPhone;
+            }
             return Center(
-              child: Text('Welcome, ' + authController.userName),
+              child: Text('Welcome, ' + headerTitle),
             );
           },
         ),

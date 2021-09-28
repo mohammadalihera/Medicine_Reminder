@@ -1,8 +1,10 @@
+import 'package:Vitals/controller/auth_user_controller.dart';
 import 'package:Vitals/main.dart';
 import 'package:Vitals/view/pages/home/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 class PhoneAuth extends StatelessWidget {
@@ -81,6 +83,21 @@ class PhoneAuth extends StatelessWidget {
                       User? user = result.user;
                       if (user != null) {
                         print(user);
+                        User? firebaseUser = FirebaseAuth.instance.currentUser;
+
+                        // this means phone login
+                        String username =
+                            firebaseUser?.displayName.toString() ??
+                                'Phone User';
+                        String phoneNumber =
+                            firebaseUser!.phoneNumber.toString();
+                        print(phoneNumber);
+                        String image =
+                            'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
+
+                        Get.find<AuthUserController>()
+                            .updateVal(username, '', phoneNumber, image);
+
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
                                 builder: (context) => Dashboard()),

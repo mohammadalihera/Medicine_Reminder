@@ -61,12 +61,16 @@ class MyApp extends StatelessWidget {
 
         Get.find<AuthUserController>().updateVal(username, email, '', image);
       } else {
-        // authUserController.userName =
-        //     firebaseUser?.displayName.toString() ?? 'Phone User Name';
-        // authUserController.userPhone =
-        //     firebaseUser?.phoneNumber.toString() ?? 'Phone Number';
-        // authUserController.imageURL = firebaseUser?.photoURL.toString() ??
-        //     'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
+        // this means phone login
+        String username =
+            firebaseUser?.displayName.toString() ?? 'Phone User Name';
+        String phoneNumber = firebaseUser!.phoneNumber.toString();
+        print(phoneNumber);
+        String image =
+            'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
+
+        Get.find<AuthUserController>()
+            .updateVal(username, '', phoneNumber, image);
       }
       firstWidget = Dashboard();
     } else {
