@@ -1,6 +1,8 @@
 import 'package:Vitals/Authentication/g_auth.dart';
+import 'package:Vitals/controller/auth_user_controller.dart';
 import 'package:Vitals/controller/sign_in_controller.dart';
 import 'package:Vitals/view/pages/home/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Vitals/view/widgets/sign_up_widget/sign_up_text_fields.dart';
 import 'package:get/get.dart';
@@ -16,6 +18,8 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   SignInController signInController = Get.put(SignInController());
+
+  AuthUserController authUserController = Get.put(AuthUserController());
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +103,28 @@ class _SignUpPageState extends State<SignUpPage> {
                           MaterialPageRoute(
                             fullscreenDialog: true,
                             builder: (context) {
+                              // TODO::
+                              User? firebaseUser =
+                                  FirebaseAuth.instance.currentUser;
+                              if (firebaseUser!.email.toString() != '' &&
+                                  firebaseUser.phoneNumber == null) {
+                                // this means google login
+                                String username =
+                                    firebaseUser.displayName.toString();
+                                String email = firebaseUser.email.toString();
+                                String image = firebaseUser.photoURL.toString();
+
+                                Get.find<AuthUserController>()
+                                    .updateVal(username, email, '', image);
+                              } else {
+                                // authUserController.userName =
+                                //     firebaseUser.displayName.toString();
+                                // authUserController.userPhone =
+                                //     firebaseUser.phoneNumber.toString();
+                                // authUserController.imageURL =
+                                //     firebaseUser.photoURL.toString();
+                              }
+
                               return Dashboard();
                             },
                           ),

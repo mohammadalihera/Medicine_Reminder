@@ -1,3 +1,4 @@
+import 'package:Vitals/controller/auth_user_controller.dart';
 import 'package:Vitals/database/vital_reprository.dart';
 import 'package:Vitals/model/medicine_model.dart';
 import 'package:Vitals/view/pages/home/home_page.dart';
@@ -38,6 +39,7 @@ const MaterialColor kPrimaryColor = const MaterialColor(
 
 class MyApp extends StatelessWidget {
   SignInController signInController = Get.put(SignInController());
+  AuthUserController authUserController = Get.put(AuthUserController());
   User? firebaseUser = FirebaseAuth.instance.currentUser;
   Widget firstWidget = SignUpPage();
   @override
@@ -50,18 +52,38 @@ class MyApp extends StatelessWidget {
     if (firebaseUser != null) {
       print('logged in');
       //print(firebaseUser.uid);
+      if (firebaseUser!.email.toString() != '' &&
+          firebaseUser!.phoneNumber == null) {
+        // this means google login
+        String username = firebaseUser!.displayName.toString();
+        String email = firebaseUser!.email.toString();
+        String image = firebaseUser!.photoURL.toString();
+
+        Get.find<AuthUserController>().updateVal(username, email, '', image);
+      } else {
+        // authUserController.userName =
+        //     firebaseUser?.displayName.toString() ?? 'Phone User Name';
+        // authUserController.userPhone =
+        //     firebaseUser?.phoneNumber.toString() ?? 'Phone Number';
+        // authUserController.imageURL = firebaseUser?.photoURL.toString() ??
+        //     'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
+      }
       firstWidget = Dashboard();
     } else {
       print('NOT logged in');
       firstWidget = SignUpPage();
     }
 
-    if (firebaseUser!.email.toString() != '' &&
-        firebaseUser!.phoneNumber == null) {
-      dashname = firebaseUser!.displayName.toString();
-    } else {
-      dashname = firebaseUser!.phoneNumber.toString();
-    }
+    // if (firebaseUser!.email.toString() != '' &&
+    //     firebaseUser!.phoneNumber == null) {
+    //   print('dashname set for guser');
+    //   dashname = firebaseUser!.displayName.toString();
+    //   print(dashname);
+    // } else {
+    //   print('Dashname set for phone user');
+    //   dashname = firebaseUser!.phoneNumber.toString();
+    //   print(dashname);
+    // }
 
     return MaterialApp(
       supportedLocales: [
