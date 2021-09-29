@@ -103,27 +103,17 @@ class _SignUpPageState extends State<SignUpPage> {
                           MaterialPageRoute(
                             fullscreenDialog: true,
                             builder: (context) {
-                              // TODO::
                               User? firebaseUser =
                                   FirebaseAuth.instance.currentUser;
-                              if (firebaseUser!.email.toString() != '' &&
-                                  firebaseUser.phoneNumber == null) {
-                                // this means google login
-                                String username =
-                                    firebaseUser.displayName.toString();
-                                String email = firebaseUser.email.toString();
-                                String image = firebaseUser.photoURL.toString();
 
-                                Get.find<AuthUserController>()
-                                    .updateVal(username, email, '', image);
-                              } else {
-                                // authUserController.userName =
-                                //     firebaseUser.displayName.toString();
-                                // authUserController.userPhone =
-                                //     firebaseUser.phoneNumber.toString();
-                                // authUserController.imageURL =
-                                //     firebaseUser.photoURL.toString();
-                              }
+                              // this means google login
+                              String username =
+                                  firebaseUser?.displayName.toString() ?? 'Google Username';
+                              String email = firebaseUser?.email.toString() ?? 'Google User Email';
+                              String image = firebaseUser?.photoURL.toString() ?? 'https://image.pngaaa.com/677/884677-middle.png';
+
+                              Get.find<AuthUserController>()
+                                  .updateVal(username, email, '', image);
 
                               return Dashboard();
                             },

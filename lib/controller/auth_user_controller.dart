@@ -15,8 +15,8 @@ class AuthUserController extends GetxController {
     userPhone = phone;
     imageURL = imgURL;
 
-    print('------------------------------------------------------------------');
-    print(userName);
+    // print('------------------------------------------------------------------');
+    // print(userPhone);
 
     update();
   }

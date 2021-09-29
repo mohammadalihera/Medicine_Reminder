@@ -275,13 +275,14 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               height: 50,
               width: MediaQuery.of(context).size.width,
               child: Center(
-                  child: Text(
-                'Get OTP',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600),
-              )),
+                child: Text(
+                  'Get OTP',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
             ),
           ),
         ],
