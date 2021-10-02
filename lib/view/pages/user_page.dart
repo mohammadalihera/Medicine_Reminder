@@ -49,28 +49,99 @@ class _UserPageState extends State<UserPage> {
             children: [
               Center(
                 child: CircleAvatar(
-                  maxRadius: 50,
+                  maxRadius: 45,
                   minRadius: 20,
                   backgroundImage: NetworkImage(userImg),
                 ),
               ),
-              Center(
-                child: Text(
-                  userTitle,
-                  style: TextStyle(
+              Container(
+                width: 170,
+                margin: EdgeInsets.only(top: 10, bottom: 3),
+                decoration: BoxDecoration(
+                  color: kPrimaryColor,
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(
                     color: kPrimaryColor,
-                    fontSize: 16,
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    userTitle,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 3),
+                child: Center(
+                  child: Text(
+                    userCred,
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 15, bottom: 15),
+                decoration: new BoxDecoration(
+                  boxShadow: [
+                    new BoxShadow(
+                      color: kPrimaryColor.withOpacity(0.15),
+                      spreadRadius: 3,
+                      blurRadius: 10,
+                    ),
+                  ],
+                ),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: kPrimaryColor,
+                      width: 3,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: InkWell(
+                    splashColor: Colors.blue.withAlpha(30),
+                    child: Container(
+                      width: 300,
+                      height: 100,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: Text(
+                              'Next Dose',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Text(
+                              '09:00' + 'AM',
+                              style: TextStyle(
+                                color: kPrimaryColor,
+                                fontSize: 35,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
               Center(
-                child: Text(
-                  userCred,
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 16,
-                  ),
-                ),
+                child: Text('Next 7 Days Medicine',
+                    style: TextStyle(
+                      fontSize: 16,
+                    )),
               ),
               Center(
                 child: TextButton(
