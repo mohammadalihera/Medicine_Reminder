@@ -34,6 +34,7 @@ class _UserPageState extends State<UserPage> {
           userTitle = authController.userName;
           userCred = authController.userPhone;
           userImg = authController.imageURL;
+          print(userTitle + userCred);
         }
         return Scaffold(
           backgroundColor: Color(0xffEDF7FF),
@@ -48,7 +49,8 @@ class _UserPageState extends State<UserPage> {
             children: [
               Center(
                 child: CircleAvatar(
-                  radius: 30,
+                  maxRadius: 50,
+                  minRadius: 20,
                   backgroundImage: NetworkImage(userImg),
                 ),
               ),
