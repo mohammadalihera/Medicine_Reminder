@@ -43,6 +43,8 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
     dose_4 = DateTime.parse(vital.doseFour);
     dose_5 = DateTime.parse(vital.doseFive);
     dose_6 = DateTime.parse(vital.doseSix); */
+    print(vital.name);
+    print(vital.doseSix);
     if (vital.doseSix != '') {
       dosageNumber = 6;
       time_6 = vital.doseSix;
