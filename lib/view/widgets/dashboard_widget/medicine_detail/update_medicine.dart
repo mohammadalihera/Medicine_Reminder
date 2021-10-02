@@ -12,16 +12,19 @@ import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicin
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_program/medicine_program.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_quantity/medicine_quantity.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/update_vital_widgets/update_doses_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class NewMedicineDetail extends StatefulWidget {
+class UpdateMedicineDetail extends StatefulWidget {
+  final Vital vital;
+  UpdateMedicineDetail(this.vital);
   @override
-  _NewMedicineDetailState createState() => _NewMedicineDetailState();
+  _UpdateMedicineDetailState createState() => _UpdateMedicineDetailState();
 }
 
-class _NewMedicineDetailState extends State<NewMedicineDetail> {
+class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
   TextEditingController editingController = new TextEditingController();
   String meal = '';
   AddMedicineController addmedicineController =
@@ -41,6 +44,8 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
     if (screenWidth > 380) {
       dosageGap = 12;
     }
+    print('dooooooooooooooooooooosechange');
+    print(widget.vital.doseOne);
     return GetBuilder<AddMedicineController>(
         init: AddMedicineController(),
         builder: (addController) {
@@ -58,7 +63,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                       children: [
                         Container(
                           child: Text(
-                            'Add New Medicine',
+                            'Edit Medicine Info',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
@@ -97,7 +102,10 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
-                        MedicineInfoTextField(type: 'Medicine Name',vitalName: '',),
+                        MedicineInfoTextField(
+                          type: 'Medicine Name',
+                          vitalName: widget.vital.name,
+                        ),
                         Container(
                           margin: EdgeInsets.only(left: 40, top: 10),
                           child: Text(
@@ -108,7 +116,10 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
-                        MedicineDosageField(dosageGap: dosageGap),
+                        UpdateDosageField(
+                          dosageGap: dosageGap,
+                          vital: widget.vital,
+                        ),
                         MedicinePrograme(),
                         MedicineQuantity(),
                         Container(
@@ -167,7 +178,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                               width: MediaQuery.of(context).size.width * .8,
                               child: Center(
                                 child: Text(
-                                  'Add Schedule',
+                                  'Update Schedule',
                                   style: TextStyle(
                                       fontSize: 22,
                                       color: Colors.white,
@@ -222,7 +233,7 @@ void addVital(
     quantity: quantity,
     afterMeal: afterMeal,
   );
-  for (int i = 0; i < vital.program-1; ++i) {
+  for (int i = 0; i < vital.program - 1; ++i) {
     newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
     vital.date =
         vital.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();

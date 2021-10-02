@@ -100,7 +100,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Poppins',
       ),
-      home: firstWidget,
+      home: Dashboard(),
     );
   }
 }

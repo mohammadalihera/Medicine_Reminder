@@ -1,21 +1,23 @@
 import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
 import 'package:Vitals/main.dart';
+import 'package:Vitals/model/medicine_model.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/dosage_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class MedicineDosageField extends StatefulWidget {
+class UpdateDosageField extends StatefulWidget {
   double dosageGap;
-  MedicineDosageField({required this.dosageGap});
+  Vital vital;
+  UpdateDosageField({required this.dosageGap, required this.vital});
   @override
-  _MedicineDosageFieldState createState() => _MedicineDosageFieldState();
+  _UpdateDosageFieldState createState() => _UpdateDosageFieldState();
 }
 
 Color offColor = Color(0xFFC4C4C4);
 
-class _MedicineDosageFieldState extends State<MedicineDosageField> {
+class _UpdateDosageFieldState extends State<UpdateDosageField> {
   int dosageNumber = 0;
   DateTime dose_1 = DateTime.now();
   DateTime dose_2 = DateTime.now();
@@ -34,6 +36,47 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
       Get.put(AddMedicineController());
   @override
   Widget build(BuildContext context) {
+    Vital vital = widget.vital;
+    /* dose_1 = DateTime.parse(vital.doseOne);
+    dose_2 = DateTime.parse(vital.doseTwo);
+    dose_3 = DateTime.parse(vital.doseThree);
+    dose_4 = DateTime.parse(vital.doseFour);
+    dose_5 = DateTime.parse(vital.doseFive);
+    dose_6 = DateTime.parse(vital.doseSix); */
+    if (vital.doseSix != '') {
+      dosageNumber = 6;
+      time_6 = vital.doseSix;
+      time_5 = vital.doseFive;
+      time_4 = vital.doseFour;
+      time_3 = vital.doseThree;
+      time_2 = vital.doseTwo;
+      time_1 = vital.doseOne;
+    } else if (vital.doseFive != '') {
+      dosageNumber = 5;
+      time_5 = vital.doseFive;
+      time_4 = vital.doseFour;
+      time_3 = vital.doseThree;
+      time_2 = vital.doseTwo;
+      time_1 = vital.doseOne;
+    } else if (vital.doseFour != '') {
+      dosageNumber = 4;
+      time_4 = vital.doseFour;
+      time_3 = vital.doseThree;
+      time_2 = vital.doseTwo;
+      time_1 = vital.doseOne;
+    } else if (vital.doseThree != '') {
+      dosageNumber = 3;
+      time_3 = vital.doseThree;
+      time_2 = vital.doseTwo;
+      time_1 = vital.doseOne;
+    } else if (vital.doseTwo != '') {
+      dosageNumber = 2;
+      time_2 = vital.doseTwo;
+      time_1 = vital.doseOne;
+    } else {
+      dosageNumber = 1;
+      time_1 = vital.doseOne;
+    }
     return Container(
       margin: EdgeInsets.only(left: 40, top: 10),
       child: Column(
@@ -469,36 +512,42 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
           setState(() {
             dose_1 = time;
             time_1 = DateFormat('hh:mm a').format(time);
+            widget.vital.doseOne = time_1;
           });
           Get.find<AddMedicineController>().changeDone(time_1);
         } else if (doseName == 'dose2') {
           setState(() {
             dose_2 = time;
             time_2 = DateFormat('hh:mm a').format(time);
+            widget.vital.doseTwo = time_2;
           });
           Get.find<AddMedicineController>().changeDtwo(time_2);
         } else if (doseName == 'dose3') {
           setState(() {
             dose_3 = time;
             time_3 = DateFormat('hh:mm a').format(time);
+            widget.vital.doseThree = time_3;
           });
           Get.find<AddMedicineController>().changeDthree(time_3);
         } else if (doseName == 'dose4') {
           setState(() {
             dose_4 = time;
             time_4 = DateFormat('hh:mm a').format(time);
+            widget.vital.doseFour = time_4;
           });
           Get.find<AddMedicineController>().changeDfour(time_4);
         } else if (doseName == 'dose5') {
           setState(() {
             dose_5 = time;
             time_5 = DateFormat('hh:mm a').format(time);
+            widget.vital.doseFive = time_5;
           });
           Get.find<AddMedicineController>().changeDfive(time_5);
         } else if (doseName == 'dose6') {
           setState(() {
             dose_6 = time;
             time_6 = DateFormat('hh:mm a').format(time);
+            widget.vital.doseSix = time_6;
           });
           Get.find<AddMedicineController>().changeDsix(time_6);
         }
