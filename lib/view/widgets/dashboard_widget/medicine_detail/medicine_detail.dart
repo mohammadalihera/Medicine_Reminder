@@ -431,6 +431,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
             child: UpdateMedicineDetail(widget.vital),
           );
         });
+         
   }
 
   void deletAlert(Vital vital, context) {

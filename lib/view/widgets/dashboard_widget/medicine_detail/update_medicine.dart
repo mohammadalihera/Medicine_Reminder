@@ -213,4 +213,5 @@ void addVital(Vital vital,int additionProgram, context) async {
   dynamic result = await Repository.update("Vitals", vital.vitalToMap(),vital.id);
   getmedicineController.getAllVitalFromDb();
   Navigator.pop(context);
+   Navigator.pop(context);
 }
