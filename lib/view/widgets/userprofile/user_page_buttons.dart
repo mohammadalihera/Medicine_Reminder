@@ -78,7 +78,7 @@ class _UserPageButtonsState extends State<UserPageButtons> {
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }
