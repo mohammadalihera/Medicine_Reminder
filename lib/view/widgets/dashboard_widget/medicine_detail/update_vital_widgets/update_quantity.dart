@@ -4,32 +4,29 @@ import 'package:Vitals/model/medicine_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:numberpicker/numberpicker.dart';
 
-class UpdatePrograme extends StatefulWidget {
+class UpdateMedicineQuantity extends StatefulWidget {
   final Vital vital;
-  UpdatePrograme(this.vital);
+  UpdateMedicineQuantity(this.vital);
   @override
-  _UpdateProgrameState createState() => _UpdateProgrameState();
+  _UpdateMedicineQuantityState createState() => _UpdateMedicineQuantityState();
 }
 
-class _UpdateProgrameState extends State<UpdatePrograme> {
-  int selectedDays = 0;
-  int _currentIntValue = 0;
-  AddMedicineController addmedicineController =
+class _UpdateMedicineQuantityState extends State<UpdateMedicineQuantity> {
+  int selectedQuantity = 0;
+    AddMedicineController addmedicineController =
       Get.put(AddMedicineController());
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(left: 40, top: 0),
+              margin: EdgeInsets.only(left: 40, top: 12),
               child: Text(
-                'Program',
+                'Quantity',
                 style: TextStyle(
                     fontSize: 20,
                     color: kPrimaryColor,
@@ -38,33 +35,35 @@ class _UpdateProgrameState extends State<UpdatePrograme> {
             ),
             SizedBox(height: 10),
             InkWell(
-              onTap: () {
+              onTap:(){
                 FocusScopeNode currentFocus = FocusScope.of(context);
 
                 if (!currentFocus.hasPrimaryFocus) {
                   currentFocus.unfocus();
                 }
                 _showDialog();
-              },
+              } ,
               child: Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: 40),
-                      child: Text(
-                        selectedDays == 0
-                            ? widget.vital.program.toString()
-                            : selectedDays.toString(),
-                        style: TextStyle(
-                            color: widget.vital.program == 0
-                                ? Colors.grey
-                                : Colors.black,
-                            fontSize: 16),
-                      ),
-                    ),
+                        margin: EdgeInsets.only(left: 40),
+                        child: Text(
+                          selectedQuantity == 0
+                              ? widget.vital.quantity.toString()
+                              : selectedQuantity.toString(),
+                          style: TextStyle(
+                             
+                                  color:Colors.black,
+                              fontSize: 16),
+                        )),
                     Container(
-                      margin: EdgeInsets.only(left: 40, right: 30, top: 10),
+                      margin: EdgeInsets.only(
+                        left: 40,
+                        right: 30,
+                        top: 10,
+                      ),
                       height: 1.3,
                       width: MediaQuery.of(context).size.width,
                       color: Colors.grey,
@@ -77,7 +76,7 @@ class _UpdateProgrameState extends State<UpdatePrograme> {
     );
   }
 
-  void _showDialog() {
+    void _showDialog() {
     // flutter defined function
     showDialog(
       context: context,
@@ -102,7 +101,7 @@ class _UpdateProgrameState extends State<UpdatePrograme> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.only(bottom: 10),
+                        padding: EdgeInsets.only(bottom:10),
                         color: kPrimaryColor,
                         height: 150,
                         width: 290,
@@ -114,10 +113,9 @@ class _UpdateProgrameState extends State<UpdatePrograme> {
                           scrollController: FixedExtentScrollController(),
                           onSelectedItemChanged: (int index) {
                             setState(() {
-                              selectedDays = index;
+                              selectedQuantity = index;
                             });
-                            Get.find<AddMedicineController>()
-                                .changeProgram(selectedDays);
+                             Get.find<AddMedicineController>().changeQuantity(selectedQuantity);
                           },
                           children: [
                             for (int i = 0; i <= 100; i++)
@@ -154,11 +152,11 @@ class _UpdateProgrameState extends State<UpdatePrograme> {
                   ),
                   Positioned(
                     top: 105,
-                    right: 32,
+                    right: 15,
                     child: Container(
                       child: Center(
                         child: Text(
-                          'Days',
+                          'Pieces',
                           style: TextStyle(
                               fontSize: 25,
                               color: Colors.white,
@@ -184,7 +182,7 @@ class _UpdateProgrameState extends State<UpdatePrograme> {
                             color: Colors.white),
                         child: Center(
                           child: Text(
-                            'Set Program',
+                            'Set Quantity',
                             style: TextStyle(
                                 fontSize: 16,
                                 color: kPrimaryColor,
@@ -200,7 +198,7 @@ class _UpdateProgrameState extends State<UpdatePrograme> {
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          selectedDays = 0;
+                          selectedQuantity = 0;
                         });
                         Navigator.pop(context);
                       },
