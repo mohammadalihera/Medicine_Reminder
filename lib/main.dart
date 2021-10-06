@@ -102,7 +102,7 @@ class MyApp extends StatelessWidget {
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
       ),
-      home: firstWidget,
+      home: Dashboard(),
     );
   }
 }

@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 
 class MedicineInfoTextField extends StatefulWidget {
   String type;
-  MedicineInfoTextField({required this.type});
+  final String vitalName;
+  MedicineInfoTextField({required this.type,required this.vitalName});
 
   @override
   _MedicineInfoTextFieldState createState() => _MedicineInfoTextFieldState();
@@ -12,7 +13,7 @@ class MedicineInfoTextField extends StatefulWidget {
 
 class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
   TextEditingController editingController = new TextEditingController();
-   AddMedicineController addmedicineController =
+  AddMedicineController addmedicineController =
       Get.put(AddMedicineController());
   @override
   Widget build(BuildContext context) {
@@ -27,12 +28,11 @@ class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
         },
         onChanged: (text) {
           print(text.length);
-           Get.find<AddMedicineController>().changeName(text);
+          Get.find<AddMedicineController>().changeName(text);
         },
         onSubmitted: (text) {
           print(text.length);
-           Get.find<AddMedicineController>().changeName(text);
-          
+          Get.find<AddMedicineController>().changeName(text);
         },
         enabled: true,
         minLines: 1,
@@ -49,7 +49,7 @@ class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
           fontSize: 18,
         ),
         decoration: InputDecoration(
-          hintText: widget.type,
+          hintText:widget.vitalName==''? widget.type:widget.vitalName,
           hintStyle: TextStyle(
             fontFamily: 'Poppins',
             color: Colors.grey,

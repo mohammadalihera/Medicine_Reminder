@@ -5,6 +5,7 @@ import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/af
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/medicine_detail/update_medicine.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,12 +17,14 @@ class MedicineDetail extends StatefulWidget {
 }
 
 class _MedicineDetailState extends State<MedicineDetail> {
+   late double displayHeight;
   int dose = 3;
   TextEditingController editingController = new TextEditingController();
   GetMedicineController getmedicineController =
       Get.put(GetMedicineController());
   @override
   Widget build(BuildContext context) {
+    displayHeight = MediaQuery.of(context).size.height;
     Size size = MediaQuery.of(context).size;
     return Container(
       child: Column(
@@ -396,6 +399,20 @@ class _MedicineDetailState extends State<MedicineDetail> {
   }
 
   void addMedicine() {
+
+    late double modalHeight;
+    if (displayHeight < 700) {
+      modalHeight = MediaQuery.of(context).size.height * 0.9;
+    }
+    if (displayHeight > 700 && displayHeight < 750) {
+      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.87;
+      //modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.7;
+    }
+    if (displayHeight > 750) {
+      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.75;
+      //modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.7;
+      // responsive modal implementation
+    }
     showModalBottomSheet(
         isScrollControlled: true,
         isDismissible: true,
@@ -403,7 +420,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
         context: context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.78,
+            height: modalHeight,
             decoration: new BoxDecoration(
               color: Color(0xffEDF7FF),
               borderRadius: new BorderRadius.only(
@@ -411,9 +428,10 @@ class _MedicineDetailState extends State<MedicineDetail> {
                 topRight: const Radius.circular(35.0),
               ),
             ),
-            child: NewMedicineDetail(),
+            child: UpdateMedicineDetail(widget.vital),
           );
         });
+         
   }
 
   void deletAlert(Vital vital, context) {

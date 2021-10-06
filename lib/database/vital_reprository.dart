@@ -32,7 +32,14 @@ static  Future<List<Map<String, dynamic>>> getAllData(table) async {
       return db.query(table);
     }
   }
+static Future<int> update( table,Map<String,dynamic>vital,int id) async {
+    Database db = await database;
+    return await db.update(
+    table, vital,
+    where: "id= ?",whereArgs: [id]
 
+    );
+  }
   //delete data
 static  Future<int> deleteData(String table, int id) async {
     Database db = await database;

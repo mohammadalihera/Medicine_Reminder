@@ -6,22 +6,27 @@ import 'package:Vitals/database/vital_reprository.dart';
 import 'package:Vitals/main.dart';
 import 'package:Vitals/model/medicine_model.dart';
 import 'package:Vitals/view/pages/home/home_page.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/medicine_detail/update_vital_widgets/update_program.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/medicine_detail/update_vital_widgets/update_quantity.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_dosage.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_program/medicine_program.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_quantity/medicine_quantity.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/update_vital_widgets/update_doses_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class NewMedicineDetail extends StatefulWidget {
+class UpdateMedicineDetail extends StatefulWidget {
+  final Vital vital;
+  UpdateMedicineDetail(this.vital);
   @override
-  _NewMedicineDetailState createState() => _NewMedicineDetailState();
+  _UpdateMedicineDetailState createState() => _UpdateMedicineDetailState();
 }
 
-class _NewMedicineDetailState extends State<NewMedicineDetail> {
+class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
   TextEditingController editingController = new TextEditingController();
   String meal = '';
   AddMedicineController addmedicineController =
@@ -33,7 +38,9 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
 
   @override
   Widget build(BuildContext context) {
+    Vital vital = widget.vital;
     screenWidth = MediaQuery.of(context).size.width;
+
 
     if (screenWidth <= 380) {
       dosageGap = 3;
@@ -41,6 +48,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
     if (screenWidth > 380) {
       dosageGap = 12;
     }
+    meal=vital.afterMeal==0?'before':'after';
     return GetBuilder<AddMedicineController>(
         init: AddMedicineController(),
         builder: (addController) {
@@ -58,7 +66,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                       children: [
                         Container(
                           child: Text(
-                            'Add New Medicine',
+                            'Edit Medicine Info',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
@@ -97,7 +105,10 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
-                        MedicineInfoTextField(type: 'Medicine Name',vitalName: '',),
+                        MedicineInfoTextField(
+                          type: 'Medicine Name',
+                          vitalName: vital.name,
+                        ),
                         Container(
                           margin: EdgeInsets.only(left: 40, top: 10),
                           child: Text(
@@ -108,9 +119,12 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
-                        MedicineDosageField(dosageGap: dosageGap),
-                        MedicinePrograme(),
-                        MedicineQuantity(),
+                        UpdateDosageField(
+                          dosageGap: dosageGap,
+                          vital: vital,
+                        ),
+                        UpdatePrograme(vital),
+                        UpdateMedicineQuantity(vital),
                         Container(
                           margin: EdgeInsets.only(left: 40, top: 23, right: 40),
                           child: Row(
@@ -122,6 +136,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                       .changeAfterMeal(1);
                                   setState(() {
                                     meal = 'after';
+                                    vital.afterMeal = 1;
                                   });
                                 },
                                 child: AfterMeal(meal, 'add'),
@@ -132,6 +147,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                       .changeAfterMeal(0);
                                   setState(() {
                                     meal = 'before';
+                                    vital.afterMeal = 0;
                                   });
                                 },
                                 child: BeforeMeal(meal, 'other'),
@@ -141,19 +157,12 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                         ),
                         InkWell(
                           onTap: () async {
-                            addVital(
-                                addController.name,
-                                addController.doseOne,
-                                addController.doseTwo,
-                                addController.doseThree,
-                                addController.doseFour,
-                                addController.doseFive,
-                                addController.doseSix,
-                                addController.program,
-                                addController.quantity,
-                                addController.afterMeal,
-                                getmedicineController.selectedDate,
-                                context);
+                            vital.name = addController.name;
+                            vital.program =
+                                 addController.program;
+                            vital.quantity = addController.quantity;
+
+                            addVital(vital,addController.program, context);
                           },
                           child: Center(
                             child: Container(
@@ -167,7 +176,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                               width: MediaQuery.of(context).size.width * .8,
                               child: Center(
                                 child: Text(
-                                  'Add Schedule',
+                                  'Update Schedule',
                                   style: TextStyle(
                                       fontSize: 22,
                                       color: Colors.white,
@@ -191,43 +200,23 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
   }
 }
 
-void addVital(
-    String vName,
-    String doseOne,
-    String doseTwo,
-    String doseThree,
-    String doseFour,
-    String doseFive,
-    String doseSix,
-    int program,
-    int quantity,
-    int afterMeal,
-    DateTime selectedDate,
-    context) async {
-  DateTime newMedicineDate = selectedDate;
+void addVital(Vital vital,int additionProgram, context) async {
+  DateTime newMedicineDate = DateTime.fromMillisecondsSinceEpoch(int.parse(vital.date.split(',').first));
+  DateTime firstDate=DateTime(newMedicineDate.year,newMedicineDate.month, newMedicineDate.day);
+  print('lasssssssssssssssssssssssst date');
+  print(firstDate);
   GetMedicineController getmedicineController =
       Get.put(GetMedicineController());
-
-  Vital vital = Vital(
-    id: Random().nextInt(10000000),
-    name: vName,
-    doseOne: doseOne,
-    doseTwo: doseTwo,
-    doseThree: doseThree,
-    doseFour: doseFour,
-    doseFive: doseFive,
-    doseSix: doseSix,
-    date: newMedicineDate.millisecondsSinceEpoch.toString(),
-    program: program,
-    quantity: quantity,
-    afterMeal: afterMeal,
-  );
-  for (int i = 0; i < vital.program-1; ++i) {
-    newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
+  vital.date=firstDate.millisecondsSinceEpoch.toString();
+  print(vital.date);
+  for (int i = 1; i <additionProgram; ++i) {
+    firstDate = firstDate.add(Duration(milliseconds: 86400000));
     vital.date =
-        vital.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();
+        vital.date + ',' + firstDate.millisecondsSinceEpoch.toString();
   }
-  dynamic result = await Repository.insertData("Vitals", vital.vitalToMap());
+  print(vital.date);
+  dynamic result = await Repository.update("Vitals", vital.vitalToMap(),vital.id);
   getmedicineController.getAllVitalFromDb();
   Navigator.pop(context);
+   Navigator.pop(context);
 }

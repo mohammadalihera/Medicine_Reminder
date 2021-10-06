@@ -11,8 +11,8 @@ class AddMedicineController extends GetxController {
   String doseFive = '';
   String doseSix = '';
   late String startDate;
-  late int program;
-  late int quantity;
+  late int program=0;
+  late int quantity=0;
   late String endDate;
   int afterMeal = 0;
   void changeId(int vitalId) {
