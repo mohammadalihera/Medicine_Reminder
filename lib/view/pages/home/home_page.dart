@@ -1,11 +1,13 @@
-import 'package:MedicineReminder/view/pages/dashboard.dart';
-import 'package:MedicineReminder/view/pages/user_page.dart';
-import 'package:MedicineReminder/view/pages/setting_page.dart';
-import 'package:MedicineReminder/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
+import 'package:Vitals/main.dart';
+import 'package:Vitals/view/pages/dashboard.dart';
+import 'package:Vitals/view/pages/user_page.dart';
+import 'package:Vitals/view/pages/setting_page.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
 import 'package:double_back_to_close/double_back_to_close.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:MedicineReminder/view/widgets/home/bottom_nav.dart';
+import 'package:Vitals/view/widgets/home/bottom_nav.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -27,6 +29,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int count = 10;
   int currentIndex = 1;
+  late double displayHeight;
 
   PageController pageController = PageController(
     initialPage: 1,
@@ -42,11 +45,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    displayHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-     // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Stack(
         children: [
           Positioned(
+            // navigation setup
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -70,10 +75,18 @@ class _HomePageState extends State<HomePage> {
           Positioned(
             bottom: 0,
             child: Container(
-              color: Color(0xffEDF7FF),
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: kPrimaryColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
+                ),
+              ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: kPrimaryColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
@@ -91,76 +104,84 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
-                                    duration: Duration(milliseconds: 10),
-                                    curve: Curves.bounceIn);
+                                    duration: Duration(milliseconds: 0),
+                                    curve: Curves.bounceOut);
                               },
                               child: Container(
-                                child: Icon(
-                                  Icons.account_box,
-                                  color: Colors.white,
+                                child: SvgPicture.asset(
+                                  "assets/images/profile.svg",
+                                  height: 20,
+                                  width: 20,
                                 ),
                               ),
                             ),
                           )
                         : Container(
                             child: InkWell(
-                            onTap: () {
-                              pageController.animateToPage(0,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
-                            },
-                            child: Container(
-                              child: Icon(
-                                Icons.account_box,
-                                color: Colors.black,
+                              onTap: () {
+                                pageController.animateToPage(0,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.slowMiddle);
+                              },
+                              child: Container(
+                                child: SvgPicture.asset(
+                                  "assets/images/profile.svg",
+                                  height: 20,
+                                  width: 20,
+                                ),
                               ),
                             ),
-                          )),
+                          ),
 
-                    // Task Icon
+                    // Dashboard Page
                     currentIndex == 1
                         ? Container(
                             child: InkWell(
-                            onTap: () {
-                              pageController.animateToPage(1,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
-                            },
-                            child: Container(
-                              child: Icon(
-                                Icons.home,
-                                color: Colors.white,
+                              onTap: () {
+                                pageController.animateToPage(1,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.slowMiddle);
+                              },
+                              child: Container(
+                                child: SvgPicture.asset(
+                                  "assets/images/home.svg",
+                                  height: 20,
+                                  width: 20,
+                                ),
                               ),
                             ),
-                          ))
+                          )
                         : Container(
                             child: InkWell(
-                            onTap: () {
-                              pageController.animateToPage(1,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
-                            },
-                            child: Container(
-                              child: Icon(
-                                Icons.home,
-                                color: Colors.black,
+                              onTap: () {
+                                pageController.animateToPage(1,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.slowMiddle);
+                              },
+                              child: Container(
+                                child: SvgPicture.asset(
+                                  "assets/images/home.svg",
+                                  height: 20,
+                                  width: 20,
+                                ),
                               ),
                             ),
-                          )),
+                          ),
 
-                    //Chat Icon--------------------------------------------
+                    //Settings Page--------------------------------------------
                     currentIndex == 2
                         ? Container(
                             child: InkWell(
                             onTap: () {
                               pageController.animateToPage(2,
-                                  duration: Duration(milliseconds: 10),
-                                  curve: Curves.bounceIn);
+                                  duration: Duration(milliseconds: 0),
+                                  curve: Curves.linear);
                             },
                             child: Container(
-                              child: Icon(
-                                Icons.settings,
-                                color: Colors.white,
+                              child: SvgPicture.asset(
+                                "assets/images/settings.svg",
+                                height: 20,
+                                width: 20,
                               ),
                             ),
                           ))
@@ -168,13 +189,14 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(2,
-                                    duration: Duration(milliseconds: 10),
-                                    curve: Curves.bounceIn);
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.slowMiddle);
                               },
                               child: Container(
-                                child: Icon(
-                                  Icons.settings,
-                                  color: Colors.black,
+                                child: SvgPicture.asset(
+                                  "assets/images/settings.svg",
+                                  height: 20,
+                                  width: 20,
                                 ),
                               ),
                             ),
@@ -191,35 +213,52 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     child: Center(
-                      child: Container(
-                        height: 75,
-                        width: 75,
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(75),
-                          ),
-                          color: Color(0xffEDF7FF),
-                        ),
-                        child: Container(
-                          height: MediaQuery.of(context).size.width * 0.16,
-                          width: MediaQuery.of(context).size.width * 0.16,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(70),
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: 75,
+                            width: 75,
+                            padding: EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(75),
+                              ),
+                              color: Color(0xffEDF7FF),
                             ),
-                            color: Colors.blue,
                           ),
-                          child: Center(
-                            child: InkWell(
-                                onTap: addMedicine,
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                  size: 30,
-                                )),
+                          Positioned(
+                            top: 5,
+                            left: 5,
+                            child: Container(
+                              height: 65,
+                              width: 65,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(70),
+                                ),
+                                color: kPrimaryColor,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.25),
+                                    blurRadius: 5,
+                                    spreadRadius: 2,
+                                    offset: Offset(6, 6),
+                                    // Shadow position
+                                  ),
+                                ],
+                              ),
+                              child: Center(
+                                child: InkWell(
+                                    onTap: addMedicine,
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                      size: 30,
+                                    )),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ),
@@ -231,6 +270,19 @@ class _HomePageState extends State<HomePage> {
   }
 
   void addMedicine() {
+    late double modalHeight;
+    if (displayHeight < 700) {
+      modalHeight = MediaQuery.of(context).size.height * 0.9;
+    }
+    if (displayHeight > 700 && displayHeight < 750) {
+      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.87;
+      //modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.7;
+    }
+    if (displayHeight > 750) {
+      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.75;
+      //modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.7;
+      // responsive modal implementation
+    }
     showModalBottomSheet(
         isScrollControlled: true,
         isDismissible: true,
@@ -238,7 +290,7 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.78,
+            height: modalHeight,
             decoration: new BoxDecoration(
               color: Color(0xffEDF7FF),
               borderRadius: new BorderRadius.only(
