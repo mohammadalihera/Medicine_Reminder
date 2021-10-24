@@ -5,6 +5,7 @@ import 'package:Vitals/controller/get_medicine/get_medicine.dart';
 import 'package:Vitals/database/vital_reprository.dart';
 import 'package:Vitals/main.dart';
 import 'package:Vitals/model/medicine_model.dart';
+import 'package:Vitals/notification/notification.dart';
 import 'package:Vitals/view/pages/home/home_page.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
@@ -12,7 +13,9 @@ import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicin
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_program/medicine_program.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_quantity/medicine_quantity.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/src/flutter_local_notifications_plugin.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -41,6 +44,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
     if (screenWidth > 380) {
       dosageGap = 12;
     }
+
     return GetBuilder<AddMedicineController>(
         init: AddMedicineController(),
         builder: (addController) {
@@ -69,6 +73,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                           margin: EdgeInsets.only(right: 20),
                           child: InkWell(
                             onTap: () {
+                              notify();
                               Navigator.pop(context);
                             },
                             child: Container(
@@ -97,7 +102,10 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
-                        MedicineInfoTextField(type: 'Medicine Name',vitalName: '',),
+                        MedicineInfoTextField(
+                          type: 'Medicine Name',
+                          vitalName: '',
+                        ),
                         Container(
                           margin: EdgeInsets.only(left: 40, top: 10),
                           child: Text(
@@ -222,12 +230,22 @@ void addVital(
     quantity: quantity,
     afterMeal: afterMeal,
   );
-  for (int i = 0; i < vital.program-1; ++i) {
+  for (int i = 0; i < vital.program - 1; ++i) {
     newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
     vital.date =
         vital.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();
   }
   dynamic result = await Repository.insertData("Vitals", vital.vitalToMap());
-  getmedicineController.getAllVitalFromDb();
+  getmedicineController.getAllVitalFromDb(context);
+  getmedicineController.getNotification(context);
   Navigator.pop(context);
+}
+
+void notify() {
+  AwesomeNotifications().createNotification(
+      content: NotificationContent(
+          id: 10,
+          channelKey: 'basic_channel',
+          title: 'Simple Notification',
+          body: 'Simple body'));
 }
