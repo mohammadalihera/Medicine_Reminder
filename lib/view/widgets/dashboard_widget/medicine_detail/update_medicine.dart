@@ -6,6 +6,8 @@ import 'package:Vitals/database/vital_reprository.dart';
 import 'package:Vitals/main.dart';
 import 'package:Vitals/model/medicine_model.dart';
 import 'package:Vitals/view/pages/home/home_page.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/medicine_detail/update_vital_widgets/update_program.dart';
+import 'package:Vitals/view/widgets/dashboard_widget/medicine_detail/update_vital_widgets/update_quantity.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
 import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_dosage.dart';
@@ -39,14 +41,14 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
     Vital vital = widget.vital;
     screenWidth = MediaQuery.of(context).size.width;
 
+
     if (screenWidth <= 380) {
       dosageGap = 3;
     }
     if (screenWidth > 380) {
       dosageGap = 12;
     }
-    print('dooooooooooooooooooooosechange');
-    print(widget.vital.doseOne);
+    meal=vital.afterMeal==0?'before':'after';
     return GetBuilder<AddMedicineController>(
         init: AddMedicineController(),
         builder: (addController) {
@@ -121,8 +123,8 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                           dosageGap: dosageGap,
                           vital: vital,
                         ),
-                        MedicinePrograme(),
-                        MedicineQuantity(),
+                        UpdatePrograme(vital),
+                        UpdateMedicineQuantity(vital),
                         Container(
                           margin: EdgeInsets.only(left: 40, top: 23, right: 40),
                           child: Row(
@@ -157,8 +159,8 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                           onTap: () async {
                             vital.name = addController.name;
                             vital.program =
-                                vital.program + addController.program;
-                            vital.quantity =vital.quantity+ addController.quantity;
+                                 addController.program;
+                            vital.quantity = addController.quantity;
 
                             addVital(vital,addController.program, context);
                           },
@@ -199,17 +201,20 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
 }
 
 void addVital(Vital vital,int additionProgram, context) async {
-  DateTime newMedicineDate = DateTime.fromMillisecondsSinceEpoch(int.parse(vital.date.split(',').last));
+  DateTime newMedicineDate = DateTime.fromMillisecondsSinceEpoch(int.parse(vital.date.split(',').first));
+  DateTime firstDate=DateTime(newMedicineDate.year,newMedicineDate.month, newMedicineDate.day);
   print('lasssssssssssssssssssssssst date');
-  print(newMedicineDate);
+  print(firstDate);
   GetMedicineController getmedicineController =
       Get.put(GetMedicineController());
-
-  for (int i = 0; i <additionProgram; ++i) {
-    newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
+  vital.date=firstDate.millisecondsSinceEpoch.toString();
+  print(vital.date);
+  for (int i = 1; i <additionProgram; ++i) {
+    firstDate = firstDate.add(Duration(milliseconds: 86400000));
     vital.date =
-        vital.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();
+        vital.date + ',' + firstDate.millisecondsSinceEpoch.toString();
   }
+  print(vital.date);
   dynamic result = await Repository.update("Vitals", vital.vitalToMap(),vital.id);
   getmedicineController.getAllVitalFromDb(context);
   Navigator.pop(context);
