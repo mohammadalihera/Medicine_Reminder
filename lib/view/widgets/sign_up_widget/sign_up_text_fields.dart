@@ -1,5 +1,5 @@
-import 'package:Vitals/Authentication/phone_auth.dart';
-import 'package:Vitals/main.dart';
+import 'package:Vitel/Authentication/phone_auth.dart';
+import 'package:Vitel/main.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

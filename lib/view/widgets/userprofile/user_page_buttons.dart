@@ -1,6 +1,8 @@
-import 'package:Vitals/Authentication/g_auth.dart';
-import 'package:Vitals/main.dart';
+
+import 'package:Vitel/Authentication/g_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../../../main.dart';
 
 class UserPageButtons extends StatefulWidget {
   const UserPageButtons({Key? key}) : super(key: key);

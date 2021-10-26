@@ -10,6 +10,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'controller/auth_user_controller.dart';
+import 'controller/sign_in_controller.dart';
 
 String dashname = 'User';
 

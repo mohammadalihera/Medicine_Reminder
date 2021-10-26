@@ -1,5 +1,7 @@
-import 'package:Vitals/main.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../main.dart';
 
 class NextWeekMedicine extends StatefulWidget {
   const NextWeekMedicine({Key? key}) : super(key: key);
