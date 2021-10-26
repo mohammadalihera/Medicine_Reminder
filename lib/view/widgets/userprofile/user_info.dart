@@ -1,5 +1,6 @@
-import 'package:Vitals/main.dart';
 import 'package:flutter/material.dart';
+
+import '../../../main.dart';
 
 class UserInfoWidget extends StatefulWidget {
   String userImg, userTitle, userCred;

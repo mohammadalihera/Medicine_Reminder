@@ -1,12 +1,12 @@
-import 'package:Vitals/controller/get_medicine/get_medicine.dart';
-import 'package:Vitals/database/vital_reprository.dart';
-import 'package:Vitals/model/medicine_model.dart';
+import 'package:Vitel/controller/get_medicine/get_medicine.dart';
+import 'package:Vitel/model/medicine_model.dart';
+import 'package:Vitel/utils.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:Vitals/utils.dart';
+
 
 class CustomCalendar extends StatefulWidget {
   final String format;

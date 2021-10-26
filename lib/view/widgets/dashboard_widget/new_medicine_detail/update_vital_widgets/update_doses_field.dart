@@ -1,7 +1,6 @@
-import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
-import 'package:Vitals/main.dart';
-import 'package:Vitals/model/medicine_model.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/dosage_box.dart';
+import 'package:Vitel/controller/add_medicine/add_medicine_controller.dart';
+import 'package:Vitel/main.dart';
+import 'package:Vitel/model/medicine_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:get/get.dart';
