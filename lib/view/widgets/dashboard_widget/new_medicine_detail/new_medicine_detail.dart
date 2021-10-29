@@ -73,8 +73,9 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                           margin: EdgeInsets.only(right: 20),
                           child: InkWell(
                             onTap: () {
+                              print('hello');
                               notify();
-                              Navigator.pop(context);
+                              // Navigator.pop(context);
                             },
                             child: Container(
                               child: Icon(
@@ -242,10 +243,23 @@ void addVital(
 }
 
 void notify() {
+  print('hi');
+  DateTime scheduleTime = DateTime.now();
   AwesomeNotifications().createNotification(
-      content: NotificationContent(
-          id: 10,
-          channelKey: 'basic_channel',
-          title: 'Simple Notification',
-          body: 'Simple body'));
+    content: NotificationContent(
+        id: 10,
+        channelKey: 'basic_channel',
+        title: 'Simple Notification',
+        body: 'Simple body'),
+    schedule: NotificationCalendar.fromDate(
+      date: DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
+        DateTime.now().hour,
+        DateTime.now().minute + 2,
+        
+      ),
+    ),
+  );
 }
