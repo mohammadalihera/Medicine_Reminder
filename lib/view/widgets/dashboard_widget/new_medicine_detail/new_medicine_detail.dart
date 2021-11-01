@@ -75,7 +75,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                             onTap: () {
                               print('hello');
                               notify();
-                              // Navigator.pop(context);
+                              Navigator.pop(context);
                             },
                             child: Container(
                               child: Icon(
@@ -238,8 +238,53 @@ void addVital(
   }
   dynamic result = await Repository.insertData("Vitals", vital.vitalToMap());
   getmedicineController.getAllVitalFromDb(context);
-  getmedicineController.getNotification(context);
+  List<String> newDoses = getDoses(vital);
+  List<String> vDate = vital.date.split(',');
+  print(newDoses);
+  print(vDate);
+  for (int i = 0; i < vDate.length;++i) {
+    for(int j=0;j<newDoses.length;++j){
+      int vitalDate=int.parse(vDate[i]);
+      int vitalDose=int.parse(newDoses[j]);
+      print(vitalDose);
+      print(vitalDate);
+     // DateTime notifyDate=DateTime.
+    }
+  }
   Navigator.pop(context);
+}
+
+getDoses(Vital vital) {
+  List<String> allDose = [];
+  if (vital.doseSix.isNotEmpty) {
+    allDose.add(vital.doseOne);
+    allDose.add(vital.doseTwo);
+    allDose.add(vital.doseThree);
+    allDose.add(vital.doseFour);
+    allDose.add(vital.doseFive);
+    allDose.add(vital.doseSix);
+  } else if (vital.doseFive.isNotEmpty) {
+    allDose.add(vital.doseOne);
+    allDose.add(vital.doseTwo);
+    allDose.add(vital.doseThree);
+    allDose.add(vital.doseFour);
+    allDose.add(vital.doseFive);
+  } else if (vital.doseFour.isNotEmpty) {
+    allDose.add(vital.doseOne);
+    allDose.add(vital.doseTwo);
+    allDose.add(vital.doseThree);
+    allDose.add(vital.doseFour);
+  } else if (vital.doseThree.isNotEmpty) {
+    allDose.add(vital.doseOne);
+    allDose.add(vital.doseTwo);
+    allDose.add(vital.doseThree);
+  } else if (vital.doseTwo.isNotEmpty) {
+    allDose.add(vital.doseOne);
+    allDose.add(vital.doseTwo);
+  } else {
+    allDose.add(vital.doseOne);
+  }
+  return allDose;
 }
 
 void notify() {
@@ -258,7 +303,6 @@ void notify() {
         DateTime.now().day,
         DateTime.now().hour,
         DateTime.now().minute + 2,
-        
       ),
     ),
   );
