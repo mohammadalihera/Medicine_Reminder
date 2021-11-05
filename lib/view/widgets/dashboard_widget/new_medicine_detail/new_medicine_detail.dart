@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
 import 'package:Vitals/controller/get_medicine/get_medicine.dart';
+import 'package:Vitals/controller/notification/notification_controller.dart';
 import 'package:Vitals/database/vital_reprository.dart';
 import 'package:Vitals/main.dart';
 import 'package:Vitals/model/medicine_model.dart';
@@ -29,6 +30,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
   String meal = '';
   AddMedicineController addmedicineController =
       Get.put(AddMedicineController());
+  NotificationController notificationC = Get.put(NotificationController());
   GetMedicineController getmedicineController =
       Get.put(GetMedicineController());
   double screenWidth = 0;
@@ -74,7 +76,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                           child: InkWell(
                             onTap: () {
                               print('hello');
-                              notify();
+                            //  notify();
                               Navigator.pop(context);
                             },
                             child: Container(
@@ -216,7 +218,7 @@ void addVital(
   DateTime newMedicineDate = selectedDate;
   GetMedicineController getmedicineController =
       Get.put(GetMedicineController());
-
+  NotificationController notificationC = Get.put(NotificationController());
   Vital vital = Vital(
     id: Random().nextInt(10000000),
     name: vName,
@@ -242,13 +244,43 @@ void addVital(
   List<String> vDate = vital.date.split(',');
   print(newDoses);
   print(vDate);
-  for (int i = 0; i < vDate.length;++i) {
-    for(int j=0;j<newDoses.length;++j){
-      int vitalDate=int.parse(vDate[i]);
-      int vitalDose=int.parse(newDoses[j]);
-      print(vitalDose);
-      print(vitalDate);
-     // DateTime notifyDate=DateTime.
+  //List<DateTime> notify = notificationC.getNotificationTime(vDate, newDoses);
+  for (int i = 0; i < vDate.length; ++i) {
+    for (int j = 0; j < newDoses.length; ++j) {
+      int vitalDate = int.parse(vDate[i]);
+      DateTime vitald = DateTime(
+          DateTime.fromMillisecondsSinceEpoch(vitalDate).year,
+          DateTime.fromMillisecondsSinceEpoch(vitalDate).month,
+          DateTime.fromMillisecondsSinceEpoch(vitalDate).day);
+      
+      print(new DateFormat('yyyyy.MM.dd GGG hh:mm aaa').parse('0' +
+          vitald.year.toString() +
+          '.' +
+          vitald.month.toString() +
+          '.' +
+          vitald.day.toString() +
+          ' ' +
+          'AD' +
+          ' ' +
+          newDoses[j]));
+      
+     
+      DateTime finaNotifyDate = new DateFormat('yyyyy.MM.dd GGG hh:mm aaa')
+          .parse('0' +
+              vitald.year.toString() +
+              '.' +
+              vitald.month.toString() +
+              '.' +
+              vitald.day.toString() +
+              ' ' +
+              'AD' +
+              ' ' +
+              newDoses[j]);
+      print(vitald);
+
+      print(newDoses[j]);
+      // DateTime notifyDate=DateTime.
+      notify(finaNotifyDate);
     }
   }
   Navigator.pop(context);
@@ -287,22 +319,22 @@ getDoses(Vital vital) {
   return allDose;
 }
 
-void notify() {
+void notify(DateTime schedule) {
   print('hi');
-  DateTime scheduleTime = DateTime.now();
+  
   AwesomeNotifications().createNotification(
     content: NotificationContent(
-        id: 10,
+        id: Random().nextInt(10000000),
         channelKey: 'basic_channel',
         title: 'Simple Notification',
         body: 'Simple body'),
     schedule: NotificationCalendar.fromDate(
       date: DateTime(
-        DateTime.now().year,
-        DateTime.now().month,
-        DateTime.now().day,
-        DateTime.now().hour,
-        DateTime.now().minute + 2,
+        schedule.year,
+        schedule.month,
+        schedule.day,
+        schedule.hour,
+        schedule.minute,
       ),
     ),
   );
