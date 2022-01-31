@@ -55,110 +55,114 @@ class _SignUpPageState extends State<SignUpPage> {
       backgroundColor: Color(0xffEDF7FF),
       body: SingleChildScrollView(
         child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  width: MediaQuery.of(context).size.width * .8,
-                  margin: EdgeInsets.only(
-                    top: 50,
-                    left: MediaQuery.of(context).size.width * 0.097,
-                  ),
-                  child: Text(
-                    'Create Account',
-                    style: TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700),
-                  ),
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                width: MediaQuery.of(context).size.width * .8,
+                margin: EdgeInsets.only(
+                  top: 50,
+                  left: MediaQuery.of(context).size.width * 0.097,
                 ),
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  width: MediaQuery.of(context).size.width * .8,
-                  margin: EdgeInsets.only(
-                    top: 2.5,
-                    left: MediaQuery.of(context).size.width * 0.097,
-                  ),
-                  child: Text(
-                    'Sign In To Get Started!',
-                    style: TextStyle(
-                        color: Color(0xff606365).withOpacity(0.6),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
-              ),
-              TextFieldWidget(),
-              SizedBox(height: 20),
-              InkWell(
-                onTap: () {
-                  googleLogin().then(
-                    (result) {
-                      // ignore: unnecessary_null_comparison
-                      if (result != '') {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            fullscreenDialog: true,
-                            builder: (context) {
-                              User? firebaseUser =
-                                  FirebaseAuth.instance.currentUser;
-
-                              // this means google login
-                              String username =
-                                  firebaseUser?.displayName.toString() ?? 'Google Username';
-                              String email = firebaseUser?.email.toString() ?? 'Google User Email';
-                              String image = firebaseUser?.photoURL.toString() ?? 'https://image.pngaaa.com/677/884677-middle.png';
-
-                              Get.find<AuthUserController>()
-                                  .updateVal(username, email, '', image);
-
-                              return Dashboard();
-                            },
-                          ),
-                        );
-                      }
-                    },
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    border: Border.all(
-                      width: 2,
+                child: Text(
+                  'Create Account',
+                  style: TextStyle(
                       color: kPrimaryColor,
-                    ),
-                  ),
-                  height: 50,
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.only(left: 30, right: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        child: SvgPicture.asset(
-                          "assets/images/google.svg",
-                          height: 20,
-                          width: 20,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                width: MediaQuery.of(context).size.width * .8,
+                margin: EdgeInsets.only(
+                  top: 2.5,
+                  left: MediaQuery.of(context).size.width * 0.097,
+                ),
+                child: Text(
+                  'Sign In To Get Started!',
+                  style: TextStyle(
+                      color: Color(0xff606365).withOpacity(0.6),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
+            TextFieldWidget(),
+            SizedBox(height: 20),
+            InkWell(
+              onTap: () {
+                googleLogin().then(
+                  (result) {
+                    // ignore: unnecessary_null_comparison
+                    if (result != '') {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          fullscreenDialog: true,
+                          builder: (context) {
+                            User? firebaseUser =
+                                FirebaseAuth.instance.currentUser;
+
+                            // this means google login
+                            String username =
+                                firebaseUser?.displayName.toString() ??
+                                    'Google Username';
+                            String email = firebaseUser?.email.toString() ??
+                                'Google User Email';
+                            String image = firebaseUser?.photoURL.toString() ??
+                                'https://image.pngaaa.com/677/884677-middle.png';
+
+                            Get.find<AuthUserController>()
+                                .updateVal(username, email, '', image);
+
+                            return Dashboard();
+                          },
                         ),
-                      ),
-                      SizedBox(width: 10),
-                      Center(
-                        child: Text(
-                          'Sign up with Google',
-                          style: TextStyle(
-                              color: kPrimaryColor,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ],
+                      );
+                    }
+                  },
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(
+                    width: 2,
+                    color: kPrimaryColor,
                   ),
                 ),
-              )
-            ]),
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.only(left: 30, right: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: SvgPicture.asset(
+                        "assets/images/google.svg",
+                        height: 20,
+                        width: 20,
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Center(
+                      child: Text(
+                        'Sign up with Google',
+                        style: TextStyle(
+                            color: kPrimaryColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -121,6 +121,8 @@ class MyApp extends StatelessWidget {
         canvasColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Poppins',
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
       ),
       home: Dashboard(),
     );

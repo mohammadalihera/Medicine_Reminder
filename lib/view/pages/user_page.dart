@@ -1,9 +1,12 @@
 import 'package:Vitals/Authentication/g_auth.dart';
 import 'package:Vitals/controller/auth_user_controller.dart';
 import 'package:Vitals/main.dart';
+import 'package:Vitals/view/widgets/userprofile/next_dose.dart';
+import 'package:Vitals/view/widgets/userprofile/user_info.dart';
+import 'package:Vitals/view/widgets/userprofile/user_page_buttons.dart';
+import 'package:Vitals/view/widgets/userprofile/week_medicine_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,25 +25,6 @@ class _UserPageState extends State<UserPage> {
     String userCred = '';
     String userImg = '';
 
-    // if (firebaseUser!.email.toString() != '' &&
-    //     firebaseUser!.phoneNumber == null) {
-    //   // ignore: todo
-    //   // TODO: Print user general info when guser is avbailable
-    //   // print name phone number and other stuff if mobile user is created. with conditional either male or female image
-    //   print(firebaseUser);
-    //   photoURL = firebaseUser?.photoURL ??
-    //       'https://image.pngaaa.com/677/884677-middle.png';
-    //   name = firebaseUser?.displayName ?? 'UserName';
-    //   email = firebaseUser?.email ?? 'UserEmail';
-    //   print(dashname);
-    // } else {
-    //   photoURL =
-    //       'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
-    //   name = 'UserName';
-    //   email = firebaseUser?.phoneNumber ?? 'UserPhone';
-    //   print(dashname);
-    // }
-
     return GetBuilder<AuthUserController>(
       init: AuthUserController(),
       builder: (authController) {
@@ -53,53 +37,49 @@ class _UserPageState extends State<UserPage> {
           userTitle = authController.userName;
           userCred = authController.userPhone;
           userImg = authController.imageURL;
+          print(userTitle + userCred);
         }
         return Scaffold(
-          backgroundColor: Color(0xffEDF7FF),
+          backgroundColor: kPrimaryColor,
           appBar: AppBar(
+            elevation: 0.0,
             title: Center(
               child: Text('My Profile'),
             ),
           ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: CircleAvatar(
-                  radius: 30,
-                  backgroundImage: NetworkImage(userImg),
+          body: Container(
+            margin: EdgeInsets.only(top: 0),
+            height: MediaQuery.of(context).size.height,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xffEDF7FF),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(50),
+                  topRight: Radius.circular(50),
                 ),
               ),
-              Center(
-                child: Text(
-                  userTitle,
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 16,
-                  ),
+              child: SingleChildScrollView(
+                padding: EdgeInsets.only(top: 50),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    UserInfoWidget(userTitle, userCred, userImg),
+                    NextDoseWidget(),
+                    Center(
+                      child: Text(
+                        'Next 7 Days Medicine',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    NextWeekMedicine(),
+                    UserPageButtons(),
+                  ],
                 ),
               ),
-              Center(
-                child: Text(
-                  userCred,
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              Center(
-                child: TextButton(
-                  onPressed: () {
-                    logout(context);
-                  },
-                  child: Container(
-                    child: Text('Log Out'),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         );
       },
