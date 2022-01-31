@@ -76,7 +76,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                           child: InkWell(
                             onTap: () {
                               print('hello');
-                            //  notify();
+                              //  notify();
                               Navigator.pop(context);
                             },
                             child: Container(
@@ -252,7 +252,7 @@ void addVital(
           DateTime.fromMillisecondsSinceEpoch(vitalDate).year,
           DateTime.fromMillisecondsSinceEpoch(vitalDate).month,
           DateTime.fromMillisecondsSinceEpoch(vitalDate).day);
-      
+
       print(new DateFormat('yyyyy.MM.dd GGG hh:mm aaa').parse('0' +
           vitald.year.toString() +
           '.' +
@@ -263,8 +263,7 @@ void addVital(
           'AD' +
           ' ' +
           newDoses[j]));
-      
-     
+
       DateTime finaNotifyDate = new DateFormat('yyyyy.MM.dd GGG hh:mm aaa')
           .parse('0' +
               vitald.year.toString() +
@@ -280,7 +279,7 @@ void addVital(
 
       print(newDoses[j]);
       // DateTime notifyDate=DateTime.
-      notify(finaNotifyDate);
+      notify(finaNotifyDate, vital);
     }
   }
   Navigator.pop(context);
@@ -319,15 +318,53 @@ getDoses(Vital vital) {
   return allDose;
 }
 
-void notify(DateTime schedule) {
+void notify(DateTime schedule, Vital vital) async {
+  print('all'+vital.date);
+  print("deleted: " + schedule.millisecondsSinceEpoch.toString());
+  vital.date =
+      vital.date.replaceAll(schedule.millisecondsSinceEpoch.toString(), '');
+  dynamic result =
+      await Repository.update("Vitals", vital.vitalToMap(), vital.id);
+  print(vital.date);
   print('hi');
-  
+  AwesomeNotifications().actionStream.listen((event) async {
+    print('event received!');
+    print(event.toMap().toString());
+    // do something based on event...
+  });
+
   AwesomeNotifications().createNotification(
+    actionButtons: [
+      NotificationActionButton(
+        label: 'Snooz',
+        enabled: true,
+        buttonType: ActionButtonType.Default,
+        key: '22',
+        showInCompactView: true,
+      ),
+      NotificationActionButton(
+          label: 'Dismiss',
+          enabled: true,
+          buttonType: ActionButtonType.Default,
+          key: '33'),
+      NotificationActionButton(
+          label: 'Dismiss',
+          enabled: true,
+          buttonType: ActionButtonType.Default,
+          key: '33')
+    ],
     content: NotificationContent(
-        id: Random().nextInt(10000000),
-        channelKey: 'basic_channel',
-        title: 'Simple Notification',
-        body: 'Simple body'),
+      id: Random().nextInt(10000000),
+      channelKey: 'basic_channel',
+      title: vital.name,
+      body: 'Take your medicine please',
+      // backgroundColor: Colors.blue,
+      // color: Colors.red,
+      displayOnBackground: true,
+      displayOnForeground: true,
+      bigPicture: 'asset://assets/images/no_vital.png',
+      notificationLayout: NotificationLayout.BigPicture,
+    ),
     schedule: NotificationCalendar.fromDate(
       date: DateTime(
         schedule.year,

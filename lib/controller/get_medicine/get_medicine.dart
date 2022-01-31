@@ -17,6 +17,7 @@ class GetMedicineController extends GetxController {
 
   List<Vital> selectedVital = [];
   List<Vital> allVital = [];
+  String nextDoseTime = '';
   Map<DateTime, List<Vital>> vital = {};
   DateTime selectedDate =
       DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
@@ -80,5 +81,18 @@ class GetMedicineController extends GetxController {
     selectedVital = vital[eventDate] ?? [];
 
     update();
+  }
+
+  nextDose() async {
+    List<Vital> vitals = await Repository.getAllVitals();
+    DateTime now = DateTime.now();
+
+    for (int i = 0; i < vital.length; ++i) {
+      print(vitals[i].date);
+      List<String> dates = allVital[i].date.split(',');
+      for (int j = 0; j < dates.length; ++j) {
+        int dateInt = int.parse(dates[j]);
+      }
+    }
   }
 }

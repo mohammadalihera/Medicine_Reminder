@@ -203,8 +203,7 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
 void addVital(Vital vital,int additionProgram, context) async {
   DateTime newMedicineDate = DateTime.fromMillisecondsSinceEpoch(int.parse(vital.date.split(',').first));
   DateTime firstDate=DateTime(newMedicineDate.year,newMedicineDate.month, newMedicineDate.day);
-  print('lasssssssssssssssssssssssst date');
-  print(firstDate);
+  
   GetMedicineController getmedicineController =
       Get.put(GetMedicineController());
   vital.date=firstDate.millisecondsSinceEpoch.toString();

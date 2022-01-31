@@ -21,16 +21,21 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   AwesomeNotifications().initialize(
       // set the icon to null if you want to use the default app icon
-      null,
+      'resource://drawable/logo',
+      /* null, */
       [
         NotificationChannel(
-          channelKey: 'basic_channel',
-          channelName: 'Basic notifications',
-          channelDescription: 'Notification channel for basic tests',
-          defaultColor: Color(0xFF9D50DD),
-          ledColor: Colors.white,
-          enableVibration: true,
-        )
+            channelKey: 'basic_channel',
+            channelName: 'Basic notifications',
+            channelDescription: 'Notification channel for basic tests',
+            // defaultColor: Color(0xffaa2233),
+            //ledColor: Colors.blue,
+
+            defaultColor: Colors.transparent,
+            ledColor: Colors.white,
+            playSound: true,
+            enableVibration: true,
+            importance: NotificationImportance.High)
       ]);
   const AndroidInitializationSettings initializationSettingsAndroid =
       AndroidInitializationSettings('app_icon');
