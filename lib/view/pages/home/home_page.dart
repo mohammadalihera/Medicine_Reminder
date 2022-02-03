@@ -1,12 +1,12 @@
-import 'package:Vitals/main.dart';
-import 'package:Vitals/view/pages/dashboard.dart';
-import 'package:Vitals/view/pages/user_page.dart';
-import 'package:Vitals/view/pages/setting_page.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
+import 'package:Vitel/main.dart';
+import 'package:Vitel/view/pages/dashboard.dart';
+import 'package:Vitel/view/pages/user_page.dart';
+import 'package:Vitel/view/pages/setting_page.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
 import 'package:double_back_to_close/double_back_to_close.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Vitals/view/widgets/home/bottom_nav.dart';
+import 'package:Vitel/view/widgets/home/bottom_nav.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Dashboard extends StatelessWidget {

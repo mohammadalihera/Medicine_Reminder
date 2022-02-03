@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:Vitel/controller/add_medicine/add_medicine_controller.dart';
 import 'package:Vitel/controller/get_medicine/get_medicine.dart';
-import 'package:Vitel/database/vital_reprository.dart';
+import 'package:Vitel/database/vitel_reprository.dart';
 import 'package:Vitel/main.dart';
 import 'package:Vitel/model/medicine_model.dart';
 import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
@@ -95,7 +95,10 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
-                        MedicineInfoTextField(type: 'Medicine Name',vitalName: '',),
+                        MedicineInfoTextField(
+                          type: 'Medicine Name',
+                          vitelName: '',
+                        ),
                         Container(
                           margin: EdgeInsets.only(left: 40, top: 10),
                           child: Text(
@@ -139,7 +142,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                         ),
                         InkWell(
                           onTap: () async {
-                            addVital(
+                            addvitel(
                                 addController.name,
                                 addController.doseOne,
                                 addController.doseTwo,
@@ -189,7 +192,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
   }
 }
 
-void addVital(
+void addvitel(
     String vName,
     String doseOne,
     String doseTwo,
@@ -206,7 +209,7 @@ void addVital(
   GetMedicineController getmedicineController =
       Get.put(GetMedicineController());
 
-  Vital vital = Vital(
+  Vitel vitel = Vitel(
     id: Random().nextInt(10000000),
     name: vName,
     doseOne: doseOne,
@@ -220,12 +223,13 @@ void addVital(
     quantity: quantity,
     afterMeal: afterMeal,
   );
-  for (int i = 0; i < vital.program-1; ++i) {
+  print(vitel.id);
+  for (int i = 0; i < vitel.program - 1; ++i) {
     newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
-    vital.date =
-        vital.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();
+    vitel.date =
+        vitel.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();
   }
-  dynamic result = await Repository.insertData("Vitals", vital.vitalToMap());
-  getmedicineController.getAllVitalFromDb();
+  dynamic result = await Repository.insertData("Vitel", vitel.vitelToMap());
+  getmedicineController.getAllVitelFromDb();
   Navigator.pop(context);
 }

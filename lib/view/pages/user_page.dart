@@ -1,10 +1,10 @@
-import 'package:Vitals/Authentication/g_auth.dart';
-import 'package:Vitals/controller/auth_user_controller.dart';
-import 'package:Vitals/main.dart';
-import 'package:Vitals/view/widgets/userprofile/next_dose.dart';
-import 'package:Vitals/view/widgets/userprofile/user_info.dart';
-import 'package:Vitals/view/widgets/userprofile/user_page_buttons.dart';
-import 'package:Vitals/view/widgets/userprofile/week_medicine_widget.dart';
+import 'package:Vitel/Authentication/g_auth.dart';
+import 'package:Vitel/controller/auth_user_controller.dart';
+import 'package:Vitel/main.dart';
+import 'package:Vitel/view/widgets/userprofile/next_dose.dart';
+import 'package:Vitel/view/widgets/userprofile/user_info.dart';
+import 'package:Vitel/view/widgets/userprofile/user_page_buttons.dart';
+import 'package:Vitel/view/widgets/userprofile/week_medicine_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';

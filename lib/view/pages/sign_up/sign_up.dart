@@ -1,13 +1,13 @@
-import 'package:Vitals/Authentication/g_auth.dart';
-import 'package:Vitals/controller/auth_user_controller.dart';
-import 'package:Vitals/controller/sign_in_controller.dart';
-import 'package:Vitals/view/pages/home/home_page.dart';
+import 'package:Vitel/Authentication/g_auth.dart';
+import 'package:Vitel/controller/auth_user_controller.dart';
+import 'package:Vitel/controller/sign_in_controller.dart';
+import 'package:Vitel/view/pages/home/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:Vitals/view/widgets/sign_up_widget/sign_up_text_fields.dart';
+import 'package:Vitel/view/widgets/sign_up_widget/sign_up_text_fields.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:Vitals/main.dart';
+import 'package:Vitel/main.dart';
 
 import '../../../main.dart';
 

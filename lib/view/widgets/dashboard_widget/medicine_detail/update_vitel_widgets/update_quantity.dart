@@ -1,13 +1,13 @@
-import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
-import 'package:Vitals/main.dart';
-import 'package:Vitals/model/medicine_model.dart';
+import 'package:Vitel/controller/add_medicine/add_medicine_controller.dart';
+import 'package:Vitel/main.dart';
+import 'package:Vitel/model/medicine_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UpdateMedicineQuantity extends StatefulWidget {
-  final Vital vital;
-  UpdateMedicineQuantity(this.vital);
+  final Vitel vitel;
+  UpdateMedicineQuantity(this.vitel);
   @override
   _UpdateMedicineQuantityState createState() => _UpdateMedicineQuantityState();
 }
@@ -51,7 +51,7 @@ class _UpdateMedicineQuantityState extends State<UpdateMedicineQuantity> {
                         margin: EdgeInsets.only(left: 40),
                         child: Text(
                           selectedQuantity == 0
-                              ? widget.vital.quantity.toString()
+                              ? widget.vitel.quantity.toString()
                               : selectedQuantity.toString(),
                           style: TextStyle(
                              

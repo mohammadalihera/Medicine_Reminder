@@ -1,5 +1,5 @@
-import 'package:Vitals/database/vital_table.dart';
-import 'package:Vitals/model/medicine_model.dart';
+import 'package:Vitel/database/vitel_table.dart';
+import 'package:Vitel/model/medicine_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class Repository {
@@ -9,7 +9,7 @@ class Repository {
 
   //init database
   static Future<Database> get database async {
-    Database _database = await VitalDatabase.setDatabase();
+    Database _database = await VitelDatabase.setDatabase();
     return _database;
   }
 
@@ -32,10 +32,10 @@ static  Future<List<Map<String, dynamic>>> getAllData(table) async {
       return db.query(table);
     }
   }
-static Future<int> update( table,Map<String,dynamic>vital,int id) async {
+static Future<int> update( table,Map<String,dynamic>vitel,int id) async {
     Database db = await database;
     return await db.update(
-    table, vital,
+    table, vitel,
     where: "id= ?",whereArgs: [id]
 
     );
@@ -52,10 +52,10 @@ static  Future<int> deleteData(String table, int id) async {
   }
 
 
-  static Future<List<Vital>>getAllVitals()async{
-    List<Vital> data = [];
-          (await Repository.getAllData("Vitals")).forEach((vitalMap) {
-            data.add(Vital.vitalMapToObject(vitalMap));
+  static Future<List<Vitel>>getAllVitels()async{
+    List<Vitel> data = [];
+          (await Repository.getAllData("Vitel")).forEach((vitelMap) {
+            data.add(Vitel.vitelMapToObject(vitelMap));
           });
 
     return data;

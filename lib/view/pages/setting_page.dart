@@ -1,7 +1,6 @@
 import 'dart:convert';
-
-import 'package:Vitals/database/vital_reprository.dart';
-import 'package:Vitals/model/medicine_model.dart';
+import 'package:Vitel/database/vitel_reprository.dart';
+import 'package:Vitel/model/medicine_model.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -10,8 +9,8 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  List<Vital> dataFromJson(String str) =>
-      List<Vital>.from(json.decode(str).map((x) => Vital.vitalMapToObject(x)));
+  List<Vitel> dataFromJson(String str) =>
+      List<Vitel>.from(json.decode(str).map((x) => Vitel.vitelMapToObject(x)));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +22,7 @@ class _SettingsPageState extends State<SettingsPage> {
           DateTime newMedicineDate = DateTime(
               DateTime.now().year, DateTime.now().month, DateTime.now().day);
 
-          List<Vital> data = await Repository.getAllVitals();
+          List<Vitel> data = await Repository.getAllVitels();
           for (int i = 0; i < data.length; ++i) {
             List<String> dbDates = data[i].date.split(',');
             int d = int.parse(dbDates[1]);

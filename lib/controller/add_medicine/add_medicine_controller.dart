@@ -15,81 +15,81 @@ class AddMedicineController extends GetxController {
   late int quantity=0;
   late String endDate;
   int afterMeal = 0;
-  void changeId(int vitalId) {
-    id = vitalId;
+  void changeId(int vitelId) {
+    id = vitelId;
 
     update();
   }
 
-  void changeName(String vitalName) {
-    name = vitalName;
+  void changeName(String vitelName) {
+    name = vitelName;
 
     update();
   }
 
-  void changeDone(String vitalDone) {
-    doseOne = vitalDone;
+  void changeDone(String vitelDone) {
+    doseOne = vitelDone;
 
     update();
   }
 
-  void changeDtwo(String vitalDtwo) {
-    doseTwo = vitalDtwo;
+  void changeDtwo(String vitelDtwo) {
+    doseTwo = vitelDtwo;
 
     update();
   }
 
-  void changeDthree(String vitalDthree) {
-    doseThree = vitalDthree;
+  void changeDthree(String vitelDthree) {
+    doseThree = vitelDthree;
 
     update();
   }
 
-  void changeDfour(String vitalDfour) {
-    doseFour = vitalDfour;
+  void changeDfour(String vitelDfour) {
+    doseFour = vitelDfour;
 
     update();
   }
 
-  void changeDfive(String vitalDfive) {
-    doseFive = vitalDfive;
+  void changeDfive(String vitelDfive) {
+    doseFive = vitelDfive;
 
     update();
   }
 
-  void changeDsix(String vitalDsix) {
-    doseSix = vitalDsix;
+  void changeDsix(String vitelDsix) {
+    doseSix = vitelDsix;
 
     update();
   }
 
-  void changeStartDate(String vitalstart) {
-    startDate = vitalstart;
+  void changeStartDate(String vitelstart) {
+    startDate = vitelstart;
 
     update();
   }
 
-  void changeProgram(int vitalprog) {
-    program = vitalprog;
-    endDate = vitalprog.toString();
+  void changeProgram(int vitelprog) {
+    program = vitelprog;
+    endDate = vitelprog.toString();
 
     update();
   }
 
-  void changeQuantity(int vitalq) {
-    quantity = vitalq;
+  void changeQuantity(int vitelq) {
+    quantity = vitelq;
 
     update();
   }
 
-  void changeEndDate(String vitalend) {
-    endDate = vitalend;
+  void changeEndDate(String vitelend) {
+    endDate = vitelend;
 
     update();
   }
 
-  void changeAfterMeal(int vitalMeal) {
-    afterMeal = vitalMeal;
+  void changeAfterMeal(int vitelMeal) {
+    afterMeal = vitelMeal;
     update();
   }
 }

@@ -1,25 +1,25 @@
 import 'dart:math';
 
-import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
-import 'package:Vitals/controller/get_medicine/get_medicine.dart';
-import 'package:Vitals/database/vital_reprository.dart';
-import 'package:Vitals/main.dart';
-import 'package:Vitals/model/medicine_model.dart';
-import 'package:Vitals/view/pages/home/home_page.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/medicine_detail/update_vital_widgets/update_program.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
+import 'package:Vitel/controller/add_medicine/add_medicine_controller.dart';
+import 'package:Vitel/controller/get_medicine/get_medicine.dart';
+import 'package:Vitel/database/vitel_reprository.dart';
+import 'package:Vitel/main.dart';
+import 'package:Vitel/model/medicine_model.dart';
+import 'package:Vitel/view/pages/home/home_page.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/medicine_detail/update_vitel_widgets/update_program.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
 
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_quantity/medicine_quantity.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/medicine_detail/update_vital_widgets/update_doses_field.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/medicine_quantity/medicine_quantity.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/medicine_detail/update_vitel_widgets/update_doses_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class UpdateMedicineDetail extends StatefulWidget {
-  final Vital vital;
-  UpdateMedicineDetail(this.vital);
+  final Vitel vitel;
+  UpdateMedicineDetail(this.vitel);
   @override
   _UpdateMedicineDetailState createState() => _UpdateMedicineDetailState();
 }
@@ -35,25 +35,25 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
   double dosageGap = 0;
   @override
   Widget build(BuildContext context) {
-    Vital vital = widget.vital;
-    meal = vital.afterMeal == 0 ? 'before' : 'after';
+    Vitel vitel = widget.vitel;
+    meal = vitel.afterMeal == 0 ? 'before' : 'after';
     screenWidth = MediaQuery.of(context).size.width;
-    Get.find<AddMedicineController>().changeProgram(vital.program);
+    Get.find<AddMedicineController>().changeProgram(vitel.program);
     if (screenWidth <= 380) {
       dosageGap = 3;
     }
     if (screenWidth > 380) {
       dosageGap = 12;
     }
-     int dosageNumber = vital.doseSix != ''
+     int dosageNumber = vitel.doseSix != ''
             ? 6
-            : vital.doseFive != ''
+            : vitel.doseFive != ''
                 ? 5
-                : vital.doseFour != ''
+                : vitel.doseFour != ''
                     ? 4
-                    : vital.doseThree != ''
+                    : vitel.doseThree != ''
                         ? 3
-                        : vital.doseTwo != ''
+                        : vitel.doseTwo != ''
                             ? 2
                             : 1;
     print('9999999999999999999999999999999999999');
@@ -116,7 +116,7 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                       ),
                       MedicineInfoTextField(
                         type: 'Medicine Name',
-                        vitalName: vital.name,
+                        vitelName: vitel.name,
                       ),
                       Container(
                         margin: EdgeInsets.only(left: 40, top: 10),
@@ -130,9 +130,9 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                       ),
                       UpdateDosageField(
                           dosageGap: dosageGap,
-                          vital: vital,
+                          vitel: vitel,
                           preDose: dosageNumber),
-                      UpdatePrograme(widget.vital),
+                      UpdatePrograme(widget.vitel),
                       MedicineQuantity(),
                       Container(
                         margin: EdgeInsets.only(left: 40, top: 23, right: 40),
@@ -146,7 +146,7 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                                 setState(
                                   () {
                                     meal = 'after';
-                                    vital.afterMeal = 1;
+                                    vitel.afterMeal = 1;
                                   },
                                 );
                               },
@@ -159,7 +159,7 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                                 setState(
                                   () {
                                     meal = 'before';
-                                    vital.afterMeal = 0;
+                                    vitel.afterMeal = 0;
                                   },
                                 );
                               },
@@ -170,11 +170,11 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                       ),
                       InkWell(
                         onTap: () async {
-                          vital.name = addController.name;
-                          vital.program = addController.program;
-                          vital.quantity = addController.quantity;
+                          vitel.name = addController.name;
+                          vitel.program = addController.program;
+                          vitel.quantity = addController.quantity;
 
-                          addVital(vital, addController.program, context);
+                          addVital(vitel, addController.program, context);
                         },
                         child: Center(
                           child: Container(
@@ -215,9 +215,9 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
   }
 }
 
-void addVital(Vital vital, int additionProgram, context) async {
+void addVital(Vitel vitel, int additionProgram, context) async {
   DateTime newMedicineDate = DateTime.fromMillisecondsSinceEpoch(
-      int.parse(vital.date.split(',').first));
+      int.parse(vitel.date.split(',').first));
   print('lasssssssssssssssssssssssst date');
   print(newMedicineDate);
   GetMedicineController getmedicineController =
@@ -225,12 +225,12 @@ void addVital(Vital vital, int additionProgram, context) async {
 
   for (int i = 0; i < additionProgram; ++i) {
     newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
-    vital.date =
-        vital.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();
+    vitel.date =
+        vitel.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();
   }
   dynamic result =
-      await Repository.update("Vitals", vital.vitalToMap(), vital.id);
-  getmedicineController.getAllVitalFromDb();
+      await Repository.update("Vitel", vitel.vitelToMap(), vitel.id);
+  getmedicineController.getAllVitelFromDb();
 
   Navigator.pop(context);
   Navigator.pop(context);

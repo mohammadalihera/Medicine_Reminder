@@ -35,10 +35,10 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                       childAspectRatio: 2 / 2,
                       crossAxisSpacing: 5,
                       mainAxisSpacing: 5),
-                  itemCount: getmedicineController.selectedVital.length,
+                  itemCount: getmedicineController.selectedVitel.length,
                   itemBuilder: (_, i) {
                     return InkWell(
-                      onTap:()=> medicineDetail( getmedicineController.selectedVital[i]),
+                      onTap:()=> medicineDetail( getmedicineController.selectedVitel[i]),
                       child: Card(
                         shadowColor: Colors.blue,
                         elevation: 4,
@@ -64,14 +64,14 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                               Container(
                                 margin: EdgeInsets.only(bottom: 4),
                                 child: Text(
-                                  getmedicineController.selectedVital[i].name,
+                                  getmedicineController.selectedVitel[i].name,
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.blue),
                                 ),
                               ),
-                              getmedicineController.selectedVital[i].afterMeal ==
+                              getmedicineController.selectedVitel[i].afterMeal ==
                                       1
                                   ? AfterMeal('after', 'dash')
                                   : BeforeMeal('before', 'dash'),
@@ -79,7 +79,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                                 margin: EdgeInsets.only(top: 5),
                                 child: Text(
                                   numberOfTime(
-                                      getmedicineController.selectedVital[i]),
+                                      getmedicineController.selectedVitel[i]),
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
@@ -104,7 +104,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                                     ),
                                     SizedBox(height: 2),
                                     Text(
-                                     getmedicineController.selectedVital[i].doseOne,
+                                     getmedicineController.selectedVitel[i].doseOne,
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w700,
@@ -121,7 +121,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                   });
             }));
   }
- Future< dynamic > medicineDetail(Vital vital) {
+ Future< dynamic > medicineDetail(Vitel vitel) {
     double modalHeight = 0;
     if (displayHeight < 750) {
       modalHeight = MediaQuery.of(context).size.height * 0.8;
@@ -144,30 +144,30 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                 topRight: const Radius.circular(35.0),
               ),
             ),
-            child: MedicineDetail(vital),
+            child: MedicineDetail(vitel),
           );
         });
   }
 }
 
-String numberOfTime(Vital vitla) {
+String numberOfTime(Vitel vitel) {
   int num = 0;
-  if (vitla.doseOne.isNotEmpty) {
+  if (vitel.doseOne.isNotEmpty) {
     num = num + 1;
   }
-  if (vitla.doseTwo.isNotEmpty) {
+  if (vitel.doseTwo.isNotEmpty) {
     num = num + 1;
   }
-  if (vitla.doseThree.isNotEmpty) {
+  if (vitel.doseThree.isNotEmpty) {
     num = num + 1;
   }
-  if (vitla.doseFour.isNotEmpty) {
+  if (vitel.doseFour.isNotEmpty) {
     num = num + 1;
   }
-  if (vitla.doseFive.isNotEmpty) {
+  if (vitel.doseFive.isNotEmpty) {
     num = num + 1;
   }
-  if (vitla.doseSix.isNotEmpty) {
+  if (vitel.doseSix.isNotEmpty) {
     num = num + 1;
   }
   

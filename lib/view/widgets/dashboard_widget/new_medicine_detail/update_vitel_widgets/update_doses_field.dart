@@ -8,8 +8,8 @@ import 'package:intl/intl.dart';
 
 class UpdateDosageField extends StatefulWidget {
   double dosageGap;
-  Vital vital;
-  UpdateDosageField({required this.dosageGap, required this.vital});
+  Vitel vitel;
+  UpdateDosageField({required this.dosageGap, required this.vitel});
   @override
   _UpdateDosageFieldState createState() => _UpdateDosageFieldState();
 }
@@ -29,15 +29,15 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
       Get.put(AddMedicineController());
   @override
   Widget build(BuildContext context) {
-    Vital vital = widget.vital;
-    /* dose_1 = DateTime.parse(vital.doseOne);
-    dose_2 = DateTime.parse(vital.doseTwo);
-    dose_3 = DateTime.parse(vital.doseThree);
-    dose_4 = DateTime.parse(vital.doseFour);
-    dose_5 = DateTime.parse(vital.doseFive);
-    dose_6 = DateTime.parse(vital.doseSix); */
-    print(vital.name);
-    print(vital.doseSix);
+    Vitel vitel = widget.vitel;
+    /* dose_1 = DateTime.parse(vitel.doseOne);
+    dose_2 = DateTime.parse(vitel.doseTwo);
+    dose_3 = DateTime.parse(vitel.doseThree);
+    dose_4 = DateTime.parse(vitel.doseFour);
+    dose_5 = DateTime.parse(vitel.doseFive);
+    dose_6 = DateTime.parse(vitel.doseSix); */
+    print(vitel.name);
+    print(vitel.doseSix);
 
     return Container(
       margin: EdgeInsets.only(left: 40, top: 10),
@@ -50,11 +50,11 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                   onTap: () {
                     setState(() {
                       dosageNumber = 1;
-                      vital.doseSix = '';
-                      vital.doseFive = '';
-                      vital.doseFour = '';
-                      vital.doseThree = '';
-                      vital.doseTwo = '';
+                      vitel.doseSix = '';
+                      vitel.doseFive = '';
+                      vitel.doseFour = '';
+                      vitel.doseThree = '';
+                      vitel.doseTwo = '';
                     });
                   },
                   child: CircleAvatar(
@@ -74,10 +74,10 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                   onTap: () {
                     setState(() {
                       dosageNumber = 2;
-                      vital.doseSix = '';
-                      vital.doseFive = '';
-                      vital.doseFour = '';
-                      vital.doseThree = '';
+                      vitel.doseSix = '';
+                      vitel.doseFive = '';
+                      vitel.doseFour = '';
+                      vitel.doseThree = '';
                     });
                   },
                   child: CircleAvatar(
@@ -97,9 +97,9 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                   onTap: () {
                     setState(() {
                       dosageNumber = 3;
-                      vital.doseSix = '';
-                      vital.doseFive = '';
-                      vital.doseFour = '';
+                      vitel.doseSix = '';
+                      vitel.doseFive = '';
+                      vitel.doseFour = '';
                       
                     });
                   },
@@ -120,8 +120,8 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                   onTap: () {
                     setState(() {
                       dosageNumber = 4;
-                      vital.doseSix = '';
-                      vital.doseFive = '';
+                      vitel.doseSix = '';
+                      vitel.doseFive = '';
                     });
                   },
                   child: CircleAvatar(
@@ -141,7 +141,7 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                   onTap: () {
                     setState(() {
                       dosageNumber = 5;
-                      vital.doseSix = '';
+                      vitel.doseSix = '';
                     });
                   },
                   child: CircleAvatar(
@@ -185,7 +185,7 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                 Container(
                   child: Row(
                     children: <Widget>[
-                      vital.doseOne.isNotEmpty || dosageNumber >= 1
+                      vitel.doseOne.isNotEmpty || dosageNumber >= 1
                           ? InkWell(
                               onTap: () {
                                 FocusScopeNode currentFocus =
@@ -209,8 +209,8 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                                     EdgeInsets.only(right: widget.dosageGap),
                                 child: Center(
                                   child: Text(
-                                    vital.doseOne.isNotEmpty
-                                        ? vital.doseOne
+                                    vitel.doseOne.isNotEmpty
+                                        ? vitel.doseOne
                                         : time_1,
                                     style: TextStyle(
                                         fontSize: 14, color: Colors.white),
@@ -219,7 +219,7 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                               ),
                             )
                           : SizedBox(),
-                      vital.doseTwo.isNotEmpty || dosageNumber >= 2
+                      vitel.doseTwo.isNotEmpty || dosageNumber >= 2
                           ? InkWell(
                               onTap: () {
                                 _showDialog('dose2');
@@ -238,8 +238,8 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                                     left: widget.dosageGap),
                                 child: Center(
                                   child: Text(
-                                    vital.doseTwo.isNotEmpty
-                                        ? vital.doseTwo
+                                    vitel.doseTwo.isNotEmpty
+                                        ? vitel.doseTwo
                                         : time_2,
                                     style: TextStyle(
                                         fontSize: 14, color: Colors.white),
@@ -248,7 +248,7 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                               ),
                             )
                           : SizedBox(),
-                      vital.doseThree.isNotEmpty || dosageNumber >= 3
+                      vitel.doseThree.isNotEmpty || dosageNumber >= 3
                           ? InkWell(
                               onTap: () {
                                 _showDialog('dose3');
@@ -267,8 +267,8 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                                     left: widget.dosageGap),
                                 child: Center(
                                   child: Text(
-                                    vital.doseThree.isNotEmpty
-                                        ? vital.doseThree
+                                    vitel.doseThree.isNotEmpty
+                                        ? vitel.doseThree
                                         : time_3,
                                     style: TextStyle(
                                         fontSize: 14, color: Colors.white),
@@ -284,7 +284,7 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                   margin: EdgeInsets.only(top: 10),
                   child: Row(
                     children: <Widget>[
-                      vital.doseFour.isNotEmpty || dosageNumber >= 4
+                      vitel.doseFour.isNotEmpty || dosageNumber >= 4
                           ? InkWell(
                               onTap: () {
                                 _showDialog('dose4');
@@ -302,8 +302,8 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                                     right: widget.dosageGap, bottom: 7),
                                 child: Center(
                                   child: Text(
-                                    vital.doseFour.isNotEmpty
-                                        ? vital.doseFour
+                                    vitel.doseFour.isNotEmpty
+                                        ? vitel.doseFour
                                         : time_4,
                                     style: TextStyle(
                                         fontSize: 14, color: Colors.white),
@@ -312,7 +312,7 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                               ),
                             )
                           : SizedBox(),
-                      vital.doseFive.isNotEmpty || dosageNumber >= 5
+                      vitel.doseFive.isNotEmpty || dosageNumber >= 5
                           ? InkWell(
                               onTap: () {
                                 _showDialog('dose5');
@@ -332,8 +332,8 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                                     bottom: 7),
                                 child: Center(
                                   child: Text(
-                                    vital.doseFive.isNotEmpty
-                                        ? vital.doseFive
+                                    vitel.doseFive.isNotEmpty
+                                        ? vitel.doseFive
                                         : time_5,
                                     style: TextStyle(
                                         fontSize: 14, color: Colors.white),
@@ -342,7 +342,7 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                               ),
                             )
                           : SizedBox(),
-                      vital.doseSix.isNotEmpty || dosageNumber == 6
+                      vitel.doseSix.isNotEmpty || dosageNumber == 6
                           ? InkWell(
                               onTap: () {
                                 _showDialog('dose6');
@@ -362,8 +362,8 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                                     bottom: 7),
                                 child: Center(
                                   child: Text(
-                                    vital.doseSix.isNotEmpty
-                                        ? vital.doseSix
+                                    vitel.doseSix.isNotEmpty
+                                        ? vitel.doseSix
                                         : time_6,
                                     style: TextStyle(
                                         fontSize: 14, color: Colors.white),
@@ -501,37 +501,37 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
         if (doseName == 'dose1') {
           setState(() {
             time_1 = DateFormat('hh:mm a').format(time);
-            widget.vital.doseOne = time_1;
+            widget.vitel.doseOne = time_1;
           });
           Get.find<AddMedicineController>().changeDone(time_1);
         } else if (doseName == 'dose2') {
           setState(() {
             time_2 = DateFormat('hh:mm a').format(time);
-            widget.vital.doseTwo = time_2;
+            widget.vitel.doseTwo = time_2;
           });
           Get.find<AddMedicineController>().changeDtwo(time_2);
         } else if (doseName == 'dose3') {
           setState(() {
             time_3 = DateFormat('hh:mm a').format(time);
-            widget.vital.doseThree = time_3;
+            widget.vitel.doseThree = time_3;
           });
           Get.find<AddMedicineController>().changeDthree(time_3);
         } else if (doseName == 'dose4') {
           setState(() {
             time_4 = DateFormat('hh:mm a').format(time);
-            widget.vital.doseFour = time_4;
+            widget.vitel.doseFour = time_4;
           });
           Get.find<AddMedicineController>().changeDfour(time_4);
         } else if (doseName == 'dose5') {
           setState(() {
             time_5 = DateFormat('hh:mm a').format(time);
-            widget.vital.doseFive = time_5;
+            widget.vitel.doseFive = time_5;
           });
           Get.find<AddMedicineController>().changeDfive(time_5);
         } else if (doseName == 'dose6') {
           setState(() {
             time_6 = DateFormat('hh:mm a').format(time);
-            widget.vital.doseSix = time_6;
+            widget.vitel.doseSix = time_6;
           });
           Get.find<AddMedicineController>().changeDsix(time_6);
         }

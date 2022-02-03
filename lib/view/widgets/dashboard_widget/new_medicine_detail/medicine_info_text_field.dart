@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 
 class MedicineInfoTextField extends StatefulWidget {
   String type;
-  final String vitalName;
-  MedicineInfoTextField({required this.type,required this.vitalName});
+  final String vitelName;
+  MedicineInfoTextField({required this.type,required this.vitelName});
 
   @override
   _MedicineInfoTextFieldState createState() => _MedicineInfoTextFieldState();
@@ -49,7 +49,7 @@ class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
           fontSize: 18,
         ),
         decoration: InputDecoration(
-          hintText:widget.vitalName==''? widget.type:widget.vitalName,
+          hintText:widget.vitelName==''? widget.type:widget.vitelName,
           hintStyle: TextStyle(
             fontFamily: 'Poppins',
             color: Colors.grey,

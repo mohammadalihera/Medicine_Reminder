@@ -1,30 +1,30 @@
-import 'package:Vitals/database/vital_reprository.dart';
-import 'package:Vitals/model/medicine_model.dart';
+import 'package:Vitel/database/vitel_reprository.dart';
+import 'package:Vitel/model/medicine_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class GetMedicineController extends GetxController {
-  List<Vital> selectedVital = [];
-  List<Vital> allVital = [];
-  Map<DateTime, List<Vital>> vital = {};
+  List<Vitel> selectedVitel = [];
+  List<Vitel> allVitel = [];
+  Map<DateTime, List<Vitel>> vitel = {};
   DateTime selectedDate =
       DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-  void getAllVitalFromDb() async {
-    vital = {};
-    allVital = await Repository.getAllVitals();
+  void getAllVitelFromDb() async {
+    vitel = {};
+    allVitel = await Repository.getAllVitels();
     // allVital.sort((a, b) => a.date.compareTo(b.date));
-    for (int i = 0; i < allVital.length; ++i) {
-      List<String> dbDates = allVital[i].date.split(',');
+    for (int i = 0; i < allVitel.length; ++i) {
+      List<String> dbDates = allVitel[i].date.split(',');
       for (int j = 0; j < dbDates.length; ++j) {
         int dateInt = int.parse(dbDates[j]);
         DateTime mapDate = DateTime(
             DateTime.fromMillisecondsSinceEpoch(dateInt).year,
             DateTime.fromMillisecondsSinceEpoch(dateInt).month,
             DateTime.fromMillisecondsSinceEpoch(dateInt).day);
-        if (!vital.containsKey(mapDate)) {
-          vital[mapDate] = [allVital[i]];
+        if (!vitel.containsKey(mapDate)) {
+          vitel[mapDate] = [allVitel[i]];
         } else {
-          vital[mapDate]!.add(allVital[i]);
+          vitel[mapDate]!.add(allVitel[i]);
         }
       }
     }
@@ -35,13 +35,13 @@ class GetMedicineController extends GetxController {
   getSelectedVital(DateTime date) {
     DateTime eventDate = DateTime(date.year, date.month, date.day);
 
-    return vital[eventDate] ?? [];
+    return vitel[eventDate] ?? [];
   }
 
   selectVitals(DateTime date) {
     DateTime eventDate = DateTime(date.year, date.month, date.day);
     selectedDate = eventDate;
-    selectedVital = vital[eventDate] ?? [];
+    selectedVitel = vitel[eventDate] ?? [];
 
     update();
   }

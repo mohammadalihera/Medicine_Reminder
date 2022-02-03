@@ -1,6 +1,6 @@
 import 'dart:core';
 
-class Vital {
+class Vitel {
   int id;
   String name;
   String doseOne;
@@ -14,7 +14,7 @@ class Vital {
   int quantity;
 
   int afterMeal;
-  Vital(
+  Vitel(
       {required this.id,
       required this.name,
       required this.doseOne,
@@ -28,7 +28,7 @@ class Vital {
       required this.quantity,
       required this.afterMeal});
 //========================set vital to map======================
-  Map<String, dynamic> vitalToMap() {
+  Map<String, dynamic> vitelToMap() {
     Map<String, dynamic> map = Map();
     map['id'] = this.id;
     map['name'] = this.name;
@@ -46,19 +46,19 @@ class Vital {
   }
 
 //=========================create pill object from map================================
-  static Vital vitalMapToObject(Map<String, dynamic> vitalMap) {
-    return Vital(
-        id: vitalMap['id'],
-        name: vitalMap['name'],
-        doseOne: vitalMap['doseOne'],
-        doseTwo: vitalMap['doseTwo'],
-        doseThree: vitalMap['doseThree'],
-        doseFour: vitalMap['doseFour'],
-        doseFive: vitalMap['doseFive'],
-        doseSix: vitalMap['doseSix'],
-        date: vitalMap['date'],
-        program: vitalMap['program'],
-        quantity: vitalMap['quantity'],
-        afterMeal: vitalMap['afterMeal']);
+  static Vitel vitelMapToObject(Map<String, dynamic> vitelMap) {
+    return Vitel(
+        id: vitelMap['id'],
+        name: vitelMap['name'],
+        doseOne: vitelMap['doseOne'],
+        doseTwo: vitelMap['doseTwo'],
+        doseThree: vitelMap['doseThree'],
+        doseFour: vitelMap['doseFour'],
+        doseFive: vitelMap['doseFive'],
+        doseSix: vitelMap['doseSix'],
+        date: vitelMap['date'],
+        program: vitelMap['program'],
+        quantity: vitelMap['quantity'],
+        afterMeal: vitelMap['afterMeal']);
   }
 }

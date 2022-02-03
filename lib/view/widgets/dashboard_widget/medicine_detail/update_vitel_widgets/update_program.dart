@@ -1,14 +1,14 @@
-import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
-import 'package:Vitals/main.dart';
-import 'package:Vitals/model/medicine_model.dart';
+import 'package:Vitel/controller/add_medicine/add_medicine_controller.dart';
+import 'package:Vitel/main.dart';
+import 'package:Vitel/model/medicine_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class UpdatePrograme extends StatefulWidget {
-  final Vital vital;
-  UpdatePrograme(this.vital);
+  final Vitel vitel;
+  UpdatePrograme(this.vitel);
   @override
   _UpdateProgrameState createState() => _UpdateProgrameState();
 }
@@ -54,10 +54,10 @@ class _UpdateProgrameState extends State<UpdatePrograme> {
                       margin: EdgeInsets.only(left: 40),
                       child: Text(
                         selectedDays == 0
-                            ? widget.vital.program.toString()
+                            ? widget.vitel.program.toString()
                             : selectedDays.toString(),
                         style: TextStyle(
-                            color: widget.vital.program == 0
+                            color: widget.vitel.program == 0
                                 ? Colors.grey
                                 : Colors.black,
                             fontSize: 16),

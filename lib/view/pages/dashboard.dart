@@ -1,11 +1,11 @@
-import 'package:Vitals/controller/auth_user_controller.dart';
-import 'package:Vitals/controller/get_medicine/get_medicine.dart';
-import 'package:Vitals/main.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/calendar.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/dashboard_appbar.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/medicine_detail/medicine_detail.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/medicine_info_tile.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
+import 'package:Vitel/controller/auth_user_controller.dart';
+import 'package:Vitel/controller/get_medicine/get_medicine.dart';
+import 'package:Vitel/main.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/calendar.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/dashboard_appbar.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/medicine_detail/medicine_detail.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/medicine_info_tile.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -68,12 +68,12 @@ class _DashBoardState extends State<DashBoard> {
                   ),
                   GetBuilder<GetMedicineController>(
                     init: GetMedicineController(),
-                    builder: (vitalController) {
-                      return vitalController.selectedVital.length > 0
+                    builder: (vitelController) {
+                      return vitelController.selectedVitel.length > 0
                           ? Container(
                               padding: EdgeInsets.only(
                                   bottom:
-                                      vitalController.selectedVital.length < 3
+                                      vitelController.selectedVitel.length < 3
                                           ? 300
                                           : 100),
                               decoration: BoxDecoration(

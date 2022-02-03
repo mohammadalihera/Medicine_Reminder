@@ -1,6 +1,6 @@
-import 'package:Vitals/controller/sign_in_controller.dart';
-import 'package:Vitals/main.dart';
-import 'package:Vitals/view/pages/sign_up/sign_up.dart';
+import 'package:Vitel/controller/sign_in_controller.dart';
+import 'package:Vitel/view/pages/sign_up/sign_up.dart';
+import 'package:Vitel/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
