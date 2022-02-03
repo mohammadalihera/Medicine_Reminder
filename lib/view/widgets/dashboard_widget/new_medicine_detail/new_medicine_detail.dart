@@ -1,19 +1,19 @@
 import 'dart:math';
 
-import 'package:Vitals/controller/add_medicine/add_medicine_controller.dart';
-import 'package:Vitals/controller/get_medicine/get_medicine.dart';
-import 'package:Vitals/controller/notification/notification_controller.dart';
-import 'package:Vitals/database/vital_reprository.dart';
-import 'package:Vitals/main.dart';
-import 'package:Vitals/model/medicine_model.dart';
-import 'package:Vitals/notification/notification.dart';
-import 'package:Vitals/view/pages/home/home_page.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_dosage.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_program/medicine_program.dart';
-import 'package:Vitals/view/widgets/dashboard_widget/new_medicine_detail/medicine_quantity/medicine_quantity.dart';
+import 'package:Vitel/controller/add_medicine/add_medicine_controller.dart';
+import 'package:Vitel/controller/get_medicine/get_medicine.dart';
+import 'package:Vitel/controller/notification/notification_controller.dart';
+import 'package:Vitel/database/vitel_reprository.dart';
+import 'package:Vitel/main.dart';
+import 'package:Vitel/model/medicine_model.dart';
+import 'package:Vitel/notification/notification.dart';
+import 'package:Vitel/view/pages/home/home_page.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/medicine_dosage.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/medicine_info_text_field.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/medicine_program/medicine_program.dart';
+import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/medicine_quantity/medicine_quantity.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/src/flutter_local_notifications_plugin.dart';
@@ -219,7 +219,7 @@ void addvitel(
   GetMedicineController getmedicineController =
       Get.put(GetMedicineController());
   NotificationController notificationC = Get.put(NotificationController());
-  Vital vital = Vital(
+  Vitel vitel = Vitel(
     id: Random().nextInt(10000000),
     name: vName,
     doseOne: doseOne,
@@ -239,10 +239,10 @@ void addvitel(
     vitel.date =
         vitel.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();
   }
-  dynamic result = await Repository.insertData("Vitals", vital.vitalToMap());
-  getmedicineController.getAllVitalFromDb(context);
-  List<String> newDoses = getDoses(vital);
-  List<String> vDate = vital.date.split(',');
+  dynamic result = await Repository.insertData("Vitel", vitel.vitelToMap());
+  getmedicineController.getAllVitelFromDb(context);
+  List<String> newDoses = getDoses(vitel);
+  List<String> vDate = vitel.date.split(',');
   print(newDoses);
   print(vDate);
   //List<DateTime> notify = notificationC.getNotificationTime(vDate, newDoses);
@@ -280,53 +280,53 @@ void addvitel(
 
       print(newDoses[j]);
       // DateTime notifyDate=DateTime.
-      notify(finaNotifyDate, vital);
+      notify(finaNotifyDate, vitel);
     }
   }
   Navigator.pop(context);
 }
 
-getDoses(Vital vital) {
+getDoses(Vitel vitel) {
   List<String> allDose = [];
-  if (vital.doseSix.isNotEmpty) {
-    allDose.add(vital.doseOne);
-    allDose.add(vital.doseTwo);
-    allDose.add(vital.doseThree);
-    allDose.add(vital.doseFour);
-    allDose.add(vital.doseFive);
-    allDose.add(vital.doseSix);
-  } else if (vital.doseFive.isNotEmpty) {
-    allDose.add(vital.doseOne);
-    allDose.add(vital.doseTwo);
-    allDose.add(vital.doseThree);
-    allDose.add(vital.doseFour);
-    allDose.add(vital.doseFive);
-  } else if (vital.doseFour.isNotEmpty) {
-    allDose.add(vital.doseOne);
-    allDose.add(vital.doseTwo);
-    allDose.add(vital.doseThree);
-    allDose.add(vital.doseFour);
-  } else if (vital.doseThree.isNotEmpty) {
-    allDose.add(vital.doseOne);
-    allDose.add(vital.doseTwo);
-    allDose.add(vital.doseThree);
-  } else if (vital.doseTwo.isNotEmpty) {
-    allDose.add(vital.doseOne);
-    allDose.add(vital.doseTwo);
+  if (vitel.doseSix.isNotEmpty) {
+    allDose.add(vitel.doseOne);
+    allDose.add(vitel.doseTwo);
+    allDose.add(vitel.doseThree);
+    allDose.add(vitel.doseFour);
+    allDose.add(vitel.doseFive);
+    allDose.add(vitel.doseSix);
+  } else if (vitel.doseFive.isNotEmpty) {
+    allDose.add(vitel.doseOne);
+    allDose.add(vitel.doseTwo);
+    allDose.add(vitel.doseThree);
+    allDose.add(vitel.doseFour);
+    allDose.add(vitel.doseFive);
+  } else if (vitel.doseFour.isNotEmpty) {
+    allDose.add(vitel.doseOne);
+    allDose.add(vitel.doseTwo);
+    allDose.add(vitel.doseThree);
+    allDose.add(vitel.doseFour);
+  } else if (vitel.doseThree.isNotEmpty) {
+    allDose.add(vitel.doseOne);
+    allDose.add(vitel.doseTwo);
+    allDose.add(vitel.doseThree);
+  } else if (vitel.doseTwo.isNotEmpty) {
+    allDose.add(vitel.doseOne);
+    allDose.add(vitel.doseTwo);
   } else {
-    allDose.add(vital.doseOne);
+    allDose.add(vitel.doseOne);
   }
   return allDose;
 }
 
-void notify(DateTime schedule, Vital vital) async {
-  print('all'+vital.date);
+void notify(DateTime schedule, Vitel vitel) async {
+  print('all'+vitel.date);
   print("deleted: " + schedule.millisecondsSinceEpoch.toString());
-  vital.date =
-      vital.date.replaceAll(schedule.millisecondsSinceEpoch.toString(), '');
+  vitel.date =
+      vitel.date.replaceAll(schedule.millisecondsSinceEpoch.toString(), '');
   dynamic result =
-      await Repository.update("Vitals", vital.vitalToMap(), vital.id);
-  print(vital.date);
+      await Repository.update("Vitel", vitel.vitelToMap(), vitel.id);
+  print(vitel.date);
   print('hi');
   AwesomeNotifications().actionStream.listen((event) async {
     print('event received!');
@@ -357,7 +357,7 @@ void notify(DateTime schedule, Vital vital) async {
     content: NotificationContent(
       id: Random().nextInt(10000000),
       channelKey: 'basic_channel',
-      title: vital.name,
+      title: vitel.name,
       body: 'Take your medicine please',
       // backgroundColor: Colors.blue,
       // color: Colors.red,
