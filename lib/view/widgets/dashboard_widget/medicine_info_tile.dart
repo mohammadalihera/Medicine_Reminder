@@ -3,7 +3,6 @@ import 'package:Vitel/model/medicine_model.dart';
 import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'medicine_detail/medicine_detail.dart';
 import 'new_medicine_detail/meal/after_meal.dart';
 

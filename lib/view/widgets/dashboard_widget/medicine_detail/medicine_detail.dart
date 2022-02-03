@@ -477,7 +477,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                   child: InkWell(
                     onTap: () async {
                       await Repository.deleteData('Vitel', vitel.id);
-                      getmedicineController.getAllVitelFromDb();
+                      getmedicineController.getAllVitelFromDb(context);
                       Navigator.pop(context);
                     },
                     child: Text(

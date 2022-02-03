@@ -1,15 +1,28 @@
 import 'package:Vitel/database/vitel_reprository.dart';
 import 'package:Vitel/model/medicine_model.dart';
+import 'package:Vitel/notification/notification.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
+final Notifications _notifications = Notifications();
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
 class GetMedicineController extends GetxController {
+  late BuildContext context;
+  Future initNotifies() async => flutterLocalNotificationsPlugin =
+      await _notifications.initNotifies(context);
+
   List<Vitel> selectedVitel = [];
   List<Vitel> allVitel = [];
+  String nextDoseTime = '';
   Map<DateTime, List<Vitel>> vitel = {};
   DateTime selectedDate =
       DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-  void getAllVitelFromDb() async {
+
+  void getAllVitelFromDb(BuildContext context) async {
     vitel = {};
     allVitel = await Repository.getAllVitels();
     // allVital.sort((a, b) => a.date.compareTo(b.date));
@@ -27,7 +40,31 @@ class GetMedicineController extends GetxController {
           vitel[mapDate]!.add(allVitel[i]);
         }
       }
+      DateTime alarm = DateTime(DateTime.now().year, DateTime.now().month,
+          DateTime.now().day, DateTime.now().hour, DateTime.now().minute + 2);
     }
+
+    selectVitals(selectedDate);
+    update();
+  }
+
+  void getNotification(BuildContext context) async {
+    // ignore: unused_element
+
+    vitel = {};
+    allVitel = await Repository.getAllVitels();
+    // allVital.sort((a, b) => a.date.compareTo(b.date));
+    for (int i = 0; i < allVitel.length; ++i) {
+      DateTime alarm = DateTime(DateTime.now().year, DateTime.now().month,
+          DateTime.now().day, DateTime.now().hour, DateTime.now().minute + 2);
+      await _notifications.showNotification(
+          allVitel[i].name,
+          allVitel[i].program.toString(),
+          alarm.millisecond,
+          allVitel[i].id,
+          flutterLocalNotificationsPlugin);
+    }
+
     selectVitals(selectedDate);
     update();
   }
@@ -44,5 +81,18 @@ class GetMedicineController extends GetxController {
     selectedVitel = vitel[eventDate] ?? [];
 
     update();
+  }
+
+  nextDose() async {
+    List<Vitel> vitals = await Repository.getAllVitels();
+    DateTime now = DateTime.now();
+
+    for (int i = 0; i < vitel.length; ++i) {
+      print(vitals[i].date);
+      List<String> dates = allVitel[i].date.split(',');
+      for (int j = 0; j < dates.length; ++j) {
+        int dateInt = int.parse(dates[j]);
+      }
+    }
   }
 }

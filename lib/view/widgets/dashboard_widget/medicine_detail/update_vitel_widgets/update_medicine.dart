@@ -230,7 +230,7 @@ void addVital(Vitel vitel, int additionProgram, context) async {
   }
   dynamic result =
       await Repository.update("Vitel", vitel.vitelToMap(), vitel.id);
-  getmedicineController.getAllVitelFromDb();
+  getmedicineController.getAllVitelFromDb(context);
 
   Navigator.pop(context);
   Navigator.pop(context);

@@ -27,7 +27,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
   List<Vitel> calendarvital = [];
   @override
   void initState() {
-    addmedicineController.getAllVitelFromDb();
+    addmedicineController.getAllVitelFromDb(context);
     super.initState();
   }
 

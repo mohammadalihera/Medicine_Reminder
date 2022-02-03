@@ -6,10 +6,12 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
         <uses-permission android:name="android.permission.INTERNET"/>
+        <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <application
         android:name="${applicationName}"
         android:label="Vitel"
         android:icon="@mipmap/ic_launcher">
+        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED"></action></intent-filter></receiver><receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -17,7 +19,10 @@
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true">
+            
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
@@ -40,6 +45,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

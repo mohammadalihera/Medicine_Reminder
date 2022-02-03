@@ -235,7 +235,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 20, right: 15),
+              padding: EdgeInsets.only(left: 10, right: 10),
               child: Icon(
                 Icons.keyboard_arrow_right_sharp,
                 color: kPrimaryColor,
