@@ -23,7 +23,7 @@ class CustomButton extends StatelessWidget {
                 width: 10,
               ),
               InkWell(
-                onTap:onTap(),
+               // onTap:onTap(),
                 child: Container(
                   child: Text(text,
                       style:

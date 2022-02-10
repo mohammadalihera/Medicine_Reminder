@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:Vitel/controller/caching_controller/cache_controller.dart';
 import 'package:Vitel/view/pages/home/home_page.dart';
 import 'package:Vitel/view/pages/sign_up/sign_up.dart';
 import 'package:country_code_picker/country_localizations.dart';
@@ -8,20 +11,29 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 
 import 'controller/auth_user_controller.dart';
 import 'controller/sign_in_controller.dart';
+import 'database/caching/cache.dart';
 
 String dashname = 'User';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // await DotEnv().load('.env');
+  final directory = await getApplicationDocumentsDirectory();
+
+  //return directory.path;
+  Hive.init(directory.path);
+  Get.lazyPut(() => CacheController());
   AwesomeNotifications().initialize(
       // set the icon to null if you want to use the default app icon
       // 'resource://drawable/logo',
-       null,
+      null,
       [
         NotificationChannel(
             channelKey: 'basic_channel',
@@ -36,8 +48,17 @@ Future<void> main() async {
             enableVibration: true,
             importance: NotificationImportance.High)
       ]);
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('app_icon');
+
+  // const AndroidInitializationSettings initializationSettingsAndroid =
+  //     AndroidInitializationSettings('app_icon');
+  // var box = await Hive.openBox('testBox');
+  try {
+    if (!Hive.isBoxOpen('firstDayOfWeek'))
+      await Hive.openBox<String>('firstDayOfWeek');
+  } catch (error) {
+    await Hive.deleteBoxFromDisk('firstDayOfWeek');
+    await Hive.openBox('firstDayOfWeek');
+  }
   await Firebase.initializeApp();
   runApp(MyApp());
 }
@@ -69,7 +90,15 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-
+    CacheService.instance.initFirstDayHive();
+    CacheService.instance.firstDayOfWeek.get('firstDayOfWeek') != null
+        ? Get.find<CacheController>().changeFristDayOfWeek(CacheService
+            .instance.firstDayOfWeek
+            .get('firstDayOfWeek')
+            .toString())
+        : Get.find<CacheController>().changeFristDayOfWeek('Sun');
+    print(
+        CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString());
     if (firebaseUser != null) {
       print('logged in');
       //print(firebaseUser.uid);

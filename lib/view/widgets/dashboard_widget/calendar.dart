@@ -4,9 +4,11 @@ import 'package:Vitel/utils.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../../database/caching/cache.dart';
 
 class CustomCalendar extends StatefulWidget {
   final String format;
@@ -22,6 +24,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay = DateTime.now();
   DateTime selectedDate = DateTime.now();
+
   GetMedicineController addmedicineController =
       Get.put(GetMedicineController());
   List<Vitel> calendarvital = [];
@@ -33,6 +36,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
 
   @override
   Widget build(BuildContext context) {
+    CacheService.instance.initFirstDayHive();
+    String? firstDayofWeek =
+        CacheService.instance.firstDayOfWeek.get('firstDayOfWeek');
     Size size = MediaQuery.of(context).size;
     double dayBox = size.width * 0.143;
     double leftMargin = dayBox * 0.11;
@@ -183,6 +189,19 @@ class _CustomCalendarState extends State<CustomCalendar> {
                 addmedicineController.selectVitals(selectedDay);
               }
             },
+            startingDayOfWeek:getvitalController.firstDayOfWeek == 'Sun'
+                ? StartingDayOfWeek.sunday
+                : getvitalController.firstDayOfWeek == 'Mon'
+                    ? StartingDayOfWeek.monday
+                    : getvitalController.firstDayOfWeek == 'Tue'
+                        ? StartingDayOfWeek.tuesday
+                        : getvitalController.firstDayOfWeek == 'Wed'
+                            ? StartingDayOfWeek.wednesday
+                            : getvitalController.firstDayOfWeek == 'Thu'
+                                ? StartingDayOfWeek.thursday
+                                : getvitalController.firstDayOfWeek == 'Fri'
+                                    ? StartingDayOfWeek.friday
+                                    : StartingDayOfWeek.saturday,
             onFormatChanged: (format) {
               if (_calendarFormat != format) {
                 // Call `setState()` when updating calendar format

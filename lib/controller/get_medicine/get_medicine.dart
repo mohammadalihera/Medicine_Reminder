@@ -6,11 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
+import '../../database/caching/cache.dart';
+import 'package:hive/hive.dart';
+
 final Notifications _notifications = Notifications();
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
 class GetMedicineController extends GetxController {
+  // CacheService.instance.initFirstDayHive();
+  String firstDayOfWeek =
+      CacheService.instance.firstDayOfWeek.get('firstDayOfWeek') != null
+          ? CacheService.instance.firstDayOfWeek
+              .get('firstDayOfWeek')
+              .toString()
+          : 'Sun';
   late BuildContext context;
   Future initNotifies() async => flutterLocalNotificationsPlugin =
       await _notifications.initNotifies(context);
@@ -45,6 +55,13 @@ class GetMedicineController extends GetxController {
     }
 
     selectVitals(selectedDate);
+    update();
+  }
+
+  changeFristDayOfWeek(String day) {
+    CacheService.instance.initFirstDayHive();
+    CacheService.instance.firstDayOfWeek.put('firstDayOfWeek', day);
+    firstDayOfWeek = day;
     update();
   }
 

@@ -96,11 +96,15 @@ class _DashBoardState extends State<DashBoard> {
                                 color: Color(0xffEDF7FF),
                               ),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
                                   Image.asset('assets/images/no_vital.png'),
                                   SizedBox(
-                                    height: 30,
+                                    height: 10,
                                   ),
                                   Text(
                                     'No Medicine Added Today',
