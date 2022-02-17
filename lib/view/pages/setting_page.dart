@@ -50,20 +50,53 @@ class _SettingsPageState extends State<SettingsPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomButton(
-                    icon: Icon(
-                      Icons.cloud,
+                TextButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        padding: EdgeInsets.all(0),
+                        backgroundColor: Colors.transparent,
+                        content: Container(
+                          height: 80,
+                          //color: Colors.white,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: kPrimaryColor,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'This feature is not implemented yet!',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(left: 20, bottom: 40),
+                    child: Row(
+                      children: [
+                        Icon(Icons.cloud),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          child: Text('Account Sync',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500)),
+                        ),
+                      ],
                     ),
-                    text: 'Account Sync',
-                    onTap: accountAsync),
-                /* CustomButton(
-                  icon: Icon(Icons.calendar_today_outlined),
-                  text: 'First Day of Week',
-                  onTap:()=>_showDialog() /* () {
-                    // Get.find<CacheController>().changeFristDayOfWeek('Mon');
-                    _showDialog();
-                  }, */
-                ), */
+                  ),
+                ),
                 TextButton(
                   onPressed: () => _showDialog(),
                   child: Container(
@@ -83,24 +116,53 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
-                CustomButton(
-                  icon: Icon(
-                    Icons.star_outline,
-                  ),
-                  text: 'Rate Us',
-                  onTap: () {
-                    print('Rate us');
+                TextButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        padding: EdgeInsets.all(0),
+                        backgroundColor: Colors.transparent,
+                        content: Container(
+                          height: 80,
+                          //color: Colors.white,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: kPrimaryColor,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'This feature is not implemented yet!',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
                   },
+                  child: Container(
+                    margin: EdgeInsets.only(left: 20, bottom: 40),
+                    child: Row(
+                      children: [
+                        Icon(Icons.star_outlined),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          child: Text('Rate Us ',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500)),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                /* CustomButton(
-                  icon: Icon(
-                    Icons.share,
-                  ),
-                  text: 'Share App',
-                  onTap: () {
-                    print('Share App');
-                  },
-                ), */
                 TextButton(
                   onPressed: () => _showBottomDialog(),
                   child: Container(
@@ -120,22 +182,104 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
-                CustomButton(
-                  icon: Icon(
-                    Icons.privacy_tip_sharp,
-                  ),
-                  text: 'Privacy Policy',
-                  onTap: () {
-                    print('Privacy Policy');
-                    print('love privacy');
+                TextButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        padding: EdgeInsets.all(0),
+                        backgroundColor: Colors.transparent,
+                        content: Container(
+                          height: 80,
+                          //color: Colors.white,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: kPrimaryColor,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'This feature is not implemented yet!',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
                   },
-                ),
-                CustomButton(
-                    icon: Icon(
-                      Icons.menu,
+                  child: Container(
+                    margin: EdgeInsets.only(left: 20, bottom: 40),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.privacy_tip_sharp,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          child: Text('Privacy policy',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500)),
+                        ),
+                      ],
                     ),
-                    text: 'Version',
-                    onTap: () => print('Version'))
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        padding: EdgeInsets.all(0),
+                        backgroundColor: Colors.transparent,
+                        content: Container(
+                          height: 80,
+                          //color: Colors.white,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: kPrimaryColor,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '1.0.0+1',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(left: 20, bottom: 40),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.privacy_tip_sharp,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          child: Text('Version',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500)),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -145,7 +289,8 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void accountAsync() {
-    print('Account Async');
+    Get.snackbar(
+        'Account Sync will be implemented in future version', 'Get in touch');
   }
 
   void _showDialog() {
@@ -155,68 +300,64 @@ class _SettingsPageState extends State<SettingsPage> {
 
     String firstDay =
         CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString();
-    showDialog(
+    showBottomSheet(
         context: context,
         builder: (BuildContext context) {
           // return object of type Dialog
           return GetBuilder<GetMedicineController>(
             init: GetMedicineController(),
             builder: (getvitalController) {
-              return Dialog(
-                backgroundColor: Colors.transparent,
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: new BorderRadius.only(
+                      topRight: Radius.circular(50.0),
+                      topLeft: Radius.circular(50.0)),
+                  color: kPrimaryColor,
+                ),
+                height: 150,
+                width: MediaQuery.of(context).size.width,
                 child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: new BorderRadius.all(
-                      const Radius.circular(50.0),
-                    ),
-                    color: kPrimaryColor,
-                  ),
-                  height: 250,
-                  width: 280,
-                  child: Container(
-                    margin: EdgeInsets.only(top: 40, left: 10, right: 10),
-                    child: Center(
-                      child: GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithMaxCrossAxisExtent(
-                                maxCrossAxisExtent: 100,
-                                childAspectRatio: 4 / 2,
-                                crossAxisSpacing: 5,
-                                mainAxisSpacing: 10),
-                        itemCount: days.length,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () {
-                              Get.find<GetMedicineController>()
-                                  .changeFristDayOfWeek(days[index]);
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: new BorderRadius.all(
-                                  const Radius.circular(5.0),
-                                ),
-                                color: getvitalController.firstDayOfWeek ==
-                                        days[index]
-                                    ? Color.fromARGB(255, 200, 87, 220)
-                                    : Colors.white,
+                  margin: EdgeInsets.only(top: 40, left: 10, right: 10),
+                  child: Center(
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 100,
+                              childAspectRatio: 4 / 2,
+                              crossAxisSpacing: 5,
+                              mainAxisSpacing: 10),
+                      itemCount: days.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            Get.find<GetMedicineController>()
+                                .changeFristDayOfWeek(days[index]);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: new BorderRadius.all(
+                                const Radius.circular(5.0),
                               ),
-                              height: 10,
-                              width: 50,
-                              child: Center(
-                                child: Text(
-                                  days[index],
-                                  style: TextStyle(
-                                      color:
-                                          getvitalController.firstDayOfWeek ==
-                                                  days[index]
-                                              ? Colors.white
-                                              : Colors.black),
-                                ),
+                              color: getvitalController.firstDayOfWeek ==
+                                      days[index]
+                                  ? Color.fromARGB(255, 200, 87, 220)
+                                  : Colors.white,
+                            ),
+                            height: 10,
+                            width: 50,
+                            child: Center(
+                              child: Text(
+                                days[index],
+                                style: TextStyle(
+                                    color: getvitalController.firstDayOfWeek ==
+                                            days[index]
+                                        ? Colors.white
+                                        : Colors.black),
                               ),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -227,202 +368,267 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void _showBottomDialog() {
-    showDialog(
+    showBottomSheet(
         context: context,
         builder: (BuildContext context) {
           // return object of type Dialog
           return GetBuilder<GetMedicineController>(
             init: GetMedicineController(),
             builder: (getvitalController) {
-              return Dialog(
-                backgroundColor: Colors.transparent,
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: new BorderRadius.all(
+                    const Radius.circular(50.0),
+                  ),
+                  color: Colors.white,
+                ),
+                height: 200,
+                width: MediaQuery.of(context).size.width,
                 child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: new BorderRadius.all(
-                      const Radius.circular(50.0),
-                    ),
-                    color: Colors.white,
-                  ),
-                  height: 250,
-                  width: 280,
-                  child: Container(
-                    margin: EdgeInsets.only(top: 40, left: 10, right: 10),
-                    child: Center(
-                        child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                File file = await getImageFileFromAssets(
-                                    'images/no_vital.png');
-                                SocialShare.shareFacebookStory(
-                                  file.path,
-                                  "#ffffff",
-                                  "#000000",
-                                  "https://nerdevolution.tech/",
-                                  appId: "12345",
-                                ).then((data) {
-                                  print(data);
-                                });
-                              },
-                              child: Container(
-                                // margin: EdgeInsets.only(left: 20),
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(50),
-                                    ),
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                          'assets/images/facebook.png',
-                                        ),
-                                        fit: BoxFit.cover)),
+                  margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                  child: Center(
+                      child: Column(
+                    children: [
+                      Container(child: Text('Share The Vitel App')),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  File file = await getImageFileFromAssets(
+                                      'images/no_vital.png');
+                                  SocialShare.shareFacebookStory(
+                                    file.path,
+                                    "#ffffff",
+                                    "#000000",
+                                    "https://nerdevolution.tech/",
+                                    appId: "12345",
+                                  ).then((data) {
+                                    print(data);
+                                  });
+                                },
+                                child: Container(
+                                  // margin: EdgeInsets.only(left: 20),
+                                  height: 35,
+                                  width: 35,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(50),
+                                      ),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                            'assets/images/facebook.png',
+                                          ),
+                                          fit: BoxFit.cover)),
+                                ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                File file = await getImageFileFromAssets(
-                                    'images/no_vital.png');
-                                SocialShare.shareInstagramStory(
-                                  file.path,
-                                  backgroundTopColor: "#ffffff",
-                                  backgroundBottomColor: "#000000",
-                                  attributionURL: "https://deep-link-url",
-                                  backgroundImagePath: file.path,
-                                ).then((data) {
-                                  print(data);
-                                });
-                              },
-                              child: Container(
-                                //   margin: EdgeInsets.only(left: 10),
-                                height: 60,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(50),
-                                    ),
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                          'assets/images/instagram.png',
-                                        ),
-                                        fit: BoxFit.cover)),
+                              Container(
+                                  child: Text('Facebook Story',
+                                      style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w100)))
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  File file = await getImageFileFromAssets(
+                                      'images/no_vital.png');
+                                  SocialShare.shareInstagramStory(
+                                    file.path,
+                                    backgroundTopColor: "#ffffff",
+                                    backgroundBottomColor: "#000000",
+                                    attributionURL: "https://deep-link-url",
+                                    backgroundImagePath: file.path,
+                                  ).then((data) {
+                                    print(data);
+                                  });
+                                },
+                                child: Container(
+                                  //   margin: EdgeInsets.only(left: 10),
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(50),
+                                      ),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                            'assets/images/instagram.png',
+                                          ),
+                                          fit: BoxFit.cover)),
+                                ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                SocialShare.shareWhatsapp(
-                                  "Install this app \n https://google.com",
-                                ).then((data) {
-                                  print(data);
-                                });
-                              },
-                              child: Container(
-                                //  margin: EdgeInsets.only(left: 10),
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(50),
-                                    ),
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                          'assets/images/whatsapp.png',
-                                        ),
-                                        fit: BoxFit.contain)),
+                              Container(
+                                child: Text(
+                                  'Instagram Story',
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w100),
+                                ),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  SocialShare.shareWhatsapp(
+                                    "Struggling to keep track of your daily medications? Download the app now:link\n https://google.com",
+                                  ).then((data) {
+                                    print(data);
+                                  });
+                                },
+                                child: Container(
+                                  //  margin: EdgeInsets.only(left: 10),
+                                  height: 35,
+                                  width: 35,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(50),
+                                      ),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                            'assets/images/whatsapp.png',
+                                          ),
+                                          fit: BoxFit.contain)),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                File file = await getImageFileFromAssets(
-                                    'images/no_vital.png');
-                                SocialShare.shareTwitter(
-                                  "Please Install the vitel app",
-                                  hashtags: ["hello", "world", "foo", "bar"],
-                                  url: "https://google.com/#/hello",
-                                  trailingText: "\nhello",
-                                ).then((data) {
-                                  print(data);
-                                });
-                              },
-                              child: Container(
-                                //margin: EdgeInsets.only(left: 20),
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(50),
-                                    ),
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                          'assets/images/twitter.png',
-                                        ),
-                                        fit: BoxFit.cover)),
+                              Container(
+                                  child: Text('Whats App',
+                                      style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w100)))
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  File file = await getImageFileFromAssets(
+                                      'images/no_vital.png');
+                                  SocialShare.shareTwitter(
+                                    "Struggling to keep track of your daily medications? Download the app now:link",
+                                    hashtags: ["hello", "world", "foo", "bar"],
+                                    url: "https://google.com/#/hello",
+                                    trailingText: "\nhello",
+                                  ).then((data) {
+                                    print(data);
+                                  });
+                                },
+                                child: Container(
+                                  //margin: EdgeInsets.only(left: 20),
+                                  height: 35,
+                                  width: 35,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(50),
+                                      ),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                            'assets/images/twitter.png',
+                                          ),
+                                          fit: BoxFit.cover)),
+                                ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                
-                                SocialShare.shareSms(
-                                  "Please Install the vitel app",
-                                  url: "\nhttps://google.com/",
-                                  trailingText: "\nhello",
-                                ).then((data) {
-                                  print(data);
-                                });
-                              },
-                              child: Container(
-                                //margin: EdgeInsets.only(left:5),
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(70),
-                                    ),
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                          'assets/images/sms.png',
-                                        ),
-                                        fit: BoxFit.cover)),
+                              Container(
+                                child: Text(
+                                  'Twitter',
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w100),
+                                ),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  SocialShare.shareSms(
+                                    "Please Install the vitel app",
+                                    url: "\nhttps://google.com/",
+                                    trailingText: "\nhello",
+                                  ).then((data) {
+                                    print(data);
+                                  });
+                                },
+                                child: Container(
+                                  //margin: EdgeInsets.only(left:5),
+                                  height: 35,
+                                  width: 35,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(70),
+                                      ),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                            'assets/images/sms.png',
+                                          ),
+                                          fit: BoxFit.cover)),
+                                ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                
-                                SocialShare.copyToClipboard(
-                                  "This is Social Share plugin",
-                                ).then((data) {
-                                  print(data);
-                                });
-                              },
-                              child: Container(
-                                //margin: EdgeInsets.only(left:5),
-                                height: 40,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                    /* borderRadius: BorderRadius.all(
-                                      Radius.circular(20),
-                                    ), */
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                          'assets/images/copy.png',
-                                        ),
-                                        fit: BoxFit.fill)),
+                              Container(
+                                  child: Text('SMS',
+                                      style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w100)))
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  SocialShare.copyToClipboard(
+                                    "This is Social Share plugin",
+                                  ).then((data) {
+                                    print(data);
+                                  });
+                                },
+                                child: Container(
+                                  //margin: EdgeInsets.only(left:5),
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                      /* borderRadius: BorderRadius.all(
+                                          Radius.circular(20),
+                                        ), */
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                            'assets/images/copy.png',
+                                          ),
+                                          fit: BoxFit.fill)),
+                                ),
                               ),
-                            ),
-                          ],
-                        )
-                      ],
-                    )),
-                  ),
+                              Container(
+                                child: Text(
+                                  'Copy',
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w100),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  )),
                 ),
               );
             },

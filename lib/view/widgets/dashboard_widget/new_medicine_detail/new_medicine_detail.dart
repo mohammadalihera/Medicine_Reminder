@@ -320,7 +320,7 @@ getDoses(Vitel vitel) {
 }
 
 void notify(DateTime schedule, Vitel vitel) async {
-  print('all'+vitel.date);
+  print('all' + vitel.date);
   print("deleted: " + schedule.millisecondsSinceEpoch.toString());
   vitel.date =
       vitel.date.replaceAll(schedule.millisecondsSinceEpoch.toString(), '');
@@ -348,19 +348,14 @@ void notify(DateTime schedule, Vitel vitel) async {
           enabled: true,
           buttonType: ActionButtonType.Default,
           key: '33'),
-      NotificationActionButton(
-          label: 'Dismiss',
-          enabled: true,
-          buttonType: ActionButtonType.Default,
-          key: '33')
     ],
     content: NotificationContent(
       id: Random().nextInt(10000000),
       channelKey: 'basic_channel',
-      title: vitel.name,
-      body: 'Take your medicine please',
-      // backgroundColor: Colors.blue,
-      // color: Colors.red,
+      title: 'Reminder! Please remember to take ${vitel.name} ',
+      body: ' with plenty of water!',
+      backgroundColor: Colors.blue,
+      color: Colors.red,
       displayOnBackground: true,
       displayOnForeground: true,
       bigPicture: 'asset://assets/images/no_vital.png',
