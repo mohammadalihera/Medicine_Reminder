@@ -39,14 +39,20 @@ Future<void> main() async {
             channelKey: 'basic_channel',
             channelName: 'Basic notifications',
             channelDescription: 'Notification channel for basic tests',
+            defaultRingtoneType: DefaultRingtoneType.Ringtone,
+           
             // defaultColor: Color(0xffaa2233),
             //ledColor: Colors.blue,
-
+            soundSource: 'resource://raw/vitel_medicine_ring',
             defaultColor: Colors.transparent,
             ledColor: Colors.white,
             playSound: true,
             enableVibration: true,
-            importance: NotificationImportance.High)
+            onlyAlertOnce: false,
+            importance: NotificationImportance.High,
+            
+            
+            ),
       ]);
 
   // const AndroidInitializationSettings initializationSettingsAndroid =

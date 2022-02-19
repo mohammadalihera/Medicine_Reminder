@@ -328,13 +328,14 @@ void notify(DateTime schedule, Vitel vitel) async {
       await Repository.update("Vitel", vitel.vitelToMap(), vitel.id);
   print(vitel.date);
   print('hi');
-  AwesomeNotifications().actionStream.listen((event) async {
+  /* AwesomeNotifications().actionStream.listen((event) async {
     print('event received!');
     print(event.toMap().toString());
     // do something based on event...
   });
-
+ */
   AwesomeNotifications().createNotification(
+
     actionButtons: [
       NotificationActionButton(
         label: 'Snooz',
@@ -360,6 +361,9 @@ void notify(DateTime schedule, Vitel vitel) async {
       displayOnForeground: true,
       bigPicture: 'asset://assets/images/no_vital.png',
       notificationLayout: NotificationLayout.BigPicture,
+      wakeUpScreen: true,
+      category: NotificationCategory.Alarm,
+    
     ),
     schedule: NotificationCalendar.fromDate(
       date: DateTime(
@@ -369,6 +373,9 @@ void notify(DateTime schedule, Vitel vitel) async {
         schedule.hour,
         schedule.minute,
       ),
+      repeats: true,
+      preciseAlarm: true,
     ),
+    
   );
 }

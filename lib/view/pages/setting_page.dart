@@ -369,18 +369,19 @@ class _SettingsPageState extends State<SettingsPage> {
 
   void _showBottomDialog() {
     showBottomSheet(
+        backgroundColor: Colors.transparent,
         context: context,
         builder: (BuildContext context) {
-          // return object of type Dialog
           return GetBuilder<GetMedicineController>(
             init: GetMedicineController(),
             builder: (getvitalController) {
               return Container(
                 decoration: BoxDecoration(
-                  borderRadius: new BorderRadius.all(
-                    const Radius.circular(50.0),
+                  borderRadius: new BorderRadius.only(
+                    topRight: const Radius.circular(20.0),
+                    topLeft: const Radius.circular(20.0),
                   ),
-                  color: Colors.white,
+                  color: Colors.white, /* Color(0xffEDF7FF), */
                 ),
                 height: 200,
                 width: MediaQuery.of(context).size.width,
@@ -388,124 +389,100 @@ class _SettingsPageState extends State<SettingsPage> {
                   margin: EdgeInsets.only(top: 20, left: 10, right: 10),
                   child: Center(
                       child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(child: Text('Share The Vitel App')),
-                      SizedBox(
-                        height: 10,
-                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Column(
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  File file = await getImageFileFromAssets(
-                                      'images/no_vital.png');
-                                  SocialShare.shareFacebookStory(
-                                    file.path,
-                                    "#ffffff",
-                                    "#000000",
-                                    "https://nerdevolution.tech/",
-                                    appId: "12345",
-                                  ).then((data) {
-                                    print(data);
-                                  });
-                                },
-                                child: Container(
-                                  // margin: EdgeInsets.only(left: 20),
-                                  height: 35,
-                                  width: 35,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(50),
-                                      ),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                            'assets/images/facebook.png',
-                                          ),
-                                          fit: BoxFit.cover)),
+                          InkWell(
+                            onTap: () async {
+                              File file = await getImageFileFromAssets(
+                                  'images/no_vital.png');
+                              SocialShare.shareFacebookStory(
+                                file.path,
+                                "#ffffff",
+                                "#000000",
+                                "https://nerdevolution.tech/",
+                                appId: "12345",
+                              ).then((data) {
+                                print(data);
+                              });
+                            },
+                            child: Container(
+                              // margin: EdgeInsets.only(left: 20),
+                              height: 70,
+                              width: 70,
+                              padding: EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(70),
                                 ),
                               ),
-                              Container(
-                                  child: Text('Facebook Story',
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w100)))
-                            ],
+                              child: Center(
+                                  child: Image.asset(
+                                'assets/images/shareapp/fb.png',
+                                height: 40,
+                              )),
+                            ),
                           ),
-                          Column(
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  File file = await getImageFileFromAssets(
-                                      'images/no_vital.png');
-                                  SocialShare.shareInstagramStory(
-                                    file.path,
-                                    backgroundTopColor: "#ffffff",
-                                    backgroundBottomColor: "#000000",
-                                    attributionURL: "https://deep-link-url",
-                                    backgroundImagePath: file.path,
-                                  ).then((data) {
-                                    print(data);
-                                  });
-                                },
-                                child: Container(
-                                  //   margin: EdgeInsets.only(left: 10),
-                                  height: 40,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(50),
-                                      ),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                            'assets/images/instagram.png',
-                                          ),
-                                          fit: BoxFit.cover)),
+                          InkWell(
+                            onTap: () async {
+                              File file = await getImageFileFromAssets(
+                                  'images/no_vital.png');
+                              SocialShare.shareInstagramStory(
+                                file.path,
+                                backgroundTopColor: "#ffffff",
+                                backgroundBottomColor: "#000000",
+                                attributionURL: "https://deep-link-url",
+                                backgroundImagePath: file.path,
+                              ).then((data) {
+                                print(data);
+                              });
+                            },
+                            child: Container(
+                              // margin: EdgeInsets.only(left: 20),
+                              height: 70,
+                              width: 70,
+                              padding: EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(70),
                                 ),
                               ),
-                              Container(
-                                child: Text(
-                                  'Instagram Story',
-                                  style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w100),
-                                ),
-                              )
-                            ],
+                              child: Center(
+                                  child: Image.asset(
+                                'assets/images/shareapp/fb.png',
+                                height: 40,
+                              )),
+                            ),
                           ),
-                          Column(
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  SocialShare.shareWhatsapp(
-                                    "Struggling to keep track of your daily medications? Download the app now:link\n https://google.com",
-                                  ).then((data) {
-                                    print(data);
-                                  });
-                                },
-                                child: Container(
-                                  //  margin: EdgeInsets.only(left: 10),
-                                  height: 35,
-                                  width: 35,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(50),
-                                      ),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                            'assets/images/whatsapp.png',
-                                          ),
-                                          fit: BoxFit.contain)),
+                          InkWell(
+                            onTap: () async {
+                              SocialShare.shareWhatsapp(
+                                "Struggling to keep track of your daily medications? Download the app now:link\n https://google.com",
+                              ).then((data) {
+                                print(data);
+                              });
+                            },
+                            child: Container(
+                              // margin: EdgeInsets.only(left: 20),
+                              height: 70,
+                              width: 70,
+                              padding: EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(70),
                                 ),
                               ),
-                              Container(
-                                  child: Text('Whats App',
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w100)))
-                            ],
+                              child: Center(
+                                  child: Image.asset(
+                                'assets/images/shareapp/fb.png',
+                                height: 40,
+                              )),
+                            ),
                           ),
                         ],
                       ),
@@ -513,114 +490,90 @@ class _SettingsPageState extends State<SettingsPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Column(
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  File file = await getImageFileFromAssets(
-                                      'images/no_vital.png');
-                                  SocialShare.shareTwitter(
-                                    "Struggling to keep track of your daily medications? Download the app now:link",
-                                    hashtags: ["hello", "world", "foo", "bar"],
-                                    url: "https://google.com/#/hello",
-                                    trailingText: "\nhello",
-                                  ).then((data) {
-                                    print(data);
-                                  });
-                                },
-                                child: Container(
-                                  //margin: EdgeInsets.only(left: 20),
-                                  height: 35,
-                                  width: 35,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(50),
-                                      ),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                            'assets/images/twitter.png',
-                                          ),
-                                          fit: BoxFit.cover)),
+                          InkWell(
+                            onTap: () async {
+                              File file = await getImageFileFromAssets(
+                                  'images/no_vital.png');
+                              SocialShare.shareTwitter(
+                                "Struggling to keep track of your daily medications? Download the app now:link",
+                                hashtags: ["hello", "world", "foo", "bar"],
+                                url: "https://google.com/#/hello",
+                                trailingText: "\nhello",
+                              ).then((data) {
+                                print(data);
+                              });
+                            },
+                            child: Container(
+                              // margin: EdgeInsets.only(left: 20),
+                              height: 70,
+                              width: 70,
+                              padding: EdgeInsets.only(left: 15),
+                              decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(70),
                                 ),
                               ),
-                              Container(
-                                child: Text(
-                                  'Twitter',
-                                  style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w100),
-                                ),
-                              )
-                            ],
+                              child: Center(
+                                  child: Image.asset(
+                                'assets/images/shareapp/fb.png',
+                                height: 40,
+                              )),
+                            ),
                           ),
-                          Column(
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  SocialShare.shareSms(
-                                    "Please Install the vitel app",
-                                    url: "\nhttps://google.com/",
-                                    trailingText: "\nhello",
-                                  ).then((data) {
-                                    print(data);
-                                  });
-                                },
-                                child: Container(
-                                  //margin: EdgeInsets.only(left:5),
-                                  height: 35,
-                                  width: 35,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(70),
-                                      ),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                            'assets/images/sms.png',
-                                          ),
-                                          fit: BoxFit.cover)),
+                          InkWell(
+                            onTap: () async {
+                              SocialShare.shareSms(
+                                "Please Install the vitel app",
+                                url: "\nhttps://google.com/",
+                                trailingText: "\nhello",
+                              ).then((data) {
+                                print(data);
+                              });
+                            },
+                            child: Container(
+                              // margin: EdgeInsets.only(left: 20),
+                              height: 70,
+                              width: 70,
+                              padding: EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(70),
                                 ),
                               ),
-                              Container(
-                                  child: Text('SMS',
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w100)))
-                            ],
+                              child: Center(
+                                  child: Image.asset(
+                                'assets/images/shareapp/sms.png',
+                                height: 40,
+                              )),
+                            ),
                           ),
-                          Column(
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  SocialShare.copyToClipboard(
-                                    "This is Social Share plugin",
-                                  ).then((data) {
-                                    print(data);
-                                  });
-                                },
-                                child: Container(
-                                  //margin: EdgeInsets.only(left:5),
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                      /* borderRadius: BorderRadius.all(
-                                          Radius.circular(20),
-                                        ), */
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                            'assets/images/copy.png',
-                                          ),
-                                          fit: BoxFit.fill)),
+                          InkWell(
+                            onTap: () async {
+                              SocialShare.copyToClipboard(
+                                "This is Social Share plugin",
+                              ).then((data) {
+                                print(data);
+                              });
+                            },
+                            child: Container(
+                              // margin: EdgeInsets.only(left: 20),
+                              height: 70,
+                              width: 70,
+                             // padding: EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(70),
                                 ),
                               ),
-                              Container(
-                                child: Text(
-                                  'Copy',
-                                  style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w100),
-                                ),
-                              )
-                            ],
+                              child: Center(
+                                  child: Image.asset(
+                                'assets/images/shareapp/link.png',
+                                height: 30,
+                              )),
+                            ),
                           ),
                         ],
                       ),
