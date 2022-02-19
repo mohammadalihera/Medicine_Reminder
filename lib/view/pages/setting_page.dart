@@ -295,12 +295,13 @@ class _SettingsPageState extends State<SettingsPage> {
 
   void _showDialog() {
     // flutter defined function
-    List<String> days = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+    List<String> days = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu','Fri'];
     CacheService.instance.initFirstDayHive();
 
     String firstDay =
         CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString();
     showBottomSheet(
+        backgroundColor: Colors.transparent,
         context: context,
         builder: (BuildContext context) {
           // return object of type Dialog
@@ -312,9 +313,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   borderRadius: new BorderRadius.only(
                       topRight: Radius.circular(50.0),
                       topLeft: Radius.circular(50.0)),
-                  color: kPrimaryColor,
+                  color: Colors.white,
                 ),
-                height: 150,
+                height: 250,
                 width: MediaQuery.of(context).size.width,
                 child: Container(
                   margin: EdgeInsets.only(top: 40, left: 10, right: 10),
@@ -323,9 +324,9 @@ class _SettingsPageState extends State<SettingsPage> {
                       gridDelegate:
                           const SliverGridDelegateWithMaxCrossAxisExtent(
                               maxCrossAxisExtent: 100,
-                              childAspectRatio: 4 / 2,
-                              crossAxisSpacing: 5,
-                              mainAxisSpacing: 10),
+                              childAspectRatio: 20 / 10,
+                              crossAxisSpacing: 18,
+                              mainAxisSpacing: 20),
                       itemCount: days.length,
                       itemBuilder: (context, index) {
                         return InkWell(
@@ -338,21 +339,29 @@ class _SettingsPageState extends State<SettingsPage> {
                               borderRadius: new BorderRadius.all(
                                 const Radius.circular(5.0),
                               ),
-                              color: getvitalController.firstDayOfWeek ==
+                              /* color: getvitalController.firstDayOfWeek ==
                                       days[index]
-                                  ? Color.fromARGB(255, 200, 87, 220)
-                                  : Colors.white,
+                                  ? kPrimaryColor
+                                  : Colors.white, */
                             ),
                             height: 10,
                             width: 50,
-                            child: Center(
-                              child: Text(
-                                days[index],
-                                style: TextStyle(
-                                    color: getvitalController.firstDayOfWeek ==
-                                            days[index]
-                                        ? Colors.white
-                                        : Colors.black),
+                            child: Card(
+                           color:   getvitalController.firstDayOfWeek ==
+                                      days[index]
+                                  ? kPrimaryColor
+                                  : Colors.white,
+                              child: Center(
+                                child: Text(
+                                  days[index],
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      color: getvitalController.firstDayOfWeek ==
+                                              days[index]
+                                          ? Colors.white
+                                          : Colors.black),
+                                ),
                               ),
                             ),
                           ),
@@ -378,18 +387,18 @@ class _SettingsPageState extends State<SettingsPage> {
               return Container(
                 decoration: BoxDecoration(
                   borderRadius: new BorderRadius.only(
-                    topRight: const Radius.circular(20.0),
-                    topLeft: const Radius.circular(20.0),
+                    topRight: const Radius.circular(30.0),
+                    topLeft: const Radius.circular(30.0),
                   ),
                   color: Colors.white, /* Color(0xffEDF7FF), */
                 ),
-                height: 200,
+                height: 230,
                 width: MediaQuery.of(context).size.width,
                 child: Container(
                   margin: EdgeInsets.only(top: 20, left: 10, right: 10),
                   child: Center(
                       child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -412,7 +421,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               // margin: EdgeInsets.only(left: 20),
                               height: 70,
                               width: 70,
-                              padding: EdgeInsets.only(left: 10),
+                              padding: EdgeInsets.only(left: 15),
                               decoration: BoxDecoration(
                                 color: kPrimaryColor,
                                 borderRadius: BorderRadius.all(
@@ -444,7 +453,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               // margin: EdgeInsets.only(left: 20),
                               height: 70,
                               width: 70,
-                              padding: EdgeInsets.only(left: 10),
+                              // padding: EdgeInsets.only(left: 10),
                               decoration: BoxDecoration(
                                 color: kPrimaryColor,
                                 borderRadius: BorderRadius.all(
@@ -453,7 +462,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               ),
                               child: Center(
                                   child: Image.asset(
-                                'assets/images/shareapp/fb.png',
+                                'assets/images/shareapp/instagram.png',
                                 height: 40,
                               )),
                             ),
@@ -470,7 +479,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               // margin: EdgeInsets.only(left: 20),
                               height: 70,
                               width: 70,
-                              padding: EdgeInsets.only(left: 10),
+                              // padding: EdgeInsets.only(left: 10),
                               decoration: BoxDecoration(
                                 color: kPrimaryColor,
                                 borderRadius: BorderRadius.all(
@@ -479,14 +488,14 @@ class _SettingsPageState extends State<SettingsPage> {
                               ),
                               child: Center(
                                   child: Image.asset(
-                                'assets/images/shareapp/fb.png',
+                                'assets/images/shareapp/whatsapp.png',
                                 height: 40,
                               )),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      //SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -507,7 +516,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               // margin: EdgeInsets.only(left: 20),
                               height: 70,
                               width: 70,
-                              padding: EdgeInsets.only(left: 15),
+                              padding: EdgeInsets.only(top: 5),
                               decoration: BoxDecoration(
                                 color: kPrimaryColor,
                                 borderRadius: BorderRadius.all(
@@ -516,7 +525,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               ),
                               child: Center(
                                   child: Image.asset(
-                                'assets/images/shareapp/fb.png',
+                                'assets/images/shareapp/twitter.png',
                                 height: 40,
                               )),
                             ),
@@ -561,7 +570,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               // margin: EdgeInsets.only(left: 20),
                               height: 70,
                               width: 70,
-                             // padding: EdgeInsets.only(left: 10),
+                              // padding: EdgeInsets.only(left: 10),
                               decoration: BoxDecoration(
                                 color: kPrimaryColor,
                                 borderRadius: BorderRadius.all(
