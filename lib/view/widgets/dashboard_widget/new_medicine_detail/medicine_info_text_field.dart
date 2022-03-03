@@ -24,14 +24,14 @@ class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
       ),
       child: TextField(
         onEditingComplete: () {
-          print('Name');
+        
         },
         onChanged: (text) {
-          print(text.length);
+         
           Get.find<AddMedicineController>().changeName(text);
         },
         onSubmitted: (text) {
-          print(text.length);
+         
           Get.find<AddMedicineController>().changeName(text);
         },
         enabled: true,

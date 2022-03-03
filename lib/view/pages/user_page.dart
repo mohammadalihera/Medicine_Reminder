@@ -37,7 +37,7 @@ class _UserPageState extends State<UserPage> {
           userTitle = authController.userName;
           userCred = authController.userPhone;
           userImg = authController.imageURL;
-          print(userTitle + userCred);
+        
         }
         return Scaffold(
           backgroundColor: kPrimaryColor,
@@ -47,36 +47,39 @@ class _UserPageState extends State<UserPage> {
               child: Text('My Profile'),
             ),
           ),
-          body: Container(
-            margin: EdgeInsets.only(top: 0),
-            height: MediaQuery.of(context).size.height,
+          body: SingleChildScrollView(
             child: Container(
-              decoration: BoxDecoration(
-                color: Color(0xffEDF7FF),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
+              margin: EdgeInsets.only(top: 0),
+              height: MediaQuery.of(context).size.height,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xffEDF7FF),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.circular(50),
+                  ),
                 ),
-              ),
-              child: SingleChildScrollView(
-                padding: EdgeInsets.only(top: 50),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    UserInfoWidget(userTitle, userCred, userImg),
-                    NextDoseWidget(),
-                    Center(
-                      child: Text(
-                        'Next 7 Days Medicine',
-                        style: TextStyle(
-                          fontSize: 16,
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.only(top: 50),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      UserInfoWidget(userTitle, userCred, userImg),
+                      NextDoseWidget(),
+                      Center(
+                        child: Text(
+                          'Next 7 Days Medicine',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color:Colors.grey,
+                          ),
                         ),
                       ),
-                    ),
-                    NextWeekMedicine(),
-                    UserPageButtons(),
-                  ],
+                      NextWeekMedicine(),
+                      UserPageButtons(),
+                    ],
+                  ),
                 ),
               ),
             ),

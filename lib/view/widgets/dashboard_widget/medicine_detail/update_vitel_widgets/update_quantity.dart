@@ -77,11 +77,11 @@ class _UpdateMedicineQuantityState extends State<UpdateMedicineQuantity> {
   }
 
     void _showDialog() {
-    // flutter defined function
+   
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        // return object of type Dialog
+        
         return Dialog(
           backgroundColor: Colors.transparent,
           child: Container(

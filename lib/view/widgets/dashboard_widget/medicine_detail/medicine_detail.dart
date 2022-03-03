@@ -110,7 +110,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                   widget.vitel.doseTwo.isNotEmpty
                                       ? InkWell(
                                           onTap: () {
-                                            // _showDialog( 'dose2');
+                                            
                                           },
                                           child: Container(
                                             width: 95,

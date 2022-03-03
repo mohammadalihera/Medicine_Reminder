@@ -26,7 +26,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
               padding: EdgeInsets.only(left: 15, right: 20),
               child: Icon(
                 Icons.keyboard_arrow_left_sharp,
-                color: kPrimaryColor,
+                color: Colors.grey,
               ),
             ),
             Container(
@@ -43,7 +43,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                         margin: EdgeInsets.only(right: 35),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: kPrimaryColor,
+                            color: Colors.grey,
                             width: 3,
                           ),
                           borderRadius: BorderRadius.circular(10),
@@ -60,7 +60,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                                   child: Text(
                                     '21',
                                     style: TextStyle(
-                                      color: kPrimaryColor,
+                                      color: Colors.grey,
                                       fontSize: 35,
                                     ),
                                   ),
@@ -76,7 +76,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                           child: Text(
                             'Napa',
                             style: TextStyle(
-                              color: kPrimaryColor,
+                              color: Colors.grey,
                               fontSize: 15,
                             ),
                           ),
@@ -92,7 +92,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                         margin: EdgeInsets.only(right: 35),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: kPrimaryColor,
+                            color: Colors.grey,
                             width: 3,
                           ),
                           borderRadius: BorderRadius.circular(10),
@@ -109,7 +109,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                                   child: Text(
                                     '07',
                                     style: TextStyle(
-                                      color: kPrimaryColor,
+                                      color: Colors.grey,
                                       fontSize: 35,
                                     ),
                                   ),
@@ -125,7 +125,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                           child: Text(
                             'Indomnate',
                             style: TextStyle(
-                              color: kPrimaryColor,
+                              color: Colors.grey,
                               fontSize: 15,
                             ),
                           ),
@@ -141,7 +141,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                         margin: EdgeInsets.only(right: 35),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: kPrimaryColor,
+                            color: Colors.grey,
                             width: 3,
                           ),
                           borderRadius: BorderRadius.circular(10),
@@ -158,7 +158,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                                   child: Text(
                                     '17',
                                     style: TextStyle(
-                                      color: kPrimaryColor,
+                                      color: Colors.grey,
                                       fontSize: 35,
                                     ),
                                   ),
@@ -174,7 +174,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                           child: Text(
                             'Max Pro',
                             style: TextStyle(
-                              color: kPrimaryColor,
+                              color: Colors.grey,
                               fontSize: 15,
                             ),
                           ),
@@ -190,7 +190,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                         margin: EdgeInsets.only(right: 35),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: kPrimaryColor,
+                            color: Colors.grey,
                             width: 3,
                           ),
                           borderRadius: BorderRadius.circular(10),
@@ -207,7 +207,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                                   child: Text(
                                     '14',
                                     style: TextStyle(
-                                      color: kPrimaryColor,
+                                      color: Colors.grey,
                                       fontSize: 35,
                                     ),
                                   ),
@@ -223,7 +223,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
                           child: Text(
                             'Paracetamol',
                             style: TextStyle(
-                              color: kPrimaryColor,
+                              color: Colors.grey,
                               fontSize: 15,
                             ),
                           ),
@@ -238,7 +238,7 @@ class _NextWeekMedicineState extends State<NextWeekMedicine> {
               padding: EdgeInsets.only(left: 10, right: 10),
               child: Icon(
                 Icons.keyboard_arrow_right_sharp,
-                color: kPrimaryColor,
+                color: Colors.grey,
               ),
             ),
           ],

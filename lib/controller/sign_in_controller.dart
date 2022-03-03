@@ -8,10 +8,10 @@ class SignInController extends GetxController {
   bool signIn = false;
   void signedIn(GoogleSignInAccount? user) {
     if (user != null) {
-      print('found user: $user');
+    
       signIn = true;
     } else {
-      print('did not find user: $user');
+      
       signIn = false;
     }
     update(); 

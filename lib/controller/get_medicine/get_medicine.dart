@@ -105,7 +105,7 @@ class GetMedicineController extends GetxController {
     DateTime now = DateTime.now();
 
     for (int i = 0; i < vitel.length; ++i) {
-      print(vitals[i].date);
+     
       List<String> dates = allVitel[i].date.split(',');
       for (int j = 0; j < dates.length; ++j) {
         int dateInt = int.parse(dates[j]);

@@ -47,10 +47,13 @@ class _CustomCalendarState extends State<CustomCalendar> {
         init: GetMedicineController(),
         builder: (getvitalController) {
           return TableCalendar(
+          
             eventLoader: (day) => getvitalController.getSelectedVital(day),
             calendarStyle: CalendarStyle(
+markerDecoration: BoxDecoration(color:Colors.green[200],borderRadius: BorderRadius.all(Radius.circular(10))),
               cellMargin: EdgeInsets.all(5),
               selectedDecoration: BoxDecoration(
+
                 border: Border.all(color: Colors.white),
                 color: Color(0xffEDF7FF),
                 borderRadius: BorderRadius.all(
@@ -166,19 +169,14 @@ class _CustomCalendarState extends State<CustomCalendar> {
             focusedDay: _focusedDay,
             calendarFormat: _calendarFormat,
             selectedDayPredicate: (day) {
-              // Use `selectedDayPredicate` to determine which day is currently selected.
-              // If this returns true, then `day` will be marked as selected.
-
-              // Using `isSameDay` is recommended to disregard
-              // the time-part of compared DateTime objects.
+             
               return isSameDay(_selectedDay, day);
             },
             onDaySelected: (selectedDay, focusedDay) {
               if (!isSameDay(_selectedDay, selectedDay)) {
-                //List<Vital> selectedV=  Get.find<GetMedicineController>().getSelectedVital(selectedDay);
-                print('----------------------------------------');
-                // print(selectedV);
-                // Call `setState()` when updating the selected day
+              
+               
+                
                 setState(() {
                   _selectedDay = selectedDay;
                   _focusedDay = focusedDay;

@@ -75,8 +75,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                           margin: EdgeInsets.only(right: 20),
                           child: InkWell(
                             onTap: () {
-                              print('hello');
-                              //  notify();
+                             
                               Navigator.pop(context);
                             },
                             child: Container(
@@ -233,7 +232,7 @@ void addvitel(
     quantity: quantity,
     afterMeal: afterMeal,
   );
-  print(vitel.id);
+ 
   for (int i = 0; i < vitel.program - 1; ++i) {
     newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
     vitel.date =
@@ -243,8 +242,7 @@ void addvitel(
   getmedicineController.getAllVitelFromDb(context);
   List<String> newDoses = getDoses(vitel);
   List<String> vDate = vitel.date.split(',');
-  print(newDoses);
-  print(vDate);
+  
   //List<DateTime> notify = notificationC.getNotificationTime(vDate, newDoses);
   for (int i = 0; i < vDate.length; ++i) {
     for (int j = 0; j < newDoses.length; ++j) {
@@ -254,16 +252,7 @@ void addvitel(
           DateTime.fromMillisecondsSinceEpoch(vitalDate).month,
           DateTime.fromMillisecondsSinceEpoch(vitalDate).day);
 
-      print(new DateFormat('yyyyy.MM.dd GGG hh:mm aaa').parse('0' +
-          vitald.year.toString() +
-          '.' +
-          vitald.month.toString() +
-          '.' +
-          vitald.day.toString() +
-          ' ' +
-          'AD' +
-          ' ' +
-          newDoses[j]));
+    
 
       DateTime finaNotifyDate = new DateFormat('yyyyy.MM.dd GGG hh:mm aaa')
           .parse('0' +
@@ -276,10 +265,7 @@ void addvitel(
               'AD' +
               ' ' +
               newDoses[j]);
-      print(vitald);
-
-      print(newDoses[j]);
-      // DateTime notifyDate=DateTime.
+     
       notify(finaNotifyDate, vitel);
     }
   }
@@ -320,25 +306,17 @@ getDoses(Vitel vitel) {
 }
 
 void notify(DateTime schedule, Vitel vitel) async {
-  print('all' + vitel.date);
-  print("deleted: " + schedule.millisecondsSinceEpoch.toString());
+  
   vitel.date =
       vitel.date.replaceAll(schedule.millisecondsSinceEpoch.toString(), '');
   dynamic result =
       await Repository.update("Vitel", vitel.vitelToMap(), vitel.id);
-  print(vitel.date);
-  print('hi');
-  /* AwesomeNotifications().actionStream.listen((event) async {
-    print('event received!');
-    print(event.toMap().toString());
-    // do something based on event...
-  });
- */
+  
   AwesomeNotifications().createNotification(
 
     actionButtons: [
       NotificationActionButton(
-        label: 'Snooz',
+        label: 'Snooze',
         enabled: true,
         buttonType: ActionButtonType.Default,
         key: '22',

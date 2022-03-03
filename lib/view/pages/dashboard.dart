@@ -97,12 +97,12 @@ class _DashBoardState extends State<DashBoard> {
                               ),
                               child: Column(
                                 
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Image.asset('assets/images/no_vital.png'),
+                                  Image.asset('assets/images/no_vital.png',height: 200,width: 200,),
                                   SizedBox(
                                     height: 10,
                                   ),
@@ -124,12 +124,6 @@ class _DashBoardState extends State<DashBoard> {
           ),
         ),
       ),
-      /* floatingActionButton: FloatingActionButton(
-        onPressed: addMedicine,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), */
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 

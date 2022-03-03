@@ -44,6 +44,7 @@ dependencies:
   path_provider: ^2.0.8
   social_share: ^2.2.1
   path: ^1.8.0
+  animated_splash_screen: ^1.2.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -80,8 +81,11 @@ flutter:
     - assets/images/home.svg
     - assets/images/profile.svg
     - assets/images/settings.svg
+    - assets/images/settings/
     - assets/images/no_medicine.svg
     - assets/images/no_vital.png
+    - assets/logo/app_icon.png
+    - assets/logo/
     - data/
 
   # An image asset can refer to one or more resolution-specific "variants", see

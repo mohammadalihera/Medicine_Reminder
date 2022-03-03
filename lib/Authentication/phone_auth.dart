@@ -13,7 +13,7 @@ class PhoneAuth extends StatelessWidget {
   Future<bool> phoneAuth(
       String phone, BuildContext context, String signCode) async {
     await Firebase.initializeApp();
-    print(phone.toString() + "f1");
+
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final _codeController = TextEditingController();
 
@@ -21,27 +21,19 @@ class PhoneAuth extends StatelessWidget {
       phoneNumber: phone,
       timeout: Duration(seconds: 60),
       verificationCompleted: (AuthCredential credential) async {
-        print(phone.toString() + "f2");
         Navigator.of(context).pop();
         UserCredential result = await _auth.signInWithCredential(credential);
         User? user = result.user;
         if (user != null) {
-          print(phone.toString() + "f3");
-          print(user);
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => Dashboard(),
             ),
           );
-        } else {
-          print('Error');
-        }
+        } else {}
       },
-      verificationFailed: (FirebaseAuthException exception) {
-        print(phone.toString() + "f4");
-        print(exception);
-      },
+      verificationFailed: (FirebaseAuthException exception) {},
       codeSent: (String verificationId, [int? forceResendingToken]) {
         {
           showDialog(
@@ -69,29 +61,25 @@ class PhoneAuth extends StatelessWidget {
                 actions: <Widget>[
                   ElevatedButton(
                     child: Text('Confirm'),
-                    // textColor: Colors.white,
-                    // color: Colors.purpleAccent,
                     onPressed: () async {
                       final code = _codeController.text.trim();
                       AuthCredential credential = PhoneAuthProvider.credential(
                         verificationId: verificationId,
                         smsCode: code,
                       );
-                      // Navigator.of(context).pop();
+
                       UserCredential result =
                           await _auth.signInWithCredential(credential);
                       User? user = result.user;
                       if (user != null) {
-                        print(user);
                         User? firebaseUser = FirebaseAuth.instance.currentUser;
 
-                        // this means phone login
                         String username =
                             firebaseUser?.displayName.toString() ??
                                 'Phone User';
                         String phoneNumber =
                             firebaseUser!.phoneNumber.toString();
-                        print(phoneNumber);
+
                         String image =
                             'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
 
@@ -102,12 +90,6 @@ class PhoneAuth extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => Dashboard()),
                             (Route<dynamic> route) => false);
-                        // Navigator.pushReplacement(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => Dashboard(),
-                        //   ),
-                        // );
                       } else {
                         print('Error');
                       }
@@ -121,7 +103,6 @@ class PhoneAuth extends StatelessWidget {
       },
       codeAutoRetrievalTimeout: (String verificationId) {
         verificationId = verificationId;
-        print(verificationId);
       },
     );
 

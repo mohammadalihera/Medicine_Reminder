@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthUserController extends GetxController {
-  // final user = FirebaseAuth.instance.currentUser;
+  
   String userName = '';
   String userEmail = '';
   String userPhone = '';
@@ -15,8 +15,7 @@ class AuthUserController extends GetxController {
     userPhone = phone;
     imageURL = imgURL;
 
-    // print('------------------------------------------------------------------');
-    // print(userPhone);
+    
 
     update();
   }

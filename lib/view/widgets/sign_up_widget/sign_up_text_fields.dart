@@ -261,9 +261,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                 final phoneNumber = code + rawPhone;
                 final signCode = await SmsAutoFill().getAppSignature;
                 phoneAuthInstance.phoneAuth(phoneNumber, context, signCode);
-                print(phoneNumber.toString());
+               
               } else {
-                print('invalid number');
+              
               }
             },
             child: Container(

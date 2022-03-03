@@ -19,6 +19,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'controller/auth_user_controller.dart';
 import 'controller/sign_in_controller.dart';
 import 'database/caching/cache.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 String dashname = 'User';
 
@@ -32,27 +33,25 @@ Future<void> main() async {
   Get.lazyPut(() => CacheController());
   AwesomeNotifications().initialize(
       // set the icon to null if you want to use the default app icon
-      // 'resource://drawable/logo',
-      null,
+      'resource://drawable/logo',
+      //null,
       [
         NotificationChannel(
-            channelKey: 'basic_channel',
-            channelName: 'Basic notifications',
-            channelDescription: 'Notification channel for basic tests',
-            defaultRingtoneType: DefaultRingtoneType.Ringtone,
-           
-            // defaultColor: Color(0xffaa2233),
-            //ledColor: Colors.blue,
-            soundSource: 'resource://raw/vitel_medicine_ring',
-            defaultColor: Colors.transparent,
-            ledColor: Colors.white,
-            playSound: true,
-            enableVibration: true,
-            onlyAlertOnce: false,
-            importance: NotificationImportance.High,
-            
-            
-            ),
+          channelKey: 'basic_channel',
+          channelName: 'Basic notifications',
+          channelDescription: 'Notification channel for basic tests',
+          defaultRingtoneType: DefaultRingtoneType.Ringtone,
+
+          // defaultColor: Color(0xffaa2233),
+          //ledColor: Colors.blue,
+          soundSource: 'resource://raw/vitel_medicine_ring',
+          defaultColor: Colors.transparent,
+          ledColor: Colors.white,
+          playSound: true,
+          enableVibration: true,
+          onlyAlertOnce: false,
+          importance: NotificationImportance.High,
+        ),
       ]);
 
   // const AndroidInitializationSettings initializationSettingsAndroid =
@@ -103,11 +102,9 @@ class MyApp extends StatelessWidget {
             .get('firstDayOfWeek')
             .toString())
         : Get.find<CacheController>().changeFristDayOfWeek('Sun');
-    print(
-        CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString());
+    
     if (firebaseUser != null) {
-      print('logged in');
-      //print(firebaseUser.uid);
+     
       if (firebaseUser!.email.toString() != '' &&
           firebaseUser!.phoneNumber == null) {
         // this means google login
@@ -119,7 +116,7 @@ class MyApp extends StatelessWidget {
       } else {
         // this means phone login
         String phoneNumber = firebaseUser!.phoneNumber.toString();
-        print(phoneNumber);
+      
         String image =
             'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
 
@@ -128,37 +125,54 @@ class MyApp extends StatelessWidget {
       }
       firstWidget = Dashboard();
     } else {
-      print('NOT logged in');
+     
       firstWidget = SignUpPage();
     }
 
-    // if (firebaseUser!.email.toString() != '' &&
-    //     firebaseUser!.phoneNumber == null) {
-    //   print('dashname set for guser');
-    //   dashname = firebaseUser!.displayName.toString();
-    //   print(dashname);
-    // } else {
-    //   print('Dashname set for phone user');
-    //   dashname = firebaseUser!.phoneNumber.toString();
-    //   print(dashname);
-    // }
+    
 
     return MaterialApp(
-      supportedLocales: [
-        Locale('en', 'US'),
-      ],
-      localizationsDelegates: [CountryLocalizations.delegate],
-      debugShowCheckedModeBanner: false,
-      title: 'Vitel',
-      theme: ThemeData(
-        primarySwatch: kPrimaryColor,
-        canvasColor: Colors.white,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: 'Poppins',
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-      ),
-      home: firstWidget,
-    );
+        supportedLocales: [
+          Locale('en', 'US'),
+        ],
+        localizationsDelegates: [
+          CountryLocalizations.delegate
+        ],
+        debugShowCheckedModeBanner: false,
+        title: 'Vitel',
+        theme: ThemeData(
+          primarySwatch: kPrimaryColor,
+          canvasColor: Colors.white,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: 'Poppins',
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+        ),
+        home: AnimatedSplashScreen(
+            duration: 1000,
+            splashIconSize: 400,
+            splash: Container(
+              height: 400,
+              width: 300,
+              
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 150,
+                    width: 150,
+                    child: Image.asset(
+                      'assets/logo/logo.png',
+                      height: 100,
+                      width: 100,
+                    ),
+                  ),
+                  Text('Vitel',style:TextStyle(color: Colors.white,fontSize: 60,fontFamily: 'Advent Pro'))
+                ],
+              ),
+            ),
+            nextScreen: firstWidget,
+            splashTransition: SplashTransition.scaleTransition,
+            backgroundColor: kPrimaryColor));
   }
 }

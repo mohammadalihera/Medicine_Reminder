@@ -30,14 +30,8 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
   @override
   Widget build(BuildContext context) {
     Vitel vitel = widget.vitel;
-    /* dose_1 = DateTime.parse(vitel.doseOne);
-    dose_2 = DateTime.parse(vitel.doseTwo);
-    dose_3 = DateTime.parse(vitel.doseThree);
-    dose_4 = DateTime.parse(vitel.doseFour);
-    dose_5 = DateTime.parse(vitel.doseFive);
-    dose_6 = DateTime.parse(vitel.doseSix); */
-    print(vitel.name);
-    print(vitel.doseSix);
+    
+   
 
     return Container(
       margin: EdgeInsets.only(left: 40, top: 10),

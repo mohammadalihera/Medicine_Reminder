@@ -32,14 +32,7 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
   @override
   Widget build(BuildContext context) {
     Vitel vital = widget.vitel;
-    /* dose_1 = DateTime.parse(vital.doseOne);
-    dose_2 = DateTime.parse(vital.doseTwo);
-    dose_3 = DateTime.parse(vital.doseThree);
-    dose_4 = DateTime.parse(vital.doseFour);
-    dose_5 = DateTime.parse(vital.doseFive);
-    dose_6 = DateTime.parse(vital.doseSix); */
-
-    print('******************************************');
+   
   
 
     return Container(
@@ -386,11 +379,11 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
   }
 
   void _showDialog(String doseName) {
-    // flutter defined function
+    
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        // return object of type Dialog
+        
         return Dialog(
           backgroundColor: Colors.transparent,
           child: Container(

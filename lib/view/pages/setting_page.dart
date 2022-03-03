@@ -84,21 +84,28 @@ class _SettingsPageState extends State<SettingsPage> {
                     margin: EdgeInsets.only(left: 20, bottom: 40),
                     child: Row(
                       children: [
-                        Icon(Icons.cloud),
+                        //Icon(Icons.cloud),
+                        Container(child:Image.asset('assets/images/settings/Vector.png',color: Colors.grey,)),
                         SizedBox(
                           width: 10,
                         ),
                         Container(
                           child: Text('Account Sync',
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500)),
+                                  color: Colors.grey,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500)),
                         ),
                       ],
                     ),
                   ),
                 ),
                 TextButton(
-                  onPressed: () => _showDialog(),
+                  onPressed: () {
+                   
+                    _showDialog();
+                    
+                  },
                   child: Container(
                     margin: EdgeInsets.only(left: 20, bottom: 40),
                     child: Row(
@@ -150,14 +157,16 @@ class _SettingsPageState extends State<SettingsPage> {
                     margin: EdgeInsets.only(left: 20, bottom: 40),
                     child: Row(
                       children: [
-                        Icon(Icons.star_outlined),
+                        Icon(Icons.star_outlined,color: Colors.grey,),
                         SizedBox(
                           width: 10,
                         ),
                         Container(
                           child: Text('Rate Us ',
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500)),
+                                  color: Colors.grey,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500)),
                         ),
                       ],
                     ),
@@ -169,7 +178,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     margin: EdgeInsets.only(left: 20, bottom: 40),
                     child: Row(
                       children: [
-                        Icon(Icons.calendar_today_outlined),
+                        Container(child:Image.asset('assets/images/settings/share-2.png',)),
                         SizedBox(
                           width: 10,
                         ),
@@ -216,16 +225,16 @@ class _SettingsPageState extends State<SettingsPage> {
                     margin: EdgeInsets.only(left: 20, bottom: 40),
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.privacy_tip_sharp,
-                        ),
+                        Container(child:Image.asset('assets/images/settings/shield.png',color: Colors.grey,)),
                         SizedBox(
                           width: 10,
                         ),
                         Container(
                           child: Text('Privacy policy',
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500)),
+                                  color: Colors.grey,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500)),
                         ),
                       ],
                     ),
@@ -265,9 +274,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     margin: EdgeInsets.only(left: 20, bottom: 40),
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.privacy_tip_sharp,
-                        ),
+                        Container(child:Image.asset('assets/images/settings/server.png',)),
                         SizedBox(
                           width: 10,
                         ),
@@ -295,12 +302,12 @@ class _SettingsPageState extends State<SettingsPage> {
 
   void _showDialog() {
     // flutter defined function
-    List<String> days = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu','Fri'];
+    List<String> days = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
     CacheService.instance.initFirstDayHive();
 
     String firstDay =
         CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString();
-    showBottomSheet(
+    showModalBottomSheet(
         backgroundColor: Colors.transparent,
         context: context,
         builder: (BuildContext context) {
@@ -313,7 +320,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   borderRadius: new BorderRadius.only(
                       topRight: Radius.circular(50.0),
                       topLeft: Radius.circular(50.0)),
-                  color: Colors.white,
+                  color: Color(0xffEDF7FF),
                 ),
                 height: 250,
                 width: MediaQuery.of(context).size.width,
@@ -333,6 +340,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           onTap: () {
                             Get.find<GetMedicineController>()
                                 .changeFristDayOfWeek(days[index]);
+                            Navigator.pop(context);
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -347,7 +355,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             height: 10,
                             width: 50,
                             child: Card(
-                           color:   getvitalController.firstDayOfWeek ==
+                              color: getvitalController.firstDayOfWeek ==
                                       days[index]
                                   ? kPrimaryColor
                                   : Colors.white,
@@ -357,10 +365,11 @@ class _SettingsPageState extends State<SettingsPage> {
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600,
-                                      color: getvitalController.firstDayOfWeek ==
-                                              days[index]
-                                          ? Colors.white
-                                          : Colors.black),
+                                      color:
+                                          getvitalController.firstDayOfWeek ==
+                                                  days[index]
+                                              ? Colors.white
+                                              : Colors.black),
                                 ),
                               ),
                             ),
@@ -377,7 +386,7 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void _showBottomDialog() {
-    showBottomSheet(
+    showModalBottomSheet(
         backgroundColor: Colors.transparent,
         context: context,
         builder: (BuildContext context) {
@@ -390,7 +399,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     topRight: const Radius.circular(30.0),
                     topLeft: const Radius.circular(30.0),
                   ),
-                  color: Colors.white, /* Color(0xffEDF7FF), */
+                  color: Color(0xffEDF7FF), /* Color(0xffEDF7FF), */
                 ),
                 height: 230,
                 width: MediaQuery.of(context).size.width,
@@ -414,7 +423,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 "https://nerdevolution.tech/",
                                 appId: "12345",
                               ).then((data) {
-                                print(data);
+                              
                               });
                             },
                             child: Container(
@@ -446,7 +455,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 attributionURL: "https://deep-link-url",
                                 backgroundImagePath: file.path,
                               ).then((data) {
-                                print(data);
+                              
                               });
                             },
                             child: Container(
@@ -472,7 +481,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               SocialShare.shareWhatsapp(
                                 "Struggling to keep track of your daily medications? Download the app now:link\n https://google.com",
                               ).then((data) {
-                                print(data);
+                               
                               });
                             },
                             child: Container(
@@ -504,12 +513,12 @@ class _SettingsPageState extends State<SettingsPage> {
                               File file = await getImageFileFromAssets(
                                   'images/no_vital.png');
                               SocialShare.shareTwitter(
-                                "Struggling to keep track of your daily medications? Download the app now:link",
+                                "Struggling to keep track of your daily medications? Download the app now",
                                 hashtags: ["hello", "world", "foo", "bar"],
                                 url: "https://google.com/#/hello",
                                 trailingText: "\nhello",
                               ).then((data) {
-                                print(data);
+                                
                               });
                             },
                             child: Container(
@@ -533,11 +542,11 @@ class _SettingsPageState extends State<SettingsPage> {
                           InkWell(
                             onTap: () async {
                               SocialShare.shareSms(
-                                "Please Install the vitel app",
+                                "Struggling to keep track of your daily medications? Download the app now",
                                 url: "\nhttps://google.com/",
                                 trailingText: "\nhello",
                               ).then((data) {
-                                print(data);
+                               
                               });
                             },
                             child: Container(
@@ -563,7 +572,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               SocialShare.copyToClipboard(
                                 "This is Social Share plugin",
                               ).then((data) {
-                                print(data);
+                              
                               });
                             },
                             child: Container(
@@ -631,6 +640,6 @@ class _SettingsPageState extends State<SettingsPage> {
   // File copied to ext directory.
   File newImage = await image.copy("$myImagePath/${p.basename(basename)}");
 
-  print(newImage.path);
+  
 } */
 }

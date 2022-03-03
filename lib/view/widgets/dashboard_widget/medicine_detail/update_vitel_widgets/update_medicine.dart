@@ -56,8 +56,7 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                         : vitel.doseTwo != ''
                             ? 2
                             : 1;
-    print('9999999999999999999999999999999999999');
-
+    
     return GetBuilder<AddMedicineController>(
       init: AddMedicineController(),
       builder: (addController) {
@@ -218,8 +217,7 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
 void addVital(Vitel vitel, int additionProgram, context) async {
   DateTime newMedicineDate = DateTime.fromMillisecondsSinceEpoch(
       int.parse(vitel.date.split(',').first));
-  print('lasssssssssssssssssssssssst date');
-  print(newMedicineDate);
+  
   GetMedicineController getmedicineController =
       Get.put(GetMedicineController());
 

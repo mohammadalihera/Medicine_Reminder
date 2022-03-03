@@ -13,48 +13,50 @@ class UserInfoWidget extends StatefulWidget {
 class _UserInfoState extends State<UserInfoWidget> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Center(
-          child: CircleAvatar(
-            maxRadius: 45,
-            minRadius: 20,
-            backgroundImage: NetworkImage(widget.userImg),
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Center(
+            child: CircleAvatar(
+              maxRadius: 45,
+              minRadius: 20,
+              backgroundImage: NetworkImage(widget.userImg),
+            ),
           ),
-        ),
-        Container(
-          width: 190,
-          margin: EdgeInsets.only(top: 10, bottom: 3),
-          decoration: BoxDecoration(
-            color: kPrimaryColor,
-            borderRadius: BorderRadius.circular(50),
-            border: Border.all(
+          Container(
+            width: 190,
+            margin: EdgeInsets.only(top: 10, bottom: 3),
+            decoration: BoxDecoration(
               color: kPrimaryColor,
-            ),
-          ),
-          child: Center(
-            child: Text(
-              widget.userTitle,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.only(bottom: 3),
-          child: Center(
-            child: Text(
-              widget.userCred,
-              style: TextStyle(
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(
                 color: kPrimaryColor,
-                fontSize: 16,
+              ),
+            ),
+            child: Center(
+              child: Text(
+                widget.userTitle,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
               ),
             ),
           ),
-        )
-      ],
+          Container(
+            margin: EdgeInsets.only(bottom: 3),
+            child: Center(
+              child: Text(
+                widget.userCred,
+                style: TextStyle(
+                  color: kPrimaryColor,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

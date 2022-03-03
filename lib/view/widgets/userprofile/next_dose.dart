@@ -26,7 +26,7 @@ class _NextDoseWidgetState extends State<NextDoseWidget> {
       child: Card(
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            color: kPrimaryColor,
+            color: Colors.grey,
             width: 3,
           ),
           borderRadius: BorderRadius.circular(10),
@@ -43,7 +43,7 @@ class _NextDoseWidgetState extends State<NextDoseWidget> {
                   child: Text(
                     'Next Dose',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.grey,
                       fontSize: 16,
                     ),
                   ),
@@ -52,7 +52,7 @@ class _NextDoseWidgetState extends State<NextDoseWidget> {
                   child: Text(
                     '09:00' + 'AM',
                     style: TextStyle(
-                      color: kPrimaryColor,
+                      color: Colors.grey,
                       fontSize: 35,
                     ),
                   ),

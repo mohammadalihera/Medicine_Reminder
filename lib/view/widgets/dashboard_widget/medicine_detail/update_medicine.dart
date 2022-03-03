@@ -202,17 +202,16 @@ void addvitel(Vitel vitel, int additionProgram, context) async {
       int.parse(vitel.date.split(',').first));
   DateTime firstDate = DateTime(
       newMedicineDate.year, newMedicineDate.month, newMedicineDate.day);
-  print('lasssssssssssssssssssssssst date');
-  print(firstDate);
+ 
   GetMedicineController getmedicineController =
       Get.put(GetMedicineController());
   vitel.date = firstDate.millisecondsSinceEpoch.toString();
-  print(vitel.date);
+ 
   for (int i = 1; i < additionProgram; ++i) {
     firstDate = firstDate.add(Duration(milliseconds: 86400000));
     vitel.date = vitel.date + ',' + firstDate.millisecondsSinceEpoch.toString();
   }
-  print(vitel.date);
+  
   dynamic result =
       await Repository.update("vitel", vitel.vitelToMap(), vitel.id);
   getmedicineController.getAllVitelFromDb(context);
