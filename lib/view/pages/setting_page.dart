@@ -54,6 +54,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
+                        duration: Duration(milliseconds:500 ),
                         padding: EdgeInsets.all(0),
                         backgroundColor: Colors.transparent,
                         content: Container(
@@ -81,7 +82,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 20, bottom: 40),
+                    margin: EdgeInsets.only(left: 20, ),
                     child: Row(
                       children: [
                         //Icon(Icons.cloud),
@@ -100,6 +101,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 10,),
                 TextButton(
                   onPressed: () {
                    
@@ -107,7 +109,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 20, bottom: 40),
+                    margin: EdgeInsets.only(left: 20,),
                     child: Row(
                       children: [
                         Icon(Icons.calendar_today_outlined),
@@ -123,10 +125,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
+                  SizedBox(height: 10,),
                 TextButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
+                        duration: Duration(milliseconds:500 ),
                         padding: EdgeInsets.all(0),
                         backgroundColor: Colors.transparent,
                         content: Container(
@@ -154,7 +158,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 20, bottom: 40),
+                    margin: EdgeInsets.only(left: 20, ),
                     child: Row(
                       children: [
                         Icon(Icons.star_outlined,color: Colors.grey,),
@@ -172,10 +176,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
+                  SizedBox(height: 10,),
                 TextButton(
                   onPressed: () => _showBottomDialog(),
                   child: Container(
-                    margin: EdgeInsets.only(left: 20, bottom: 40),
+                    margin: EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
                         Container(child:Image.asset('assets/images/settings/share-2.png',)),
@@ -191,10 +196,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
+                  SizedBox(height: 10,),
                 TextButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
+                        duration: Duration(milliseconds:500 ),
                         padding: EdgeInsets.all(0),
                         backgroundColor: Colors.transparent,
                         content: Container(
@@ -222,7 +229,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 20, bottom: 40),
+                    margin: EdgeInsets.only(left: 20,),
                     child: Row(
                       children: [
                         Container(child:Image.asset('assets/images/settings/shield.png',color: Colors.grey,)),
@@ -240,10 +247,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
+                  SizedBox(height: 10,),
                 TextButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
+                        duration: Duration(milliseconds:500 ),
                         padding: EdgeInsets.all(0),
                         backgroundColor: Colors.transparent,
                         content: Container(
@@ -271,7 +280,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 20, bottom: 40),
+                    margin: EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
                         Container(child:Image.asset('assets/images/settings/server.png',)),
@@ -452,7 +461,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 file.path,
                                 backgroundTopColor: "#ffffff",
                                 backgroundBottomColor: "#000000",
-                                attributionURL: "https://deep-link-url",
+                                attributionURL: "https://nerdevolution.tech/",
                                 backgroundImagePath: file.path,
                               ).then((data) {
                               
@@ -479,7 +488,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           InkWell(
                             onTap: () async {
                               SocialShare.shareWhatsapp(
-                                "Struggling to keep track of your daily medications? Download the app now:link\n https://google.com",
+                                "Struggling to keep track of your daily medications? Download the app now:\n https://nerdevolution.tech/",
                               ).then((data) {
                                
                               });
@@ -515,7 +524,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               SocialShare.shareTwitter(
                                 "Struggling to keep track of your daily medications? Download the app now",
                                 hashtags: ["hello", "world", "foo", "bar"],
-                                url: "https://google.com/#/hello",
+                                url: "https://nerdevolution.tech/",
                                 trailingText: "\nhello",
                               ).then((data) {
                                 
@@ -543,7 +552,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             onTap: () async {
                               SocialShare.shareSms(
                                 "Struggling to keep track of your daily medications? Download the app now",
-                                url: "\nhttps://google.com/",
+                                url: "\n https://nerdevolution.tech/",
                                 trailingText: "\nhello",
                               ).then((data) {
                                

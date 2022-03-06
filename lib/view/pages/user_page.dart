@@ -66,8 +66,8 @@ class _UserPageState extends State<UserPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       UserInfoWidget(userTitle, userCred, userImg),
-                      NextDoseWidget(),
-                      Center(
+                     // NextDoseWidget(),
+                     /*  Center(
                         child: Text(
                           'Next 7 Days Medicine',
                           style: TextStyle(
@@ -76,7 +76,7 @@ class _UserPageState extends State<UserPage> {
                           ),
                         ),
                       ),
-                      NextWeekMedicine(),
+                      NextWeekMedicine(), */
                       UserPageButtons(),
                     ],
                   ),
