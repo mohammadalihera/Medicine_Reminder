@@ -102,12 +102,14 @@ class MyApp extends StatelessWidget {
             .get('firstDayOfWeek')
             .toString())
         : Get.find<CacheController>().changeFristDayOfWeek('Sun');
-    
+
     if (firebaseUser != null) {
-     
+      //  print('email');
+      print('phone' + firebaseUser!.phoneNumber.toString());
       if (firebaseUser!.email.toString() != '' &&
-          firebaseUser!.phoneNumber == null) {
+          (firebaseUser!.phoneNumber == null||firebaseUser!.phoneNumber == '')) {
         // this means google login
+        print('email' + firebaseUser!.email.toString());
         String username = firebaseUser!.displayName.toString();
         String email = firebaseUser!.email.toString();
         String image = firebaseUser!.photoURL.toString();
@@ -115,8 +117,9 @@ class MyApp extends StatelessWidget {
         Get.find<AuthUserController>().updateVal(username, email, '', image);
       } else {
         // this means phone login
+        print('email' + firebaseUser!.email.toString());
         String phoneNumber = firebaseUser!.phoneNumber.toString();
-      
+
         String image =
             'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
 
@@ -125,11 +128,8 @@ class MyApp extends StatelessWidget {
       }
       firstWidget = Dashboard();
     } else {
-     
       firstWidget = SignUpPage();
     }
-
-    
 
     return MaterialApp(
         supportedLocales: [
@@ -154,7 +154,6 @@ class MyApp extends StatelessWidget {
             splash: Container(
               height: 400,
               width: 300,
-              
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -167,7 +166,11 @@ class MyApp extends StatelessWidget {
                       width: 100,
                     ),
                   ),
-                  Text('Vitel',style:TextStyle(color: Colors.white,fontSize: 60,fontFamily: 'Advent Pro'))
+                  Text('Vitel',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 60,
+                          fontFamily: 'Advent Pro'))
                 ],
               ),
             ),

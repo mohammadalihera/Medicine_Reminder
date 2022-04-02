@@ -1,18 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:Vitel/controller/caching_controller/cache_controller.dart';
-import 'package:Vitel/database/vitel_reprository.dart';
-import 'package:Vitel/model/medicine_model.dart';
-import 'package:Vitel/view/widgets/common/custom_button.dart';
-import 'package:flutter/material.dart';
+
 import 'package:Vitel/main.dart';
+import 'package:Vitel/model/medicine_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:social_share/social_share.dart';
 
 import '../../controller/get_medicine/get_medicine.dart';
 import '../../database/caching/cache.dart';
-import 'package:social_share/social_share.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -54,7 +52,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        duration: Duration(milliseconds:500 ),
+                        duration: Duration(milliseconds: 500),
                         padding: EdgeInsets.all(0),
                         backgroundColor: Colors.transparent,
                         content: Container(
@@ -82,11 +80,19 @@ class _SettingsPageState extends State<SettingsPage> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 20, ),
+                    margin: EdgeInsets.only(
+                      left: 20,
+                    ),
                     child: Row(
                       children: [
                         //Icon(Icons.cloud),
-                        Container(child:Image.asset('assets/images/settings/Vector.png',color: Colors.grey,)),
+                        Container(
+                            child: Image.asset(
+                          'assets/images/settings/icons/Account Sync.png',
+                          height: 25,
+                          width: 25,
+                          color: Colors.grey,
+                        )),
                         SizedBox(
                           width: 10,
                         ),
@@ -101,18 +107,26 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 TextButton(
                   onPressed: () {
-                   
                     _showDialog();
-                    
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 20,),
+                    margin: EdgeInsets.only(
+                      left: 20,
+                    ),
                     child: Row(
                       children: [
-                        Icon(Icons.calendar_today_outlined),
+                        Container(
+                          child: Image.asset(
+                            'assets/images/settings/icons/first_day_of_week.png',
+                            height: 25,
+                            width: 25,
+                          ),
+                        ),
                         SizedBox(
                           width: 10,
                         ),
@@ -125,12 +139,14 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
-                  SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 TextButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        duration: Duration(milliseconds:500 ),
+                        duration: Duration(milliseconds: 500),
                         padding: EdgeInsets.all(0),
                         backgroundColor: Colors.transparent,
                         content: Container(
@@ -158,32 +174,42 @@ class _SettingsPageState extends State<SettingsPage> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 20, ),
+                    margin: EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
-                        Icon(Icons.star_outlined,color: Colors.grey,),
+                        Container(
+                            child: Image.asset(
+                          'assets/images/settings/icons/rate_us.png',
+                          height: 25,
+                          width: 25,
+                        )),
                         SizedBox(
                           width: 10,
                         ),
                         Container(
-                          child: Text('Rate Us ',
+                          child: Text('Rate Us',
                               style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500)),
+                                  fontSize: 16, fontWeight: FontWeight.w500)),
                         ),
                       ],
                     ),
                   ),
                 ),
-                  SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 TextButton(
                   onPressed: () => _showBottomDialog(),
                   child: Container(
                     margin: EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
-                        Container(child:Image.asset('assets/images/settings/share-2.png',)),
+                        Container(
+                            child: Image.asset(
+                          'assets/images/settings/icons/share_app.png',
+                          height: 25,
+                          width: 25,
+                        )),
                         SizedBox(
                           width: 10,
                         ),
@@ -196,12 +222,14 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
-                  SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 TextButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        duration: Duration(milliseconds:500 ),
+                        duration: Duration(milliseconds: 500),
                         padding: EdgeInsets.all(0),
                         backgroundColor: Colors.transparent,
                         content: Container(
@@ -229,10 +257,18 @@ class _SettingsPageState extends State<SettingsPage> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 20,),
+                    margin: EdgeInsets.only(
+                      left: 20,
+                    ),
                     child: Row(
                       children: [
-                        Container(child:Image.asset('assets/images/settings/shield.png',color: Colors.grey,)),
+                        Container(
+                            child: Image.asset(
+                          'assets/images/settings/icons/Privacy Policy.png',
+                          height: 25,
+                          width: 25,
+                          color: Colors.grey,
+                        )),
                         SizedBox(
                           width: 10,
                         ),
@@ -247,12 +283,14 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
-                  SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 TextButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        duration: Duration(milliseconds:500 ),
+                        duration: Duration(milliseconds: 500),
                         padding: EdgeInsets.all(0),
                         backgroundColor: Colors.transparent,
                         content: Container(
@@ -283,7 +321,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     margin: EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
-                        Container(child:Image.asset('assets/images/settings/server.png',)),
+                        Container(
+                            child: Image.asset(
+                          'assets/images/settings/icons/version.png',
+                          height: 25,
+                          width: 25,
+                        )),
                         SizedBox(
                           width: 10,
                         ),
@@ -424,16 +467,14 @@ class _SettingsPageState extends State<SettingsPage> {
                           InkWell(
                             onTap: () async {
                               File file = await getImageFileFromAssets(
-                                  'images/no_vital.png');
+                                  'images/post_sm.png');
                               SocialShare.shareFacebookStory(
                                 file.path,
                                 "#ffffff",
                                 "#000000",
                                 "https://nerdevolution.tech/",
                                 appId: "12345",
-                              ).then((data) {
-                              
-                              });
+                              ).then((data) {});
                             },
                             child: Container(
                               // margin: EdgeInsets.only(left: 20),
@@ -448,7 +489,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               ),
                               child: Center(
                                   child: Image.asset(
-                                'assets/images/shareapp/fb.png',
+                                'assets/images/shareapp/facebook.png',
                                 height: 40,
                               )),
                             ),
@@ -456,16 +497,14 @@ class _SettingsPageState extends State<SettingsPage> {
                           InkWell(
                             onTap: () async {
                               File file = await getImageFileFromAssets(
-                                  'images/no_vital.png');
+                                  'images/post_sm.png');
                               SocialShare.shareInstagramStory(
                                 file.path,
                                 backgroundTopColor: "#ffffff",
                                 backgroundBottomColor: "#000000",
                                 attributionURL: "https://nerdevolution.tech/",
                                 backgroundImagePath: file.path,
-                              ).then((data) {
-                              
-                              });
+                              ).then((data) {});
                             },
                             child: Container(
                               // margin: EdgeInsets.only(left: 20),
@@ -489,9 +528,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             onTap: () async {
                               SocialShare.shareWhatsapp(
                                 "Struggling to keep track of your daily medications? Download the app now:\n https://nerdevolution.tech/",
-                              ).then((data) {
-                               
-                              });
+                              ).then((data) {});
                             },
                             child: Container(
                               // margin: EdgeInsets.only(left: 20),
@@ -523,12 +560,10 @@ class _SettingsPageState extends State<SettingsPage> {
                                   'images/no_vital.png');
                               SocialShare.shareTwitter(
                                 "Struggling to keep track of your daily medications? Download the app now",
-                                hashtags: ["hello", "world", "foo", "bar"],
+                                hashtags: ["Vitel"],
                                 url: "https://nerdevolution.tech/",
                                 trailingText: "\nhello",
-                              ).then((data) {
-                                
-                              });
+                              ).then((data) {});
                             },
                             child: Container(
                               // margin: EdgeInsets.only(left: 20),
@@ -551,12 +586,10 @@ class _SettingsPageState extends State<SettingsPage> {
                           InkWell(
                             onTap: () async {
                               SocialShare.shareSms(
-                                "Struggling to keep track of your daily medications? Download the app now",
+                                "Struggling to keep track of your daily medications? Download VITEL now",
                                 url: "\n https://nerdevolution.tech/",
-                                trailingText: "\nhello",
-                              ).then((data) {
-                               
-                              });
+                               // trailingText: "\nhello",
+                              ).then((data) {});
                             },
                             child: Container(
                               // margin: EdgeInsets.only(left: 20),
@@ -571,7 +604,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               ),
                               child: Center(
                                   child: Image.asset(
-                                'assets/images/shareapp/sms.png',
+                                'assets/images/shareapp/message.png',
                                 height: 40,
                               )),
                             ),
@@ -579,10 +612,8 @@ class _SettingsPageState extends State<SettingsPage> {
                           InkWell(
                             onTap: () async {
                               SocialShare.copyToClipboard(
-                                "This is Social Share plugin",
-                              ).then((data) {
-                              
-                              });
+                                "Struggling to keep track of your daily medications? Download the app now\n https://nerdevolution.tech/",
+                              ).then((data) {});
                             },
                             child: Container(
                               // margin: EdgeInsets.only(left: 20),

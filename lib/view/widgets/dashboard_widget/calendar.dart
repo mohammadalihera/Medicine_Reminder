@@ -1,10 +1,7 @@
 import 'package:Vitel/controller/get_medicine/get_medicine.dart';
 import 'package:Vitel/model/medicine_model.dart';
 import 'package:Vitel/utils.dart';
-import 'package:date_time_picker/date_time_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -47,19 +44,23 @@ class _CustomCalendarState extends State<CustomCalendar> {
         init: GetMedicineController(),
         builder: (getvitalController) {
           return TableCalendar(
-          
             eventLoader: (day) => getvitalController.getSelectedVital(day),
             calendarStyle: CalendarStyle(
-markerDecoration: BoxDecoration(color:Colors.green[200],borderRadius: BorderRadius.all(Radius.circular(10))),
+              markerDecoration: BoxDecoration(
+                color: Color.fromARGB(255, 245, 240, 240),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
               cellMargin: EdgeInsets.all(5),
               selectedDecoration: BoxDecoration(
-
                 border: Border.all(color: Colors.white),
                 color: Color(0xffEDF7FF),
                 borderRadius: BorderRadius.all(
                   Radius.circular(8),
                 ),
               ),
+              
               selectedTextStyle: TextStyle(
                   color: Colors.blue,
                   fontSize: 18,
@@ -169,25 +170,20 @@ markerDecoration: BoxDecoration(color:Colors.green[200],borderRadius: BorderRadi
             focusedDay: _focusedDay,
             calendarFormat: _calendarFormat,
             selectedDayPredicate: (day) {
-             
               return isSameDay(_selectedDay, day);
             },
             onDaySelected: (selectedDay, focusedDay) {
               if (!isSameDay(_selectedDay, selectedDay)) {
-              
-               
-                
                 setState(() {
                   _selectedDay = selectedDay;
                   _focusedDay = focusedDay;
                   selectedDate = selectedDay;
-                  // addmedicineController.getSelectedVital(selectedDate!);
                 });
-                //Get.find<GetMedicineController>().selectVitals(selectedDay);
+
                 addmedicineController.selectVitals(selectedDay);
               }
             },
-            startingDayOfWeek:getvitalController.firstDayOfWeek == 'Sun'
+            startingDayOfWeek: getvitalController.firstDayOfWeek == 'Sun'
                 ? StartingDayOfWeek.sunday
                 : getvitalController.firstDayOfWeek == 'Mon'
                     ? StartingDayOfWeek.monday
@@ -202,14 +198,12 @@ markerDecoration: BoxDecoration(color:Colors.green[200],borderRadius: BorderRadi
                                     : StartingDayOfWeek.saturday,
             onFormatChanged: (format) {
               if (_calendarFormat != format) {
-                // Call `setState()` when updating calendar format
                 setState(() {
                   _calendarFormat = format;
                 });
               }
             },
             onPageChanged: (focusedDay) {
-              // No need to call `setState()` here
               _focusedDay = focusedDay;
             },
           );
