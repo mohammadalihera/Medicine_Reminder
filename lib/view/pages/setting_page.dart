@@ -464,70 +464,70 @@ class _SettingsPageState extends State<SettingsPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          InkWell(
-                            onTap: () async {
-                              File file = await getImageFileFromAssets(
-                                  'images/post_sm.png');
-                              SocialShare.shareFacebookStory(
-                                file.path,
-                                "#ffffff",
-                                "#000000",
-                                "https://nerdevolution.tech/",
-                                appId: "12345",
-                              ).then((data) {});
-                            },
-                            child: Container(
-                              // margin: EdgeInsets.only(left: 20),
-                              height: 70,
-                              width: 70,
-                              padding: EdgeInsets.only(left: 15),
-                              decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(70),
-                                ),
-                              ),
-                              child: Center(
-                                  child: Image.asset(
-                                'assets/images/shareapp/facebook.png',
-                                height: 40,
-                              )),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              File file = await getImageFileFromAssets(
-                                  'images/post_sm.png');
-                              SocialShare.shareInstagramStory(
-                                file.path,
-                                backgroundTopColor: "#ffffff",
-                                backgroundBottomColor: "#000000",
-                                attributionURL: "https://nerdevolution.tech/",
-                                backgroundImagePath: file.path,
-                              ).then((data) {});
-                            },
-                            child: Container(
-                              // margin: EdgeInsets.only(left: 20),
-                              height: 70,
-                              width: 70,
-                              // padding: EdgeInsets.only(left: 10),
-                              decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(70),
-                                ),
-                              ),
-                              child: Center(
-                                  child: Image.asset(
-                                'assets/images/shareapp/instagram.png',
-                                height: 40,
-                              )),
-                            ),
-                          ),
+                          // InkWell(
+                          //   onTap: () async {
+                          //     File file = await getImageFileFromAssets(
+                          //         'images/post_sm.png');
+                          //     SocialShare.shareFacebookStory(
+                          //       file.path,
+                          //       "#ffffff",
+                          //       "#000000",
+                          //       "https://nerdevolution.tech/",
+                          //       appId: "12345",
+                          //     ).then((data) {});
+                          //   },
+                          //   child: Container(
+                          //     // margin: EdgeInsets.only(left: 20),
+                          //     height: 70,
+                          //     width: 70,
+                          //     padding: EdgeInsets.only(left: 15),
+                          //     decoration: BoxDecoration(
+                          //       color: kPrimaryColor,
+                          //       borderRadius: BorderRadius.all(
+                          //         Radius.circular(70),
+                          //       ),
+                          //     ),
+                          //     child: Center(
+                          //         child: Image.asset(
+                          //       'assets/images/shareapp/facebook.png',
+                          //       height: 40,
+                          //     )),
+                          //   ),
+                          // ),
+                          // InkWell(
+                          //   onTap: () async {
+                          //     File file = await getImageFileFromAssets(
+                          //         'images/post_sm.png');
+                          //     SocialShare.shareInstagramStory(
+                          //       file.path,
+                          //       backgroundTopColor: "#ffffff",
+                          //       backgroundBottomColor: "#000000",
+                          //       attributionURL: "https://nerdevolution.tech/",
+                          //       backgroundImagePath: file.path,
+                          //     ).then((data) {});
+                          //   },
+                          //   child: Container(
+                          //     // margin: EdgeInsets.only(left: 20),
+                          //     height: 70,
+                          //     width: 70,
+                          //     // padding: EdgeInsets.only(left: 10),
+                          //     decoration: BoxDecoration(
+                          //       color: kPrimaryColor,
+                          //       borderRadius: BorderRadius.all(
+                          //         Radius.circular(70),
+                          //       ),
+                          //     ),
+                          //     child: Center(
+                          //         child: Image.asset(
+                          //       'assets/images/shareapp/instagram.png',
+                          //       height: 40,
+                          //     )),
+                          //   ),
+                          // ),
                           InkWell(
                             onTap: () async {
                               SocialShare.shareWhatsapp(
-                                "Struggling to keep track of your daily medications? Download the app now:\n https://nerdevolution.tech/",
+                                "Struggling to keep track of your daily medications? Download VITEL now:\n https://nerdevolution.tech/",
                               ).then((data) {});
                             },
                             child: Container(
@@ -559,7 +559,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               File file = await getImageFileFromAssets(
                                   'images/no_vital.png');
                               SocialShare.shareTwitter(
-                                "Struggling to keep track of your daily medications? Download the app now",
+                                "Struggling to keep track of your daily medications? Download VITEL now:",
                                 hashtags: ["Vitel"],
                                 url: "https://nerdevolution.tech/",
                                 trailingText: "\nhello",
@@ -586,7 +586,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           InkWell(
                             onTap: () async {
                               SocialShare.shareSms(
-                                "Struggling to keep track of your daily medications? Download VITEL now",
+                                "Struggling to keep track of your daily medications? Download VITEL now:",
                                 url: "\n https://nerdevolution.tech/",
                                 // trailingText: "\nhello",
                               ).then((data) {});
@@ -612,7 +612,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           InkWell(
                             onTap: () async {
                               SocialShare.copyToClipboard(
-                                "Struggling to keep track of your daily medications? Download the app now\n https://nerdevolution.tech/",
+                                "Struggling to keep track of your daily medications? Download VITEL now:\n https://nerdevolution.tech/",
                               ).then((data) {
                                 Navigator.pop(context);
                                 ScaffoldMessenger.of(context).showSnackBar(
