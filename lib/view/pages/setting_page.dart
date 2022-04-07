@@ -588,7 +588,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               SocialShare.shareSms(
                                 "Struggling to keep track of your daily medications? Download VITEL now",
                                 url: "\n https://nerdevolution.tech/",
-                               // trailingText: "\nhello",
+                                // trailingText: "\nhello",
                               ).then((data) {});
                             },
                             child: Container(
@@ -613,7 +613,37 @@ class _SettingsPageState extends State<SettingsPage> {
                             onTap: () async {
                               SocialShare.copyToClipboard(
                                 "Struggling to keep track of your daily medications? Download the app now\n https://nerdevolution.tech/",
-                              ).then((data) {});
+                              ).then((data) {
+                                Navigator.pop(context);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    duration: Duration(milliseconds: 500),
+                                    padding: EdgeInsets.all(0),
+                                    backgroundColor: Colors.transparent,
+                                    content: Container(
+                                      height: 80,
+                                      //color: Colors.white,
+
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        color: kPrimaryColor,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(5),
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          'Copied',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w700),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              });
                             },
                             child: Container(
                               // margin: EdgeInsets.only(left: 20),

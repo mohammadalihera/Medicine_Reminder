@@ -3,7 +3,6 @@ import 'package:Vitel/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:numberpicker/numberpicker.dart';
 
 class MedicinePrograme extends StatefulWidget {
   @override
@@ -27,7 +26,9 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                 'Program',
                 style: TextStyle(
                     fontSize: 20,
-                    color: kPrimaryColor,
+                    color: addmedicineController.program == 0
+                        ? Colors.red
+                        : kPrimaryColor,
                     fontWeight: FontWeight.w600),
               ),
             ),

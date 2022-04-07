@@ -351,6 +351,9 @@ class _MedicineDosageFieldState extends State<MedicineDosageField> {
 
   void _showDialog(String doseName) {
     // flutter defined function
+    Get.find<AddMedicineController>().isMedicineAdded(false);
+    Get.find<AddMedicineController>().doseEmpty(false);
+
     showDialog(
       context: context,
       builder: (BuildContext context) {

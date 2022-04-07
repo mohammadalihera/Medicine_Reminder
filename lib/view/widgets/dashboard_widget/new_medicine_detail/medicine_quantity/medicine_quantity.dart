@@ -11,7 +11,7 @@ class MedicineQuantity extends StatefulWidget {
 
 class _MedicineQuantityState extends State<MedicineQuantity> {
   int selectedQuantity = 0;
-    AddMedicineController addmedicineController =
+  AddMedicineController addmedicineController =
       Get.put(AddMedicineController());
 
   @override
@@ -26,20 +26,22 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                 'Quantity',
                 style: TextStyle(
                     fontSize: 20,
-                    color: kPrimaryColor,
+                    color: addmedicineController.quantity == 0
+                        ? Colors.red
+                        : kPrimaryColor,
                     fontWeight: FontWeight.w600),
               ),
             ),
             SizedBox(height: 10),
             InkWell(
-              onTap:(){
+              onTap: () {
                 FocusScopeNode currentFocus = FocusScope.of(context);
 
                 if (!currentFocus.hasPrimaryFocus) {
                   currentFocus.unfocus();
                 }
                 _showDialog();
-              } ,
+              },
               child: Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +76,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
     );
   }
 
-    void _showDialog() {
+  void _showDialog() {
     // flutter defined function
     showDialog(
       context: context,
@@ -99,7 +101,7 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.only(bottom:10),
+                        padding: EdgeInsets.only(bottom: 10),
                         color: kPrimaryColor,
                         height: 150,
                         width: 290,
@@ -113,7 +115,8 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                             setState(() {
                               selectedQuantity = index;
                             });
-                             Get.find<AddMedicineController>().changeQuantity(selectedQuantity);
+                            Get.find<AddMedicineController>()
+                                .changeQuantity(selectedQuantity);
                           },
                           children: [
                             for (int i = 0; i <= 100; i++)

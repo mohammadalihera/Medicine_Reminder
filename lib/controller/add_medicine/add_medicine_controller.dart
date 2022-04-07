@@ -1,9 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class AddMedicineController extends GetxController {
   late int id;
-  late String name;
+  late String name = '';
   String doseOne = '';
   String doseTwo = '';
   String doseThree = '';
@@ -11,10 +10,12 @@ class AddMedicineController extends GetxController {
   String doseFive = '';
   String doseSix = '';
   late String startDate;
-  late int program=0;
-  late int quantity=0;
+  late int program = 0;
+  late int quantity = 0;
   late String endDate;
   int afterMeal = 0;
+  bool isDoseEmpty = true;
+  bool addmedicine = false;
   void changeId(int vitelId) {
     id = vitelId;
 
@@ -39,6 +40,12 @@ class AddMedicineController extends GetxController {
     update();
   }
 
+  void isMedicineAdded(bool isAdded) {
+    addmedicine = isAdded;
+
+    update();
+  }
+
   void changeDthree(String vitelDthree) {
     doseThree = vitelDthree;
 
@@ -59,6 +66,11 @@ class AddMedicineController extends GetxController {
 
   void changeDsix(String vitelDsix) {
     doseSix = vitelDsix;
+
+    update();
+  }
+   void doseEmpty(bool hasDose) {
+    isDoseEmpty = hasDose;
 
     update();
   }

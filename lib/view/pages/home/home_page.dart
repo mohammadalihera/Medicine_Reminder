@@ -1,14 +1,13 @@
+import 'package:Vitel/controller/add_medicine/add_medicine_controller.dart';
 import 'package:Vitel/main.dart';
 import 'package:Vitel/view/pages/dashboard.dart';
-import 'package:Vitel/view/pages/user_page.dart';
 import 'package:Vitel/view/pages/setting_page.dart';
+import 'package:Vitel/view/pages/user_page.dart';
 import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:double_back_to_close/double_back_to_close.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Vitel/view/widgets/home/bottom_nav.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -42,6 +41,13 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       currentIndex = value;
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+   
+    super.initState();
   }
 
   @override
@@ -302,8 +308,5 @@ class _HomePageState extends State<HomePage> {
             child: NewMedicineDetail(),
           );
         });
-        
   }
-
-  
 }
