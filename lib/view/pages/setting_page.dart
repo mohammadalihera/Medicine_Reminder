@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:Vitel/main.dart';
 import 'package:Vitel/model/medicine_model.dart';
+import 'package:Vitel/view/widgets/settings/first_day_of_week.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -353,88 +354,23 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void _showDialog() {
-    // flutter defined function
-    List<String> days = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
     CacheService.instance.initFirstDayHive();
 
     String firstDay =
         CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString();
     showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (BuildContext context) {
-          // return object of type Dialog
-          return GetBuilder<GetMedicineController>(
-            init: GetMedicineController(),
-            builder: (getvitalController) {
-              return Container(
-                decoration: BoxDecoration(
-                  borderRadius: new BorderRadius.only(
-                      topRight: Radius.circular(50.0),
-                      topLeft: Radius.circular(50.0)),
-                  color: Color(0xffEDF7FF),
-                ),
-                height: 250,
-                width: MediaQuery.of(context).size.width,
-                child: Container(
-                  margin: EdgeInsets.only(top: 40, left: 10, right: 10),
-                  child: Center(
-                    child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                              maxCrossAxisExtent: 100,
-                              childAspectRatio: 20 / 10,
-                              crossAxisSpacing: 18,
-                              mainAxisSpacing: 20),
-                      itemCount: days.length,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {
-                            Get.find<GetMedicineController>()
-                                .changeFristDayOfWeek(days[index]);
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: new BorderRadius.all(
-                                const Radius.circular(5.0),
-                              ),
-                              /* color: getvitalController.firstDayOfWeek ==
-                                      days[index]
-                                  ? kPrimaryColor
-                                  : Colors.white, */
-                            ),
-                            height: 10,
-                            width: 50,
-                            child: Card(
-                              color: getvitalController.firstDayOfWeek ==
-                                      days[index]
-                                  ? kPrimaryColor
-                                  : Colors.white,
-                              child: Center(
-                                child: Text(
-                                  days[index],
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                      color:
-                                          getvitalController.firstDayOfWeek ==
-                                                  days[index]
-                                              ? Colors.white
-                                              : Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              );
-            },
-          );
-        });
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return GetBuilder<GetMedicineController>(
+          init: GetMedicineController(),
+          builder: (getvitalController) {
+            return FirstDayOfWeek();
+          },
+        );
+      },
+    );
   }
 
   void _showBottomDialog() {
@@ -453,13 +389,13 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   color: Color(0xffEDF7FF), /* Color(0xffEDF7FF), */
                 ),
-                height: 230,
+                height: 120,
                 width: MediaQuery.of(context).size.width,
                 child: Container(
                   margin: EdgeInsets.only(top: 20, left: 10, right: 10),
                   child: Center(
                       child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -548,12 +484,6 @@ class _SettingsPageState extends State<SettingsPage> {
                               )),
                             ),
                           ),
-                        ],
-                      ),
-                      //SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
                           InkWell(
                             onTap: () async {
                               File file = await getImageFileFromAssets(
@@ -665,9 +595,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      //SizedBox(height: 10),
                     ],
                   )),
                 ),
