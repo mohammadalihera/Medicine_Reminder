@@ -1,25 +1,20 @@
-import 'dart:io';
-
 import 'package:Vitel/controller/caching_controller/cache_controller.dart';
 import 'package:Vitel/view/pages/home/home_page.dart';
 import 'package:Vitel/view/pages/sign_up/sign_up.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:country_code_picker/country_localizations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:awesome_notifications/awesome_notifications.dart';
 
 import 'controller/auth_user_controller.dart';
 import 'controller/sign_in_controller.dart';
 import 'database/caching/cache.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 String dashname = 'User';
 
@@ -107,7 +102,8 @@ class MyApp extends StatelessWidget {
       //  print('email');
       print('phone' + firebaseUser!.phoneNumber.toString());
       if (firebaseUser!.email.toString() != '' &&
-          (firebaseUser!.phoneNumber == null||firebaseUser!.phoneNumber == '')) {
+          (firebaseUser!.phoneNumber == null ||
+              firebaseUser!.phoneNumber == '')) {
         // this means google login
         print('email' + firebaseUser!.email.toString());
         String username = firebaseUser!.displayName.toString();
@@ -128,7 +124,7 @@ class MyApp extends StatelessWidget {
       }
       firstWidget = Dashboard();
     } else {
-      firstWidget = SignUpPage();
+      firstWidget =SignUpPage();
     }
 
     return MaterialApp(

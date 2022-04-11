@@ -30,8 +30,9 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                 InkWell(
                   onTap: () {
                     Get.find<GetMedicineController>()
-                        .changeFristDayOfWeek('Sat');
+                        .changeFirstDayOfWeek('Sat');
                     Navigator.pop(context);
+                    
                   },
                   child: Container(
                     height: 40,
@@ -55,7 +56,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                 InkWell(
                   onTap: () {
                     Get.find<GetMedicineController>()
-                        .changeFristDayOfWeek('Sun');
+                        .changeFirstDayOfWeek('Sun');
                     Navigator.pop(context);
                   },
                   child: Container(
@@ -76,7 +77,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.find<GetMedicineController>().changeFristDayOfWeek(
+                    Get.find<GetMedicineController>().changeFirstDayOfWeek(
                       'Mon',
                     );
                     Navigator.pop(context);
@@ -108,7 +109,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                 InkWell(
                   onTap: () {
                     Get.find<GetMedicineController>()
-                        .changeFristDayOfWeek('Tue');
+                        .changeFirstDayOfWeek('Tue');
                     Navigator.pop(context);
                   },
                   child: Container(
@@ -133,7 +134,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                 InkWell(
                   onTap: () {
                     Get.find<GetMedicineController>()
-                        .changeFristDayOfWeek('Wed');
+                        .changeFirstDayOfWeek('Wed');
                     Navigator.pop(context);
                   },
                   child: Container(
@@ -154,7 +155,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.find<GetMedicineController>().changeFristDayOfWeek(
+                    Get.find<GetMedicineController>().changeFirstDayOfWeek(
                       'Thu',
                     );
                     Navigator.pop(context);
@@ -185,7 +186,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
               children: [
                 InkWell(
                   onTap: () {
-                    Get.find<GetMedicineController>().changeFristDayOfWeek(
+                    Get.find<GetMedicineController>().changeFirstDayOfWeek(
                       'Fri',
                     );
                     Navigator.pop(context);

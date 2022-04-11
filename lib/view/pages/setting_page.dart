@@ -541,38 +541,13 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                           InkWell(
                             onTap: () async {
-                              SocialShare.copyToClipboard(
-                                "Struggling to keep track of your daily medications? Download VITEL now:\n https://nerdevolution.tech/",
-                              ).then((data) {
-                                Navigator.pop(context);
+                              Clipboard.setData(ClipboardData(
+                                      text: 'Continue without logging in?'))
+                                  .then((_) {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    duration: Duration(milliseconds: 500),
-                                    padding: EdgeInsets.all(0),
-                                    backgroundColor: Colors.transparent,
-                                    content: Container(
-                                      height: 80,
-                                      //color: Colors.white,
-
-                                      width: 100,
-                                      decoration: BoxDecoration(
-                                        color: kPrimaryColor,
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(5),
-                                        ),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'Copied',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                );
+                                    SnackBar(
+                                        content: Text(
+                                            "Email address copied to clipboard")));
                               });
                             },
                             child: Container(

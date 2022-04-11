@@ -58,7 +58,7 @@ class GetMedicineController extends GetxController {
     update();
   }
 
-  changeFristDayOfWeek(String day) {
+  changeFirstDayOfWeek(String day) {
     CacheService.instance.initFirstDayHive();
     CacheService.instance.firstDayOfWeek.put('firstDayOfWeek', day);
     firstDayOfWeek = day;
