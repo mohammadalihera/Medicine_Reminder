@@ -51,34 +51,8 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 TextButton(
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        duration: Duration(milliseconds: 500),
-                        padding: EdgeInsets.all(0),
-                        backgroundColor: Colors.transparent,
-                        content: Container(
-                          height: 80,
-                          //color: Colors.white,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            color: kPrimaryColor,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15),
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'This feature is not implemented yet!',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
+                    showSnackbar(
+                        context, 'This feature is not implemented yet!');
                   },
                   child: Container(
                     margin: EdgeInsets.only(
@@ -145,34 +119,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        duration: Duration(milliseconds: 500),
-                        padding: EdgeInsets.all(0),
-                        backgroundColor: Colors.transparent,
-                        content: Container(
-                          height: 80,
-                          //color: Colors.white,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            color: kPrimaryColor,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15),
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'This feature is not implemented yet!',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
+                    showSnackbar(
+                        context, 'This feature is not implemented yet!');
                   },
                   child: Container(
                     margin: EdgeInsets.only(left: 20),
@@ -392,74 +340,15 @@ class _SettingsPageState extends State<SettingsPage> {
                 height: 120,
                 width: MediaQuery.of(context).size.width,
                 child: Container(
-                  margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                  // margin: EdgeInsets.only(top: 20, left: 10, right: 10),
                   child: Center(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          // InkWell(
-                          //   onTap: () async {
-                          //     File file = await getImageFileFromAssets(
-                          //         'images/post_sm.png');
-                          //     SocialShare.shareFacebookStory(
-                          //       file.path,
-                          //       "#ffffff",
-                          //       "#000000",
-                          //       "https://nerdevolution.tech/",
-                          //       appId: "12345",
-                          //     ).then((data) {});
-                          //   },
-                          //   child: Container(
-                          //     // margin: EdgeInsets.only(left: 20),
-                          //     height: 70,
-                          //     width: 70,
-                          //     padding: EdgeInsets.only(left: 15),
-                          //     decoration: BoxDecoration(
-                          //       color: kPrimaryColor,
-                          //       borderRadius: BorderRadius.all(
-                          //         Radius.circular(70),
-                          //       ),
-                          //     ),
-                          //     child: Center(
-                          //         child: Image.asset(
-                          //       'assets/images/shareapp/facebook.png',
-                          //       height: 40,
-                          //     )),
-                          //   ),
-                          // ),
-                          // InkWell(
-                          //   onTap: () async {
-                          //     File file = await getImageFileFromAssets(
-                          //         'images/post_sm.png');
-                          //     SocialShare.shareInstagramStory(
-                          //       file.path,
-                          //       backgroundTopColor: "#ffffff",
-                          //       backgroundBottomColor: "#000000",
-                          //       attributionURL: "https://nerdevolution.tech/",
-                          //       backgroundImagePath: file.path,
-                          //     ).then((data) {});
-                          //   },
-                          //   child: Container(
-                          //     // margin: EdgeInsets.only(left: 20),
-                          //     height: 70,
-                          //     width: 70,
-                          //     // padding: EdgeInsets.only(left: 10),
-                          //     decoration: BoxDecoration(
-                          //       color: kPrimaryColor,
-                          //       borderRadius: BorderRadius.all(
-                          //         Radius.circular(70),
-                          //       ),
-                          //     ),
-                          //     child: Center(
-                          //         child: Image.asset(
-                          //       'assets/images/shareapp/instagram.png',
-                          //       height: 40,
-                          //     )),
-                          //   ),
-                          // ),
                           InkWell(
                             onTap: () async {
                               SocialShare.shareWhatsapp(
@@ -543,12 +432,14 @@ class _SettingsPageState extends State<SettingsPage> {
                             onTap: () async {
                               Clipboard.setData(ClipboardData(
                                       text: 'Continue without logging in?'))
-                                  .then((_) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                        content: Text(
-                                            "Email address copied to clipboard")));
-                              });
+                                  .then(
+                                (_) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text(
+                                              "Email address copied to clipboard")));
+                                },
+                              );
                             },
                             child: Container(
                               // margin: EdgeInsets.only(left: 20),
@@ -615,4 +506,34 @@ class _SettingsPageState extends State<SettingsPage> {
 
   
 } */
+  void showSnackbar(BuildContext context, String toast) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: Duration(milliseconds: 500),
+        padding: EdgeInsets.all(0),
+        backgroundColor: Colors.transparent,
+        content: Container(
+          height: 80,
+          //color: Colors.white,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: kPrimaryColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
+            ),
+          ),
+          child: Center(
+            child: Text(
+              toast,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
