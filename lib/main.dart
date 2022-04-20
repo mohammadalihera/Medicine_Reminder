@@ -59,6 +59,12 @@ Future<void> main() async {
     await Hive.deleteBoxFromDisk('firstDayOfWeek');
     await Hive.openBox('firstDayOfWeek');
   }
+  try {
+    if (!Hive.isBoxOpen('skipLogin')) await Hive.openBox<String>('skipLogin');
+  } catch (error) {
+    await Hive.deleteBoxFromDisk('skipLogin');
+    await Hive.openBox('skipLogin');
+  }
   await Firebase.initializeApp();
   runApp(MyApp());
 }
@@ -91,20 +97,26 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     CacheService.instance.initFirstDayHive();
+    CacheService.instance.initSkipLoginHive();
     CacheService.instance.firstDayOfWeek.get('firstDayOfWeek') != null
         ? Get.find<CacheController>().changeFristDayOfWeek(CacheService
             .instance.firstDayOfWeek
             .get('firstDayOfWeek')
             .toString())
         : Get.find<CacheController>().changeFristDayOfWeek('Sun');
-
+    CacheService.instance.skipLogin.get('skipLogin') != null
+        ? Get.find<CacheController>().changeSkip(
+            CacheService.instance.skipLogin.get('skipLogin').toString())
+        : Get.find<CacheController>().changeSkip('');
     if (firebaseUser != null) {
       //  print('email');
+      Get.find<CacheController>().changeSkip('');
       print('phone' + firebaseUser!.phoneNumber.toString());
       if (firebaseUser!.email.toString() != '' &&
           (firebaseUser!.phoneNumber == null ||
               firebaseUser!.phoneNumber == '')) {
         // this means google login
+        Get.find<CacheController>().changeFristDayOfWeek('');
         print('email' + firebaseUser!.email.toString());
         String username = firebaseUser!.displayName.toString();
         String email = firebaseUser!.email.toString();
@@ -123,8 +135,10 @@ class MyApp extends StatelessWidget {
             .updateVal('Phone User', '', phoneNumber, image);
       }
       firstWidget = Dashboard();
+    } else if (CacheService.instance.skipLogin.get('skipLogin') == 'skip') {
+      firstWidget = Dashboard();
     } else {
-      firstWidget =SignUpPage();
+      firstWidget = SignUpPage();
     }
 
     return MaterialApp(

@@ -16,7 +16,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
       decoration: BoxDecoration(
         borderRadius: new BorderRadius.only(
             topRight: Radius.circular(50.0), topLeft: Radius.circular(50.0)),
-        color: Colors.white,
+        color: Color(0xffEDF7FF),
       ),
       height: 200,
       width: MediaQuery.of(context).size.width,

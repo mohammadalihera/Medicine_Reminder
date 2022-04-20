@@ -1,13 +1,15 @@
 import 'package:Vitel/Authentication/g_auth.dart';
 import 'package:Vitel/controller/auth_user_controller.dart';
+import 'package:Vitel/controller/caching_controller/cache_controller.dart';
 import 'package:Vitel/controller/sign_in_controller.dart';
+import 'package:Vitel/database/caching/cache.dart';
+import 'package:Vitel/main.dart';
 import 'package:Vitel/view/pages/home/home_page.dart';
+import 'package:Vitel/view/widgets/sign_up_widget/sign_up_text_fields.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:Vitel/view/widgets/sign_up_widget/sign_up_text_fields.dart';
-import 'package:get/get.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:Vitel/main.dart';
+import 'package:get/get.dart';
 
 import '../../../main.dart';
 
@@ -29,7 +31,18 @@ class _SignUpPageState extends State<SignUpPage> {
         backgroundColor: Color(0xffEDF7FF),
         actions: [
           InkWell(
-            onTap: null,
+            onTap: () {
+              Get.find<CacheController>().changeSkip('skip');
+              print(CacheService.instance.skipLogin.get('skipLogin'));
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  fullscreenDialog: true,
+                  builder: (context) {
+                    return Dashboard();
+                  },
+                ),
+              );
+            },
             child: Container(
               margin: EdgeInsets.only(right: 20),
               child: Row(

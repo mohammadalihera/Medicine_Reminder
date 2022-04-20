@@ -9,5 +9,11 @@ class CacheController extends GetxController {
     update();
   }
 
+  changeSkip(String skip){
+    CacheService.instance.initSkipLoginHive();  
+    CacheService.instance.skipLogin.put('skipLogin',skip);
+    update();
+  }
+
  
 }

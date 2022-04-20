@@ -8,9 +8,14 @@ class CacheService {
 
   
   late Box<String> firstDayOfWeek;
+  late Box<String> skipLogin;
 
   initFirstDayHive() {
     firstDayOfWeek = Hive.box<String>('firstDayOfWeek');
+  }
+
+  initSkipLoginHive() {
+    skipLogin = Hive.box<String>('skipLogin');
   }
   
 

@@ -434,10 +434,11 @@ class _SettingsPageState extends State<SettingsPage> {
                                       text: 'Continue without logging in?'))
                                   .then(
                                 (_) {
+                                  Navigator.pop(context);
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                          content: Text(
-                                              "Email address copied to clipboard")));
+                                          content:
+                                              Text("Copied To Clipboard!")));
                                 },
                               );
                             },
