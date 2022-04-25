@@ -112,6 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   (result) {
                     // ignore: unnecessary_null_comparison
                     if (result != '') {
+                      Get.find<CacheController>().changeSkip('');
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           fullscreenDialog: true,

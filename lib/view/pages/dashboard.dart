@@ -1,15 +1,12 @@
 import 'package:Vitel/controller/auth_user_controller.dart';
 import 'package:Vitel/controller/get_medicine/get_medicine.dart';
+import 'package:Vitel/database/caching/cache.dart';
 import 'package:Vitel/main.dart';
 import 'package:Vitel/view/widgets/dashboard_widget/calendar.dart';
-import 'package:Vitel/view/widgets/dashboard_widget/dashboard_appbar.dart';
-import 'package:Vitel/view/widgets/dashboard_widget/medicine_detail/medicine_detail.dart';
 import 'package:Vitel/view/widgets/dashboard_widget/medicine_info_tile.dart';
 import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/new_medicine_detail.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class DashBoard extends StatefulWidget {
   int currentIndex;
@@ -27,6 +24,7 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     displayHeight = MediaQuery.of(context).size.height;
     String headerTitle;
+    CacheService.instance.initSkipLoginHive();
 
     return Scaffold(
       backgroundColor: kPrimaryColor,
@@ -34,13 +32,19 @@ class _DashBoardState extends State<DashBoard> {
         title: GetBuilder<AuthUserController>(
           init: AuthUserController(),
           builder: (authController) {
-            if (authController.userName != '' && authController.userPhone == '') {
+            if (authController.userName != '' &&
+                authController.userPhone == '') {
               headerTitle = authController.userName;
             } else {
               headerTitle = authController.userPhone;
             }
             return Center(
-              child: Text('Welcome, ' + headerTitle),
+              child: CacheService.instance.skipLogin
+                      .get('skipLogin')
+                      .toString()
+                      .isEmpty
+                  ? Text('Welcome, ' + headerTitle)
+                  : Text('Welcome'),
             );
           },
         ),
@@ -96,13 +100,16 @@ class _DashBoardState extends State<DashBoard> {
                                 color: Color(0xffEDF7FF),
                               ),
                               child: Column(
-                                
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Image.asset('assets/images/no_vital.png',height: 200,width: 200,),
+                                  Image.asset(
+                                    'assets/images/no_vital.png',
+                                    height: 200,
+                                    width: 200,
+                                  ),
                                   SizedBox(
                                     height: 10,
                                   ),
