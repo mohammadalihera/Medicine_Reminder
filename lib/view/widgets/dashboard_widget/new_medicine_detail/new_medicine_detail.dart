@@ -418,7 +418,7 @@ void notify(DateTime schedule, Vitel vitel) async {
       color: Colors.red,
       displayOnBackground: true,
       displayOnForeground: true,
-      bigPicture: 'asset://assets/images/no_vital.png',
+     // bigPicture: 'asset://assets/images/no_vital.png',
       notificationLayout: NotificationLayout.BigPicture,
       wakeUpScreen: true,
       category: NotificationCategory.Alarm,

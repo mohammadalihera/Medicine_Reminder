@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:social_share/social_share.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../controller/get_medicine/get_medicine.dart';
 import '../../database/caching/cache.dart';
@@ -148,7 +148,12 @@ class _SettingsPageState extends State<SettingsPage> {
                   height: 10,
                 ),
                 TextButton(
-                  onPressed: () => _showBottomDialog(),
+                  onPressed: () {
+                    Share.share(
+                        'Struggling to keep track of your daily medications? Download VITEL now:\n https://nerdevolution.tech/',
+                        subject:
+                            "Struggling to keep track of your daily medications");
+                  },
                   child: Container(
                     margin: EdgeInsets.only(left: 20),
                     child: Row(
@@ -321,192 +326,9 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
-  void _showBottomDialog() {
-    showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (BuildContext context) {
-          return GetBuilder<GetMedicineController>(
-            init: GetMedicineController(),
-            builder: (getvitalController) {
-              return Container(
-                decoration: BoxDecoration(
-                  borderRadius: new BorderRadius.only(
-                    topRight: const Radius.circular(30.0),
-                    topLeft: const Radius.circular(30.0),
-                  ),
-                  color: Color(0xffEDF7FF), /* Color(0xffEDF7FF), */
-                ),
-                height: 120,
-                width: MediaQuery.of(context).size.width,
-                child: Container(
-                  // margin: EdgeInsets.only(top: 20, left: 10, right: 10),
-                  child: Center(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: () async {
-                              SocialShare.shareWhatsapp(
-                                "Struggling to keep track of your daily medications? Download VITEL now:\n https://nerdevolution.tech/",
-                              ).then((data) {});
-                            },
-                            child: Container(
-                              // margin: EdgeInsets.only(left: 20),
-                              height: 70,
-                              width: 70,
-                              // padding: EdgeInsets.only(left: 10),
-                              decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(70),
-                                ),
-                              ),
-                              child: Center(
-                                  child: Image.asset(
-                                'assets/images/shareapp/whatsapp.png',
-                                height: 40,
-                              )),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              File file = await getImageFileFromAssets(
-                                  'images/no_vital.png');
-                              SocialShare.shareTwitter(
-                                "Struggling to keep track of your daily medications? Download VITEL now:",
-                                hashtags: ["Vitel"],
-                                url: "https://nerdevolution.tech/",
-                                trailingText: "\nhello",
-                              ).then((data) {});
-                            },
-                            child: Container(
-                              // margin: EdgeInsets.only(left: 20),
-                              height: 70,
-                              width: 70,
-                              padding: EdgeInsets.only(top: 5),
-                              decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(70),
-                                ),
-                              ),
-                              child: Center(
-                                  child: Image.asset(
-                                'assets/images/shareapp/twitter.png',
-                                height: 40,
-                              )),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              SocialShare.shareSms(
-                                "Struggling to keep track of your daily medications? Download VITEL now:",
-                                url: "\n https://nerdevolution.tech/",
-                                // trailingText: "\nhello",
-                              ).then((data) {});
-                            },
-                            child: Container(
-                              // margin: EdgeInsets.only(left: 20),
-                              height: 70,
-                              width: 70,
-                              padding: EdgeInsets.only(top: 10),
-                              decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(70),
-                                ),
-                              ),
-                              child: Center(
-                                  child: Image.asset(
-                                'assets/images/shareapp/message.png',
-                                height: 40,
-                              )),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              Clipboard.setData(ClipboardData(
-                                      text: 'Continue without logging in?'))
-                                  .then(
-                                (_) {
-                                  Navigator.pop(context);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                          content:
-                                              Text("Copied To Clipboard!")));
-                                },
-                              );
-                            },
-                            child: Container(
-                              // margin: EdgeInsets.only(left: 20),
-                              height: 70,
-                              width: 70,
-                              // padding: EdgeInsets.only(left: 10),
-                              decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(70),
-                                ),
-                              ),
-                              child: Center(
-                                  child: Image.asset(
-                                'assets/images/shareapp/link.png',
-                                height: 30,
-                              )),
-                            ),
-                          ),
-                        ],
-                      ),
-                      //SizedBox(height: 10),
-                    ],
-                  )),
-                ),
-              );
-            },
-          );
-        });
-  }
-
-  Future<File> getImageFileFromAssets(String path) async {
-    final byteData = await rootBundle.load('assets/$path');
-
-    Directory appDocDir = await getApplicationDocumentsDirectory();
-    String imagesAppDirectory = appDocDir.path;
-    final file =
-        await File('$imagesAppDirectory/$path').create(recursive: true);
-
-    await file.writeAsBytes(byteData.buffer
-        .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
-
-    return file;
-  }
-
-  /* Future<void> saveImageF(String imagDetails) async {
-  String imgPath = (imagDetails).substring(7);
-
-  late File image;
-  await getImageFileFromAssets(imgPath).then((file) => image = file);
-
-  final extDir = await getExternalStorageDirectory();
-
-
-  //  Path of file in android data files
-  final myImagePath = '${extDir!.path}/images';
-
-
-  //create the base name
-  String basename = (imagDetails).substring(20);
-
-  // File copied to ext directory.
-  File newImage = await image.copy("$myImagePath/${p.basename(basename)}");
+  
 
   
-} */
   void showSnackbar(BuildContext context, String toast) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

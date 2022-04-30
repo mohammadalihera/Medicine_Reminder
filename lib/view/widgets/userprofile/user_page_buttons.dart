@@ -24,7 +24,8 @@ class _UserPageButtonsState extends State<UserPageButtons> {
               children: <Widget>[
                 InkWell(
                   onTap: () {
-                    // todo
+                    showSnackbar(
+                        context, 'This feature is not implemented yet!');
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -131,6 +132,39 @@ class _UserPageButtonsState extends State<UserPageButtons> {
                 ),
               ),
             ),
+    );
+  }
+
+
+
+   void showSnackbar(BuildContext context, String toast) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: Duration(milliseconds: 500),
+        padding: EdgeInsets.all(0),
+        backgroundColor: Colors.transparent,
+        content: Container(
+          height: 80,
+          //color: Colors.white,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: kPrimaryColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
+            ),
+          ),
+          child: Center(
+            child: Text(
+              toast,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
