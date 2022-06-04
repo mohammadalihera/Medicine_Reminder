@@ -3,6 +3,7 @@ import 'package:Vitel/model/medicine_model.dart';
 import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'medicine_detail/medicine_detail.dart';
 import 'new_medicine_detail/meal/after_meal.dart';
 
@@ -37,7 +38,8 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                   itemCount: getmedicineController.selectedVitel.length,
                   itemBuilder: (_, i) {
                     return InkWell(
-                      onTap:()=> medicineDetail( getmedicineController.selectedVitel[i]),
+                      onTap: () => medicineDetail(
+                          getmedicineController.selectedVitel[i]),
                       child: Card(
                         shadowColor: Colors.blue,
                         elevation: 4,
@@ -64,13 +66,17 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                                 margin: EdgeInsets.only(bottom: 4),
                                 child: Text(
                                   getmedicineController.selectedVitel[i].name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.blue),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blue,
+                                  ),
                                 ),
                               ),
-                              getmedicineController.selectedVitel[i].afterMeal ==
+                              getmedicineController
+                                          .selectedVitel[i].afterMeal ==
                                       1
                                   ? AfterMeal('after', 'dash')
                                   : BeforeMeal('before', 'dash'),
@@ -103,7 +109,8 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                                     ),
                                     SizedBox(height: 2),
                                     Text(
-                                     getmedicineController.selectedVitel[i].doseOne,
+                                      getmedicineController
+                                          .selectedVitel[i].doseOne,
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w700,
@@ -120,7 +127,8 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                   });
             }));
   }
- Future< dynamic > medicineDetail(Vitel vitel) {
+
+  Future<dynamic> medicineDetail(Vitel vitel) {
     double modalHeight = 0;
     if (displayHeight < 750) {
       modalHeight = MediaQuery.of(context).size.height * 0.8;
@@ -128,7 +136,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
     if (displayHeight >= 750) {
       modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.72;
     }
-  return  showModalBottomSheet(
+    return showModalBottomSheet(
         isScrollControlled: true,
         isDismissible: true,
         backgroundColor: Colors.transparent,
@@ -169,7 +177,6 @@ String numberOfTime(Vitel vitel) {
   if (vitel.doseSix.isNotEmpty) {
     num = num + 1;
   }
-  
-  
-  return num.toString()+" "+'times';
+
+  return num.toString() + " " + 'times';
 }

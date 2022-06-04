@@ -154,32 +154,4 @@ class _DashBoardState extends State<DashBoard> {
           );
         });
   }
-
-/*   void medicineDetail() {
-    double modalHeight = 0;
-    if (displayHeight < 750) {
-      modalHeight = MediaQuery.of(context).size.height * 0.8;
-    }
-    if (displayHeight >= 750) {
-      modalHeight = modalHeight = MediaQuery.of(context).size.height * 0.72;
-    }
-    showModalBottomSheet(
-        isScrollControlled: true,
-        isDismissible: true,
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (context) {
-          return Container(
-            height: modalHeight,
-            decoration: new BoxDecoration(
-              color: Color(0xffEDF7FF),
-              borderRadius: new BorderRadius.only(
-                topLeft: const Radius.circular(35.0),
-                topRight: const Radius.circular(35.0),
-              ),
-            ),
-            child: MedicineDetail(vital),
-          );
-        });
-  } */
 }

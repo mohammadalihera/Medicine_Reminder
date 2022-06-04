@@ -1,4 +1,3 @@
-import 'package:Vitel/controller/add_medicine/add_medicine_controller.dart';
 import 'package:Vitel/main.dart';
 import 'package:Vitel/view/pages/dashboard.dart';
 import 'package:Vitel/view/pages/setting_page.dart';
@@ -7,7 +6,6 @@ import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/new_medi
 import 'package:double_back_to_close/double_back_to_close.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -46,7 +44,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     // TODO: implement initState
-   
+
     super.initState();
   }
 
@@ -108,6 +106,7 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     currentIndex == 0
                         ? Container(
+                            width: 40,
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
@@ -124,6 +123,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           )
                         : Container(
+                            width: 40,
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
@@ -143,6 +143,7 @@ class _HomePageState extends State<HomePage> {
                     // Dashboard Page
                     currentIndex == 1
                         ? Container(
+                            width: 40,
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(1,
@@ -159,6 +160,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           )
                         : Container(
+                            width: 40,
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(1,
@@ -178,21 +180,23 @@ class _HomePageState extends State<HomePage> {
                     //Settings Page--------------------------------------------
                     currentIndex == 2
                         ? Container(
+                            width: 40,
                             child: InkWell(
-                            onTap: () {
-                              pageController.animateToPage(2,
-                                  duration: Duration(milliseconds: 0),
-                                  curve: Curves.linear);
-                            },
-                            child: Container(
-                              child: SvgPicture.asset(
-                                "assets/images/settings.svg",
-                                height: 20,
-                                width: 20,
+                              onTap: () {
+                                pageController.animateToPage(2,
+                                    duration: Duration(milliseconds: 0),
+                                    curve: Curves.linear);
+                              },
+                              child: Container(
+                                child: SvgPicture.asset(
+                                  "assets/images/settings.svg",
+                                  height: 20,
+                                  width: 20,
+                                ),
                               ),
-                            ),
-                          ))
+                            ))
                         : Container(
+                            width: 40,
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(2,

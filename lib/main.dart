@@ -142,6 +142,7 @@ class MyApp extends StatelessWidget {
     }
 
     return MaterialApp(
+      
         supportedLocales: [
           Locale('en', 'US'),
         ],
@@ -150,14 +151,24 @@ class MyApp extends StatelessWidget {
         ],
         debugShowCheckedModeBanner: false,
         title: 'Vitel',
+        
         theme: ThemeData(
+          
           primarySwatch: kPrimaryColor,
           canvasColor: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           fontFamily: 'Poppins',
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
+        
         ),
+
+       builder: (context, child) {
+    return MediaQuery(
+      child: firstWidget,
+      data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+    );
+   },
         home: AnimatedSplashScreen(
             duration: 1000,
             splashIconSize: 400,

@@ -26,6 +26,7 @@ class BottomNav extends StatelessWidget {
           children: <Widget>[
             currentIndex == 0
                 ? Container(
+                    width: 30,
                     child: InkWell(
                       onTap: () {
                         pageController.animateToPage(0,
@@ -33,6 +34,8 @@ class BottomNav extends StatelessWidget {
                             curve: Curves.bounceIn);
                       },
                       child: Container(
+                        color: Colors.orange,
+                        width: 40,
                         child: Icon(
                           Icons.account_box,
                           color: Colors.white,
@@ -41,67 +44,77 @@ class BottomNav extends StatelessWidget {
                     ),
                   )
                 : Container(
+                    width: 30,
+                    color: Colors.orange,
                     child: InkWell(
-                    onTap: () {
-                      pageController.animateToPage(0,
-                          duration: Duration(milliseconds: 50),
-                          curve: Curves.bounceIn);
-                    },
-                    child: Container(
-                      child: Icon(
-                        Icons.account_box,
-                        color: Colors.black,
+                      onTap: () {
+                        pageController.animateToPage(0,
+                            duration: Duration(milliseconds: 50),
+                            curve: Curves.bounceIn);
+                      },
+                      child: Container(
+                        color: Colors.orange,
+                        width: 40,
+                        child: Icon(
+                          Icons.account_box,
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-                  )),
+                    )),
 
             // Task Icon
             currentIndex == 1
                 ? Container(
+                    width: 30,
                     child: InkWell(
-                    onTap: () {
-                      pageController.animateToPage(1,
-                          duration: Duration(milliseconds: 50),
-                          curve: Curves.bounceIn);
-                    },
-                    child: Container(
-                      child: Icon(
-                        Icons.home,
-                        color: Colors.white,
+                      onTap: () {
+                        pageController.animateToPage(1,
+                            duration: Duration(milliseconds: 50),
+                            curve: Curves.bounceIn);
+                      },
+                      child: Container(
+                        width: 40,
+                        child: Icon(
+                          Icons.home,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                  ))
+                    ))
                 : Container(
+                    width: 30,
                     child: InkWell(
-                    onTap: () {
-                      pageController.animateToPage(1,
-                          duration: Duration(milliseconds: 50),
-                          curve: Curves.bounceIn);
-                    },
-                    child: Container(
-                      child: Icon(
-                        Icons.home,
-                        color: Colors.black,
+                      onTap: () {
+                        pageController.animateToPage(1,
+                            duration: Duration(milliseconds: 50),
+                            curve: Curves.bounceIn);
+                      },
+                      child: Container(
+                        width: 40,
+                        child: Icon(
+                          Icons.home,
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-                  )),
+                    )),
 
             //Chat Icon--------------------------------------------
             currentIndex == 2
                 ? Container(
+                    width: 30,
                     child: InkWell(
-                    onTap: () {
-                      pageController.animateToPage(2,
-                          duration: Duration(milliseconds: 50),
-                          curve: Curves.bounceIn);
-                    },
-                    child: Container(
-                      child: Icon(
-                        Icons.settings,
-                        color: Colors.white,
+                      onTap: () {
+                        pageController.animateToPage(2,
+                            duration: Duration(milliseconds: 50),
+                            curve: Curves.bounceIn);
+                      },
+                      child: Container(
+                        width: 40,
+                        child: Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                  ))
+                    ))
                 : Container(
                     child: InkWell(
                       onTap: () {
@@ -110,6 +123,7 @@ class BottomNav extends StatelessWidget {
                             curve: Curves.bounceIn);
                       },
                       child: Container(
+                        width: 40,
                         child: Icon(
                           Icons.settings,
                           color: Colors.black,
