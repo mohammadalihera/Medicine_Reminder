@@ -16,63 +16,66 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(left: 40, top: 12),
-              child: Text(
-                'Quantity',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: addmedicineController.quantity == 0
-                        ? Colors.red
-                        : kPrimaryColor,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-            SizedBox(height: 10),
-            InkWell(
-              onTap: () {
-                FocusScopeNode currentFocus = FocusScope.of(context);
-
-                if (!currentFocus.hasPrimaryFocus) {
-                  currentFocus.unfocus();
-                }
-                _showDialog();
-              },
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                        margin: EdgeInsets.only(left: 40),
-                        child: Text(
-                          selectedQuantity == 0
-                              ? 'Ex. 30'
-                              : selectedQuantity.toString(),
-                          style: TextStyle(
-                              color: selectedQuantity == 0
-                                  ? Colors.grey
-                                  : Colors.black,
-                              fontSize: 16),
-                        )),
-                    Container(
-                      margin: EdgeInsets.only(
-                        left: 40,
-                        right: 30,
-                        top: 10,
-                      ),
-                      height: 1.3,
-                      width: MediaQuery.of(context).size.width,
-                      color: Colors.grey,
-                    )
-                  ],
+    return MediaQuery(
+      data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+      child: Container(
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(left: 40, top: 12),
+                child: Text(
+                  'Quantity',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: addmedicineController.quantity == 0
+                          ? Colors.red
+                          : kPrimaryColor,
+                      fontWeight: FontWeight.w600),
                 ),
               ),
-            )
-          ]),
+              SizedBox(height: 10),
+              InkWell(
+                onTap: () {
+                  FocusScopeNode currentFocus = FocusScope.of(context);
+
+                  if (!currentFocus.hasPrimaryFocus) {
+                    currentFocus.unfocus();
+                  }
+                  _showDialog();
+                },
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                          margin: EdgeInsets.only(left: 40),
+                          child: Text(
+                            selectedQuantity == 0
+                                ? 'Ex. 30'
+                                : selectedQuantity.toString(),
+                            style: TextStyle(
+                                color: selectedQuantity == 0
+                                    ? Colors.grey
+                                    : Colors.black,
+                                fontSize: 16),
+                          )),
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: 40,
+                          right: 30,
+                          top: 10,
+                        ),
+                        height: 1.3,
+                        width: MediaQuery.of(context).size.width,
+                        color: Colors.grey,
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ]),
+      ),
     );
   }
 
@@ -82,82 +85,70 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
-        return Dialog(
-          backgroundColor: Colors.transparent,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: new BorderRadius.all(
-                const Radius.circular(50.0),
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: Dialog(
+            backgroundColor: Colors.transparent,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: new BorderRadius.all(
+                  const Radius.circular(50.0),
+                ),
+                color: kPrimaryColor,
               ),
-              color: kPrimaryColor,
-            ),
-            height: 250,
-            width: 280,
-            child: Center(
-              child: Stack(
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.only(bottom: 10),
-                        color: kPrimaryColor,
-                        height: 150,
-                        width: 290,
-                        child: CupertinoPicker(
-                          useMagnifier: false,
-                          selectionOverlay: null,
-                          looping: true,
-                          itemExtent: 100,
-                          scrollController: FixedExtentScrollController(),
-                          onSelectedItemChanged: (int index) {
-                            setState(() {
-                              selectedQuantity = index;
-                            });
-                            Get.find<AddMedicineController>()
-                                .changeQuantity(selectedQuantity);
-                          },
-                          children: [
-                            for (int i = 0; i <= 100; i++)
-                              Center(
-                                child: Container(
-                                  height: 50,
-                                  color: kPrimaryColor,
-                                  child: Text(
-                                    i.toString(),
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 50,
-                                        fontWeight: FontWeight.w600),
+              height: 250,
+              width: 280,
+              child: Center(
+                child: Stack(
+                  children: <Widget>[
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.only(bottom: 10),
+                          color: kPrimaryColor,
+                          height: 150,
+                          width: 290,
+                          child: CupertinoPicker(
+                            useMagnifier: false,
+                            selectionOverlay: null,
+                            looping: true,
+                            itemExtent: 100,
+                            scrollController: FixedExtentScrollController(),
+                            onSelectedItemChanged: (int index) {
+                              setState(() {
+                                selectedQuantity = index;
+                              });
+                              Get.find<AddMedicineController>()
+                                  .changeQuantity(selectedQuantity);
+                            },
+                            children: [
+                              for (int i = 0; i <= 100; i++)
+                                Center(
+                                  child: Container(
+                                    height: 50,
+                                    color: kPrimaryColor,
+                                    child: Text(
+                                      i.toString(),
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 50,
+                                          fontWeight: FontWeight.w600),
+                                    ),
                                   ),
-                                ),
-                              )
-                          ],
+                                )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    top: 105,
-                    left: 32,
-                    child: Container(
-                      child: Text(
-                        'Total',
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600),
-                      ),
+                      ],
                     ),
-                  ),
-                  Positioned(
-                    top: 105,
-                    right: 15,
-                    child: Container(
-                      child: Center(
+                    Positioned(
+                      top: 105,
+                      left: 32,
+                      child: Container(
                         child: Text(
-                          'Pieces',
+                          'Total',
                           style: TextStyle(
                               fontSize: 25,
                               color: Colors.white,
@@ -165,50 +156,65 @@ class _MedicineQuantityState extends State<MedicineQuantity> {
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: 20,
-                    right: 65,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
+                    Positioned(
+                      top: 105,
+                      right: 15,
                       child: Container(
-                        width: 150,
-                        height: 30,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(50),
-                            ),
-                            color: Colors.white),
                         child: Center(
                           child: Text(
-                            'Set Quantity',
+                            'Pieces',
                             style: TextStyle(
-                                fontSize: 16,
-                                color: kPrimaryColor,
+                                fontSize: 25,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    top: 20,
-                    right: 20,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedQuantity = 0;
-                        });
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        child: Icon(Icons.close, color: Colors.white),
+                    Positioned(
+                      bottom: 20,
+                      right: 65,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(50),
+                              ),
+                              color: Colors.white),
+                          child: Center(
+                            child: Text(
+                              'Set Quantity',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: kPrimaryColor,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 20,
+                      right: 20,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedQuantity = 0;
+                          });
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          child: Icon(Icons.close, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

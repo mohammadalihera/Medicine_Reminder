@@ -48,234 +48,239 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
     return GetBuilder<AddMedicineController>(
         init: AddMedicineController(),
         builder: (addController) {
-          return Scaffold(
-            resizeToAvoidBottomInset: false,
-            body: Center(
-              child: Container(
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(5),
-                                topRight: Radius.circular(5))),
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.only(left: 40, top: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              child: Text(
-                                'Add New Medicine',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(right: 20),
-                              child: InkWell(
-                                onTap: () {
-                                  addmedicineController.isMedicineAdded(false);
-                                  Navigator.pop(context);
-                                },
-                                child: Container(
-                                  child: Icon(
-                                    Icons.arrow_downward,
-                                    color: Colors.green.withOpacity(0.8),
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            child: Scaffold(
+              resizeToAvoidBottomInset: false,
+              body: Center(
+                child: Container(
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(5),
+                                  topRight: Radius.circular(5))),
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.only(left: 40, top: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                child: Text(
+                                  'Add New Medicine',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20,
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                              Container(
+                                margin: EdgeInsets.only(right: 20),
+                                child: InkWell(
+                                  onTap: () {
+                                    addmedicineController
+                                        .isMedicineAdded(false);
+                                    Navigator.pop(context);
+                                  },
+                                  child: Container(
+                                    child: Icon(
+                                      Icons.arrow_downward,
+                                      color: Colors.green.withOpacity(0.8),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(left: 40, top: 30),
-                              child: Text(
-                                'Name',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: addmedicineController.name.isEmpty
-                                        ? Colors.red
-                                        : kPrimaryColor,
-                                    fontWeight: FontWeight.w600),
+                        Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(left: 40, top: 30),
+                                child: Text(
+                                  'Name',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: addmedicineController.name.isEmpty
+                                          ? Colors.red
+                                          : kPrimaryColor,
+                                      fontWeight: FontWeight.w600),
+                                ),
                               ),
-                            ),
-                            MedicineInfoTextField(
-                              type: 'Medicine Name',
-                              vitelName: '',
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 40, top: 10),
-                              child: Text(
-                                'Daily Dosage',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: addmedicineController.isDoseEmpty
-                                        ? Colors.red
-                                        : kPrimaryColor,
-                                    fontWeight: FontWeight.w600),
+                              MedicineInfoTextField(
+                                type: 'Medicine Name',
+                                vitelName: '',
                               ),
-                            ),
-                            MedicineDosageField(dosageGap: dosageGap),
-                            MedicinePrograme(),
-                            MedicineQuantity(),
-                            Container(
-                              margin:
-                                  EdgeInsets.only(left: 40, top: 23, right: 40),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Get.find<AddMedicineController>()
-                                          .changeAfterMeal(1);
-                                      setState(() {
-                                        meal = 'after';
-                                      });
-                                    },
-                                    child: AfterMeal(meal, 'add'),
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      Get.find<AddMedicineController>()
-                                          .changeAfterMeal(0);
-                                      setState(() {
-                                        meal = 'before';
-                                      });
-                                    },
-                                    child: BeforeMeal(meal, 'other'),
-                                  ),
-                                ],
+                              Container(
+                                margin: EdgeInsets.only(left: 40, top: 10),
+                                child: Text(
+                                  'Daily Dosage',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: addmedicineController.isDoseEmpty
+                                          ? Colors.red
+                                          : kPrimaryColor,
+                                      fontWeight: FontWeight.w600),
+                                ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                if (addController.doseOne.isNotEmpty ||
-                                    addController.doseTwo.isNotEmpty ||
-                                    addController.doseThree.isNotEmpty ||
-                                    addController.doseFour.isNotEmpty ||
-                                    addController.doseFive.isNotEmpty ||
-                                    addController.doseSix.isNotEmpty) {
-                                  addmedicineController.doseEmpty(false);
-                                } else {
-                                  addmedicineController.doseEmpty(true);
-                                }
-                                // if (_formKey.currentState.validate()) {
-                                if ((addController.afterMeal == 0 ||
-                                        addController.afterMeal == 1) &&
-                                    addController.quantity != 0 &&
-                                    addController.program != 0 &&
-                                    (addController.doseOne.isNotEmpty ||
-                                        addController.doseTwo.isNotEmpty ||
-                                        addController.doseThree.isNotEmpty ||
-                                        addController.doseFour.isNotEmpty ||
-                                        addController.doseFive.isNotEmpty ||
-                                        addController.doseSix.isNotEmpty)) {
-                                  addvitel(
-                                      addController.name,
-                                      addController.doseOne,
-                                      addController.doseTwo,
-                                      addController.doseThree,
-                                      addController.doseFour,
-                                      addController.doseFive,
-                                      addController.doseSix,
-                                      addController.program,
-                                      addController.quantity,
-                                      addController.afterMeal,
-                                      getmedicineController.selectedDate,
-                                      context);
+                              MedicineDosageField(dosageGap: dosageGap),
+                              MedicinePrograme(),
+                              MedicineQuantity(),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 40, top: 23, right: 40),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Get.find<AddMedicineController>()
+                                            .changeAfterMeal(1);
+                                        setState(() {
+                                          meal = 'after';
+                                        });
+                                      },
+                                      child: AfterMeal(meal, 'add'),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        Get.find<AddMedicineController>()
+                                            .changeAfterMeal(0);
+                                        setState(() {
+                                          meal = 'before';
+                                        });
+                                      },
+                                      child: BeforeMeal(meal, 'other'),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  if (addController.doseOne.isNotEmpty ||
+                                      addController.doseTwo.isNotEmpty ||
+                                      addController.doseThree.isNotEmpty ||
+                                      addController.doseFour.isNotEmpty ||
+                                      addController.doseFive.isNotEmpty ||
+                                      addController.doseSix.isNotEmpty) {
+                                    addmedicineController.doseEmpty(false);
+                                  } else {
+                                    addmedicineController.doseEmpty(true);
+                                  }
+                                  // if (_formKey.currentState.validate()) {
+                                  if ((addController.afterMeal == 0 ||
+                                          addController.afterMeal == 1) &&
+                                      addController.quantity != 0 &&
+                                      addController.program != 0 &&
+                                      (addController.doseOne.isNotEmpty ||
+                                          addController.doseTwo.isNotEmpty ||
+                                          addController.doseThree.isNotEmpty ||
+                                          addController.doseFour.isNotEmpty ||
+                                          addController.doseFive.isNotEmpty ||
+                                          addController.doseSix.isNotEmpty)) {
+                                    addvitel(
+                                        addController.name,
+                                        addController.doseOne,
+                                        addController.doseTwo,
+                                        addController.doseThree,
+                                        addController.doseFour,
+                                        addController.doseFive,
+                                        addController.doseSix,
+                                        addController.program,
+                                        addController.quantity,
+                                        addController.afterMeal,
+                                        getmedicineController.selectedDate,
+                                        context);
 
-                                  addController.name = '';
-                                  addController.doseOne = '';
-                                  addController.doseTwo = '';
-                                  addController.doseThree = '';
-                                  addController.doseFour = '';
-                                  addController.doseFive = '';
-                                  addController.doseSix = '';
-                                  addController.program = 0;
-                                  addController.quantity = 0;
-                                  addController.afterMeal = 0;
-                                  getmedicineController.selectedDate =
-                                      DateTime.now();
-                                } else {
-                                  addmedicineController.isMedicineAdded(true);
+                                    addController.name = '';
+                                    addController.doseOne = '';
+                                    addController.doseTwo = '';
+                                    addController.doseThree = '';
+                                    addController.doseFour = '';
+                                    addController.doseFive = '';
+                                    addController.doseSix = '';
+                                    addController.program = 0;
+                                    addController.quantity = 0;
+                                    addController.afterMeal = 0;
+                                    getmedicineController.selectedDate =
+                                        DateTime.now();
+                                  } else {
+                                    addmedicineController.isMedicineAdded(true);
 
-                                  print('medicineNAEM' +
-                                      addmedicineController.name);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      duration: Duration(milliseconds: 500),
-                                      // padding: EdgeInsets.all(0),
-                                      backgroundColor: kPrimaryColor,
-                                      content: Container(
-                                        height: 30,
-                                        //color: Colors.white,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        decoration: BoxDecoration(
-                                          color: Color.fromARGB(
-                                              255, 227, 128, 121),
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(8),
+                                    print('medicineNAEM' +
+                                        addmedicineController.name);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        duration: Duration(milliseconds: 500),
+                                        // padding: EdgeInsets.all(0),
+                                        backgroundColor: kPrimaryColor,
+                                        content: Container(
+                                          height: 30,
+                                          //color: Colors.white,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          decoration: BoxDecoration(
+                                            color: Color.fromARGB(
+                                                255, 227, 128, 121),
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(8),
+                                            ),
                                           ),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            'Please fill all the fields',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w700),
+                                          child: Center(
+                                            child: Text(
+                                              'Please fill all the fields',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w700),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  );
-                                }
+                                    );
+                                  }
 
-                                // }
-                              },
-                              child: Center(
-                                child: Container(
-                                  margin: EdgeInsets.only(
-                                      left: 40, top: 20, right: 40),
-                                  decoration: BoxDecoration(
-                                      color: kPrimaryColor,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                  height: 55,
-                                  width: MediaQuery.of(context).size.width * .8,
-                                  child: Center(
-                                    child: Text(
-                                      'Add Schedule',
-                                      style: TextStyle(
-                                          fontSize: 22,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600),
+                                  // }
+                                },
+                                child: Center(
+                                  child: Container(
+                                    margin: EdgeInsets.only(
+                                        left: 40, top: 20, right: 40),
+                                    decoration: BoxDecoration(
+                                        color: kPrimaryColor,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(15))),
+                                    height: 55,
+                                    width:
+                                        MediaQuery.of(context).size.width * .8,
+                                    child: Center(
+                                      child: Text(
+                                        'Add Schedule',
+                                        style: TextStyle(
+                                            fontSize: 22,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            )
-                          ],
+                              SizedBox(
+                                height: 10,
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -418,8 +423,8 @@ void notify(DateTime schedule, Vitel vitel) async {
       color: Colors.red,
       displayOnBackground: true,
       displayOnForeground: true,
-     // bigPicture: 'asset://assets/images/no_vital.png',
-      notificationLayout: NotificationLayout.BigPicture,
+      // bigPicture: 'asset://assets/images/no_vital.png',
+      // notificationLayout: NotificationLayout.BigPicture,
       wakeUpScreen: true,
       category: NotificationCategory.Alarm,
     ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class CustomButton extends StatelessWidget {
   final Icon icon;
   final String text;
@@ -23,7 +21,7 @@ class CustomButton extends StatelessWidget {
                 width: 10,
               ),
               InkWell(
-               // onTap:onTap(),
+                // onTap:onTap(),
                 child: Container(
                   child: Text(text,
                       style:

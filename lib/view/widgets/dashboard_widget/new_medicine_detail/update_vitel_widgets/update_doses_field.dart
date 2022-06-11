@@ -383,96 +383,99 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
-        return Dialog(
-          backgroundColor: Colors.transparent,
-          child: Container(
-            padding: EdgeInsets.only(top: 40, right: 15),
-            decoration: BoxDecoration(
-              borderRadius: new BorderRadius.all(
-                const Radius.circular(50.0),
-              ),
-              color: kPrimaryColor,
-            ),
-            height: 250,
-            width: 25,
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: <Widget>[
-                hourMinute12H(doseName),
-                Positioned(
-                    bottom: 36,
-                    left: 20,
-                    child: Container(
-                      height: 50,
-                      width: 230,
-                      color: kPrimaryColor.withOpacity(0.8),
-                    )),
-                Positioned(
-                    bottom: 52,
-                    left: 20,
-                    child: Container(
-                      height: 50,
-                      width: 230,
-                      color: kPrimaryColor.withOpacity(0.4),
-                    )),
-                Positioned(
-                    bottom: 175,
-                    left: 20,
-                    child: Container(
-                      height: 50,
-                      width: 230,
-                      color: kPrimaryColor.withOpacity(0.8),
-                    )),
-                Positioned(
-                    bottom: 170,
-                    left: 20,
-                    child: Container(
-                      height: 50,
-                      width: 230,
-                      color: kPrimaryColor.withOpacity(0.4),
-                    )),
-                Positioned(
-                  left: 62,
-                  bottom: 25,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      width: 150,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(15),
-                        ),
-                        color: Color(0xffEDF7FF),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Set Dose',
-                          style: TextStyle(
-                              color: kPrimaryColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                    ),
-                  ),
+        return MediaQuery(
+           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: Dialog(
+            backgroundColor: Colors.transparent,
+            child: Container(
+              padding: EdgeInsets.only(top: 40, right: 15),
+              decoration: BoxDecoration(
+                borderRadius: new BorderRadius.all(
+                  const Radius.circular(50.0),
                 ),
-                Positioned(
-                  top: -20,
-                  right: 5,
-                  child: Container(
-                    color: kPrimaryColor,
+                color: kPrimaryColor,
+              ),
+              height: 250,
+              width: 25,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: <Widget>[
+                  hourMinute12H(doseName),
+                  Positioned(
+                      bottom: 36,
+                      left: 20,
+                      child: Container(
+                        height: 50,
+                        width: 230,
+                        color: kPrimaryColor.withOpacity(0.8),
+                      )),
+                  Positioned(
+                      bottom: 52,
+                      left: 20,
+                      child: Container(
+                        height: 50,
+                        width: 230,
+                        color: kPrimaryColor.withOpacity(0.4),
+                      )),
+                  Positioned(
+                      bottom: 175,
+                      left: 20,
+                      child: Container(
+                        height: 50,
+                        width: 230,
+                        color: kPrimaryColor.withOpacity(0.8),
+                      )),
+                  Positioned(
+                      bottom: 170,
+                      left: 20,
+                      child: Container(
+                        height: 50,
+                        width: 230,
+                        color: kPrimaryColor.withOpacity(0.4),
+                      )),
+                  Positioned(
+                    left: 62,
+                    bottom: 25,
                     child: InkWell(
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Icon(Icons.close, color: Colors.white),
+                      child: Container(
+                        width: 150,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15),
+                          ),
+                          color: Color(0xffEDF7FF),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Set Dose',
+                            style: TextStyle(
+                                color: kPrimaryColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  Positioned(
+                    top: -20,
+                    right: 5,
+                    child: Container(
+                      color: kPrimaryColor,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(Icons.close, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         );

@@ -83,82 +83,70 @@ class _UpdateProgrameState extends State<UpdatePrograme> {
       context: context,
       builder: (BuildContext context) {
         
-        return Dialog(
-          backgroundColor: Colors.transparent,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: new BorderRadius.all(
-                const Radius.circular(50.0),
+        return MediaQuery(
+           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: Dialog(
+            backgroundColor: Colors.transparent,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: new BorderRadius.all(
+                  const Radius.circular(50.0),
+                ),
+                color: kPrimaryColor,
               ),
-              color: kPrimaryColor,
-            ),
-            height: 250,
-            width: 280,
-            child: Center(
-              child: Stack(
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.only(bottom: 10),
-                        color: kPrimaryColor,
-                        height: 150,
-                        width: 290,
-                        child: CupertinoPicker(
-                          useMagnifier: false,
-                          selectionOverlay: null,
-                          looping: true,
-                          itemExtent: 100,
-                          scrollController: FixedExtentScrollController(),
-                          onSelectedItemChanged: (int index) {
-                            setState(() {
-                              selectedDays = index;
-                            });
-                            Get.find<AddMedicineController>()
-                                .changeProgram(selectedDays);
-                          },
-                          children: [
-                            for (int i = 0; i <= 100; i++)
-                              Center(
-                                child: Container(
-                                  height: 50,
-                                  color: kPrimaryColor,
-                                  child: Text(
-                                    i.toString(),
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 50,
-                                        fontWeight: FontWeight.w600),
+              height: 250,
+              width: 280,
+              child: Center(
+                child: Stack(
+                  children: <Widget>[
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.only(bottom: 10),
+                          color: kPrimaryColor,
+                          height: 150,
+                          width: 290,
+                          child: CupertinoPicker(
+                            useMagnifier: false,
+                            selectionOverlay: null,
+                            looping: true,
+                            itemExtent: 100,
+                            scrollController: FixedExtentScrollController(),
+                            onSelectedItemChanged: (int index) {
+                              setState(() {
+                                selectedDays = index;
+                              });
+                              Get.find<AddMedicineController>()
+                                  .changeProgram(selectedDays);
+                            },
+                            children: [
+                              for (int i = 0; i <= 100; i++)
+                                Center(
+                                  child: Container(
+                                    height: 50,
+                                    color: kPrimaryColor,
+                                    child: Text(
+                                      i.toString(),
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 50,
+                                          fontWeight: FontWeight.w600),
+                                    ),
                                   ),
-                                ),
-                              )
-                          ],
+                                )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    top: 105,
-                    left: 32,
-                    child: Container(
-                      child: Text(
-                        'Total',
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600),
-                      ),
+                      ],
                     ),
-                  ),
-                  Positioned(
-                    top: 105,
-                    right: 32,
-                    child: Container(
-                      child: Center(
+                    Positioned(
+                      top: 105,
+                      left: 32,
+                      child: Container(
                         child: Text(
-                          'Days',
+                          'Total',
                           style: TextStyle(
                               fontSize: 25,
                               color: Colors.white,
@@ -166,50 +154,65 @@ class _UpdateProgrameState extends State<UpdatePrograme> {
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: 20,
-                    right: 65,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
+                    Positioned(
+                      top: 105,
+                      right: 32,
                       child: Container(
-                        width: 150,
-                        height: 30,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(50),
-                            ),
-                            color: Colors.white),
                         child: Center(
                           child: Text(
-                            'Set Program',
+                            'Days',
                             style: TextStyle(
-                                fontSize: 16,
-                                color: kPrimaryColor,
+                                fontSize: 25,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    top: 20,
-                    right: 20,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedDays = 0;
-                        });
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        child: Icon(Icons.close, color: Colors.white),
+                    Positioned(
+                      bottom: 20,
+                      right: 65,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(50),
+                              ),
+                              color: Colors.white),
+                          child: Center(
+                            child: Text(
+                              'Set Program',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: kPrimaryColor,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 20,
+                      right: 20,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedDays = 0;
+                          });
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          child: Icon(Icons.close, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

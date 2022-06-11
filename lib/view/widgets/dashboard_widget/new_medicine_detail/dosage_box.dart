@@ -9,7 +9,6 @@ class DosageBox extends StatefulWidget {
   _DosageBoxState createState() => _DosageBoxState();
 }
 
-
 class _DosageBoxState extends State<DosageBox> {
   DateTime _dateTime = DateTime.now();
   @override
@@ -28,8 +27,7 @@ class _DosageBoxState extends State<DosageBox> {
         margin: EdgeInsets.only(right: 5),
         child: Center(
           child: Text(
-           _dateTime==DateTime.now()? widget.dosagth:_dateTime.toString(),
-            
+            _dateTime == DateTime.now() ? widget.dosagth : _dateTime.toString(),
             style: TextStyle(fontSize: 14),
           ),
         ),
@@ -43,57 +41,58 @@ class _DosageBoxState extends State<DosageBox> {
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
-        return Dialog(
-          backgroundColor: Colors.transparent,
-          child: Container(
-            padding: EdgeInsets.only(top: 40, right: 15),
-            decoration: BoxDecoration(
-              borderRadius: new BorderRadius.all(
-                const Radius.circular(50.0),
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: Dialog(
+            backgroundColor: Colors.transparent,
+            child: Container(
+              padding: EdgeInsets.only(top: 40, right: 15),
+              decoration: BoxDecoration(
+                borderRadius: new BorderRadius.all(
+                  const Radius.circular(50.0),
+                ),
+                color: Colors.blue,
               ),
-              color: Colors.blue,
+              height: 250,
+              width: 25,
+              child: Stack(children: <Widget>[
+                hourMinute12H(),
+                Positioned(
+                    bottom: 10,
+                    left: 20,
+                    child: Container(
+                      height: 50,
+                      width: 230,
+                      color: Colors.blue.withOpacity(0.8),
+                    )),
+                Positioned(
+                    bottom: 18,
+                    left: 20,
+                    child: Container(
+                      height: 50,
+                      width: 230,
+                      color: Colors.blue.withOpacity(0.4),
+                    )),
+                Positioned(
+                    bottom: 175,
+                    left: 20,
+                    child: Container(
+                      height: 50,
+                      width: 230,
+                      color: Colors.blue.withOpacity(0.8),
+                    )),
+                Positioned(
+                    bottom: 170,
+                    left: 20,
+                    child: Container(
+                      height: 50,
+                      width: 230,
+                      color: Colors.blue.withOpacity(0.4),
+                    )),
+                //hourMinute12HCustomStyle()
+                //hourMinuteSecond()
+              ]),
             ),
-            height: 250,
-            width: 25,
-
-            
-            child: Stack(children: <Widget>[
-              hourMinute12H(),
-              Positioned(
-                bottom: 10,
-                left: 20,
-                  child: Container(
-                height: 50,
-                width: 230,
-                color: Colors.blue.withOpacity(0.8),
-              )),
-              Positioned(
-                bottom: 18,
-                left: 20,
-                  child: Container(
-                height: 50,
-                width: 230,
-                color: Colors.blue.withOpacity(0.4),
-              )),
-              Positioned(
-                bottom: 175,
-                left: 20,
-                  child: Container(
-                height: 50,
-                width: 230,
-                color: Colors.blue.withOpacity(0.8),
-              )),
-              Positioned(
-                bottom: 170,
-                left: 20,
-                  child: Container(
-                height: 50,
-                width: 230,
-                color: Colors.blue.withOpacity(0.4),
-              )),
-              //hourMinute12HCustomStyle()
-              //hourMinuteSecond()
-            ]),
           ),
         );
       },
@@ -101,21 +100,24 @@ class _DosageBoxState extends State<DosageBox> {
   }
 
   Widget hourMinute12H() {
-    return new TimePickerSpinner(
-      itemHeight: 60,
-      itemWidth: 60,
-      spacing: 5.0,
-      isForce2Digits: true,
-      is24HourMode: false,
-      highlightedTextStyle: TextStyle(
-          fontSize: 42, color: Colors.white, fontWeight: FontWeight.w800),
-      normalTextStyle: TextStyle(
-          color: Colors.white, fontSize: 42, fontWeight: FontWeight.w800),
-      onTimeChange: (time) {
-        setState(() {
-          _dateTime = time;
-        });
-      },
+    return MediaQuery(
+      data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+      child: new TimePickerSpinner(
+        itemHeight: 60,
+        itemWidth: 60,
+        spacing: 5.0,
+        isForce2Digits: true,
+        is24HourMode: false,
+        highlightedTextStyle: TextStyle(
+            fontSize: 42, color: Colors.white, fontWeight: FontWeight.w800),
+        normalTextStyle: TextStyle(
+            color: Colors.white, fontSize: 42, fontWeight: FontWeight.w800),
+        onTimeChange: (time) {
+          setState(() {
+            _dateTime = time;
+          });
+        },
+      ),
     );
   }
 

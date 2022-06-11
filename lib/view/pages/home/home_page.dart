@@ -10,10 +10,13 @@ import 'package:flutter_svg/svg.dart';
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: DoubleBack(
-        message: 'Press back again to close',
-        child: HomePage(),
+    return MediaQuery(
+      data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+      child: Scaffold(
+        body: DoubleBack(
+          message: 'Press back again to close',
+          child: HomePage(),
+        ),
       ),
     );
   }

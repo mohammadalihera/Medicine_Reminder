@@ -1,13 +1,10 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:Vitel/main.dart';
 import 'package:Vitel/model/medicine_model.dart';
 import 'package:Vitel/view/widgets/settings/first_day_of_week.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../controller/get_medicine/get_medicine.dart';
@@ -319,16 +316,15 @@ class _SettingsPageState extends State<SettingsPage> {
         return GetBuilder<GetMedicineController>(
           init: GetMedicineController(),
           builder: (getvitalController) {
-            return FirstDayOfWeek();
+            return MediaQuery(
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                child: FirstDayOfWeek());
           },
         );
       },
     );
   }
 
-  
-
-  
   void showSnackbar(BuildContext context, String toast) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
