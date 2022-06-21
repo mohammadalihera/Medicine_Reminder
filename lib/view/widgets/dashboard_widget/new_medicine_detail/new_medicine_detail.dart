@@ -405,14 +405,15 @@ void notify(DateTime schedule, Vitel vitel) async {
         label: 'Snooze',
         enabled: true,
         buttonType: ActionButtonType.Default,
-        key: '22',
+        key: 'snooz',
         showInCompactView: true,
       ),
       NotificationActionButton(
-          label: 'Dismiss',
-          enabled: true,
-          buttonType: ActionButtonType.Default,
-          key: '33'),
+        label: 'Dismiss',
+        enabled: true,
+        buttonType: ActionButtonType.KeepOnTop,
+        key: '33',
+      ),
     ],
     content: NotificationContent(
       id: Random().nextInt(10000000),
@@ -423,6 +424,7 @@ void notify(DateTime schedule, Vitel vitel) async {
       color: Colors.red,
       displayOnBackground: true,
       displayOnForeground: true,
+      payload: {'vitel': vitel.toString()},
       // bigPicture: 'asset://assets/images/no_vital.png',
       // notificationLayout: NotificationLayout.BigPicture,
       wakeUpScreen: true,
@@ -440,4 +442,57 @@ void notify(DateTime schedule, Vitel vitel) async {
       preciseAlarm: true,
     ),
   );
+  AwesomeNotifications().actionStream.listen((event) {
+    print('event--------------event---------');
+    print(event);
+    print(event.displayedDate);
+    if (event.buttonKeyPressed == 'snooz') {
+      print('trueeeeeeeeeeeeee----------------------');
+      AwesomeNotifications().createNotification(
+        actionButtons: [
+          NotificationActionButton(
+            label: 'Snooze',
+            enabled: true,
+            buttonType: ActionButtonType.Default,
+            key: 'snooz',
+            showInCompactView: true,
+          ),
+          NotificationActionButton(
+            label: 'Dismiss',
+            enabled: true,
+            buttonType: ActionButtonType.KeepOnTop,
+            key: '33',
+          ),
+        ],
+        content: NotificationContent(
+          id: event.id ?? Random().nextInt(10000000),
+          channelKey: 'basic_channel',
+          title: 'Reminder! Please remember to take ${vitel.name} ',
+          body: ' with plenty of water!',
+          backgroundColor: Colors.blue,
+          color: Colors.red,
+          displayOnBackground: true,
+          displayOnForeground: true,
+          payload: {'vitel': vitel.toString()},
+          // bigPicture: 'asset://assets/images/no_vital.png',
+          // notificationLayout: NotificationLayout.BigPicture,
+          wakeUpScreen: true,
+          category: NotificationCategory.Alarm,
+        ),
+        schedule: NotificationCalendar.fromDate(
+          date: DateTime(
+            schedule.year,
+            schedule.month,
+            schedule.day,
+            schedule.hour,
+            schedule.minute + 1,
+          ),
+          repeats: true,
+          preciseAlarm: true,
+        ),
+      );
+    } else {
+      print('dddddddddddddddddddddddddd');
+    }
+  });
 }
