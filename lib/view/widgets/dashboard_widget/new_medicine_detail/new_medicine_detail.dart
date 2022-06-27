@@ -481,18 +481,18 @@ void notify(DateTime schedule, Vitel vitel) async {
         ),
         schedule: NotificationCalendar.fromDate(
           date: DateTime(
-            schedule.year,
-            schedule.month,
-            schedule.day,
-            schedule.hour,
-            schedule.minute + 1,
+            DateTime.now().year,
+            DateTime.now().month,
+            DateTime.now().day,
+            DateTime.now().hour,
+            DateTime.now().minute + 5,
           ),
           repeats: true,
           preciseAlarm: true,
         ),
       );
     } else {
-      print('dddddddddddddddddddddddddd');
+      
     }
   });
 }
