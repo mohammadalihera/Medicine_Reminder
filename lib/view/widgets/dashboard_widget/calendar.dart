@@ -22,8 +22,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
   DateTime _selectedDay = DateTime.now();
   DateTime selectedDate = DateTime.now();
 
-  GetMedicineController addmedicineController =
-      Get.put(GetMedicineController());
+  GetMedicineController addmedicineController = Get.put(GetMedicineController());
   List<Vitel> calendarvital = [];
   @override
   void initState() {
@@ -34,8 +33,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
   @override
   Widget build(BuildContext context) {
     CacheService.instance.initFirstDayHive();
-    String? firstDayofWeek =
-        CacheService.instance.firstDayOfWeek.get('firstDayOfWeek');
+    String? firstDayofWeek = CacheService.instance.firstDayOfWeek.get('firstDayOfWeek');
     Size size = MediaQuery.of(context).size;
     double dayBox = size.width * 0.143;
     double leftMargin = dayBox * 0.11;
@@ -60,11 +58,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   Radius.circular(8),
                 ),
               ),
-              
-              selectedTextStyle: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600),
+              selectedTextStyle: TextStyle(color: Colors.blue, fontSize: 18, fontWeight: FontWeight.w600),
               defaultDecoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
                 color: Color(0xEDF7FF).withOpacity(0.15),
@@ -79,10 +73,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   ),
                 ],
               ),
-              defaultTextStyle: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600),
+              defaultTextStyle: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
               todayDecoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
                 color: Colors.black.withOpacity(0.18),
@@ -97,10 +88,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   ),
                 ],
               ),
-              todayTextStyle: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600),
+              todayTextStyle: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
               outsideDecoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
                 color: Color(0xEDF7FF).withOpacity(0.15),
@@ -115,10 +103,8 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   ),
                 ],
               ),
-              outsideTextStyle: TextStyle(
-                  color: Color(0x000000).withOpacity(.25),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600),
+              outsideTextStyle:
+                  TextStyle(color: Color(0x000000).withOpacity(.25), fontSize: 18, fontWeight: FontWeight.w600),
               weekendDecoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
                 color: Color(0xEDF7FF).withOpacity(0.15),
@@ -133,16 +119,11 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   ),
                 ],
               ),
-              weekendTextStyle: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600),
+              weekendTextStyle: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
             ),
             daysOfWeekStyle: DaysOfWeekStyle(
-              weekdayStyle:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-              weekendStyle:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              weekdayStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              weekendStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
             headerStyle: HeaderStyle(
               headerPadding: EdgeInsets.all(0.0),

@@ -25,11 +25,9 @@ class NewMedicineDetail extends StatefulWidget {
 class _NewMedicineDetailState extends State<NewMedicineDetail> {
   TextEditingController editingController = new TextEditingController();
   String meal = 'after';
-  AddMedicineController addmedicineController =
-      Get.put(AddMedicineController());
+  AddMedicineController addmedicineController = Get.put(AddMedicineController());
   NotificationController notificationC = Get.put(NotificationController());
-  GetMedicineController getmedicineController =
-      Get.put(GetMedicineController());
+  GetMedicineController getmedicineController = Get.put(GetMedicineController());
   double screenWidth = 0;
   double dosageGap = 0;
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -62,9 +60,8 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                       children: <Widget>[
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(5),
-                                  topRight: Radius.circular(5))),
+                              borderRadius:
+                                  BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5))),
                           width: MediaQuery.of(context).size.width,
                           margin: EdgeInsets.only(left: 40, top: 20),
                           child: Row(
@@ -83,8 +80,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 margin: EdgeInsets.only(right: 20),
                                 child: InkWell(
                                   onTap: () {
-                                    addmedicineController
-                                        .isMedicineAdded(false);
+                                    addmedicineController.isMedicineAdded(false);
                                     Navigator.pop(context);
                                   },
                                   child: Container(
@@ -109,9 +105,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                   'Name',
                                   style: TextStyle(
                                       fontSize: 20,
-                                      color: addmedicineController.name.isEmpty
-                                          ? Colors.red
-                                          : kPrimaryColor,
+                                      color: addmedicineController.name.isEmpty ? Colors.red : kPrimaryColor,
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
@@ -125,9 +119,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                   'Daily Dosage',
                                   style: TextStyle(
                                       fontSize: 20,
-                                      color: addmedicineController.isDoseEmpty
-                                          ? Colors.red
-                                          : kPrimaryColor,
+                                      color: addmedicineController.isDoseEmpty ? Colors.red : kPrimaryColor,
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
@@ -135,15 +127,13 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                               MedicinePrograme(),
                               MedicineQuantity(),
                               Container(
-                                margin: EdgeInsets.only(
-                                    left: 40, top: 23, right: 40),
+                                margin: EdgeInsets.only(left: 40, top: 23, right: 40),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        Get.find<AddMedicineController>()
-                                            .changeAfterMeal(1);
+                                        Get.find<AddMedicineController>().changeAfterMeal(1);
                                         setState(() {
                                           meal = 'after';
                                         });
@@ -152,8 +142,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        Get.find<AddMedicineController>()
-                                            .changeAfterMeal(0);
+                                        Get.find<AddMedicineController>().changeAfterMeal(0);
                                         setState(() {
                                           meal = 'before';
                                         });
@@ -176,8 +165,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                     addmedicineController.doseEmpty(true);
                                   }
                                   // if (_formKey.currentState.validate()) {
-                                  if ((addController.afterMeal == 0 ||
-                                          addController.afterMeal == 1) &&
+                                  if ((addController.afterMeal == 0 || addController.afterMeal == 1) &&
                                       addController.quantity != 0 &&
                                       addController.program != 0 &&
                                       (addController.doseOne.isNotEmpty ||
@@ -210,13 +198,11 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                     addController.program = 0;
                                     addController.quantity = 0;
                                     addController.afterMeal = 0;
-                                    getmedicineController.selectedDate =
-                                        DateTime.now();
+                                    getmedicineController.selectedDate = DateTime.now();
                                   } else {
                                     addmedicineController.isMedicineAdded(true);
 
-                                    print('medicineNAEM' +
-                                        addmedicineController.name);
+                                    print('medicineNAEM' + addmedicineController.name);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         duration: Duration(milliseconds: 500),
@@ -225,11 +211,9 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                         content: Container(
                                           height: 30,
                                           //color: Colors.white,
-                                          width:
-                                              MediaQuery.of(context).size.width,
+                                          width: MediaQuery.of(context).size.width,
                                           decoration: BoxDecoration(
-                                            color: Color.fromARGB(
-                                                255, 227, 128, 121),
+                                            color: Color.fromARGB(255, 227, 128, 121),
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(8),
                                             ),
@@ -238,9 +222,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                             child: Text(
                                               'Please fill all the fields',
                                               style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w700),
+                                                  color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
                                             ),
                                           ),
                                         ),
@@ -252,22 +234,16 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 },
                                 child: Center(
                                   child: Container(
-                                    margin: EdgeInsets.only(
-                                        left: 40, top: 20, right: 40),
+                                    margin: EdgeInsets.only(left: 40, top: 20, right: 40),
                                     decoration: BoxDecoration(
-                                        color: kPrimaryColor,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(15))),
+                                        color: kPrimaryColor, borderRadius: BorderRadius.all(Radius.circular(15))),
                                     height: 55,
-                                    width:
-                                        MediaQuery.of(context).size.width * .8,
+                                    width: MediaQuery.of(context).size.width * .8,
                                     child: Center(
                                       child: Text(
                                         'Add Schedule',
-                                        style: TextStyle(
-                                            fontSize: 22,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w600),
+                                        style:
+                                            TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w600),
                                       ),
                                     ),
                                   ),
@@ -290,22 +266,10 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
   }
 }
 
-void addvitel(
-    String vName,
-    String doseOne,
-    String doseTwo,
-    String doseThree,
-    String doseFour,
-    String doseFive,
-    String doseSix,
-    int program,
-    int quantity,
-    int afterMeal,
-    DateTime selectedDate,
-    context) async {
+void addvitel(String vName, String doseOne, String doseTwo, String doseThree, String doseFour, String doseFive,
+    String doseSix, int program, int quantity, int afterMeal, DateTime selectedDate, context) async {
   DateTime newMedicineDate = selectedDate;
-  GetMedicineController getmedicineController =
-      Get.put(GetMedicineController());
+  GetMedicineController getmedicineController = Get.put(GetMedicineController());
   NotificationController notificationC = Get.put(NotificationController());
   Vitel vitel = Vitel(
     id: Random().nextInt(10000000),
@@ -324,8 +288,7 @@ void addvitel(
 
   for (int i = 0; i < vitel.program - 1; ++i) {
     newMedicineDate = newMedicineDate.add(Duration(milliseconds: 86400000));
-    vitel.date =
-        vitel.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();
+    vitel.date = vitel.date + ',' + newMedicineDate.millisecondsSinceEpoch.toString();
   }
   dynamic result = await Repository.insertData("Vitel", vitel.vitelToMap());
   getmedicineController.getAllVitelFromDb(context);
@@ -336,24 +299,21 @@ void addvitel(
   for (int i = 0; i < vDate.length; ++i) {
     for (int j = 0; j < newDoses.length; ++j) {
       int vitalDate = int.parse(vDate[i]);
-      DateTime vitald = DateTime(
-          DateTime.fromMillisecondsSinceEpoch(vitalDate).year,
-          DateTime.fromMillisecondsSinceEpoch(vitalDate).month,
-          DateTime.fromMillisecondsSinceEpoch(vitalDate).day);
+      DateTime vitald = DateTime(DateTime.fromMillisecondsSinceEpoch(vitalDate).year,
+          DateTime.fromMillisecondsSinceEpoch(vitalDate).month, DateTime.fromMillisecondsSinceEpoch(vitalDate).day);
 
-      DateTime finaNotifyDate = new DateFormat('yyyyy.MM.dd GGG hh:mm aaa')
-          .parse('0' +
-              vitald.year.toString() +
-              '.' +
-              vitald.month.toString() +
-              '.' +
-              vitald.day.toString() +
-              ' ' +
-              'AD' +
-              ' ' +
-              newDoses[j]);
+      DateTime finaNotifyDate = new DateFormat('yyyyy.MM.dd GGG hh:mm aaa').parse('0' +
+          vitald.year.toString() +
+          '.' +
+          vitald.month.toString() +
+          '.' +
+          vitald.day.toString() +
+          ' ' +
+          'AD' +
+          ' ' +
+          newDoses[j]);
 
-      notify(finaNotifyDate, vitel);
+      notify(finaNotifyDate, vitel, vitald);
     }
   }
 
@@ -393,11 +353,12 @@ getDoses(Vitel vitel) {
   return allDose;
 }
 
-void notify(DateTime schedule, Vitel vitel) async {
-  vitel.date =
-      vitel.date.replaceAll(schedule.millisecondsSinceEpoch.toString(), '');
-  dynamic result =
-      await Repository.update("Vitel", vitel.vitelToMap(), vitel.id);
+void notify(DateTime schedule, Vitel vitel, DateTime vitelDate) async {
+  int notificiationId = int.parse(
+      vitelDate.day.toString() + vitelDate.month.toString() + vitel.id.toString());
+  print(notificiationId);
+  vitel.date = vitel.date.replaceAll(schedule.millisecondsSinceEpoch.toString(), '');
+  dynamic result = await Repository.update("Vitel", vitel.vitelToMap(), vitel.id);
 
   AwesomeNotifications().createNotification(
     actionButtons: [
@@ -416,7 +377,7 @@ void notify(DateTime schedule, Vitel vitel) async {
       ),
     ],
     content: NotificationContent(
-      id: Random().nextInt(10000000),
+      id: notificiationId,
       channelKey: 'basic_channel',
       title: 'Reminder! Please remember to take ${vitel.name} ',
       body: ' with plenty of water!',
@@ -458,11 +419,11 @@ void notify(DateTime schedule, Vitel vitel) async {
             showInCompactView: true,
           ),
           NotificationActionButton(
-            label: 'Dismiss',
-            enabled: true,
-            buttonType: ActionButtonType.KeepOnTop,
-            key: '33',
-          ),
+              label: 'Dismiss',
+              enabled: true,
+              buttonType: ActionButtonType.KeepOnTop,
+              key: '33',
+              autoDismissible: true),
         ],
         content: NotificationContent(
           id: event.id ?? Random().nextInt(10000000),
@@ -491,8 +452,6 @@ void notify(DateTime schedule, Vitel vitel) async {
           preciseAlarm: true,
         ),
       );
-    } else {
-      
-    }
+    } else {}
   });
 }

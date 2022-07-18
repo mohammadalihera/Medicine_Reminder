@@ -24,7 +24,7 @@ class Repository {
   }
 
   //get all data from database
-static  Future<List<Map<String, dynamic>>> getAllData(table) async {
+  static Future<List<Map<String, dynamic>>> getAllData(table) async {
     Database db = await database;
     try {
       return db.query(table);
@@ -32,31 +32,32 @@ static  Future<List<Map<String, dynamic>>> getAllData(table) async {
       return db.query(table);
     }
   }
-static Future<int> update( table,Map<String,dynamic>vitel,int id) async {
-    Database db = await database;
-    return await db.update(
-    table, vitel,
-    where: "id= ?",whereArgs: [id]
 
-    );
+  static Future<int> update(table, Map<String, dynamic> vitel, int id) async {
+    Database db = await database;
+    return await db.update(table, vitel, where: "id= ?", whereArgs: [id]);
   }
+
   //delete data
-static  Future<int> deleteData(String table, int id) async {
+  static Future<int> deleteData(String table, int id) async {
     Database db = await database;
     try {
       return await db.delete(table, where: "id = ?", whereArgs: [id]);
     } catch (e) {
       return await db.delete(table, where: "id = ?", whereArgs: [id]);
-      
     }
   }
 
+  static Future<int> deleteSingleData(table, Map<String, dynamic> vitel, int id) async {
+    Database db = await database;
+    return await db.update(table, vitel, where: "id= ?", whereArgs: [id]);
+  }
 
-  static Future<List<Vitel>>getAllVitels()async{
+  static Future<List<Vitel>> getAllVitels() async {
     List<Vitel> data = [];
-          (await Repository.getAllData("Vitel")).forEach((vitelMap) {
-            data.add(Vitel.vitelMapToObject(vitelMap));
-          });
+    (await Repository.getAllData("Vitel")).forEach((vitelMap) {
+      data.add(Vitel.vitelMapToObject(vitelMap));
+    });
 
     return data;
   }

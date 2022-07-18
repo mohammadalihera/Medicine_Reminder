@@ -14,8 +14,7 @@ class MedicineInfoTile extends StatefulWidget {
 
 class _MedicineInfoTileState extends State<MedicineInfoTile> {
   double displayHeight = 0;
-  GetMedicineController getmedicineController =
-      Get.put(GetMedicineController());
+  GetMedicineController getmedicineController = Get.put(GetMedicineController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,21 +30,23 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
-                      childAspectRatio: 2 / 2,
-                      crossAxisSpacing: 5,
-                      mainAxisSpacing: 5),
+                      maxCrossAxisExtent: 200, childAspectRatio: 2 / 2, crossAxisSpacing: 5, mainAxisSpacing: 5),
                   itemCount: getmedicineController.selectedVitel.length,
                   itemBuilder: (_, i) {
                     return InkWell(
-                      onTap: () => medicineDetail(
-                          getmedicineController.selectedVitel[i]),
+                      onTap: () => medicineDetail(getmedicineController.selectedVitel[i]),
                       child: Card(
-                        shadowColor: Colors.blue,
+                        shadowColor: Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
+                                Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
+                            ? Colors.blue
+                            : Color(0xffC1C8CC),
                         elevation: 4,
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: Color(0xffEDF7FF).withOpacity(0.2),
+                            color: Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
+                                    Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
+                                ? Color(0xffEDF7FF).withOpacity(0.2)
+                                : Color(0xffC1C8CC),
                             width: 4,
                           ),
                           borderRadius: BorderRadius.circular(25),
@@ -56,7 +57,10 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                             borderRadius: BorderRadius.all(
                               Radius.circular(25),
                             ),
-                            color: Colors.white,
+                            color: Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
+                                    Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
+                                ? Colors.white
+                                : Color(0xffE3E3E3),
                           ),
                           margin: EdgeInsets.all(4),
                           child: Column(
@@ -71,24 +75,27 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
-                                    color: Colors.blue,
+                                    color: Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
+                                            Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
+                                        ? Colors.blue
+                                        : Color(0xff606365),
                                   ),
                                 ),
                               ),
-                              getmedicineController
-                                          .selectedVitel[i].afterMeal ==
-                                      1
+                              getmedicineController.selectedVitel[i].afterMeal == 1
                                   ? AfterMeal('after', 'dash')
                                   : BeforeMeal('before', 'dash'),
                               Container(
                                 margin: EdgeInsets.only(top: 5),
                                 child: Text(
-                                  numberOfTime(
-                                      getmedicineController.selectedVitel[i]),
+                                  numberOfTime(getmedicineController.selectedVitel[i]),
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
-                                      color: Colors.blue),
+                                      color: Get.find<GetMedicineController>().selectedDate.microsecondsSinceEpoch >
+                                              DateTime.now().microsecondsSinceEpoch
+                                          ? Colors.blue
+                                          : Color(0xff606365)),
                                 ),
                               ),
                               Container(
@@ -109,12 +116,9 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                                     ),
                                     SizedBox(height: 2),
                                     Text(
-                                      getmedicineController
-                                          .selectedVitel[i].doseOne,
+                                      getmedicineController.selectedVitel[i].doseOne,
                                       style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w700,
-                                          color: Color(0xff606365)),
+                                          fontSize: 14, fontWeight: FontWeight.w700, color: Color(0xff606365)),
                                     ),
                                   ],
                                 ),

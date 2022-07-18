@@ -32,19 +32,13 @@ class _DashBoardState extends State<DashBoard> {
         title: GetBuilder<AuthUserController>(
           init: AuthUserController(),
           builder: (authController) {
-            if (authController.userName != '' &&
-                authController.userPhone == '') {
+            if (authController.userName != '' && authController.userPhone == '') {
               headerTitle = authController.userName;
             } else {
               headerTitle = authController.userPhone;
             }
             return Center(
-              child: CacheService.instance.skipLogin
-                      .get('skipLogin')
-                      .toString()
-                      .isEmpty
-                  ? Text('Welcome, ' + headerTitle)
-                  : Text('Welcome'),
+              child: CacheService.instance.skipLogin.get('skipLogin').toString().isEmpty ? Text('Welcome, ' + headerTitle) : Text('Welcome'),
             );
           },
         ),
@@ -75,11 +69,7 @@ class _DashBoardState extends State<DashBoard> {
                     builder: (vitelController) {
                       return vitelController.selectedVitel.length > 0
                           ? Container(
-                              padding: EdgeInsets.only(
-                                  bottom:
-                                      vitelController.selectedVitel.length < 3
-                                          ? 300
-                                          : 100),
+                              padding: EdgeInsets.only(bottom: vitelController.selectedVitel.length < 3 ? 300 : 100),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(30),

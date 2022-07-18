@@ -4,6 +4,7 @@ import 'package:Vitel/model/medicine_model.dart';
 import 'package:Vitel/view/widgets/dashboard_widget/medicine_detail/update_medicine.dart';
 import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/meal/after_meal.dart';
 import 'package:Vitel/view/widgets/dashboard_widget/new_medicine_detail/meal/before_meal.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,8 +19,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
   late double displayHeight;
   int dose = 3;
   TextEditingController editingController = new TextEditingController();
-  GetMedicineController getmedicineController =
-      Get.put(GetMedicineController());
+  GetMedicineController getmedicineController = Get.put(GetMedicineController());
   @override
   Widget build(BuildContext context) {
     displayHeight = MediaQuery.of(context).size.height;
@@ -50,9 +50,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                         )),
                   ),
                   SizedBox(height: 5),
-                  widget.vitel.afterMeal == 1
-                      ? AfterMeal('after', 'other')
-                      : BeforeMeal('before', 'other')
+                  widget.vitel.afterMeal == 1 ? AfterMeal('after', 'other') : BeforeMeal('before', 'other')
                 ],
               ),
             ),
@@ -67,10 +65,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                       children: <Widget>[
                         Text(
                           'Dose',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700),
+                          style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w700),
                         ),
                         SizedBox(height: 5),
                         Container(
@@ -89,8 +84,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               width: 95,
                                               height: 22,
                                               decoration: BoxDecoration(
-                                                borderRadius:
-                                                    new BorderRadius.all(
+                                                borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
                                                 color: Colors.blue,
@@ -99,9 +93,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               child: Center(
                                                 child: Text(
                                                   widget.vitel.doseOne,
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.white),
+                                                  style: TextStyle(fontSize: 14, color: Colors.white),
                                                 ),
                                               ),
                                             ),
@@ -114,8 +106,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               width: 95,
                                               height: 22,
                                               decoration: BoxDecoration(
-                                                borderRadius:
-                                                    new BorderRadius.all(
+                                                borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
                                                 color: Colors.blue,
@@ -124,9 +115,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               child: Center(
                                                 child: Text(
                                                   widget.vitel.doseTwo,
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.white),
+                                                  style: TextStyle(fontSize: 14, color: Colors.white),
                                                 ),
                                               ),
                                             ),
@@ -141,8 +130,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               width: 95,
                                               height: 22,
                                               decoration: BoxDecoration(
-                                                borderRadius:
-                                                    new BorderRadius.all(
+                                                borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
                                                 color: Colors.blue,
@@ -151,9 +139,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               child: Center(
                                                 child: Text(
                                                   widget.vitel.doseThree,
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.white),
+                                                  style: TextStyle(fontSize: 14, color: Colors.white),
                                                 ),
                                               ),
                                             ),
@@ -175,8 +161,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               width: 95,
                                               height: 22,
                                               decoration: BoxDecoration(
-                                                borderRadius:
-                                                    new BorderRadius.all(
+                                                borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
                                                 color: Colors.blue,
@@ -185,9 +170,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               child: Center(
                                                 child: Text(
                                                   widget.vitel.doseFour,
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.white),
+                                                  style: TextStyle(fontSize: 14, color: Colors.white),
                                                 ),
                                               ),
                                             ),
@@ -202,8 +185,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               width: 95,
                                               height: 22,
                                               decoration: BoxDecoration(
-                                                borderRadius:
-                                                    new BorderRadius.all(
+                                                borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
                                                 color: Colors.blue,
@@ -212,9 +194,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               child: Center(
                                                 child: Text(
                                                   widget.vitel.doseFive,
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.white),
+                                                  style: TextStyle(fontSize: 14, color: Colors.white),
                                                 ),
                                               ),
                                             ),
@@ -229,8 +209,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               width: 95,
                                               height: 22,
                                               decoration: BoxDecoration(
-                                                borderRadius:
-                                                    new BorderRadius.all(
+                                                borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
                                                 color: Colors.blue,
@@ -239,9 +218,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                               child: Center(
                                                 child: Text(
                                                   widget.vitel.doseSix,
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.white),
+                                                  style: TextStyle(fontSize: 14, color: Colors.white),
                                                 ),
                                               ),
                                             ),
@@ -263,10 +240,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                       children: <Widget>[
                         Text(
                           'Program',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700),
+                          style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w700),
                         ),
                         SizedBox(height: 10),
                         Container(
@@ -274,23 +248,14 @@ class _MedicineDetailState extends State<MedicineDetail> {
                             children: [
                               Container(
                                 child: Text(
-                                  'Total ' +
-                                      widget.vitel.program.toString() +
-                                      ' Days ' +
-                                      '|' +
-                                      " ",
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w600),
+                                  'Total ' + widget.vitel.program.toString() + ' Days ' + '|' + " ",
+                                  style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600),
                                 ),
                               ),
                               Container(
                                 child: Text(
                                   '_ Days Left',
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14),
+                                  style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600, fontSize: 14),
                                 ),
                               ),
                             ],
@@ -306,10 +271,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                       children: <Widget>[
                         Text(
                           'Quantity',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700),
+                          style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w700),
                         ),
                         SizedBox(height: 10),
                         Container(
@@ -317,23 +279,14 @@ class _MedicineDetailState extends State<MedicineDetail> {
                             children: [
                               Container(
                                 child: Text(
-                                  'Total ' +
-                                      widget.vitel.quantity.toString() +
-                                      ' Pills ' +
-                                      '|' +
-                                      " ",
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w600),
+                                  'Total ' + widget.vitel.quantity.toString() + ' Pills ' + '|' + " ",
+                                  style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600),
                                 ),
                               ),
                               Container(
                                 child: Text(
                                   '_ Pills Left',
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14),
+                                  style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600, fontSize: 14),
                                 ),
                               ),
                             ],
@@ -432,6 +385,25 @@ class _MedicineDetailState extends State<MedicineDetail> {
   }
 
   void deletAlert(Vitel vitel, context) {
+    getmedicineController.getAllVitelFromDb(context);
+    int notificationId = int.parse(getmedicineController.selectedDate.day.toString() +
+        getmedicineController.selectedDate.month.toString() +
+        vitel.id.toString());
+    List<String> vDate = vitel.date.split(',');
+    print('--------------------------');
+    print(vitel.date);
+    var index = vDate.indexOf(getmedicineController.selectedDate.millisecondsSinceEpoch.toString());
+    print(index);
+    if (index == 0 || index == vDate.length - 1) {
+      vitel.date = vitel.date.replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString(), '');
+    } else {
+      vitel.date =
+          vitel.date.replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString() + ',', '');
+    }
+    print(vitel.date);
+    print(vDate);
+
+    print(getmedicineController.selectedDate.millisecondsSinceEpoch);
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -450,14 +422,16 @@ class _MedicineDetailState extends State<MedicineDetail> {
             Card(
               color: Colors.green,
               child: Container(
-                width: 50,
                 height: 30,
                 child: Center(
                   child: InkWell(
-                    onTap: () {
+                    onTap: () async {
+                      await Repository.update("vitel", vitel.vitelToMap(), vitel.id);
+                      getmedicineController.getAllVitelFromDb(context);
+                      AwesomeNotifications().cancelSchedule(notificationId);
                       Navigator.pop(context);
                     },
-                    child: Text('NO', style: TextStyle(color: Colors.white)),
+                    child: Text('Delete One', style: TextStyle(color: Colors.white)),
                   ),
                 ),
               ),
@@ -468,7 +442,6 @@ class _MedicineDetailState extends State<MedicineDetail> {
             Card(
               color: Colors.red,
               child: Container(
-                width: 50,
                 height: 30,
                 child: Center(
                   child: InkWell(
@@ -478,7 +451,7 @@ class _MedicineDetailState extends State<MedicineDetail> {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      'Yes',
+                      'Delete All',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

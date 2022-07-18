@@ -69,11 +69,7 @@ class _HomePageState extends State<HomePage> {
                     child: PageView(
                       controller: pageController,
                       onPageChanged: (value) => {setCurrentPage(value)},
-                      children: [
-                        UserPage(),
-                        DashBoard(currentIndex),
-                        SettingsPage()
-                      ],
+                      children: [UserPage(), DashBoard(currentIndex), SettingsPage()],
                     ),
                   ),
                 ],
@@ -113,8 +109,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
-                                    duration: Duration(milliseconds: 0),
-                                    curve: Curves.bounceOut);
+                                    duration: Duration(milliseconds: 0), curve: Curves.bounceOut);
                               },
                               child: Container(
                                 child: SvgPicture.asset(
@@ -130,8 +125,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(0,
-                                    duration: Duration(milliseconds: 500),
-                                    curve: Curves.slowMiddle);
+                                    duration: Duration(milliseconds: 500), curve: Curves.slowMiddle);
                               },
                               child: Container(
                                 child: SvgPicture.asset(
@@ -150,8 +144,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(1,
-                                    duration: Duration(milliseconds: 500),
-                                    curve: Curves.slowMiddle);
+                                    duration: Duration(milliseconds: 500), curve: Curves.slowMiddle);
                               },
                               child: Container(
                                 child: SvgPicture.asset(
@@ -167,8 +160,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(1,
-                                    duration: Duration(milliseconds: 500),
-                                    curve: Curves.slowMiddle);
+                                    duration: Duration(milliseconds: 500), curve: Curves.slowMiddle);
                               },
                               child: Container(
                                 child: SvgPicture.asset(
@@ -187,8 +179,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(2,
-                                    duration: Duration(milliseconds: 0),
-                                    curve: Curves.linear);
+                                    duration: Duration(milliseconds: 0), curve: Curves.linear);
                               },
                               child: Container(
                                 child: SvgPicture.asset(
@@ -203,8 +194,7 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 pageController.animateToPage(2,
-                                    duration: Duration(milliseconds: 500),
-                                    curve: Curves.slowMiddle);
+                                    duration: Duration(milliseconds: 500), curve: Curves.slowMiddle);
                               },
                               child: Container(
                                 child: SvgPicture.asset(
