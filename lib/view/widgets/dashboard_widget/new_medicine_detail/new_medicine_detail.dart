@@ -272,7 +272,7 @@ void addvitel(String vName, String doseOne, String doseTwo, String doseThree, St
   GetMedicineController getmedicineController = Get.put(GetMedicineController());
   NotificationController notificationC = Get.put(NotificationController());
   Vitel vitel = Vitel(
-    id: Random().nextInt(10000000),
+    id: Random().nextInt(100),
     name: vName,
     doseOne: doseOne,
     doseTwo: doseTwo,
@@ -354,8 +354,7 @@ getDoses(Vitel vitel) {
 }
 
 void notify(DateTime schedule, Vitel vitel, DateTime vitelDate) async {
-  int notificiationId = int.parse(
-      vitelDate.day.toString() + vitelDate.month.toString() + vitel.id.toString());
+  int notificiationId = int.parse(vitelDate.day.toString() + vitelDate.month.toString() + vitel.id.toString());
   print(notificiationId);
   vitel.date = vitel.date.replaceAll(schedule.millisecondsSinceEpoch.toString(), '');
   dynamic result = await Repository.update("Vitel", vitel.vitelToMap(), vitel.id);
@@ -385,7 +384,9 @@ void notify(DateTime schedule, Vitel vitel, DateTime vitelDate) async {
       color: Colors.red,
       displayOnBackground: true,
       displayOnForeground: true,
-      payload: {'vitel': vitel.toString()},
+      payload: {
+        "vitelName": vitel.name,
+      },
       // bigPicture: 'asset://assets/images/no_vital.png',
       // notificationLayout: NotificationLayout.BigPicture,
       wakeUpScreen: true,
@@ -404,11 +405,9 @@ void notify(DateTime schedule, Vitel vitel, DateTime vitelDate) async {
     ),
   );
   AwesomeNotifications().actionStream.listen((event) {
-    print('event--------------event---------');
-    print(event);
-    print(event.displayedDate);
+    print(event.id);
+    print(event.payload!["vitelName"]);
     if (event.buttonKeyPressed == 'snooz') {
-      print('trueeeeeeeeeeeeee----------------------');
       AwesomeNotifications().createNotification(
         actionButtons: [
           NotificationActionButton(
