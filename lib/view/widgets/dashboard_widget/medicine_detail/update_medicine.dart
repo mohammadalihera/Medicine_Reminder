@@ -22,10 +22,8 @@ class UpdateMedicineDetail extends StatefulWidget {
 class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
   TextEditingController editingController = new TextEditingController();
   String meal = '';
-  AddMedicineController addmedicineController =
-      Get.put(AddMedicineController());
-  GetMedicineController getmedicineController =
-      Get.put(GetMedicineController());
+  AddMedicineController addmedicineController = Get.put(AddMedicineController());
+  GetMedicineController getmedicineController = Get.put(GetMedicineController());
   double screenWidth = 0;
   double dosageGap = 0;
 
@@ -93,10 +91,7 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                             margin: EdgeInsets.only(left: 40, top: 30),
                             child: Text(
                               'Name',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: kPrimaryColor,
-                                  fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.w600),
                             ),
                           ),
                           MedicineInfoTextField(
@@ -107,10 +102,7 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                             margin: EdgeInsets.only(left: 40, top: 10),
                             child: Text(
                               'Daily Dosage',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: kPrimaryColor,
-                                  fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.w600),
                             ),
                           ),
                           UpdateDosageField(
@@ -120,15 +112,13 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                           UpdatePrograme(vitel),
                           UpdateMedicineQuantity(vitel),
                           Container(
-                            margin:
-                                EdgeInsets.only(left: 40, top: 23, right: 40),
+                            margin: EdgeInsets.only(left: 40, top: 23, right: 40),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    Get.find<AddMedicineController>()
-                                        .changeAfterMeal(1);
+                                    Get.find<AddMedicineController>().changeAfterMeal(1);
                                     setState(() {
                                       meal = 'after';
                                       vitel.afterMeal = 1;
@@ -138,8 +128,7 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    Get.find<AddMedicineController>()
-                                        .changeAfterMeal(0);
+                                    Get.find<AddMedicineController>().changeAfterMeal(0);
                                     setState(() {
                                       meal = 'before';
                                       vitel.afterMeal = 0;
@@ -159,21 +148,15 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                             },
                             child: Center(
                               child: Container(
-                                margin: EdgeInsets.only(
-                                    left: 40, top: 20, right: 40),
+                                margin: EdgeInsets.only(left: 40, top: 20, right: 40),
                                 decoration: BoxDecoration(
-                                    color: kPrimaryColor,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(15))),
+                                    color: kPrimaryColor, borderRadius: BorderRadius.all(Radius.circular(15))),
                                 height: 55,
                                 width: MediaQuery.of(context).size.width * .8,
                                 child: Center(
                                   child: Text(
                                     'Update Schedule',
-                                    style: TextStyle(
-                                        fontSize: 22,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600),
+                                    style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w600),
                                   ),
                                 ),
                               ),
@@ -195,13 +178,17 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
 }
 
 void addvitel(Vitel vitel, int additionProgram, context) async {
-  DateTime newMedicineDate = DateTime.fromMillisecondsSinceEpoch(
-      int.parse(vitel.date.split(',').first));
-  DateTime firstDate = DateTime(
-      newMedicineDate.year, newMedicineDate.month, newMedicineDate.day);
+  DateTime newMedicineDate = DateTime.now();
+  print('bitel datee------------------------');
+  print(vitel.date);
+  if (vitel.date.contains(',')) {
+    newMedicineDate = DateTime.fromMillisecondsSinceEpoch(int.parse(vitel.date.split(',').first));
+  } else {
+    newMedicineDate = DateTime.fromMillisecondsSinceEpoch(int.parse(vitel.date));
+  }
+  DateTime firstDate = DateTime(newMedicineDate.year, newMedicineDate.month, newMedicineDate.day);
 
-  GetMedicineController getmedicineController =
-      Get.put(GetMedicineController());
+  GetMedicineController getmedicineController = Get.put(GetMedicineController());
   vitel.date = firstDate.millisecondsSinceEpoch.toString();
 
   for (int i = 1; i < additionProgram; ++i) {
@@ -209,8 +196,7 @@ void addvitel(Vitel vitel, int additionProgram, context) async {
     vitel.date = vitel.date + ',' + firstDate.millisecondsSinceEpoch.toString();
   }
 
-  dynamic result =
-      await Repository.update("vitel", vitel.vitelToMap(), vitel.id);
+  dynamic result = await Repository.update("vitel", vitel.vitelToMap(), vitel.id);
   getmedicineController.getAllVitelFromDb(context);
   Navigator.pop(context);
   Navigator.pop(context);

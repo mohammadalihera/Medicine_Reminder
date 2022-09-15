@@ -87,7 +87,12 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                                 borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
-                                                color: Colors.blue,
+                                                color: Get.find<GetMedicineController>().selectedDate.day >
+                                                            DateTime.now().day ||
+                                                        Get.find<GetMedicineController>().selectedDate.day ==
+                                                            DateTime.now().day
+                                                    ? Colors.blue
+                                                    : Colors.grey,
                                               ),
                                               margin: EdgeInsets.only(right: 5),
                                               child: Center(
@@ -109,7 +114,12 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                                 borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
-                                                color: Colors.blue,
+                                                color: Get.find<GetMedicineController>().selectedDate.day >
+                                                            DateTime.now().day ||
+                                                        Get.find<GetMedicineController>().selectedDate.day ==
+                                                            DateTime.now().day
+                                                    ? Colors.blue
+                                                    : Colors.grey,
                                               ),
                                               margin: EdgeInsets.only(right: 5),
                                               child: Center(
@@ -133,7 +143,12 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                                 borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
-                                                color: Colors.blue,
+                                                color: Get.find<GetMedicineController>().selectedDate.day >
+                                                            DateTime.now().day ||
+                                                        Get.find<GetMedicineController>().selectedDate.day ==
+                                                            DateTime.now().day
+                                                    ? Colors.blue
+                                                    : Colors.grey,
                                               ),
                                               margin: EdgeInsets.only(right: 5),
                                               child: Center(
@@ -164,7 +179,12 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                                 borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
-                                                color: Colors.blue,
+                                                color: Get.find<GetMedicineController>().selectedDate.day >
+                                                            DateTime.now().day ||
+                                                        Get.find<GetMedicineController>().selectedDate.day ==
+                                                            DateTime.now().day
+                                                    ? Colors.blue
+                                                    : Colors.grey,
                                               ),
                                               margin: EdgeInsets.only(right: 5),
                                               child: Center(
@@ -188,7 +208,12 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                                 borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
-                                                color: Colors.blue,
+                                                color: Get.find<GetMedicineController>().selectedDate.day >
+                                                            DateTime.now().day ||
+                                                        Get.find<GetMedicineController>().selectedDate.day ==
+                                                            DateTime.now().day
+                                                    ? Colors.blue
+                                                    : Colors.grey,
                                               ),
                                               margin: EdgeInsets.only(right: 5),
                                               child: Center(
@@ -212,7 +237,12 @@ class _MedicineDetailState extends State<MedicineDetail> {
                                                 borderRadius: new BorderRadius.all(
                                                   const Radius.circular(5.0),
                                                 ),
-                                                color: Colors.blue,
+                                                color: Get.find<GetMedicineController>().selectedDate.day >
+                                                            DateTime.now().day ||
+                                                        Get.find<GetMedicineController>().selectedDate.day ==
+                                                            DateTime.now().day
+                                                    ? Colors.blue
+                                                    : Colors.grey,
                                               ),
                                               margin: EdgeInsets.only(right: 5),
                                               child: Center(
@@ -322,25 +352,28 @@ class _MedicineDetailState extends State<MedicineDetail> {
                     ),
                   ),
                   SizedBox(height: 27),
-                  Center(
-                    child: InkWell(
-                      onTap: addMedicine,
-                      child: Container(
-                        width: size.width * .7,
-                        height: 55,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          color: Colors.blue,
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Edit Schedule',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
+                  Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
+                          Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
+                      ? Center(
+                          child: InkWell(
+                            onTap: addMedicine,
+                            child: Container(
+                              width: size.width * .7,
+                              height: 55,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                color: Colors.blue,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Edit Schedule',
+                                  style: TextStyle(fontSize: 20, color: Colors.white),
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                  )
+                        )
+                      : SizedBox()
                 ],
               ),
             ),
@@ -385,25 +418,25 @@ class _MedicineDetailState extends State<MedicineDetail> {
   }
 
   void deletAlert(Vitel vitel, context) {
-    getmedicineController.getAllVitelFromDb(context);
-    int notificationId = int.parse(getmedicineController.selectedDate.day.toString() +
-        getmedicineController.selectedDate.month.toString() +
-        vitel.id.toString());
-    List<String> vDate = vitel.date.split(',');
-    print('--------------------------');
-    print(vitel.date);
-    var index = vDate.indexOf(getmedicineController.selectedDate.millisecondsSinceEpoch.toString());
-    print(index);
-    if (index == 0 || index == vDate.length - 1) {
-      vitel.date = vitel.date.replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString(), '');
-    } else {
-      vitel.date =
-          vitel.date.replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString() + ',', '');
-    }
-    print(vitel.date);
-    print(vDate);
+    // getmedicineController.getAllVitelFromDb(context);
+    // int notificationId = int.parse(getmedicineController.selectedDate.day.toString() +
+    //     getmedicineController.selectedDate.month.toString() +
+    //     vitel.id.toString());
+    // List<String> vDate = vitel.date.split(',');
+    // print('--------------------------');
+    // print(vitel.date);
+    // var index = vDate.indexOf(getmedicineController.selectedDate.millisecondsSinceEpoch.toString());
+    // print(index);
+    // if (index == 0 || index == vDate.length - 1) {
+    //   vitel.date = vitel.date.replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString(), '');
+    // } else {
+    //   vitel.date =
+    //       vitel.date.replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString() + ',', '');
+    // }
+    // print(vitel.date);
+    // print(vDate);
 
-    print(getmedicineController.selectedDate.millisecondsSinceEpoch);
+    // print(getmedicineController.selectedDate.millisecondsSinceEpoch);
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -426,6 +459,37 @@ class _MedicineDetailState extends State<MedicineDetail> {
                 child: Center(
                   child: InkWell(
                     onTap: () async {
+                      getmedicineController.getAllVitelFromDb(context);
+                      int notificationId = int.parse(getmedicineController.selectedDate.day.toString() +
+                          getmedicineController.selectedDate.month.toString() +
+                          vitel.id.toString());
+                      List<String> vDate = vitel.date.split(',');
+                      print('--------------------------');
+                      print(vitel.date);
+                      var index = vDate.indexOf(getmedicineController.selectedDate.millisecondsSinceEpoch.toString());
+                      print(index);
+                      print(vDate.length);
+                      if (vDate.length > 1 && index != vDate.length - 1) {
+                        vitel.date = vitel.date
+                            .replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString() + ',', '');
+                        print(vitel.date + 'from else--------------------');
+                      } else if (vDate.length < 2 && index == 0) {
+                        vitel.date = vitel.date
+                            .replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString(), '');
+                      } else if (index == vDate.length - 1) {
+                        print('Delete the last date vitel');
+                        vitel.date = vitel.date
+                            .replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString(), '');
+                      } else {
+                        vitel.date = vitel.date
+                            .replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString() + ',', '');
+                        print(vitel.date + 'from else--------------------');
+                      }
+                      print(vitel.date);
+                      print(vDate);
+
+                      print(getmedicineController.selectedDate.millisecondsSinceEpoch);
+
                       await Repository.update("vitel", vitel.vitelToMap(), vitel.id);
                       getmedicineController.getAllVitelFromDb(context);
                       AwesomeNotifications().cancelSchedule(notificationId);

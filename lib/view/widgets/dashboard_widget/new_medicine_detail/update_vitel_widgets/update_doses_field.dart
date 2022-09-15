@@ -24,356 +24,310 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
   String time_4 = '4th Dose';
   String time_5 = '5th Dose';
   String time_6 = '6th Dose';
-  DateTime _dateTime = DateTime.now();
-  AddMedicineController addmedicineController =
-      Get.put(AddMedicineController());
+  AddMedicineController addmedicineController = Get.put(AddMedicineController());
   @override
   Widget build(BuildContext context) {
     Vitel vitel = widget.vitel;
-    
-   
 
     return Container(
       margin: EdgeInsets.only(left: 40, top: 10),
-      child: Column(
-        children: <Widget>[
-          Container(
-            child: Row(
-              children: <Widget>[
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      dosageNumber = 1;
-                      vitel.doseSix = '';
-                      vitel.doseFive = '';
-                      vitel.doseFour = '';
-                      vitel.doseThree = '';
-                      vitel.doseTwo = '';
-                    });
-                  },
-                  child: CircleAvatar(
-                    radius: 12,
-                    backgroundColor:
-                        dosageNumber == 1 ? kPrimaryColor : offColor,
-                    child: Center(
-                      child: Text(
-                        '1',
-                        style: TextStyle(color: Colors.white),
-                      ),
+      child: Column(children: <Widget>[
+        Container(
+          child: Row(
+            children: <Widget>[
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    dosageNumber = 1;
+                    vitel.doseSix = '';
+                    vitel.doseFive = '';
+                    vitel.doseFour = '';
+                    vitel.doseThree = '';
+                    vitel.doseTwo = '';
+                  });
+                },
+                child: CircleAvatar(
+                  radius: 12,
+                  backgroundColor: dosageNumber == 1 ? kPrimaryColor : offColor,
+                  child: Center(
+                    child: Text(
+                      '1',
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      dosageNumber = 2;
-                      vitel.doseSix = '';
-                      vitel.doseFive = '';
-                      vitel.doseFour = '';
-                      vitel.doseThree = '';
-                    });
-                  },
-                  child: CircleAvatar(
-                    radius: 12,
-                    backgroundColor:
-                        dosageNumber == 2 ? kPrimaryColor : offColor,
-                    child: Center(
-                      child: Text(
-                        '2',
-                        style: TextStyle(color: Colors.white),
-                      ),
+              ),
+              SizedBox(width: 10),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    dosageNumber = 2;
+                    vitel.doseSix = '';
+                    vitel.doseFive = '';
+                    vitel.doseFour = '';
+                    vitel.doseThree = '';
+                  });
+                },
+                child: CircleAvatar(
+                  radius: 12,
+                  backgroundColor: dosageNumber == 2 ? kPrimaryColor : offColor,
+                  child: Center(
+                    child: Text(
+                      '2',
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      dosageNumber = 3;
-                      vitel.doseSix = '';
-                      vitel.doseFive = '';
-                      vitel.doseFour = '';
-                      
-                    });
-                  },
-                  child: CircleAvatar(
-                    radius: 12,
-                    backgroundColor:
-                        dosageNumber == 3 ? kPrimaryColor : offColor,
-                    child: Center(
-                      child: Text(
-                        '3',
-                        style: TextStyle(color: Colors.white),
-                      ),
+              ),
+              SizedBox(width: 10),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    dosageNumber = 3;
+                    vitel.doseSix = '';
+                    vitel.doseFive = '';
+                    vitel.doseFour = '';
+                  });
+                },
+                child: CircleAvatar(
+                  radius: 12,
+                  backgroundColor: dosageNumber == 3 ? kPrimaryColor : offColor,
+                  child: Center(
+                    child: Text(
+                      '3',
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      dosageNumber = 4;
-                      vitel.doseSix = '';
-                      vitel.doseFive = '';
-                    });
-                  },
-                  child: CircleAvatar(
-                    radius: 12,
-                    backgroundColor:
-                        dosageNumber == 4 ? kPrimaryColor : offColor,
-                    child: Center(
-                      child: Text(
-                        '4',
-                        style: TextStyle(color: Colors.white),
-                      ),
+              ),
+              SizedBox(width: 10),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    dosageNumber = 4;
+                    vitel.doseSix = '';
+                    vitel.doseFive = '';
+                  });
+                },
+                child: CircleAvatar(
+                  radius: 12,
+                  backgroundColor: dosageNumber == 4 ? kPrimaryColor : offColor,
+                  child: Center(
+                    child: Text(
+                      '4',
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      dosageNumber = 5;
-                      vitel.doseSix = '';
-                    });
-                  },
-                  child: CircleAvatar(
-                    radius: 12,
-                    backgroundColor:
-                        dosageNumber == 5 ? kPrimaryColor : offColor,
-                    child: Center(
-                      child: Text(
-                        '5',
-                        style: TextStyle(color: Colors.white),
-                      ),
+              ),
+              SizedBox(width: 10),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    dosageNumber = 5;
+                    vitel.doseSix = '';
+                  });
+                },
+                child: CircleAvatar(
+                  radius: 12,
+                  backgroundColor: dosageNumber == 5 ? kPrimaryColor : offColor,
+                  child: Center(
+                    child: Text(
+                      '5',
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      dosageNumber = 6;
-                    });
-                  },
-                  child: CircleAvatar(
-                    radius: 12,
-                    backgroundColor:
-                        dosageNumber == 6 ? kPrimaryColor : offColor,
-                    child: Center(
-                      child: Text(
-                        '6',
-                        style: TextStyle(color: Colors.white),
-                      ),
+              ),
+              SizedBox(width: 10),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    dosageNumber = 6;
+                  });
+                },
+                child: CircleAvatar(
+                  radius: 12,
+                  backgroundColor: dosageNumber == 6 ? kPrimaryColor : offColor,
+                  child: Center(
+                    child: Text(
+                      '6',
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  child: Row(
-                    children: <Widget>[
-                      vitel.doseOne.isNotEmpty || dosageNumber >= 1
-                          ? InkWell(
-                              onTap: () {
-                                FocusScopeNode currentFocus =
-                                    FocusScope.of(context);
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 10),
+          child: Column(
+            children: <Widget>[
+              Container(
+                child: Row(children: <Widget>[
+                  vitel.doseOne.isNotEmpty || dosageNumber >= 1
+                      ? InkWell(
+                          onTap: () {
+                            FocusScopeNode currentFocus = FocusScope.of(context);
 
-                                if (!currentFocus.hasPrimaryFocus) {
-                                  currentFocus.unfocus();
-                                }
-                                _showDialog('dose1');
-                              },
-                              child: Container(
-                                width: 95,
-                                height: 22,
-                                decoration: BoxDecoration(
-                                  borderRadius: new BorderRadius.all(
-                                    const Radius.circular(5.0),
-                                  ),
-                                  color: kPrimaryColor,
+                            if (!currentFocus.hasPrimaryFocus) {
+                              currentFocus.unfocus();
+                            }
+                            _showDialog('dose1');
+                          },
+                          child: Container(
+                            width: 95,
+                            height: 22,
+                            decoration: BoxDecoration(
+                              borderRadius: new BorderRadius.all(
+                                const Radius.circular(5.0),
+                              ),
+                              color: kPrimaryColor,
+                            ),
+                            margin: EdgeInsets.only(right: widget.dosageGap),
+                            child: Center(
+                              child: Text(
+                                vitel.doseOne.isNotEmpty ? vitel.doseOne : time_1,
+                                style: TextStyle(fontSize: 14, color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        )
+                      : SizedBox(),
+                  vitel.doseTwo.isNotEmpty || dosageNumber >= 2
+                      ? InkWell(
+                          onTap: () {
+                            _showDialog('dose2');
+                          },
+                          child: Container(
+                            width: 95,
+                            height: 22,
+                            decoration: BoxDecoration(
+                              borderRadius: new BorderRadius.all(
+                                const Radius.circular(5.0),
+                              ),
+                              color: kPrimaryColor,
+                            ),
+                            margin: EdgeInsets.only(right: widget.dosageGap, left: widget.dosageGap),
+                            child: Center(
+                              child: Text(
+                                vitel.doseTwo.isNotEmpty ? vitel.doseTwo : time_2,
+                                style: TextStyle(fontSize: 14, color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        )
+                      : SizedBox(),
+                  vitel.doseThree.isNotEmpty || dosageNumber >= 3
+                      ? InkWell(
+                          onTap: () {
+                            _showDialog('dose3');
+                          },
+                          child: Container(
+                            width: 95,
+                            height: 22,
+                            decoration: BoxDecoration(
+                              borderRadius: new BorderRadius.all(
+                                const Radius.circular(5.0),
+                              ),
+                              color: kPrimaryColor,
+                            ),
+                            margin: EdgeInsets.only(right: widget.dosageGap, left: widget.dosageGap),
+                            child: Center(
+                              child: Text(
+                                vitel.doseThree.isNotEmpty ? vitel.doseThree : time_3,
+                                style: TextStyle(fontSize: 14, color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        )
+                      : SizedBox(),
+                ]),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10),
+                child: Row(
+                  children: <Widget>[
+                    vitel.doseFour.isNotEmpty || dosageNumber >= 4
+                        ? InkWell(
+                            onTap: () {
+                              _showDialog('dose4');
+                            },
+                            child: Container(
+                              width: 95,
+                              height: 22,
+                              decoration: BoxDecoration(
+                                borderRadius: new BorderRadius.all(
+                                  const Radius.circular(5.0),
                                 ),
-                                margin:
-                                    EdgeInsets.only(right: widget.dosageGap),
-                                child: Center(
-                                  child: Text(
-                                    vitel.doseOne.isNotEmpty
-                                        ? vitel.doseOne
-                                        : time_1,
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white),
-                                  ),
+                                color: kPrimaryColor,
+                              ),
+                              margin: EdgeInsets.only(right: widget.dosageGap, bottom: 7),
+                              child: Center(
+                                child: Text(
+                                  vitel.doseFour.isNotEmpty ? vitel.doseFour : time_4,
+                                  style: TextStyle(fontSize: 14, color: Colors.white),
                                 ),
                               ),
-                            )
-                          : SizedBox(),
-                      vitel.doseTwo.isNotEmpty || dosageNumber >= 2
-                          ? InkWell(
-                              onTap: () {
-                                _showDialog('dose2');
-                              },
-                              child: Container(
-                                width: 95,
-                                height: 22,
-                                decoration: BoxDecoration(
-                                  borderRadius: new BorderRadius.all(
-                                    const Radius.circular(5.0),
-                                  ),
-                                  color: kPrimaryColor,
+                            ),
+                          )
+                        : SizedBox(),
+                    vitel.doseFive.isNotEmpty || dosageNumber >= 5
+                        ? InkWell(
+                            onTap: () {
+                              _showDialog('dose5');
+                            },
+                            child: Container(
+                              width: 95,
+                              height: 22,
+                              decoration: BoxDecoration(
+                                borderRadius: new BorderRadius.all(
+                                  const Radius.circular(5.0),
                                 ),
-                                margin: EdgeInsets.only(
-                                    right: widget.dosageGap,
-                                    left: widget.dosageGap),
-                                child: Center(
-                                  child: Text(
-                                    vitel.doseTwo.isNotEmpty
-                                        ? vitel.doseTwo
-                                        : time_2,
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white),
-                                  ),
+                                color: kPrimaryColor,
+                              ),
+                              margin: EdgeInsets.only(right: widget.dosageGap, left: widget.dosageGap, bottom: 7),
+                              child: Center(
+                                child: Text(
+                                  vitel.doseFive.isNotEmpty ? vitel.doseFive : time_5,
+                                  style: TextStyle(fontSize: 14, color: Colors.white),
                                 ),
                               ),
-                            )
-                          : SizedBox(),
-                      vitel.doseThree.isNotEmpty || dosageNumber >= 3
-                          ? InkWell(
-                              onTap: () {
-                                _showDialog('dose3');
-                              },
-                              child: Container(
-                                width: 95,
-                                height: 22,
-                                decoration: BoxDecoration(
-                                  borderRadius: new BorderRadius.all(
-                                    const Radius.circular(5.0),
-                                  ),
-                                  color: kPrimaryColor,
+                            ),
+                          )
+                        : SizedBox(),
+                    vitel.doseSix.isNotEmpty || dosageNumber == 6
+                        ? InkWell(
+                            onTap: () {
+                              _showDialog('dose6');
+                            },
+                            child: Container(
+                              width: 95,
+                              height: 22,
+                              decoration: BoxDecoration(
+                                borderRadius: new BorderRadius.all(
+                                  const Radius.circular(5.0),
                                 ),
-                                margin: EdgeInsets.only(
-                                    right: widget.dosageGap,
-                                    left: widget.dosageGap),
-                                child: Center(
-                                  child: Text(
-                                    vitel.doseThree.isNotEmpty
-                                        ? vitel.doseThree
-                                        : time_3,
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white),
-                                  ),
+                                color: kPrimaryColor,
+                              ),
+                              margin: EdgeInsets.only(right: widget.dosageGap, left: widget.dosageGap, bottom: 7),
+                              child: Center(
+                                child: Text(
+                                  vitel.doseSix.isNotEmpty ? vitel.doseSix : time_6,
+                                  style: TextStyle(fontSize: 14, color: Colors.white),
                                 ),
                               ),
-                            )
-                          : SizedBox(),
-                    ],
-                  ),
+                            ),
+                          )
+                        : SizedBox(),
+                  ],
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 10),
-                  child: Row(
-                    children: <Widget>[
-                      vitel.doseFour.isNotEmpty || dosageNumber >= 4
-                          ? InkWell(
-                              onTap: () {
-                                _showDialog('dose4');
-                              },
-                              child: Container(
-                                width: 95,
-                                height: 22,
-                                decoration: BoxDecoration(
-                                  borderRadius: new BorderRadius.all(
-                                    const Radius.circular(5.0),
-                                  ),
-                                  color: kPrimaryColor,
-                                ),
-                                margin: EdgeInsets.only(
-                                    right: widget.dosageGap, bottom: 7),
-                                child: Center(
-                                  child: Text(
-                                    vitel.doseFour.isNotEmpty
-                                        ? vitel.doseFour
-                                        : time_4,
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                            )
-                          : SizedBox(),
-                      vitel.doseFive.isNotEmpty || dosageNumber >= 5
-                          ? InkWell(
-                              onTap: () {
-                                _showDialog('dose5');
-                              },
-                              child: Container(
-                                width: 95,
-                                height: 22,
-                                decoration: BoxDecoration(
-                                  borderRadius: new BorderRadius.all(
-                                    const Radius.circular(5.0),
-                                  ),
-                                  color: kPrimaryColor,
-                                ),
-                                margin: EdgeInsets.only(
-                                    right: widget.dosageGap,
-                                    left: widget.dosageGap,
-                                    bottom: 7),
-                                child: Center(
-                                  child: Text(
-                                    vitel.doseFive.isNotEmpty
-                                        ? vitel.doseFive
-                                        : time_5,
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                            )
-                          : SizedBox(),
-                      vitel.doseSix.isNotEmpty || dosageNumber == 6
-                          ? InkWell(
-                              onTap: () {
-                                _showDialog('dose6');
-                              },
-                              child: Container(
-                                width: 95,
-                                height: 22,
-                                decoration: BoxDecoration(
-                                  borderRadius: new BorderRadius.all(
-                                    const Radius.circular(5.0),
-                                  ),
-                                  color: kPrimaryColor,
-                                ),
-                                margin: EdgeInsets.only(
-                                    right: widget.dosageGap,
-                                    left: widget.dosageGap,
-                                    bottom: 7),
-                                child: Center(
-                                  child: Text(
-                                    vitel.doseSix.isNotEmpty
-                                        ? vitel.doseSix
-                                        : time_6,
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                            )
-                          : SizedBox(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
+              ),
+            ],
+          ),
+        )
+      ]),
     );
   }
 
@@ -384,7 +338,7 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
       builder: (BuildContext context) {
         // return object of type Dialog
         return MediaQuery(
-           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
           child: Dialog(
             backgroundColor: Colors.transparent,
             child: Container(
@@ -452,10 +406,7 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
                         child: Center(
                           child: Text(
                             'Set Dose',
-                            style: TextStyle(
-                                color: kPrimaryColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500),
+                            style: TextStyle(color: kPrimaryColor, fontSize: 16, fontWeight: FontWeight.w500),
                           ),
                         ),
                       ),
@@ -490,10 +441,8 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
       spacing: 5.0,
       isForce2Digits: true,
       is24HourMode: false,
-      highlightedTextStyle: TextStyle(
-          fontSize: 42, color: Colors.white, fontWeight: FontWeight.w800),
-      normalTextStyle: TextStyle(
-          color: Colors.white, fontSize: 42, fontWeight: FontWeight.w800),
+      highlightedTextStyle: TextStyle(fontSize: 42, color: Colors.white, fontWeight: FontWeight.w800),
+      normalTextStyle: TextStyle(color: Colors.white, fontSize: 42, fontWeight: FontWeight.w800),
       onTimeChange: (time) {
         if (doseName == 'dose1') {
           setState(() {
