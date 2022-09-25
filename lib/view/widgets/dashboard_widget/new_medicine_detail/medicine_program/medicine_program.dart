@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MedicinePrograme extends StatefulWidget {
+  bool addButtonClicked;
+  MedicinePrograme({required this.addButtonClicked});
   @override
   _MedicineProgrameState createState() => _MedicineProgrameState();
 }
@@ -12,63 +14,56 @@ class MedicinePrograme extends StatefulWidget {
 class _MedicineProgrameState extends State<MedicinePrograme> {
   int selectedDays = 0;
   int _currentIntValue = 0;
-  AddMedicineController addmedicineController =
-      Get.put(AddMedicineController());
+
+  AddMedicineController addmedicineController = Get.put(AddMedicineController());
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(left: 40, top: 0),
-              child: Text(
-                'Program',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: addmedicineController.program == 0
-                        ? Colors.red
-                        : kPrimaryColor,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-            SizedBox(height: 10),
-            InkWell(
-              onTap: () {
-                FocusScopeNode currentFocus = FocusScope.of(context);
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(left: 40, top: 0),
+          child: Text(
+            'Program',
+            style: TextStyle(fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.w600),
+          ),
+        ),
+        SizedBox(height: 10),
+        InkWell(
+          onTap: () {
+            FocusScopeNode currentFocus = FocusScope.of(context);
 
-                if (!currentFocus.hasPrimaryFocus) {
-                  currentFocus.unfocus();
-                }
-                _showDialog();
-              },
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(left: 40),
-                      child: Text(
-                        selectedDays == 0
-                            ? 'How Many Days?'
-                            : selectedDays.toString(),
-                        style: TextStyle(
-                            color:
-                                selectedDays == 0 ? Colors.grey : Colors.black,
-                            fontSize: 16),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 40, right: 30, top: 10),
-                      height: 1.3,
-                      width: MediaQuery.of(context).size.width,
-                      color: Colors.grey,
-                    )
-                  ],
+            if (!currentFocus.hasPrimaryFocus) {
+              currentFocus.unfocus();
+            }
+            _showDialog();
+          },
+          child: Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: 40),
+                  child: Text(
+                    selectedDays == 0 ? 'How Many Days?' : selectedDays.toString(),
+                    style: TextStyle(color: selectedDays == 0 ? Colors.grey : Colors.black, fontSize: 16),
+                  ),
                 ),
-              ),
-            )
-          ]),
+                Container(
+                  margin: EdgeInsets.only(left: 40, right: 30, top: 10),
+                  height: 1.3,
+                  width: MediaQuery.of(context).size.width,
+                  color: widget.addButtonClicked && selectedDays == 0 ? Colors.red : Colors.grey,
+                ),
+                widget.addButtonClicked && selectedDays == 0
+                    ? Container(
+                        margin: EdgeInsets.only(left: 40),
+                        child: Text('Please add program days', style: TextStyle(color: Colors.red, fontSize: 11)))
+                    : SizedBox()
+              ],
+            ),
+          ),
+        )
+      ]),
     );
   }
 
@@ -112,9 +107,10 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                             onSelectedItemChanged: (int index) {
                               setState(() {
                                 selectedDays = index;
+                                widget.addButtonClicked = false;
                               });
-                              Get.find<AddMedicineController>()
-                                  .changeProgram(selectedDays);
+
+                              Get.find<AddMedicineController>().changeProgram(selectedDays);
                             },
                             children: [
                               for (int i = 0; i <= 100; i++)
@@ -124,10 +120,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                                     color: kPrimaryColor,
                                     child: Text(
                                       i.toString(),
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 50,
-                                          fontWeight: FontWeight.w600),
+                                      style: TextStyle(color: Colors.white, fontSize: 50, fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 )
@@ -142,10 +135,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                       child: Container(
                         child: Text(
                           'Total',
-                          style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600),
+                          style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),
                     ),
@@ -156,10 +146,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                         child: Center(
                           child: Text(
                             'Days',
-                            style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600),
+                            style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),
@@ -182,10 +169,7 @@ class _MedicineProgrameState extends State<MedicinePrograme> {
                           child: Center(
                             child: Text(
                               'Set Program',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: kPrimaryColor,
-                                  fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 16, color: kPrimaryColor, fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),

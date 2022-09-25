@@ -13,19 +13,15 @@ class MedicineInfoTextField extends StatefulWidget {
 
 class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
   TextEditingController editingController = new TextEditingController();
-  AddMedicineController addmedicineController =
-      Get.put(AddMedicineController());
+  AddMedicineController addmedicineController = Get.put(AddMedicineController());
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
-            Radius.circular(5),
-          ),
-          border: addmedicineController.addmedicine &&
-                  addmedicineController.name.isEmpty
-              ? Border.all(color: Colors.red)
-              : null),
+        borderRadius: BorderRadius.all(
+          Radius.circular(5),
+        ),
+      ),
       margin: EdgeInsets.only(
         left: 40,
         right: 30,
@@ -33,7 +29,7 @@ class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
       child: TextFormField(
         //maxLengthEnforcement: MaxLengthEnforcement.none,
         validator: (value) {
-          if (value != '') {
+          if (value == null || value.isEmpty) {
             return "Please enter a medicine name";
           }
           return null;

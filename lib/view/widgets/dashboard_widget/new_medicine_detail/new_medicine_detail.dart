@@ -31,6 +31,7 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
   double screenWidth = 0;
   double dosageGap = 0;
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool addButtonClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -48,123 +49,120 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
         builder: (addController) {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-            child: Scaffold(
-              resizeToAvoidBottomInset: false,
-              body: Center(
-                child: Container(
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5))),
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.only(left: 40, top: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                child: Text(
-                                  'Add New Medicine',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 20,
+            child: Container(
+              child: Form(
+                key: _formKey,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5))),
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.only(left: 40, top: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              child: Text(
+                                'Add New Medicine',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(right: 20),
+                              child: InkWell(
+                                onTap: () {
+                                  addmedicineController.isMedicineAdded(false);
+                                  Navigator.pop(context);
+                                },
+                                child: Container(
+                                  child: Icon(
+                                    Icons.arrow_downward,
+                                    color: Colors.green.withOpacity(0.8),
                                   ),
                                 ),
                               ),
-                              Container(
-                                margin: EdgeInsets.only(right: 20),
-                                child: InkWell(
-                                  onTap: () {
-                                    addmedicineController.isMedicineAdded(false);
-                                    Navigator.pop(context);
-                                  },
-                                  child: Container(
-                                    child: Icon(
-                                      Icons.arrow_downward,
-                                      color: Colors.green.withOpacity(0.8),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(left: 40, top: 30),
-                                child: Text(
-                                  'Name',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: addmedicineController.name.isEmpty ? Colors.red : kPrimaryColor,
-                                      fontWeight: FontWeight.w600),
-                                ),
+                      ),
+                      Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(left: 40, top: 30),
+                              child: Text(
+                                'Name',
+                                style: TextStyle(fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.w600),
                               ),
-                              MedicineInfoTextField(
-                                type: 'Medicine Name',
-                                vitelName: '',
+                            ),
+                            MedicineInfoTextField(
+                              type: 'Medicine Name',
+                              vitelName: '',
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 40, top: 10),
+                              child: Text(
+                                'Daily Dosage',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: addmedicineController.isDoseEmpty ? Colors.red : kPrimaryColor,
+                                    fontWeight: FontWeight.w600),
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 40, top: 10),
-                                child: Text(
-                                  'Daily Dosage',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: addmedicineController.isDoseEmpty ? Colors.red : kPrimaryColor,
-                                      fontWeight: FontWeight.w600),
-                                ),
+                            ),
+                            MedicineDosageField(dosageGap: dosageGap),
+                            MedicinePrograme(addButtonClicked: addButtonClicked),
+                            MedicineQuantity(addButtonClicked: addButtonClicked),
+                            Container(
+                              margin: EdgeInsets.only(left: 40, top: 23, right: 40),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Get.find<AddMedicineController>().changeAfterMeal(1);
+                                      setState(() {
+                                        meal = 'after';
+                                      });
+                                    },
+                                    child: AfterMeal(meal, 'add'),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.find<AddMedicineController>().changeAfterMeal(0);
+                                      setState(() {
+                                        meal = 'before';
+                                      });
+                                    },
+                                    child: BeforeMeal(meal, 'other'),
+                                  ),
+                                ],
                               ),
-                              MedicineDosageField(dosageGap: dosageGap),
-                              MedicinePrograme(),
-                              MedicineQuantity(),
-                              Container(
-                                margin: EdgeInsets.only(left: 40, top: 23, right: 40),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        Get.find<AddMedicineController>().changeAfterMeal(1);
-                                        setState(() {
-                                          meal = 'after';
-                                        });
-                                      },
-                                      child: AfterMeal(meal, 'add'),
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        Get.find<AddMedicineController>().changeAfterMeal(0);
-                                        setState(() {
-                                          meal = 'before';
-                                        });
-                                      },
-                                      child: BeforeMeal(meal, 'other'),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  if (addController.doseOne.isNotEmpty ||
-                                      addController.doseTwo.isNotEmpty ||
-                                      addController.doseThree.isNotEmpty ||
-                                      addController.doseFour.isNotEmpty ||
-                                      addController.doseFive.isNotEmpty ||
-                                      addController.doseSix.isNotEmpty) {
-                                    addmedicineController.doseEmpty(false);
-                                  } else {
-                                    addmedicineController.doseEmpty(true);
-                                  }
-                                  // if (_formKey.currentState.validate()) {
+                            ),
+                            InkWell(
+                              onTap: () async {
+                                setState(() {
+                                  addButtonClicked = true;
+                                });
+                                if (addController.doseOne.isNotEmpty ||
+                                    addController.doseTwo.isNotEmpty ||
+                                    addController.doseThree.isNotEmpty ||
+                                    addController.doseFour.isNotEmpty ||
+                                    addController.doseFive.isNotEmpty ||
+                                    addController.doseSix.isNotEmpty) {
+                                  addmedicineController.doseEmpty(false);
+                                } else {
+                                  addmedicineController.doseEmpty(true);
+                                }
+                                if (_formKey.currentState!.validate()) {
                                   if ((addController.afterMeal == 0 || addController.afterMeal == 1) &&
                                       addController.quantity != 0 &&
                                       addController.program != 0 &&
@@ -229,34 +227,33 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                       ),
                                     );
                                   }
+                                }
 
-                                  // }
-                                },
-                                child: Center(
-                                  child: Container(
-                                    margin: EdgeInsets.only(left: 40, top: 20, right: 40),
-                                    decoration: BoxDecoration(
-                                        color: kPrimaryColor, borderRadius: BorderRadius.all(Radius.circular(15))),
-                                    height: 55,
-                                    width: MediaQuery.of(context).size.width * .8,
-                                    child: Center(
-                                      child: Text(
-                                        'Add Schedule',
-                                        style:
-                                            TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w600),
-                                      ),
+                                // }
+                              },
+                              child: Center(
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 40, top: 20, right: 40),
+                                  decoration: BoxDecoration(
+                                      color: kPrimaryColor, borderRadius: BorderRadius.all(Radius.circular(15))),
+                                  height: 55,
+                                  width: MediaQuery.of(context).size.width * .8,
+                                  child: Center(
+                                    child: Text(
+                                      'Add Schedule',
+                                      style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                height: 10,
-                              )
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            )
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
