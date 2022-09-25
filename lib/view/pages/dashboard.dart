@@ -38,7 +38,9 @@ class _DashBoardState extends State<DashBoard> {
               headerTitle = authController.userPhone;
             }
             return Center(
-              child: CacheService.instance.skipLogin.get('skipLogin').toString().isEmpty ? Text('Welcome, ' + headerTitle) : Text('Welcome'),
+              child: CacheService.instance.skipLogin.get('skipLogin').toString().isEmpty
+                  ? Text('Welcome, ' + headerTitle)
+                  : Text('Welcome'),
             );
           },
         ),
@@ -80,7 +82,7 @@ class _DashBoardState extends State<DashBoard> {
                               child: MedicineInfoTile(),
                             )
                           : Container(
-                              height: MediaQuery.of(context).size.height - 280,
+                              height: MediaQuery.of(context).size.height,
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
@@ -90,10 +92,10 @@ class _DashBoardState extends State<DashBoard> {
                                 color: Color(0xffEDF7FF),
                               ),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    height: 10,
+                                    height: 50,
                                   ),
                                   Image.asset(
                                     'assets/images/no_vital.png',
