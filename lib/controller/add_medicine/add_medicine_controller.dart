@@ -9,12 +9,13 @@ class AddMedicineController extends GetxController {
   String doseFour = '';
   String doseFive = '';
   String doseSix = '';
+  int totalDose = 0;
   late String startDate;
   late int program = 0;
   late int quantity = 0;
   late String endDate;
   int afterMeal = 0;
-  bool isDoseEmpty = true;
+  bool isDoseEmpty = false;
   bool addmedicine = false;
   void changeId(int vitelId) {
     id = vitelId;
@@ -69,7 +70,8 @@ class AddMedicineController extends GetxController {
 
     update();
   }
-   void doseEmpty(bool hasDose) {
+
+  void doseEmpty(bool hasDose) {
     isDoseEmpty = hasDose;
 
     update();
@@ -103,5 +105,56 @@ class AddMedicineController extends GetxController {
   void changeAfterMeal(int vitelMeal) {
     afterMeal = vitelMeal;
     update();
+  }
+
+  void allDoseSet() {
+    if (totalDose == 6) {
+      if (doseOne.isNotEmpty &&
+          doseTwo.isNotEmpty &&
+          doseThree.isNotEmpty &&
+          doseFour.isNotEmpty &&
+          doseFive.isNotEmpty &&
+          doseSix.isNotEmpty) {
+        doseEmpty(false);
+      } else {
+        doseEmpty(true);
+      }
+    } else if (totalDose == 5) {
+      if (doseOne.isNotEmpty &&
+          doseTwo.isNotEmpty &&
+          doseThree.isNotEmpty &&
+          doseFour.isNotEmpty &&
+          doseFive.isNotEmpty) {
+        doseEmpty(false);
+      } else {
+        doseEmpty(true);
+      }
+    } else if (totalDose == 4) {
+      if (doseOne.isNotEmpty && doseTwo.isNotEmpty && doseThree.isNotEmpty && doseFour.isNotEmpty) {
+        doseEmpty(false);
+      } else {
+        doseEmpty(true);
+      }
+    } else if (totalDose == 3) {
+      if (doseOne.isNotEmpty && doseTwo.isNotEmpty && doseThree.isNotEmpty) {
+        doseEmpty(false);
+      } else {
+        doseEmpty(true);
+      }
+    } else if (totalDose == 2) {
+      if (doseOne.isNotEmpty && doseTwo.isNotEmpty) {
+        doseEmpty(false);
+      } else {
+        doseEmpty(true);
+      }
+    } else if (totalDose == 1) {
+      if (doseOne.isNotEmpty) {
+        doseEmpty(false);
+      } else {
+        doseEmpty(true);
+      }
+    } else {
+      doseEmpty(false);
+    }
   }
 }

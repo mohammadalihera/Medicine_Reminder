@@ -112,13 +112,15 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                               margin: EdgeInsets.only(left: 40, top: 10),
                               child: Text(
                                 'Daily Dosage',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: addmedicineController.isDoseEmpty ? Colors.red : kPrimaryColor,
-                                    fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.w600),
                               ),
                             ),
                             MedicineDosageField(dosageGap: dosageGap),
+                            addButtonClicked && addController.isDoseEmpty
+                                ? Padding(
+                                    padding: EdgeInsets.only(left: 40),
+                                    child: Text('Pleae set all the doses time', style: TextStyle(color: Colors.red)))
+                                : SizedBox(),
                             MedicinePrograme(addButtonClicked: addButtonClicked),
                             MedicineQuantity(addButtonClicked: addButtonClicked),
                             Container(
@@ -152,26 +154,14 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                 setState(() {
                                   addButtonClicked = true;
                                 });
-                                if (addController.doseOne.isNotEmpty ||
-                                    addController.doseTwo.isNotEmpty ||
-                                    addController.doseThree.isNotEmpty ||
-                                    addController.doseFour.isNotEmpty ||
-                                    addController.doseFive.isNotEmpty ||
-                                    addController.doseSix.isNotEmpty) {
-                                  addmedicineController.doseEmpty(false);
-                                } else {
-                                  addmedicineController.doseEmpty(true);
-                                }
+
+                                addController.allDoseSet();
+
                                 if (_formKey.currentState!.validate()) {
                                   if ((addController.afterMeal == 0 || addController.afterMeal == 1) &&
                                       addController.quantity != 0 &&
                                       addController.program != 0 &&
-                                      (addController.doseOne.isNotEmpty ||
-                                          addController.doseTwo.isNotEmpty ||
-                                          addController.doseThree.isNotEmpty ||
-                                          addController.doseFour.isNotEmpty ||
-                                          addController.doseFive.isNotEmpty ||
-                                          addController.doseSix.isNotEmpty)) {
+                                      !addController.isDoseEmpty) {
                                     addvitel(
                                         addController.name,
                                         addController.doseOne,

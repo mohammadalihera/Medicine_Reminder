@@ -15,8 +15,28 @@ class MedicineInfoTile extends StatefulWidget {
 class _MedicineInfoTileState extends State<MedicineInfoTile> {
   double displayHeight = 0;
   GetMedicineController getmedicineController = Get.put(GetMedicineController());
+  Color cardColor = Color(0xffE3E3E3);
+  Color textColor = Color(0xff606365);
+  Color shadowColor = Color(0xffC1C8CC);
+  Color borderColor = Color(0xffC1C8CC);
+
   @override
   Widget build(BuildContext context) {
+    if ((Get.find<GetMedicineController>().selectedDate.day < DateTime.now().day &&
+            Get.find<GetMedicineController>().selectedDate.month > DateTime.now().month) ||
+        ((Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
+                Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day) &&
+            (Get.find<GetMedicineController>().selectedDate.month > DateTime.now().month ||
+                Get.find<GetMedicineController>().selectedDate.month == DateTime.now().month))) {
+      cardColor = Colors.white;
+      textColor = Colors.blue;
+      shadowColor = Colors.blue;
+      borderColor = Color(0xffEDF7FF).withOpacity(0.2);
+    } else {
+      cardColor = Color(0xffE3E3E3);
+      textColor = Color(0xff606365);
+      borderColor = Color(0xffC1C8CC);
+    }
     return Container(
         padding: EdgeInsets.only(bottom: 50),
         margin: EdgeInsets.only(
@@ -36,17 +56,19 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                     return InkWell(
                       onTap: () => medicineDetail(getmedicineController.selectedVitel[i]),
                       child: Card(
-                        shadowColor: Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
-                                Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
-                            ? Colors.blue
-                            : Color(0xffC1C8CC),
+                        shadowColor: shadowColor,
+                        // Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
+                        //         Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
+                        //     ? Colors.blue
+                        //     : Color(0xffC1C8CC),
                         elevation: 4,
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
-                                    Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
-                                ? Color(0xffEDF7FF).withOpacity(0.2)
-                                : Color(0xffC1C8CC),
+                            color: borderColor,
+                            //  Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
+                            //         Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
+                            //     ? Color(0xffEDF7FF).withOpacity(0.2)
+                            //     : Color(0xffC1C8CC),
                             width: 4,
                           ),
                           borderRadius: BorderRadius.circular(25),
@@ -54,14 +76,19 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                         color: Color(0xffEDF7FF),
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(25),
-                            ),
-                            color: Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
-                                    Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
-                                ? Colors.white
-                                : Color(0xffE3E3E3),
-                          ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(25),
+                              ),
+                              color: cardColor
+                              // ((Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
+                              //             Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day) &&
+                              //         (Get.find<GetMedicineController>().selectedDate.month > DateTime.now().month ||
+                              //             Get.find<GetMedicineController>().selectedDate.month == DateTime.now().month) &&
+                              //         (Get.find<GetMedicineController>().selectedDate.year > DateTime.now().year ||
+                              //             Get.find<GetMedicineController>().selectedDate.year == DateTime.now().year))
+                              //     ? Colors.white
+                              //     : Color(0xffE3E3E3),
+                              ),
                           margin: EdgeInsets.all(4),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -72,14 +99,12 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                                   getmedicineController.selectedVitel[i].name,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
-                                            Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
-                                        ? Colors.blue
-                                        : Color(0xff606365),
-                                  ),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: textColor
+                                      // Get.find<GetMedicineController>().selectedDate.day > DateTime.now().day ||
+                                      //         Get.find<GetMedicineController>().selectedDate.day == DateTime.now().day
+                                      //     ? Colors.blue
+                                      //     : Color(0xff606365),
+                                      ),
                                 ),
                               ),
                               getmedicineController.selectedVitel[i].afterMeal == 1
@@ -89,13 +114,12 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                                 margin: EdgeInsets.only(top: 5),
                                 child: Text(
                                   numberOfTime(getmedicineController.selectedVitel[i]),
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      color: Get.find<GetMedicineController>().selectedDate.microsecondsSinceEpoch >
-                                              DateTime.now().microsecondsSinceEpoch
-                                          ? Colors.blue
-                                          : Color(0xff606365)),
+                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: textColor
+                                      // Get.find<GetMedicineController>().selectedDate.microsecondsSinceEpoch >
+                                      //         DateTime.now().microsecondsSinceEpoch
+                                      //     ? Colors.blue
+                                      //     : Color(0xff606365)
+                                      ),
                                 ),
                               ),
                               Container(
@@ -117,8 +141,7 @@ class _MedicineInfoTileState extends State<MedicineInfoTile> {
                                     SizedBox(height: 2),
                                     Text(
                                       getmedicineController.selectedVitel[i].doseOne,
-                                      style: TextStyle(
-                                          fontSize: 14, fontWeight: FontWeight.w700, color: Color(0xff606365)),
+                                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: textColor),
                                     ),
                                   ],
                                 ),

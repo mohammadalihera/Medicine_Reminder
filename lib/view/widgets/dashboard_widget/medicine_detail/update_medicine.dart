@@ -44,8 +44,8 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
         builder: (addController) {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-            child: Center(
-              child: Container(
+            child: Container(
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -83,89 +83,91 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
                       ),
                     ),
                     Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.only(left: 40, top: 30),
-                            child: Text(
-                              'Name',
-                              style: TextStyle(fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.w600),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(left: 40, top: 30),
+                              child: Text(
+                                'Name',
+                                style: TextStyle(fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.w600),
+                              ),
                             ),
-                          ),
-                          MedicineInfoTextField(
-                            type: 'Medicine Name',
-                            vitelName: vitel.name,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left: 40, top: 10),
-                            child: Text(
-                              'Daily Dosage',
-                              style: TextStyle(fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.w600),
+                            MedicineInfoTextField(
+                              type: 'Medicine Name',
+                              vitelName: vitel.name,
                             ),
-                          ),
-                          UpdateDosageField(
-                            dosageGap: dosageGap,
-                            vitel: vitel,
-                          ),
-                          UpdatePrograme(vitel),
-                          UpdateMedicineQuantity(vitel),
-                          Container(
-                            margin: EdgeInsets.only(left: 40, top: 23, right: 40),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    Get.find<AddMedicineController>().changeAfterMeal(1);
-                                    setState(() {
-                                      meal = 'after';
-                                      vitel.afterMeal = 1;
-                                    });
-                                  },
-                                  child: AfterMeal(meal, 'add'),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    Get.find<AddMedicineController>().changeAfterMeal(0);
-                                    setState(() {
-                                      meal = 'before';
-                                      vitel.afterMeal = 0;
-                                    });
-                                  },
-                                  child: BeforeMeal(meal, 'other'),
-                                ),
-                              ],
+                            Container(
+                              margin: EdgeInsets.only(left: 40, top: 10),
+                              child: Text(
+                                'Daily Dosage',
+                                style: TextStyle(fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.w600),
+                              ),
                             ),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              vitel.name = addController.name;
-                              vitel.program = addController.program;
-                              vitel.quantity = addController.quantity;
-                              addvitel(vitel, addController.program, context);
-                            },
-                            child: Center(
-                              child: Container(
-                                margin: EdgeInsets.only(left: 40, top: 20, right: 40),
-                                decoration: BoxDecoration(
-                                    color: kPrimaryColor, borderRadius: BorderRadius.all(Radius.circular(15))),
-                                height: 55,
-                                width: MediaQuery.of(context).size.width * .8,
-                                child: Center(
-                                  child: Text(
-                                    'Update Schedule',
-                                    style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w600),
+                            UpdateDosageField(
+                              dosageGap: dosageGap,
+                              vitel: vitel,
+                            ),
+                            UpdatePrograme(vitel),
+                            UpdateMedicineQuantity(vitel),
+                            Container(
+                              margin: EdgeInsets.only(left: 40, top: 23, right: 40),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Get.find<AddMedicineController>().changeAfterMeal(1);
+                                      setState(() {
+                                        meal = 'after';
+                                        vitel.afterMeal = 1;
+                                      });
+                                    },
+                                    child: AfterMeal(meal, 'add'),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.find<AddMedicineController>().changeAfterMeal(0);
+                                      setState(() {
+                                        meal = 'before';
+                                        vitel.afterMeal = 0;
+                                      });
+                                    },
+                                    child: BeforeMeal(meal, 'other'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () async {
+                                vitel.name = addController.name;
+                                vitel.program = addController.program;
+                                vitel.quantity = addController.quantity;
+                                addvitel(vitel, addController.program, context);
+                              },
+                              child: Center(
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 40, top: 20, right: 40),
+                                  decoration: BoxDecoration(
+                                      color: kPrimaryColor, borderRadius: BorderRadius.all(Radius.circular(15))),
+                                  height: 55,
+                                  width: MediaQuery.of(context).size.width * .8,
+                                  child: Center(
+                                    child: Text(
+                                      'Update Schedule',
+                                      style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w600),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          )
-                        ],
+                            SizedBox(
+                              height: 10,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],

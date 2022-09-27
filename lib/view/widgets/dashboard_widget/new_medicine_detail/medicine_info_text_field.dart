@@ -14,6 +14,14 @@ class MedicineInfoTextField extends StatefulWidget {
 class _MedicineInfoTextFieldState extends State<MedicineInfoTextField> {
   TextEditingController editingController = new TextEditingController();
   AddMedicineController addmedicineController = Get.put(AddMedicineController());
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    editingController.text = widget.vitelName;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(

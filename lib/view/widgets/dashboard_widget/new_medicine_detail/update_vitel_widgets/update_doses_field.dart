@@ -25,6 +25,25 @@ class _UpdateDosageFieldState extends State<UpdateDosageField> {
   String time_5 = '5th Dose';
   String time_6 = '6th Dose';
   AddMedicineController addmedicineController = Get.put(AddMedicineController());
+
+  @override
+  void initState() {
+    if (widget.vitel.doseSix.isNotEmpty) {
+      dosageNumber = 6;
+    } else if (widget.vitel.doseFive.isNotEmpty) {
+      dosageNumber = 5;
+    } else if (widget.vitel.doseFour.isNotEmpty) {
+      dosageNumber = 4;
+    } else if (widget.vitel.doseThree.isNotEmpty) {
+      dosageNumber = 3;
+    } else if (widget.vitel.doseTwo.isNotEmpty) {
+      dosageNumber = 2;
+    } else if (widget.vitel.doseOne.isNotEmpty) {
+      dosageNumber = 1;
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Vitel vitel = widget.vitel;
