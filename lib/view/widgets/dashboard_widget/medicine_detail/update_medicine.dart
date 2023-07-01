@@ -181,8 +181,6 @@ class _UpdateMedicineDetailState extends State<UpdateMedicineDetail> {
 
 void addvitel(Vitel vitel, int additionProgram, context) async {
   DateTime newMedicineDate = DateTime.now();
-  print('bitel datee------------------------');
-  print(vitel.date);
   if (vitel.date.contains(',')) {
     newMedicineDate = DateTime.fromMillisecondsSinceEpoch(int.parse(vitel.date.split(',').first));
   } else {

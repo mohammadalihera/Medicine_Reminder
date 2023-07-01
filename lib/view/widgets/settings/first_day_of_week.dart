@@ -14,8 +14,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: new BorderRadius.only(
-            topRight: Radius.circular(50.0), topLeft: Radius.circular(50.0)),
+        borderRadius: new BorderRadius.only(topRight: Radius.circular(50.0), topLeft: Radius.circular(50.0)),
         color: Color(0xffEDF7FF),
       ),
       height: 200,
@@ -30,8 +29,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
               children: [
                 InkWell(
                   onTap: () {
-                    Get.find<GetMedicineController>()
-                        .changeFirstDayOfWeek('Sat');
+                    Get.find<GetMedicineController>().changeFirstDayOfWeek('Sat');
                     Navigator.pop(context);
                     showSnackBar(context);
                   },
@@ -42,20 +40,14 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                         borderRadius: BorderRadius.all(
                           Radius.circular(4),
                         ),
-                        color: CacheService.instance.firstDayOfWeek
-                                    .get('firstDayOfWeek')
-                                    .toString() ==
-                                'Sat'
+                        color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Sat'
                             ? Colors.white
                             : kPrimaryColor),
                     child: Center(
                       child: Text(
                         'Sat',
                         style: TextStyle(
-                            color: CacheService.instance.firstDayOfWeek
-                                        .get('firstDayOfWeek')
-                                        .toString() ==
-                                    'Sat'
+                            color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Sat'
                                 ? kPrimaryColor
                                 : Colors.white,
                             fontSize: 18,
@@ -66,8 +58,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.find<GetMedicineController>()
-                        .changeFirstDayOfWeek('Sun');
+                    Get.find<GetMedicineController>().changeFirstDayOfWeek('Sun');
                     Navigator.pop(context);
                     showSnackBar(context);
                   },
@@ -78,20 +69,14 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                         borderRadius: BorderRadius.all(
                           Radius.circular(4),
                         ),
-                        color: CacheService.instance.firstDayOfWeek
-                                    .get('firstDayOfWeek')
-                                    .toString() ==
-                                'Sun'
+                        color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Sun'
                             ? Colors.white
                             : kPrimaryColor),
                     child: Center(
                       child: Text(
                         'Sun',
                         style: TextStyle(
-                            color: CacheService.instance.firstDayOfWeek
-                                        .get('firstDayOfWeek')
-                                        .toString() ==
-                                    'Sun'
+                            color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Sun'
                                 ? kPrimaryColor
                                 : Colors.white,
                             fontSize: 18,
@@ -115,19 +100,13 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                         borderRadius: BorderRadius.all(
                           Radius.circular(4),
                         ),
-                        color: CacheService.instance.firstDayOfWeek
-                                    .get('firstDayOfWeek')
-                                    .toString() ==
-                                'Mon'
+                        color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Mon'
                             ? Colors.white
                             : kPrimaryColor),
                     child: Center(
                         child: Text('Mon',
                             style: TextStyle(
-                                color: CacheService.instance.firstDayOfWeek
-                                            .get('firstDayOfWeek')
-                                            .toString() ==
-                                        'Mon'
+                                color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Mon'
                                     ? kPrimaryColor
                                     : Colors.white,
                                 fontSize: 18,
@@ -144,8 +123,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
               children: [
                 InkWell(
                   onTap: () {
-                    Get.find<GetMedicineController>()
-                        .changeFirstDayOfWeek('Tue');
+                    Get.find<GetMedicineController>().changeFirstDayOfWeek('Tue');
                     Navigator.pop(context);
                     showSnackBar(context);
                   },
@@ -156,20 +134,14 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                         borderRadius: BorderRadius.all(
                           Radius.circular(4),
                         ),
-                        color: CacheService.instance.firstDayOfWeek
-                                    .get('firstDayOfWeek')
-                                    .toString() ==
-                                'Tue'
+                        color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Tue'
                             ? Colors.white
                             : kPrimaryColor),
                     child: Center(
                       child: Text(
                         'Tue',
                         style: TextStyle(
-                            color: CacheService.instance.firstDayOfWeek
-                                        .get('firstDayOfWeek')
-                                        .toString() ==
-                                    'Tue'
+                            color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Tue'
                                 ? kPrimaryColor
                                 : Colors.white,
                             fontSize: 18,
@@ -180,8 +152,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.find<GetMedicineController>()
-                        .changeFirstDayOfWeek('Wed');
+                    Get.find<GetMedicineController>().changeFirstDayOfWeek('Wed');
                     Navigator.pop(context);
                     showSnackBar(context);
                   },
@@ -192,19 +163,13 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                         borderRadius: BorderRadius.all(
                           Radius.circular(4),
                         ),
-                        color: CacheService.instance.firstDayOfWeek
-                                    .get('firstDayOfWeek')
-                                    .toString() ==
-                                'Wed'
+                        color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Wed'
                             ? Colors.white
                             : kPrimaryColor),
                     child: Center(
                         child: Text('Wed',
                             style: TextStyle(
-                                color: CacheService.instance.firstDayOfWeek
-                                            .get('firstDayOfWeek')
-                                            .toString() ==
-                                        'Wed'
+                                color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Wed'
                                     ? kPrimaryColor
                                     : Colors.white,
                                 fontSize: 18,
@@ -226,19 +191,13 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                         borderRadius: BorderRadius.all(
                           Radius.circular(4),
                         ),
-                        color: CacheService.instance.firstDayOfWeek
-                                    .get('firstDayOfWeek')
-                                    .toString() ==
-                                'Thu'
+                        color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Thu'
                             ? Colors.white
                             : kPrimaryColor),
                     child: Center(
                         child: Text('Thu',
                             style: TextStyle(
-                                color: CacheService.instance.firstDayOfWeek
-                                            .get('firstDayOfWeek')
-                                            .toString() ==
-                                        'Thu'
+                                color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Thu'
                                     ? kPrimaryColor
                                     : Colors.white,
                                 fontSize: 18,
@@ -268,19 +227,13 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
                         borderRadius: BorderRadius.all(
                           Radius.circular(4),
                         ),
-                        color: CacheService.instance.firstDayOfWeek
-                                    .get('firstDayOfWeek')
-                                    .toString() ==
-                                'Fri'
+                        color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Fri'
                             ? Colors.white
                             : kPrimaryColor),
                     child: Center(
                         child: Text('Fri',
                             style: TextStyle(
-                                color: CacheService.instance.firstDayOfWeek
-                                            .get('firstDayOfWeek')
-                                            .toString() ==
-                                        'Fri'
+                                color: CacheService.instance.firstDayOfWeek.get('firstDayOfWeek').toString() == 'Fri'
                                     ? kPrimaryColor
                                     : Colors.white,
                                 fontSize: 18,
@@ -296,7 +249,6 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
   }
 
   void showSnackBar(BuildContext context) {
-    print('Show snackbar');
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       duration: Duration(milliseconds: 1500),
       padding: EdgeInsets.all(0),
@@ -314,8 +266,7 @@ class _FirstDayOfWeekState extends State<FirstDayOfWeek> {
         child: Center(
           child: Text(
             "First day of the week updated!",
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
           ),
         ),
       ),

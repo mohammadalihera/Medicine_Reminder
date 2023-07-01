@@ -418,25 +418,6 @@ class _MedicineDetailState extends State<MedicineDetail> {
   }
 
   void deletAlert(Vitel vitel, context) {
-    // getmedicineController.getAllVitelFromDb(context);
-    // int notificationId = int.parse(getmedicineController.selectedDate.day.toString() +
-    //     getmedicineController.selectedDate.month.toString() +
-    //     vitel.id.toString());
-    // List<String> vDate = vitel.date.split(',');
-    // print('--------------------------');
-    // print(vitel.date);
-    // var index = vDate.indexOf(getmedicineController.selectedDate.millisecondsSinceEpoch.toString());
-    // print(index);
-    // if (index == 0 || index == vDate.length - 1) {
-    //   vitel.date = vitel.date.replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString(), '');
-    // } else {
-    //   vitel.date =
-    //       vitel.date.replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString() + ',', '');
-    // }
-    // print(vitel.date);
-    // print(vDate);
-
-    // print(getmedicineController.selectedDate.millisecondsSinceEpoch);
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -464,31 +445,20 @@ class _MedicineDetailState extends State<MedicineDetail> {
                           getmedicineController.selectedDate.month.toString() +
                           vitel.id.toString());
                       List<String> vDate = vitel.date.split(',');
-                      print('--------------------------');
-                      print(vitel.date);
                       var index = vDate.indexOf(getmedicineController.selectedDate.millisecondsSinceEpoch.toString());
-                      print(index);
-                      print(vDate.length);
                       if (vDate.length > 1 && index != vDate.length - 1) {
                         vitel.date = vitel.date
                             .replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString() + ',', '');
-                        print(vitel.date + 'from else--------------------');
                       } else if (vDate.length < 2 && index == 0) {
                         vitel.date = vitel.date
                             .replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString(), '');
                       } else if (index == vDate.length - 1) {
-                        print('Delete the last date vitel');
                         vitel.date = vitel.date
                             .replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString(), '');
                       } else {
                         vitel.date = vitel.date
                             .replaceAll(getmedicineController.selectedDate.millisecondsSinceEpoch.toString() + ',', '');
-                        print(vitel.date + 'from else--------------------');
                       }
-                      print(vitel.date);
-                      print(vDate);
-
-                      print(getmedicineController.selectedDate.millisecondsSinceEpoch);
 
                       await Repository.update("vitel", vitel.vitelToMap(), vitel.id);
                       getmedicineController.getAllVitelFromDb(context);

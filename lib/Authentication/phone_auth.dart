@@ -10,8 +10,7 @@ import 'package:sms_autofill/sms_autofill.dart';
 class PhoneAuth extends StatelessWidget {
   const PhoneAuth({Key? key}) : super(key: key);
 
-  Future<bool> phoneAuth(
-      String phone, BuildContext context, String signCode) async {
+  Future<bool> phoneAuth(String phone, BuildContext context, String signCode) async {
     await Firebase.initializeApp();
 
     final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -68,31 +67,21 @@ class PhoneAuth extends StatelessWidget {
                         smsCode: code,
                       );
 
-                      UserCredential result =
-                          await _auth.signInWithCredential(credential);
+                      UserCredential result = await _auth.signInWithCredential(credential);
                       User? user = result.user;
                       if (user != null) {
                         User? firebaseUser = FirebaseAuth.instance.currentUser;
 
-                        String username =
-                            firebaseUser?.displayName.toString() ??
-                                'Phone User';
-                        String phoneNumber =
-                            firebaseUser!.phoneNumber.toString();
+                        String username = firebaseUser?.displayName.toString() ?? 'Phone User';
+                        String phoneNumber = firebaseUser!.phoneNumber.toString();
 
-                        String image =
-                            'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
+                        String image = 'https://icon-library.com/images/cool-phone-icon/cool-phone-icon-20.jpg';
 
-                        Get.find<AuthUserController>()
-                            .updateVal(username, '', phoneNumber, image);
+                        Get.find<AuthUserController>().updateVal(username, '', phoneNumber, image);
 
                         Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                                builder: (context) => Dashboard()),
-                            (Route<dynamic> route) => false);
-                      } else {
-                        print('Error');
-                      }
+                            MaterialPageRoute(builder: (context) => Dashboard()), (Route<dynamic> route) => false);
+                      } else {}
                     },
                   ),
                 ],

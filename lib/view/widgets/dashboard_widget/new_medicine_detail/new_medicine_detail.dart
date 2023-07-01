@@ -189,8 +189,6 @@ class _NewMedicineDetailState extends State<NewMedicineDetail> {
                                     getmedicineController.selectedDate = DateTime.now();
                                   } else {
                                     addmedicineController.isMedicineAdded(true);
-
-                                    print('medicineNAEM' + addmedicineController.name);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         duration: Duration(milliseconds: 500),
@@ -342,7 +340,6 @@ getDoses(Vitel vitel) {
 
 void notify(DateTime schedule, Vitel vitel, DateTime vitelDate) async {
   int notificiationId = int.parse(vitelDate.day.toString() + vitelDate.month.toString() + vitel.id.toString());
-  print(notificiationId);
   vitel.date = vitel.date.replaceAll(schedule.millisecondsSinceEpoch.toString(), '');
   dynamic result = await Repository.update("Vitel", vitel.vitelToMap(), vitel.id);
 
@@ -392,8 +389,6 @@ void notify(DateTime schedule, Vitel vitel, DateTime vitelDate) async {
     ),
   );
   AwesomeNotifications().actionStream.listen((event) {
-    print(event.id);
-    print(event.payload!["vitelName"]);
     if (event.buttonKeyPressed == 'snooz') {
       AwesomeNotifications().createNotification(
         actionButtons: [
